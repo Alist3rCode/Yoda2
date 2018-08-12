@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
+        
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,17 +29,22 @@
             </div>
             <div class="clients"> 
                 <?php
+                header('Content-Type: text/html; charset=iso-8859-1');
                 require 'class/Autoloader.php';
                 Autoloader::register();
 
                 $db = new Database('yoda');
 
-                foreach($db->query('SELECT * FROM YDA_CLIENT', 'Clients') as $config):?>
+                foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE', 'Clients') as $config):?>
 
                 <div class="vignette">
-                    <h2><?=$config->CLI_VILLE?></h2>
-                    <br>
-                    <h3><?=$config->CLI_NOM?></h3>
+                    <a href="<?=$config->CLI_URL?>" target="_blank">
+                        <div class="contenu_vignette">
+                            <p><?=$config->CLI_VILLE?></p>
+                            <br>
+                            <p><?=$config->CLI_NOM?><p>
+                        </div>
+                    </a>
 
                 </div>
                 <?php // var_dump($config);?>
