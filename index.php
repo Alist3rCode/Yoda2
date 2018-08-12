@@ -42,22 +42,12 @@ $db = new Database('yoda');
                         <div class="contenu_vignette">
                             <div class="infoClient">
                                 <p><?=$clients->CLI_VILLE?></p>
+                                <br>
                                 <p><?=$clients->CLI_NOM?></p>
                                 
                             </div>
                             <div class="tag">
-                            <?php
-                            
-                            if ($clients->CLI_TAG != ''):
-
-                                $tags = explode(',',$clients->CLI_TAG);
-
-                                foreach($tags as $tag):?>
-                                #<?=$tag?>                                  
-
-                                <?php endforeach;                                       
-                            endif;
-                            ?>
+                            <?= $clients->formatedTag()?>
                                         
                                         
                             </div>
@@ -77,7 +67,7 @@ $db = new Database('yoda');
                     </a>
 
                 </div>
-                <?php // var_dump($clients);?>
+                
 
                 <?php endforeach; ?>
             </div>
