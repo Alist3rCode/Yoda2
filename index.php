@@ -10,18 +10,7 @@
         <link rel="stylesheet" href="public/css/yoda.css">
     </head>
     <body>
-        <?php
-        require 'class/Autoloader.php';
-        Autoloader::register();
-
-        $db = new Database('yoda');
- 
-        foreach($db->query('SELECT * FROM YDA_CLIENT', 'Clients') as $config):?>
-
-        <!--<h2><?=$config->CLI_NOM?></h2>-->
-        <?php // var_dump($config);?>
-
-        <?php endforeach; ?>
+        
         
         <div class="content">
             <div class="menu">
@@ -38,23 +27,23 @@
                 <a href="#">Lien Interne</a> 
             </div>
             <div class="clients"> 
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
-                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <?php
+                require 'class/Autoloader.php';
+                Autoloader::register();
+
+                $db = new Database('yoda');
+
+                foreach($db->query('SELECT * FROM YDA_CLIENT', 'Clients') as $config):?>
+
+                <div class="vignette">
+                    <h2><?=$config->CLI_VILLE?></h2>
+                    <br>
+                    <h3><?=$config->CLI_NOM?></h3>
+
+                </div>
+                <?php // var_dump($config);?>
+
+                <?php endforeach; ?>
             </div>
         </div>
 

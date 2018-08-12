@@ -8,18 +8,37 @@
     /*height: 100vh;*/
     flex-flow: row wrap;
     align-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
     width: 85%;  
 }
 
-.clients img{
+.vignette{
     margin : 0px;
+    width: 200px;
+    height: 200px;
+    background-color: #ccc;   
+    text-align: center;
+    text-transform:  capitalize;
+     transition: transform .2s;
+    
 }
+
+
+.vignette:hover  {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+
+    
 .sidebar{
     width: 15%;
     display: flex;
     flex-flow: column wrap;
     background: black;
     color: white;
+    height: 100vh;
     
 }
 
@@ -37,5 +56,13 @@
     justify-content: space-around;
     flex: wrap;
     width: 100%;
+    background: black;
+    color: white;
+}
+
+
+.menu a{
+    text-decoration: none;
+    color: white;
 }
 
