@@ -44,25 +44,21 @@ $db = new Database('yoda');
                                 <p><?=$clients->CLI_VILLE?></p>
                                 <br>
                                 <p><?=$clients->CLI_NOM?></p>
-                                
                             </div>
                             <div class="tag">
                             <?= $clients->formatedTag()?>
-                                        
-                                        
+        
                             </div>
-                            <div class="version">
-                                <hr class="my-4">
-                                <span>
-                                    <?=$clients->CLI_NUM_VERSION?>
-                                </span>
-                                <span>
-                                
-                                    
-                                </span>
-                              
-                            </div>                     
                             
+                            <div class="version">
+                                <a href="plop.com">
+                                    <hr class="my-4">
+                                    <span>
+                                        <?=$clients->CLI_NUM_VERSION?>
+                                    </span> 
+                                </a>
+                            </div>                     
+
                         </div>
                     </a>
 
