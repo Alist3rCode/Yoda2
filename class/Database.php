@@ -1,7 +1,11 @@
 <?php 
-
+/**
+ * Class Database
+ * Gère la connexion à la base de donnée et simplifie les requetes SQL 
+ * 
+ */
 class Database{
-
+    
     private $db_name;
     private $db_user;
     private $db_pass;
@@ -15,7 +19,11 @@ class Database{
         $this->db_pass = $db_pass;
         $this->db_host = $db_host;
     }
-
+    /**
+     * 
+     * @return type PDO
+     * Connecte la base de donnée et retourne un objet de type PDO
+     */
     private function getPDO(){  
         if ($this->pdo == null){
             $pdo = new PDO('mysql:dbname=yoda;host=localhost','root');
@@ -25,7 +33,12 @@ class Database{
         
         return $this->pdo;
     }
-    
+    /**
+     * 
+     * @param type $statement
+     * @param type $className
+     * @return type
+     */
     public function query($statement, $className){
         $res = $this->getPDO()->query($statement);
         $datas = $res->fetchAll(PDO::FETCH_CLASS, $className);
@@ -33,7 +46,14 @@ class Database{
         
     }
     
-    
+    /**
+     * 
+     * @param string $statement
+     * @param string $attributes
+     * @param string $className
+     * @param bool $one
+     * @return objet
+     */
     public function prepare($statement, $attributes, $className, $one = false){
         $req = $this->getPDO()->prepare($statement);
         $req->execute($attributes);

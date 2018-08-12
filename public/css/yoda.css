@@ -1,6 +1,9 @@
 .content{
     display: flex;
     flex-flow: row wrap;
+    
+    
+  
 }
 
 .clients{
@@ -10,7 +13,9 @@
     align-items: flex-start;
     justify-content: flex-start;
     align-content: flex-start;
-    width: 85%;  
+    
+    margin-left:286px;
+    margin-top:60px;
 }
 
 .vignette{
@@ -44,13 +49,15 @@
 
     
 .sidebar{
-    width: 15%;
+    width: 285px;;
     display: flex;
     flex-flow: column wrap;
     background: black;
     color: white;
     height: 100vh;
-    
+    position: fixed;
+    overflow-x: hidden;
+    margin-top:60px;
     
 }
 
@@ -80,14 +87,15 @@
     justify-content: space-between;
     flex-flow: row wrap;
     width: 100%;
-    background: black;
-    color: white;
+    background: white;
+    color: black;
+    position: fixed;
 }
 
 
 .menu a{
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 
