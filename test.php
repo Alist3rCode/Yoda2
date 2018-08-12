@@ -203,12 +203,7 @@ body {
       </a>
     </li>
     
-    <li>
-      <a href="https://www.twitter.com/eaglejs14" target="_blank">
-        <i class="fab fa-fw fa-twitter"></i>
-        <span>eaglejs on Twitter</span>
-      </a>
-    </li>
+    
     <li>
       <a href="https://plus.google.com/u/0/+JoshuaEagle14" target="_blank">
         <i class="fab fa-fw fa-google-plus"></i>
