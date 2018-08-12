@@ -26,6 +26,7 @@ class Database{
         $res = $this->getPDO()->query($statement);
         $datas = $res->fetchAll(PDO::FETCH_OBJ);
         return $datas;
+        plop
 
 
     }
