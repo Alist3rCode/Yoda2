@@ -1,3 +1,11 @@
+<?php
+header('Content-Type: text/html; charset=iso-8859-1');
+require 'class/Autoloader.php';
+Autoloader::register();
+
+$db = new Database('yoda');
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -15,6 +23,9 @@
         
         <div class="content">
             <div class="menu">
+                <span class="logo">
+                    <img src="public/img/yoda.png">
+                </span>
                 <a href="#">Filtre version</a>
                 <a href="#">Filtre activité</a>
                 <a href="#">Recherche</a>
@@ -22,6 +33,18 @@
 
             </div>
             <div class="sidebar">
+                
+                <h3 class="title">
+                    <p>Yohann</p>
+                    <p>Optimized</p>
+                    <p>Direct links to</p>
+                    <p>Applications
+                    <?php
+                    $res = $db->query('SELECT * FROM YDA_CONFIG', 'Clients');
+                    echo ' v'. $res[0]->CFG_VERSION;
+                    ?></p> 
+                </h3>
+                <br>
                 <a href="#">Accueil</a>
                 <a href="#">Clients</a>
                 <a href="#">Carte</a>
@@ -29,11 +52,7 @@
             </div>
             <div class="clients"> 
                 <?php
-                header('Content-Type: text/html; charset=iso-8859-1');
-                require 'class/Autoloader.php';
-                Autoloader::register();
-
-                $db = new Database('yoda');
+              
 
                 foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE', 'Clients') as $config):?>
 
@@ -41,7 +60,7 @@
                     <a href="<?=$config->CLI_URL?>" target="_blank">
                         <div class="contenu_vignette">
                             <p><?=$config->CLI_VILLE?></p>
-                            <br>
+                            
                             <p><?=$config->CLI_NOM?><p>
                         </div>
                     </a>

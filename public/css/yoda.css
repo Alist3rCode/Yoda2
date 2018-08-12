@@ -19,14 +19,12 @@
     height: 150px;
     background-color: #ccc;   
     text-align: center;
-    text-transform:  capitalize;
-     transition: transform .2s;
-    
+    text-transform:  capitalize;   
 }
 
 
 .contenu_vignette:hover  {
-    transform: scale(1.1);
+    transform: scale(0.8);
     text-decoration: none;
 }
 
@@ -41,6 +39,7 @@
     width: 100%;
     height: 100%;
     padding : 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
     
@@ -52,12 +51,25 @@
     color: white;
     height: 100vh;
     
+    
 }
 
 .sidebar a{
     text-decoration: none;
-    color: white;
+    color: darkgrey;
+    padding-left:50px;
+    text-transform: uppercase;
+    line-height: 2.3;
+    
+    
 }
+.sidebar a:hover{
+
+    background-color: #999;
+    color:white;
+    
+}
+
 
 
 .menu{
@@ -65,8 +77,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    justify-content: space-around;
-    flex: wrap;
+    justify-content: space-between;
+    flex-flow: row wrap;
     width: 100%;
     background: black;
     color: white;
@@ -78,3 +90,21 @@
     color: white;
 }
 
+
+.logo img{
+    height:100px;
+    
+}
+
+.title p::first-letter{
+    color:darkgreen;
+}
+
+.title p{
+    line-height: 0.5;
+    color:white;
+}
+.title{
+    padding-left:5px;
+    padding-top:20px;
+}
