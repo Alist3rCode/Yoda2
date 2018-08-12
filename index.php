@@ -25,51 +25,59 @@ $db = new Database('yoda');
         
         
         <div class="content">
-            <div class="menu">
-                <span class="logo">
-                    <img src="public/img/yoda.png">
-                </span>
-                <a href="#">Filtre version</a>
-                <a href="#">Filtre activité</a>
-                <a href="#">Recherche</a>
-
-
-            </div>
-            <div class="sidebar">
-                
-                <h3 class="title">
-                    <p>Yohann</p>
-                    <p>Optimized</p>
-                    <p>Direct links to</p>
-                    <p>Applications
-                    <?php
-                    $res = $db->query('SELECT * FROM YDA_CONFIG', 'Clients');
-                    echo ' v'. $res[0]->CFG_VERSION;
-                    ?></p> 
-                </h3>
-                <br>
-                <a href="#">Accueil</a>
-                <a href="#">Clients</a>
-                <a href="#">Carte</a>
-                <a href="#">Lien Interne</a> 
-            </div>
+            
+            <?php 
+            require 'public/menu.php';
+            require 'public/sidebar.php';
+            ?>
+            
             <div class="clients"> 
                 <?php
               
 
-                foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE', 'Clients') as $config):?>
+                foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE', 'Clients') as $clients):?>
 
                 <div class="vignette">
-                    <a href="<?=$config->CLI_URL?>" target="_blank">
+                    <a href="<?=$clients->CLI_URL?>" target="_blank">
                         <div class="contenu_vignette">
-                            <p><?=$config->CLI_VILLE?></p>
+                            <div class="infoClient">
+                                <p><?=$clients->CLI_VILLE?></p>
+                                <p><?=$clients->CLI_NOM?></p>
+                                
+                            </div>
+                            <div class="tag">
+                            <?php
                             
-                            <p><?=$config->CLI_NOM?><p>
+                            if ($clients->CLI_TAG != ''):
+
+                                $tags = explode(',',$clients->CLI_TAG);
+
+                                foreach($tags as $tag):?>
+                                #<?=$tag?>                                  
+
+                                <?php endforeach;                                       
+                            endif;
+                            ?>
+                                        
+                                        
+                            </div>
+                            <div class="version">
+                                <hr class="my-4">
+                                <span>
+                                    <?=$clients->CLI_NUM_VERSION?>
+                                </span>
+                                <span>
+                                
+                                    
+                                </span>
+                              
+                            </div>                     
+                            
                         </div>
                     </a>
 
                 </div>
-                <?php // var_dump($config);?>
+                <?php // var_dump($clients);?>
 
                 <?php endforeach; ?>
             </div>
@@ -81,5 +89,8 @@ $db = new Database('yoda');
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="./public/js/yoda_style.js"></script>
+
     </body>
+
 </html>

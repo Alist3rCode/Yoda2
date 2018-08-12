@@ -138,7 +138,7 @@ body {
 
 .menu__items li a {
   display: block;
-  background: #4caf50;
+  /*background: #4caf50;*/
   color: #FFF;
   border-radius: 50%;
   outline: none;
@@ -198,19 +198,27 @@ body {
   <ul class="menu__items">
     <li>
       <a href="https://www.twitter.com/eaglejs14" target="_blank">
-        <i class="fa fa-fw fa-twitter"></i>
+        <i class="fab fa-fw fa-twitter"></i>
+        <span>eaglejs on Twitter</span>
+      </a>
+    </li>
+    
+    <li>
+      <a href="https://www.twitter.com/eaglejs14" target="_blank">
+        <i class="fab fa-fw fa-twitter"></i>
         <span>eaglejs on Twitter</span>
       </a>
     </li>
     <li>
       <a href="https://plus.google.com/u/0/+JoshuaEagle14" target="_blank">
-        <i class="fa fa-fw fa-google-plus"></i>
+        <i class="fab fa-fw fa-google-plus"></i>
         <span>eaglejs on Google+</span>
       </a>
     </li>
     <li>
       <a href="https://github.com/eaglejs" target="_blank">
-        <i class="fa fa-fw fa-github"></i>
+        <i class="fab fa-fw fa-github"></i>
+        
         <span>eaglejs on GitHub</span>
       </a>
     </li>

@@ -27,16 +27,25 @@
     text-transform:  capitalize;   
 }
 
-
-.contenu_vignette:hover  {
-    transform: scale(0.8);
-    text-decoration: none;
-}
-
 .vignette a{
     color:black;
     text-decoration: none;
 }
+
+
+.contenu_vignette:hover  .infoClient{
+    transform: scale(0.8);
+    text-decoration: none;
+}
+
+.contenu_vignette:hover  .version{
+    display: flex;
+}
+
+.contenu_vignette:hover  .tag{
+    display: none;
+}
+
 
 .contenu_vignette{
     color:black;
@@ -44,7 +53,8 @@
     width: 100%;
     height: 100%;
     padding : 10px;
-    transition: transform 0.3s ease-in-out;
+    display:flex;
+    flex-flow: column;
 }
 
     
@@ -115,4 +125,48 @@
 .title{
     padding-left:5px;
     padding-top:20px;
+}
+
+.version{
+    line-height: 0.5;
+    color:darkgrey;
+    font-size: small;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    transition: visibility  0.5s;
+    display : none;
+}
+
+.infoClient p{
+    line-height: 1.2;
+    padding-bottom:0;
+    margin-bottom:0;
+}
+
+.infoClient{
+    transition: transform 0.5s ease-in-out;
+}
+
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid black;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+.tag{
+    font-size:x-small;
+    color:darkgrey;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    transition: visibility  0.5s;
+    height: 100%;
+
+    
 }
