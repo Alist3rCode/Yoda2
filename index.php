@@ -7,6 +7,7 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="public/css/yoda.css">
     </head>
     <body>
         <?php
@@ -14,13 +15,49 @@
         Autoloader::register();
 
         $db = new Database('yoda');
-
+ 
         foreach($db->query('SELECT * FROM YDA_CLIENT', 'Clients') as $config):?>
 
-        <h2><?=$config->CLI_NOM?></h2>
-        <?php var_dump($config);?>
+        <!--<h2><?=$config->CLI_NOM?></h2>-->
+        <?php // var_dump($config);?>
 
         <?php endforeach; ?>
+        
+        <div class="content">
+            <div class="menu">
+                <a href="#">Filtre version</a>
+                <a href="#">Filtre activité</a>
+                <a href="#">Recherche</a>
+
+
+            </div>
+            <div class="sidebar">
+                <a href="#">Accueil</a>
+                <a href="#">Clients</a>
+                <a href="#">Carte</a>
+                <a href="#">Lien Interne</a> 
+            </div>
+            <div class="clients"> 
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+                <a href="https://placeholder.com"><img src="http://via.placeholder.com/200x200"></a>
+            </div>
+        </div>
+
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

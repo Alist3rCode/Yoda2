@@ -1,0 +1,41 @@
+.content{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.clients{
+    display: flex;
+    /*height: 100vh;*/
+    flex-flow: row wrap;
+    align-items: flex-start;
+    width: 85%;  
+}
+
+.clients img{
+    margin : 0px;
+}
+.sidebar{
+    width: 15%;
+    display: flex;
+    flex-flow: column wrap;
+    background: black;
+    color: white;
+    
+}
+
+.sidebar a{
+    text-decoration: none;
+    color: white;
+}
+
+
+.menu{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    justify-content: space-around;
+    flex: wrap;
+    width: 100%;
+}
+
