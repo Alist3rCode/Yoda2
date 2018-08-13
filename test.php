@@ -1,183 +1,101 @@
 
 <style>
-* {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
 body {
-  background: #2196f3;
-}
-.menu {
-  border-radius: 50%;
-  position: relative;
-  display: inline-block;
-  -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: pointer;
-  transition: box-shadow ease-in .2s;
 }
-.trigger {
-  background: none;
-  width: 45px;
-  height: 45px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  outline: none;
-  text-align: center;
-  color: #fff;
+
+.roundedBallOuter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.roundedBall {
+  width: 200px;
+  height: 200px;
+  background: #ccc;
+  border-radius: 100%;
   position: relative;
-  z-index: 1000;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
-  /* For some Androids */
-}
-.trigger::before,
-.trigger::after,
-.trigger span {
-	background: #FFF;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.trigger::before,
-.trigger::after {
-	content: '';
-  display: block;
-	height: 2px;
-  margin: 0 auto;
-	width: 50%;
-	-webkit-transform-origin: 38% 38%;
-	transform-origin: 38% 38%;
-	-webkit-transition: -webkit-transform 0.25s;
-	transition: transform 0.25s;
+.roundedBall:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  box-shadow: 0 0 10px #555;
+  transition: all 0.3s ease;
 }
 
-.trigger span {
-  display: block;
-	width: 50%;
-	height: 2px;
-  margin: 0 auto;
-	overflow: hidden;
-	text-indent: 200%;
-	-webkit-transition: opacity 0.25s;
-	transition: opacity 0.25s;
-}
-
-.trigger::before {
-	-webkit-transform: translate3d(0, -5px, 0);
-	transform: translate3d(0, -5px, 0);
-}
-
-.trigger::after {
-	-webkit-transform: translate3d(0, 5px, 0);
-	transform: translate3d(0, 5px, 0);
-}
-
-.menu--open {
-  box-shadow: 0 0 100px 100px rgba(0, 0, 0, .5);
-}
-.menu--open .trigger span {
-	opacity: 0;
-}
-
-.menu--open .trigger::before {
-	-webkit-transform: rotate3d(0, 0, 1, 45deg);
-	transform: rotate3d(0, 0, 1, 45deg);
-}
-
-.menu--open .trigger::after {
-	-webkit-transform: rotate3d(0, 0, 1, -45deg);
-	transform: rotate3d(0, 0, 1, -45deg);
-}
-
-.menu__items {
+.subBall {
+  width: 50px;
+  height: 50px;
+  background: #0077ab;
+  border-radius: 100%;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  z-index: 5;
-}
-
-.menu__items li {
-  width: 80%;
-  height: 80%;
-  top: 10%;
-  left: 10%;
-  line-height: 1.5;
-  font-size: 1.5em;
-  position: absolute;
+  transition: all 0.5s ease;
   z-index: -1;
-  -webkit-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
-  -webkit-transform: scale3d(0.5, 0.5, 1);
-  transform: scale3d(0.5, 0.5, 1);
-  -webkit-transition: -webkit-transform 0.25s ease-out;
-  transition: transform 0.25s ease-out;
+
 }
 
-.menu.menu--open .menu__items li:first-child {
-  -webkit-transform: scale3d(1, 1, 1) translate3d(80px, 0, 0);
-  transform: scale3d(1, 1, 1) translate3d(80px, 0, 0);
+.bubble{
+    margin: 15px;
+    color:white;
 }
 
-.menu.menu--open .menu__items li:nth-child(2) {
-  -webkit-transform: scale3d(1, 1, 1) translate3d(56px, 56px, 0);
-  transform: scale3d(1, 1, 1) translate3d(56px, 56px, 0);
+.roundedBallOuter.clicked .subBall.linkedIn {
+  transform: translate(-10em);
+
+  transition: all 0.5s ease;
 }
 
-.menu.menu--open .menu__items li:last-child {
-  -webkit-transform: scale3d(1, 1, 1) translate3d(0, 80px, 0);
-  transform: scale3d(1, 1, 1) translate3d(0, 80px, 0);
+.roundedBallOuter.clicked .subBall.facebook {
+  transform: rotate(-30deg) translate(-10em) rotate(30deg);
+
+  transition: all 0.5s ease;
 }
 
-.menu__items li a {
+.roundedBallOuter.clicked .subBall.twitter {
+  transform: rotate(-60deg) translate(-10em) rotate(60deg);
+  transition: all 0.5s ease;
+}
+
+.roundedBallOuter.clicked .subBall.github {
+  transform: rotate(-90deg) translate(-10em) rotate(90deg);
+
+  transition: all 0.5s ease;
+}
+
+.more {
+  font-size: 20px;
   display: block;
-  /*background: #4caf50;*/
-  color: #FFF;
-  border-radius: 50%;
-  outline: none;
-  overflow: hidden;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.menu__items li a:hover,
-.menu__items li a:focus {
-  background: #1976d2;
-  color: #FFF;
-}
-
-.menu__items li a span {
-  position: absolute;
-  color: transparent;
-  top: 100%;
-  pointer-events: none;
-}
-
-.morph-shape {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
-
-.morph-shape svg path {
-  fill: #1976d2;
-  -webkit-transition: fill 0.3s;
-  transition: fill 0.3s;
-}
-
-.menu--open .morph-shape svg path {
-  fill: #4caf50;
+.more > span {
+  color: #0077ab;
+  display: block;
+  font-style: italic;
+  font-size: 25px;
 }
 
 </style>
@@ -186,95 +104,32 @@ body {
 
 
 
-<nav id="menu" class="menu">
-  <span class="morph-shape" data-morph-active="M251,150c0,93.5-29.203,143-101,143S49,243.5,49,150C49,52.5,78.203,7,150,7S251,51.5,251,150z">
-						<svg width="100%" height="100%" viewBox="20 20 260 260" preserveAspectRatio="none">
-							<path d="M281,150C281,221.797,221.797,281,150,281C78.203,281,19,221.797,19,150C19,78.203,78.203,19,150,19C221.797,19,281,78.203,281,150C281,150,281,150,281,150"></path>
-						<desc>Created with Snap</desc><defs></defs></svg>
-					</span>
-  <button class="trigger">
-    <span>Menu</span>
-  </button>
-  <ul class="menu__items">
-    <li>
-      <a href="https://www.twitter.com/eaglejs14" target="_blank">
-        <i class="fab fa-fw fa-twitter"></i>
-        <span>eaglejs on Twitter</span>
-      </a>
-    </li>
-    
-    
-    <li>
-      <a href="https://plus.google.com/u/0/+JoshuaEagle14" target="_blank">
-        <i class="fab fa-fw fa-google-plus"></i>
-        <span>eaglejs on Google+</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/eaglejs" target="_blank">
-        <i class="fab fa-fw fa-github"></i>
-        
-        <span>eaglejs on GitHub</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+<div class="roundedBallOuter">
+  <div class="roundedBall">
+    <span class="more"><span>Click</span> for more information</span>
+  </div>
+    <div class="linkedIn subBall">
+        <i class="bubble fab fa-linkedin-in"></i>
+    </div>
+  <div class="facebook subBall">
+      <i class="bubble fab fa-facebook-f"></i>
+  </div>
+    <div class="twitter subBall">
+        <i class="bubble fab fa-twitter"></i>
+    </div> 
+    <div class="github subBall">
+        <i class="bubble fab fa-github"></i>
+    </div> 
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script>
-(function() {
+$(".roundedBallOuter").click(function(e){
+  
+  $(this).toggleClass("clicked");
+});
 
-  function SVGMenu(el, options) {
-    this.el = el;
-    this.init();
-  }
-
-  SVGMenu.prototype.init = function() {
-    this.trigger = this.el.querySelector('button.trigger');
-    this.shapeEl = this.el.querySelector('span.morph-shape');
-
-    var s = Snap(this.shapeEl.querySelector('svg'));
-    this.pathEl = s.select('path');
-    this.paths = {
-      reset: this.pathEl.attr('d'),
-      active: this.shapeEl.getAttribute('data-morph-active')
-    };
-
-    this.isOpen = false;
-
-    this.initEvents();
-  };
-
-  SVGMenu.prototype.initEvents = function() {
-    this.trigger.addEventListener('click', this.toggle.bind(this));
-  };
-
-  SVGMenu.prototype.toggle = function() {
-    var self = this;
-
-    if (this.isOpen) {
-      $('.menu').removeClass('menu--open');
-    } else {
-      setTimeout(function() {
-        $('.menu').addClass('menu--open');
-      }, 175);
-    }
-
-    this.pathEl.stop().animate({
-      'path': this.paths.active
-    }, 150, mina.easein, function() {
-      self.pathEl.stop().animate({
-        'path': self.paths.reset
-      }, 800, mina.elastic);
-    });
-
-    this.isOpen = !this.isOpen;
-  };
-
-  new SVGMenu(document.getElementById('menu'));
-
-})();
 
 </script>
