@@ -43,41 +43,44 @@ $db = new Database('yoda');
 
                 foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE', 'Clients') as $clients):?>
 
-                <div class="vignette">
-                    <!--<a href="<?=$clients->CLI_URL?>" target="_blank">-->
+                <div class="vignette" style="background-color:<?=$clients->colorVersion();?>">
+                    <a href="<?=$clients->CLI_URL?>" target="_blank">
                         <div class="contenu_vignette">
                             <div class="infoClient">
                                 <p><?=$clients->CLI_VILLE?></p>
                                 <br>
                                 <p><?=$clients->CLI_NOM?></p>
                             </div>
+                    </a>
                             <div class="tag">
                             <?= $clients->formatedTag()?>
         
                             </div>
                             
                             <div class="version">
-                                <!--<a href="plop.com">-->
                                     <hr class="my-4">
                                     <span>
+                                        <i class="iconVignette fas fa-phone"></i>
                                         <?=$clients->CLI_NUM_VERSION?>
+                                        <i class="iconVignette fas fa-edit"></i>
                                     </span> 
-                                <!--</a>-->
                             </div>                     
 
                         </div>
-                    <!--</a>-->
-                        <div class="linkedIn subBall ">
-                            <i class="bubble fab fa-linkedin-in"></i>
+                    
+                        <div class="telephoneIcon subBall ">
+                            <i class="bubble fas fa-phone"></i>
                         </div>
-                        <div class="facebook subBall ">
-                            <i class="bubble fab fa-facebook-f"></i>
+                        <div class="databaseIcon subBall ">
+                            <a href="<?=$clients->CLI_URL?>/sqlpacsadmin" target="_blank">
+                                <i class="bubble fas fa-database"></i>
+                            </a>
                         </div>
-                        <div class="twitter subBall ">
-                            <i class="bubble fab fa-twitter"></i>
+                        <div class="versionIcon subBall" data-toggle="tooltip" data-html="true"  data-id="<?=$clients->CLI_ID?>" data-placement="bottom">
+                            <i class="bubble fas fa-code-branch"></i>
                         </div> 
-                        <div class="github subBall ">
-                            <i class="bubble fab fa-github"></i>
+                        <div class="modifIcon subBall ">
+                            <i class="bubble fas fa-edit"></i>
                         </div> 
                 </div>
                 
@@ -89,10 +92,11 @@ $db = new Database('yoda');
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="./public/js/yoda_style.js"></script>
+        <script src="./public/js/yoda_action.js"></script>
         
     </body>
 

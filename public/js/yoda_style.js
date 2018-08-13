@@ -1,10 +1,11 @@
-$(".vignette").click(function(){
-                
+$(".vignette").click(function(e){     
+   
     if($(this).hasClass('clicked')){
         closeBubble($(this));
     }else{
         openBubble($(this));
     }
+    
 });
 
 /**
@@ -14,6 +15,7 @@ $(".vignette").click(function(){
 function openBubble(elem) {
     $('.vignette').removeClass('clicked');
     $('.subBall').css('z-index', '-1');
+   
     elem.children('.subBall').css('z-index', '1');  
     elem.addClass('clicked'); 
 }
@@ -25,6 +27,7 @@ function openBubble(elem) {
 function closeBubble(elem) {
     $('.vignette').removeClass('clicked');
     $('.subBall').css('z-index', '-1');
+    
     elem.children('.subBall').css('z-index', '-1');  
     elem.removeClass('clicked'); 
 }     

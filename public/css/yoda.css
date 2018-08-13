@@ -87,6 +87,12 @@
     
 }
 
+.sidebar hr{
+    
+    margin-left: 50px!important;
+    margin-right: 70px!important;
+    
+}
 
 
 .menu{
@@ -169,4 +175,15 @@ hr {
     height: 100%;
 
     
+}
+
+.iconVignette{
+    
+    color: black;
+    margin-right : 10px;
+    margin-left: 10px;
+}
+
+.fa-phone{
+    transform: rotate(90deg)
 }

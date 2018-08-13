@@ -3,6 +3,7 @@
 class Clients{
     
     public $formatedTag = '';
+    public $colorVersion = '';
     /**
      * 
      * @return string 
@@ -23,5 +24,13 @@ class Clients{
         return $this->formatedTag;
     }
     
-    
+    public function colorVersion(){
+        if($this->CLI_VERSION == 'v7'){
+            $colorVersion = '#87cdf1';
+        }
+        if($this->CLI_VERSION == 'v6'){
+            $colorVersion = '#f6e18b';
+        }
+        return $colorVersion;
+    }
 }
