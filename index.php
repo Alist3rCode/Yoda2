@@ -33,7 +33,7 @@ $db = new Database('yoda');
         <div class="content">
             
             <?php 
-            require 'public/menu.php';
+            require 'public/navbar.php';
             require 'public/sidebar.php';
             ?>
             
@@ -43,8 +43,8 @@ $db = new Database('yoda');
 
                 foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE', 'Clients') as $clients):?>
 
-                <div class="vignette" style="background-color:<?=$clients->colorVersion();?>">
-                    <a href="<?=$clients->CLI_URL?>" target="_blank">
+                <div class="vignette" id="vignette_<?=$clients->CLI_ID?>" style="background-color:<?=$clients->colorVersion();?>">
+                    <a href="<?=$clients->CLI_URL?>" target="_blank" id="vign_url_<?=$clients->CLI_ID?>">
                         <div class="contenu_vignette">
                             <div class="infoClient">
                                 <p><?=$clients->CLI_VILLE?></p>
@@ -72,7 +72,7 @@ $db = new Database('yoda');
                             <i class="bubble fas fa-phone"></i>
                         </div>
                         <div class="databaseIcon subBall ">
-                            <a href="<?=$clients->CLI_URL?>/sqlpacsadmin" target="_blank">
+                            <a href="<?=$clients->CLI_URL?>/sqlpacsadmin" target="_blank" id="dbb_url_<?=$clients->CLI_ID?>">
                                 <i class="bubble fas fa-database"></i>
                             </a>
                         </div>
@@ -97,6 +97,7 @@ $db = new Database('yoda');
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="./public/js/yoda_style.js"></script>
         <script src="./public/js/yoda_action.js"></script>
+        <script src="./public/js/searchBar.js"></script>
         
     </body>
 

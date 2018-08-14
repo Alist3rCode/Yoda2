@@ -1,23 +1,23 @@
 $(".vignette").click(function(e){     
-   
+    console.log($(this)[0].id);
     if($(this).hasClass('clicked')){
-        closeBubble($(this));
+        closeBubble($(this)[0].id);
     }else{
-        openBubble($(this));
+        openBubble($(this)[0].id);
     }
-    
-});
+ });
 
 /**
  * gère l'affichage des bubbles avec les actions sur chaque client
  * @argument elem : objet jquery représentant la div vignette sur laquelle a été fait le clic  
  */
 function openBubble(elem) {
+    element = elem?$('#'+elem):$('.vignette');
     $('.vignette').removeClass('clicked');
     $('.subBall').css('z-index', '-1');
    
-    elem.children('.subBall').css('z-index', '1');  
-    elem.addClass('clicked'); 
+    element.children('.subBall').css('z-index', '1');  
+    element.addClass('clicked'); 
 }
      
 /**
@@ -25,10 +25,11 @@ function openBubble(elem) {
  * @argument elem : objet jquery représentant la div vignette sur laquelle a été fait le clic  
  */
 function closeBubble(elem) {
+    element = elem?$('#'+elem):$('.vignette');
     $('.vignette').removeClass('clicked');
     $('.subBall').css('z-index', '-1');
     
-    elem.children('.subBall').css('z-index', '-1');  
-    elem.removeClass('clicked'); 
+    element.children('.subBall').css('z-index', '-1');  
+    element.removeClass('clicked'); 
 }     
      

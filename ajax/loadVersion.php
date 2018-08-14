@@ -4,11 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-header('Content-Type: text/html; charset=iso-8859-1');
-require '../class/Autoloader.php';
-Autoloader::register();
-
-$bdd = new Database('yoda');    
+require_once "ajaxDatabaseInit.php";   
    
 $i = $_REQUEST['id'];
 $uid = '';
