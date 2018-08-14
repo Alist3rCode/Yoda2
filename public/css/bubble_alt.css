@@ -24,23 +24,23 @@
 }
 
 .vignette.clicked .subBall.telephoneIcon {
-  transform: rotate(-60deg) translate(-6em) rotate(60deg);
+  transform: rotate(-40deg) translate(-4em) rotate(40deg);
 
   transition: all 0.5s ease;
 }
 
 .vignette.clicked .subBall.databaseIcon {
-  transform: rotate(-80deg) translate(-6em) rotate(80deg);
-  transition: all 0.5s ease;
-}
-
-.vignette.clicked .subBall.versionIcon {
-  transform: rotate(-100deg) translate(-6em) rotate(100deg);
+  transform: rotate(-72.5deg) translate(-4em) rotate(72.5deg);
   transition: all 0.5s ease;
 }
 
 .vignette.clicked .subBall.modifIcon {
-  transform: rotate(-120deg) translate(-6em) rotate(120deg);
+  transform: rotate(-105.5deg) translate(-4em) rotate(105.5deg);
+  transition: all 0.5s ease;
+}
+
+.vignette.clicked .subBall.versionIcon {
+  transform: rotate(-140deg) translate(-4em) rotate(140deg);
   transition: all 0.5s ease;
 }
 

@@ -24,7 +24,7 @@ $db = new Database('yoda');
         <!--CSS Perso-->
 
         <link rel="stylesheet" href="public/css/yoda.css">
-        <link rel="stylesheet" href="public/css/bubble.css">
+        <link rel="stylesheet" href="public/css/bubble_alt.css">
 
     </head>
     <body>
@@ -60,9 +60,9 @@ $db = new Database('yoda');
                             <div class="version">
                                     <hr class="my-4">
                                     <span>
-                                        <i class="iconVignette fas fa-phone"></i>
+                                        
                                         <?=$clients->CLI_NUM_VERSION?>
-                                        <i class="iconVignette fas fa-edit"></i>
+                                        
                                     </span> 
                             </div>                     
 
@@ -76,11 +76,12 @@ $db = new Database('yoda');
                                 <i class="bubble fas fa-database"></i>
                             </a>
                         </div>
-                        <div class="versionIcon subBall" data-toggle="tooltip" data-html="true"  data-id="<?=$clients->CLI_ID?>" data-placement="bottom">
-                            <i class="bubble fas fa-code-branch"></i>
-                        </div> 
+                        
                         <div class="modifIcon subBall ">
                             <i class="bubble fas fa-edit"></i>
+                        </div>
+                        <div class="versionIcon subBall" data-toggle="tooltip" data-html="true"  data-id="<?=$clients->CLI_ID?>" data-placement="bottom">
+                            <i class="bubble fas fa-code-branch"></i>
                         </div> 
                 </div>
                 

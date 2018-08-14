@@ -24,7 +24,8 @@
     height: 150px;
     background-color: #ccc;   
     text-align: center;
-    text-transform:  capitalize;   
+    text-transform:  capitalize; 
+    transition: visibility 0.5s;
 }
 
 .vignette a{
@@ -150,6 +151,7 @@
     justify-content: flex-end;
     transition: visibility  0.5s;
     display : none;
+     
 }
 
 .infoClient p{

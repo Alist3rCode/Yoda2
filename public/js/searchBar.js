@@ -65,7 +65,7 @@ $('#searchBar').keyup(function(e){
             $('.vignette').addClass('d-none');
             closeBubble();
             $.each(json, function(i, item){
-                document.getElementById('vignette_' + item.CLI_ID).classList.remove('d-none');
+                $('#vignette_' + item.CLI_ID).removeClass('d-none');
             });
 
             if($('.vignette:not(.d-none)').length >= 1){
@@ -145,8 +145,8 @@ $('#searchBar').keyup(function(e){
 });
 $('#resetSearch').click(function(){
     idxSelect = 0;
-   
     $('.vignette').removeClass('d-none');
+    
     $('#searchBar').val('');
     
 //    if (document.getElementById('tabSetV7')){

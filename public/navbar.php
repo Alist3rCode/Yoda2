@@ -42,11 +42,11 @@
         </ul>
         
         <div class="form-inline my-2 my-lg-0 btn-group">
-            <button type="button" class="btn btn-outline-success createIcon"  id="create" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-success createIcon"  id="create" data-toggle="modal" data-target="#myModal">
                 <i class="fa fa-fw fa-plus-circle"></i>
             </button>
             <input id="searchBar"  type="text" class="form-control searchBar" placeholder="Recherche...">
-            <button class="btn btn-outline-success " id="resetSearch" ><i class="fa fa-fw fa-times"></i></button>
+            <button class="btn btn-success " id="resetSearch" ><i class="fa fa-fw fa-times"></i></button>
         </div>
 <!--        <div class="input-group btn-group form-inline my-2 my-lg-0" role="group">
             <?php // if(in_array("rgt_cod_add_client", $right)):?>
