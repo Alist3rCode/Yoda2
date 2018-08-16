@@ -1,10 +1,5 @@
 $('#searchBar').keyup(function(e){
-    
-    
-//    $('.collapsePhone').remove();
-//    $('.phoneIconFa').addClass('fa-phone');
-//    $('.phoneIconFa').removeClass('fa-chevron-down');
-//    $('.phoneIconFa').css("color", "black");
+
         
     var search = document.getElementById('searchBar').value.toLowerCase();
 //    var filter = document.getElementById('filter').innerHTML;
