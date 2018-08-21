@@ -43,13 +43,13 @@ $db = new Database('yoda');
 
                 foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE', 'Clients') as $clients):?>
 
-                <div class="vignette" id="vignette_<?=$clients->CLI_ID?>" style="background-color:<?=$clients->colorVersion();?>">
+                <div class="vignette <?=$clients->CLI_VERSION?>" id="vignette_<?=$clients->CLI_ID?>">
                     <a href="<?=$clients->CLI_URL?>" target="_blank" id="vign_url_<?=$clients->CLI_ID?>">
                         <div class="contenu_vignette">
                             <div class="infoClient">
-                                <p><?=$clients->CLI_VILLE?></p>
-                                <br>
-                                <p><?=$clients->CLI_NOM?></p>
+                                <p class="ville <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
+                                
+                                <p class="nom"><?=$clients->CLI_NOM?></p>
                             </div>
                     </a>
                             <div class="tag">
