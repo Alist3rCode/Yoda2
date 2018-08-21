@@ -1,0 +1,121 @@
+.tags-input 
+{
+  	list-style : none;   
+  	border:1px solid #ccc;
+  	display:inline-block;
+  	padding:5px;
+    font-size:14px;
+    background:#fff;
+    /*width: 442px;*/
+    border-radius:.25rem;
+    overflow:hidden;
+}
+
+.tags-input li
+{
+  	float:left;
+}
+
+.tags
+{
+  	background:#007bff;
+  	padding:5px 20px 5px 8px;
+  	border-radius:2px;
+  	margin-right: 5px;
+  	position: relative;
+  	color:white;
+}
+
+.tags i
+{
+	position: absolute; 
+	right:6px;
+	top:3px;
+	width: 8px;
+	height: 8px;
+	content:'';
+	cursor:pointer;
+	opacity: .7;
+  font-size:12px;
+}
+
+.tags i:hover
+{
+	opacity: 1;
+}
+
+.tags-new input[type="text"]
+{
+  border:0;
+	margin: 0;
+	padding: 0 0 0 3px;
+	font-size: 14px;
+	margin-top: 5px;
+    background:transparent;
+}
+
+.tags-new input[type="text"]:focus
+{
+  	outline:none; 
+}
+
+.tags-input2 
+{
+  	list-style : none;   
+  	border:1px solid #ccc;
+  	display:inline-block;
+  	padding:5px;
+    font-size:14px;
+    background:#fff;
+    width: 442px;
+    border-radius:.25rem;
+    overflow:hidden;
+}
+
+.tags-input2 li
+{
+  	float:left;
+}
+
+.tags2
+{
+  	background:#007bff;
+  	padding:5px 20px 5px 8px;
+  	border-radius:2px;
+  	margin-right: 5px;
+  	position: relative;
+  	color:white;
+}
+
+.tags2 i
+{
+	position: absolute; 
+	right:6px;
+	top:3px;
+	width: 8px;
+	height: 8px;
+	content:'';
+	cursor:pointer;
+	opacity: .7;
+  font-size:12px;
+}
+
+.tags2 i:hover
+{
+	opacity: 1;
+}
+
+.tags-new2 input[type="text"]
+{
+  border:0;
+	margin: 0;
+	padding: 0 0 0 3px;
+	font-size: 14px;
+	margin-top: 5px;
+    background:transparent;
+}
+
+.tags-new2 input[type="text"]:focus
+{
+  	outline:none; 
+}

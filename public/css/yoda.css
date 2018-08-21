@@ -10,7 +10,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     align-content: flex-start;
-    
+    background-color: #f1f1f1;
     margin-left:286px;
     margin-top:60px;
 }
@@ -73,6 +73,7 @@
     display: flex;
     flex-flow: column wrap;
     background: black;
+    background-image: url('../img/sidebarv2.png');
     color: white;
     height: 100vh;
     position: fixed;
@@ -227,3 +228,4 @@ hr {
 .v6.ville{
     background-color: #f6e18b;
 }
+

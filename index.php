@@ -25,6 +25,8 @@ $db = new Database('yoda');
 
         <link rel="stylesheet" href="public/css/yoda.css">
         <link rel="stylesheet" href="public/css/bubble_alt.css">
+        <link rel="stylesheet" href="public/css/modale.css">
+        <link rel="stylesheet" href="public/css/tags.css">
 
     </head>
     <body>
@@ -89,7 +91,9 @@ $db = new Database('yoda');
                 <?php endforeach; ?>
             </div>
         </div>
-
+        <?php 
+            require 'public/modaleClient.php';
+        ?>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -99,6 +103,7 @@ $db = new Database('yoda');
         <script src="./public/js/yoda_style.js"></script>
         <script src="./public/js/yoda_action.js"></script>
         <script src="./public/js/searchBar.js"></script>
+        <script src="./public/js/tags.js"></script>
         
     </body>
 
