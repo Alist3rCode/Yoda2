@@ -8,3 +8,18 @@ $('[data-toggle="tooltip"]').each(function(index, element){
             tg.attr('data-original-title', data);
         });
 });
+
+
+function clickModaleVersion(version){
+    $('.versionModale button').removeClass('active');
+    $('#'+version+'Button').addClass('active');
+}
+
+function clickModaleActivity(activity){
+    if ($('#'+activity+'Button').hasClass('active')){
+        $('#'+activity+'Button').removeClass('active');
+    }else{
+        $('#'+activity+'Button').addClass('active');
+    }
+    
+}

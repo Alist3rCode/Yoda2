@@ -20,15 +20,15 @@
                             </li>
                         </ul>
                         
-                        <div class="btn-group spaceInput" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-warning" id="version6Button">v6</button>
-                            <button type="button" class="btn btn-outline-primary active" id="version7Button">v7</button>
-                            <button type="button" class="btn btn-outline-dark" id="version8Button">v8</button>
+                        <div class="btn-group spaceInput versionModale" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-warning" id="v6Button" onclick="clickModaleVersion('v6')">v6</button>
+                            <button type="button" class="btn btn-outline-primary active" id="v7Button" onclick="clickModaleVersion('v7')">v7</button>
+                            <button type="button" class="btn btn-outline-dark" id="v8Button" onclick="clickModaleVersion('v8')">v8</button>
                         </div>
 
-                        <div class="btn-group spaceInput" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-secondary active" id="risButton">RIS</button>
-                            <button type="button" class="btn btn-outline-secondary active" id="pacsButton">PACS</button>
+                        <div class="btn-group spaceInput activityModale" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-secondary" id="risButton" onclick="clickModaleActivity('ris')">RIS</button>
+                            <button type="button" class="btn btn-outline-secondary" id="pacsButton" onclick="clickModaleActivity('pacs')">PACS</button>
                         </div>
                         
                         
