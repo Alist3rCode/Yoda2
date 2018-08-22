@@ -39,7 +39,7 @@
                     <button class="btn btn-danger d-none btnModale" id ='buttonDelete'>Supprimer</button>
                     <button class="btn btn-primary d-none btnModale" id ='buttonModif'>Modifier</button>
                     <button class="btn btn-primary btnModale" id ='buttonSubmit'>Valider</button>
-                    <div id='alerte' class="alert alert-danger alertModale"></div>
+                    <div id='alerte' class="alert alert-danger alertModale d-none"></div>
                     <div id='id' class="d-none"></div>
 
                 </div>
@@ -53,7 +53,7 @@
                                 <i class="fa fa-plus"></i>
                             </button>
                             <input class="form-group col-5 d-none siteClass" type="text" id="site0" placeholder="Site..." autocomplete="off">
-                            <input class="form-group col-10 phoneClass" type="text" name="phone0" id="phone0" placeholder="Téléphone..." autocomplete="off">
+                            <input class="form-group col-10 phoneClass" type="text" id="phone0" placeholder="Téléphone..." autocomplete="off">
                             <button type="button" class="btn btn-outline-secondary form-group col-1 deletePhone"  id="deletePhone0" disabled onclick="deletePhone(0)">
                                 <i class="far fa-trash-alt"></i>
                             </button>
@@ -92,12 +92,12 @@
                             <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
                                 <i class="fas fa-unlock"></i>
                             </button>
-                            <input type="text" class="form-control col-10 passwordTVClass formCustom" name="passTV0" id="passTV0"  placeholder="Mot de Passe..." autocomplete="off" >
+                            <input type="text" class="form-control col-10 passwordTVClass formCustom" id="passTV0"  placeholder="Mot de Passe..." autocomplete="off" >
                         </div>
                     </div>
                     <!--<hr>-->
-                    <input type='hidden' value ='1' id='delete0' name='delete0'>
-                    <input type='hidden' value ='' id='id0' name='id0'>
+                    <input type="hidden" value ="1" id="delete0">
+                    <input type="hidden" value ="" id="id0">
                 </div>
                 <input type='hidden' value ='' id='nbPhone' name="nbPhone">
             </div>
@@ -105,3 +105,5 @@
     </div>
 </div>
 <!-- /.modal -->
+
+<script src="./public/js/tags.js"></script>

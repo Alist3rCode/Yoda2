@@ -1,4 +1,4 @@
-function check(){
+    function check(){
     var ul = document.getElementById("tags-input");
     var items = ul.getElementsByTagName("li");
     document.getElementById("tag_hidden").value = '';
@@ -58,8 +58,10 @@ $(function tag() {
             }
         }
     });
-    
-    var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+});
+
+
+var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
     n = 0;
     $(document).keydown(function (e) {
         if (e.keyCode === k[n++]) {
@@ -79,4 +81,3 @@ $(function tag() {
             .parent("li")
             .remove();
     });
-});

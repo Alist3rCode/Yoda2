@@ -33,107 +33,120 @@ function clickModaleActivity(activity){
 
 }
 
-//$('#modaleClient').on('hidden.bs.modal', function (e) {
-//   while($("#petitTag").length !== 0){
-//        $("#petitTag").remove();
-//    }
-//    
-//    $('#myModalLabel').html("Rien");
-//    $('#id').html('');
-//    
-//    var rightTV = $('#rightTV').html();    
-//    
-//    var ville = $('#ville');        
-//    var nom = $('#nom');        
-//    var url = $('#url');
-//    
-//    
-//    
-//    var v8 = $('#v8Button');
-//    var v7 = $('#v7Button');
-//    var v6 = $('#v6Button');
-//    
-//    var tags = $('#tag');
-//    var tagHidden = $('#tag_hidden');
-//    
-//    ville.val('');
-//    nom.val('');
-//    url.val('');
-//    
-//    tags.val('Tags...');
-//    tagHidden.val('');
-//       
-//    clickModaleVersion();
-//    clickModaleActivity();
-//    
-//    $('#viewVersion').val('');
-//    $('#uViewVersion').val('');
-//    $('#imagingVersion').val('');
-//      
-//     
-//    $('#phones').html('<div id="divPhone0" class="col-12 row divPhoneModale">' +
-//                            '<div class="btn-group special col-12 phoneModale" role="group" >'+
-//                                '<button type="button" class="btn btn-outline-success form-group col-1 newPhone"  id="newPhone0" onclick="newPhone(0)">'+
-//                                    '<i class="fa fa-plus"></i>'+ 
-//                                '</button>'+
-//                                '<input class="form-group col-5 d-none siteClass" type="text" id="site0" placeholder="Site..." autocomplete="off">'+
-//                                '<input class="form-group col-10 phoneClass" type="text" name="phone0" id="phone0" placeholder="Téléphone..." autocomplete="off">'+
-//                                '<button type="button" class="btn btn-outline-secondary form-group col-1 deletePhone"  id="deletePhone0" disabled onclick="deletePhone(0)">'+
-//                                    '<i class="far fa-trash-alt"></i>'+
-//                                '</button>'+
-//                            '</div>'+
-//                            '<div class="btn-group special col-md-6 groupModale"  role="group">'+
-//                                '<button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">'+
-//                                    '<i class="fas fa-map"></i>'+
-//                                '</button>'+
-//                                '<input class="form-control col-md-10 latClass formCustom" type="text" id="lat0" placeholder="Latitude..." autocomplete="off">'+
-//                            '</div>'+
-//                            '<div class="btn-group special col-md-6 groupModale" role="group">'+
-//                                '<button class="btn btn-outline-primary form-group disabled btn44" disabled type="button" style="height:38px;">'+
-//                                    '<i class="far fa-map"></i>'+
-//                                '</button>'+       
-//                                '<input class="form-control col-md-10 lonClass formCustom" type="text" id="lon0" placeholder="Longitude..." autocomplete="off">'+
-//                            '</div>'+
-//                            '<div class="btn-group special col-md-6 groupModale" role="group">'+
-//                                '<button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">'+
-//                                    '<i class="far fa-envelope"></i>'+
-//                               '</button>'+     
-//                                '<input class="form-control col-md-10 mailClass formCustom" type="text" id="mail0" placeholder="eMail..." autocomplete="off">'+
-//                            '</div>'+
-//                            '<div class="btn-group special col-md-6 groupModale" role="group">'+
-//                                '<button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">'+
-//                                    '<i class="fas fa-external-link-alt"></i>'+
-//                                '</button>'+
-//                                '<input type="text" class="form-control col-10 TXClass formCustom" id="TX0"  placeholder="Adresse TX..." autocomplete="off">'+
-//                            '</div>'+
-//                            '<div class="btn-group special col-md-6 groupModale" role="group">'+
-//                                '<button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">'+
-//                                    '<i class="far fa-id-card"></i>'+
-//                                '</button>'+     
-//                                '<input class="form-control col-md-10 idTVClass formCustom" type="text" id="idTV0" placeholder="ID Teamviewer..." autocomplete="off">'+
-//                            '</div>'+
-//                            '<div class="btn-group special col-md-6 groupModale " role="group">'+
-//                                '<button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">'+
-//                                    '<i class="fas fa-unlock"></i>'+
-//                                '</button>'+
-//                                '<input type="text" class="form-control col-10 passwordTVClass formCustom" name="passTV0" id="passTV0"  placeholder="Mot de Passe..." autocomplete="off" >'+
-//                           '</div>'+
-//                        '</div>'+
-//                        
-//                        '<input type="hidden" value="1" id="delete0" name="delete0">'+
-//                        '<input type="hidden" value="" id="id0" name="id0">'
-//            
-//    
-//            
-//            );
-//                        
-//    document.getElementById('alerte').innerHTML = '';
-//                        
-//    
-//});
-
 $('#modaleClient').on('hidden.bs.modal', function (e) {
     
     $( "#modaleClient" ).load( "public/modaleClient.php" );
     
 });
+
+
+function newPhone(i) {
+      
+    var newPhone = $('.newPhone');
+    var phoneDisplayed = newPhone.length;
+    var survivor = 0;
+    var rightTV = $('#rightTV').html();
+    
+    for(y=0; y < newPhone.length; y++){
+        if($('#divPhone' + y).hasClass('d-none')){
+            phoneDisplayed -= 1;
+        }else{
+            survivor = y;
+        }
+    }
+    
+    if(phoneDisplayed === 1){
+        $('#phone' + survivor).removeClass("col-10");
+        $('#phone' + survivor).addClass("col-5");
+        $('#site' + survivor).removeClass("d-none");
+        $('#deletePhone' + survivor).prop("disabled",false);
+        $('#deletePhone' + survivor).removeClass("btn-outline-secondary");
+        $('#deletePhone' + survivor).addClass("btn-outline-danger");
+    }
+  
+    $('#newPhone'+i).prop("disabled",true);
+  
+    x = newPhone.length ;
+    var str = '<div id="divPhone'+x+'" class="col-12 row divPhoneModale">'+
+                '<div class="btn-group special col-12 phoneModale" role="group" >'+
+                    '<button type="button" class="btn btn-outline-success form-group col-1 newPhone"  id="newPhone0" onclick="newPhone('+x+')">'+
+                        '<i class="fa fa-plus"></i>'+
+                    '</button>'+
+                    '<input class="form-group col-5 siteClass" type="text" id="site'+x+'" placeholder="Site..." autocomplete="off">'+
+                    '<input class="form-group col-5 phoneClass" type="text" id="phone'+x+'" placeholder="Téléphone..." autocomplete="off">'+
+                    '<button type="button" class="btn btn-outline-danger form-group col-1 deletePhone"  id="deletePhone'+x+'" onclick="deletePhone('+x+')">'+
+                        '<i class="far fa-trash-alt"></i>'+
+                    '</button>'+
+                '</div>'+
+                '<div class="btn-group special col-md-6 groupModale"  role="group">'+
+                    '<button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">'+
+                        '<i class="fas fa-map"></i>'+
+                    '</button>'+
+                    '<input class="form-control col-md-10 latClass formCustom" type="text" id="lat'+x+'" placeholder="Latitude..." autocomplete="off">'+
+                '</div>'+
+                '<div class="btn-group special col-md-6 groupModale" role="group">'+
+                    '<button class="btn btn-outline-primary form-group disabled btn44" disabled type="button" style="height:38px;">'+
+                        '<i class="far fa-map"></i>'+
+                    '</button>'+
+                    '<input class="form-control col-md-10 lonClass formCustom" type="text" id="lon'+x+'" placeholder="Longitude..." autocomplete="off">'+
+                '</div>'+
+                '<div class="btn-group special col-md-6 groupModale" role="group">'+
+                    '<button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">'+
+                        '<i class="far fa-envelope"></i>'+
+                    '</button>'+
+                    '<input class="form-control col-md-10 mailClass formCustom" type="text" id="mail'+x+'" placeholder="eMail..." autocomplete="off">'+
+                '</div>'+
+                '<div class="btn-group special col-md-6 groupModale" role="group">'+
+                    '<button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">'+
+                        '<i class="fas fa-external-link-alt"></i>'+
+                    '</button>'+
+                    '<input type="text" class="form-control col-10 TXClass formCustom" id="TX'+x+'"  placeholder="Adresse TX..." autocomplete="off">'+
+                '</div>'+
+                '<div class="btn-group special col-md-6 groupModale" role="group">'+
+                    '<button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">'+
+                        '<i class="far fa-id-card"></i>'+
+                    '</button>'+
+                    '<input class="form-control '+rightTV+' col-md-10 idTVClass formCustom" type="text" id="idTV'+x+'" placeholder="ID Teamviewer..." autocomplete="off">'+
+                '</div>'+
+                '<div class="btn-group special col-md-6 groupModale " role="group">'+
+                    '<button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">'+
+                        '<i class="fas fa-unlock"></i>'+
+                    '</button>'+
+                    '<input type="text" class="form-control '+rightTV+' col-10 passwordTVClass formCustom" id="passTV'+x+'"  placeholder="Mot de Passe..." autocomplete="off" >'+
+                '</div>'+
+            '</div>'+
+            '<input type="hidden" value ="1" id="delete'+x+'">'+
+            '<input type="hidden" value ="" id="id'+x+'">';
+
+    $('#phones').append(str);
+}
+
+
+function deletePhone(i){
+   
+    
+    $('#divPhone' + i).addClass('d-none');
+    $('#delete' + i).val(0);
+    
+    var newPhone = $('.newPhone');
+    var phoneDisplayed = newPhone.length;
+    var survivor = 0;
+    for(y=0; y < newPhone.length; y++){
+        if($('#divPhone' + y).hasClass('d-none')){
+            phoneDisplayed -= 1;
+        }else{
+            survivor = y;
+        }
+    }
+    
+    if(phoneDisplayed === 1){
+        $('#phone' + survivor).addClass("col-10");
+        $('#phone' + survivor).removeClass("col-5");
+        $('#site' + survivor).addClass("d-none");
+        $('#deletePhone' + survivor).prop('disabled', true);
+        $('#deletePhone' + survivor).addClass("btn-outline-secondary");
+        $('#deletePhone' + survivor).removeClass("btn-outline-danger");
+   }   
+   $('#newPhone' + survivor).prop('disabled',false);
+}   
+
