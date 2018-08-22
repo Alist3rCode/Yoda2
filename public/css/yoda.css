@@ -44,7 +44,7 @@
 
 
 .contenu_vignette:hover  .infoClient{
-    transform: scale(0.8);
+    transform: scale(0.9);
     text-decoration: none;
 }
 

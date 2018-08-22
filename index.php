@@ -4,6 +4,7 @@ require 'class/Autoloader.php';
 Autoloader::register();
 
 $db = new Database('yoda');
+
 ?>
 
 <!doctype html>
@@ -16,7 +17,6 @@ $db = new Database('yoda');
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
          
         <!--Fontawesome CSS-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -30,7 +30,7 @@ $db = new Database('yoda');
 
     </head>
     <body>
-        
+        <div class="d-none"></div>
         
         <div class="content">
             
@@ -91,9 +91,11 @@ $db = new Database('yoda');
                 <?php endforeach; ?>
             </div>
         </div>
+        <div class="modal fade" id="modaleClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
         <?php 
             require 'public/modaleClient.php';
         ?>
+        </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

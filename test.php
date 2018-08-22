@@ -1,135 +1,69 @@
+<head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<style>
-body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         
+        <!--Fontawesome CSS-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-.roundedBallOuter {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+        <!--CSS Perso-->
 
-.roundedBall {
-  width: 200px;
-  height: 200px;
-  background: #ccc;
-  border-radius: 100%;
-  position: relative;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
+        <link rel="stylesheet" href="public/css/yoda.css">
+        <link rel="stylesheet" href="public/css/bubble_alt.css">
+        <link rel="stylesheet" href="public/css/modale.css">
+        <link rel="stylesheet" href="public/css/tags.css">
 
-.roundedBall:hover {
-  transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  box-shadow: 0 0 10px #555;
-  transition: all 0.3s ease;
-}
+    </head>
 
-.subBall {
-  width: 50px;
-  height: 50px;
-  background: #0077ab;
-  border-radius: 100%;
-  position: absolute;
-  transition: all 0.5s ease;
-  z-index: -1;
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Yoda</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-}
-
-.bubble{
-    margin: 15px;
-    color:white;
-}
-
-.roundedBallOuter.clicked .subBall.linkedIn {
-  transform: translate(-10em);
-
-  transition: all 0.5s ease;
-}
-
-.roundedBallOuter.clicked .subBall.facebook {
-  transform: rotate(-30deg) translate(-10em) rotate(30deg);
-
-  transition: all 0.5s ease;
-}
-
-.roundedBallOuter.clicked .subBall.twitter {
-  transform: rotate(-60deg) translate(-10em) rotate(60deg);
-  transition: all 0.5s ease;
-}
-
-.roundedBallOuter.clicked .subBall.github {
-  transform: rotate(-90deg) translate(-10em) rotate(90deg);
-
-  transition: all 0.5s ease;
-}
-
-.more {
-  font-size: 20px;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.more > span {
-  color: #0077ab;
-  display: block;
-  font-style: italic;
-  font-size: 25px;
-}
-
-</style>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-
-
-
-<div class="roundedBallOuter">
-  <div class="roundedBall">
-    <span class="more"><span>Click</span> for more information</span>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+            
   </div>
-    <div class="linkedIn subBall">
-        <i class="bubble fab fa-linkedin-in"></i>
-    </div>
-  <div class="facebook subBall">
-      <i class="bubble fab fa-facebook-f"></i>
-  </div>
-    <div class="twitter subBall">
-        <i class="bubble fab fa-twitter"></i>
-    </div> 
-    <div class="github subBall">
-        <i class="bubble fab fa-github"></i>
-    </div> 
-</div>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
-<script>
-$(".roundedBallOuter").click(function(e){
   
-  $(this).toggleClass("clicked");
-});
-
-
-</script>
+  
+  
+</nav>
+    
+    <script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="./public/js/yoda_style.js"></script>
+        <script src="./public/js/yoda_action.js"></script>
+        <script src="./public/js/searchBar.js"></script>
+        <script src="./public/js/tags.js"></script>
+        

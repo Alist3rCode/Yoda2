@@ -3,7 +3,7 @@
     background-position: center; 
     background-size: contain;
     margin-left:0px;
-    height: 630px;
+    height: auto;
     width: 100%;
 }
 
@@ -78,4 +78,8 @@
 
 .btn44{
     width: 44px!important;
+}
+
+.colInfoClient{
+    height: 100%;
 }

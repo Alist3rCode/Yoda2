@@ -2,7 +2,6 @@ function check(){
     var ul = document.getElementById("tags-input");
     var items = ul.getElementsByTagName("li");
     document.getElementById("tag_hidden").value = '';
-    // console.log(items);
     for (var i = 0; i < items.length; ++i) {
         var span = items[i].getElementsByTagName("span");
         if (typeof span[0] !== 'undefined') {
@@ -41,7 +40,7 @@ $(function tag() {
             .val()
             .trim(),
             length = tag.length;
-
+console.log('imin');
         if (tag.charAt(length - 1) === "," && tag !== ",") {
             tag = tag.substring(0, length - 1);
 
