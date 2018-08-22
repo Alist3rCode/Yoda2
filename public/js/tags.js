@@ -31,10 +31,8 @@ function existingTag(text) {
     return existing;
 }
 
-$(function tag() {
-    $(".tags-new input").click();
+function tag() {
 
-    $(".tags-new input").keyup(function() {
         document.getElementById('tag_hidden').value = '';
         var tag = $(this)
             .val()
@@ -57,7 +55,7 @@ console.log('imin');
                 $(this).val(tag);
             }
         }
-    });
+}
     
     var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
     n = 0;
@@ -79,4 +77,4 @@ console.log('imin');
             .parent("li")
             .remove();
     });
-});
+}
