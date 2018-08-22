@@ -31,14 +31,16 @@ function existingTag(text) {
     return existing;
 }
 
-function tag() {
+$(function tag() {
+    $(".tags-new input").click();
 
+    $(".tags-new input").keyup(function() {
         document.getElementById('tag_hidden').value = '';
         var tag = $(this)
             .val()
             .trim(),
             length = tag.length;
-console.log('imin');
+//console.log('imin');
         if (tag.charAt(length - 1) === "," && tag !== ",") {
             tag = tag.substring(0, length - 1);
 
@@ -55,7 +57,7 @@ console.log('imin');
                 $(this).val(tag);
             }
         }
-}
+    });
     
     var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
     n = 0;
@@ -77,4 +79,4 @@ console.log('imin');
             .parent("li")
             .remove();
     });
-}
+});
