@@ -31,6 +31,9 @@ class Clients{
         if($this->CLI_VERSION == 'v6'){
             $colorVersion = '#f6e18b';
         }
+        if($this->CLI_VERSION == 'v8'){
+            $colorVersion = '#cacaca';
+        }
         return $colorVersion;
     }
 }

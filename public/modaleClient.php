@@ -1,3 +1,5 @@
+
+
 <div class="modal-dialog" role="document">
     <div class="modal-content" >
         <div class="modal-header mx-auto">
@@ -39,7 +41,7 @@
                     <button class="btn btn-danger d-none btnModale" id ='buttonDelete'>Supprimer</button>
                     <button class="btn btn-primary d-none btnModale" id ='buttonModif'>Modifier</button>
                     <button class="btn btn-primary btnModale" id ='buttonSubmit'>Valider</button>
-                    <div id='alerte' class="alert alert-danger alertModale d-none"></div>
+                    <div id='alerte' class="alert  alertModale d-none"></div>
                     <div id='id' class="d-none"></div>
 
                 </div>
@@ -82,13 +84,13 @@
                             </button>
                             <input type="text" class="form-control col-10 TXClass formCustom" id="TX0"  placeholder="Adresse TX..." autocomplete="off">
                         </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
+                        <div class="btn-group special col-md-6 groupModale <?=$rightTV?>" role="group">
                             <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
                                 <i class="far fa-id-card"></i>
                             </button>     
-                            <input class="form-control col-md-10 idTVClass formCustom" type="text" id="idTV0" placeholder="ID Teamviewer..." autocomplete="off">
+                            <input class="form-control col-md-10 idTVClass formCustom " type="text" id="idTV0" placeholder="ID Teamviewer..." autocomplete="off">
                         </div>
-                        <div class="btn-group special col-md-6 groupModale " role="group">
+                        <div class="btn-group special col-md-6 groupModale  <?=$rightTV?>" role="group">
                             <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
                                 <i class="fas fa-unlock"></i>
                             </button>
@@ -99,7 +101,7 @@
                     <input type="hidden" value ="1" id="delete0">
                     <input type="hidden" value ="" id="id0">
                 </div>
-                <input type='hidden' value ='' id='nbPhone' name="nbPhone">
+                <input type='hidden' value ='1' id='nbPhone'>
             </div>
         </div>
     </div>

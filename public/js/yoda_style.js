@@ -32,4 +32,14 @@ function closeBubble(elem) {
     element.children('.subBall').css('z-index', '-1');  
     element.removeClass('clicked'); 
 }     
-     
+
+function displayAlertModale(type,message){
+    $("#alerte").html(message);
+    $('#alerte').addClass('alert-'+type);
+    $("#alerte").removeClass('d-none');
+    $("#alerte").fadeTo(3000, 500).slideUp(500, function() {
+        $("#alerte").slideUp(500);
+        $("#alerte").addClass('d-none');
+        $('#alerte').removeClass('alert-'+type);
+    });
+}

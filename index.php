@@ -34,7 +34,11 @@ $db = new Database('yoda');
 
     </head>
     <body>
-        <div class="d-none"></div>
+        <?php
+        $rightTV = 'd-none';
+        ?>
+        <div id='rightTV' class="d-none"><?=$rightTV?></div>
+        <div id='idUser' class="d-none">1</div>
         
         <div class="content">
             

@@ -45,11 +45,12 @@
     
     float:right;
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .alertModale{
     width:100%; 
-    overflow:hidden
+    overflow:hidden;
 }
 
 .colPhoneModale{

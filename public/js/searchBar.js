@@ -1,7 +1,7 @@
 $('#searchBar').keyup(function(e){
 
         
-    var search = document.getElementById('searchBar').value.toLowerCase();
+    var search = $('#searchBar').val().toLowerCase();
 //    var filter = document.getElementById('filter').innerHTML;
         var filter = "ok";
 //    arrayVersion = [];

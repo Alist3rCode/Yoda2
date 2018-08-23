@@ -78,7 +78,7 @@ class Database{
      * @param bool $one
      * @return objet
      */
-    public function prepare($statement, $attributes, $className, $one = false){
+    public function prepareClass($statement, $attributes, $className, $one = false){
         $req = $this->getPDO()->prepare($statement);
         $req->execute($attributes);
         $req->setFetchMode(PDO::FETCH_CLASS, $className);
@@ -110,5 +110,26 @@ class Database{
         }
         return $datas;
         
+    }
+    public function prepare($statement){
+        $req = $this->getPDO()->prepare($statement);    
+        
+        return $req;
+    }
+    
+    public function execute($attributes, $one = false){
+        $this->getPDO()->execute($attributes);
+        $this->setFetchMode(PDO::FETCH_OBJ);
+        if ($one){
+            $datas = $this->fetch();
+        }else{
+            $datas = $this->fetchAll();
+        }
+        return $datas;
+    }
+    
+    public function lastInsertId(){
+        $id = $this->getPDO()->lastInsertId();
+        return $id;
     }
 }

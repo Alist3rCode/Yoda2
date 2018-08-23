@@ -1,4 +1,10 @@
-    function check(){
+/**
+ * 
+ * @returns {undefined}
+ * Transfère le contenu des tags saisies dans la div cachée "tag_hidden" lors du clic sur un bouton "valider"/"modifier"/"supprimer"
+ * dans la modale.
+ */
+function check(){
     var ul = document.getElementById("tags-input");
     var items = ul.getElementsByTagName("li");
     document.getElementById("tag_hidden").value = '';
@@ -60,7 +66,11 @@ $(function tag() {
     });
 });
 
-
+/**
+ * 
+ * @type Array
+ * Konami Code
+ */
 var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
     n = 0;
     $(document).keydown(function (e) {
@@ -81,3 +91,5 @@ var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
             .parent("li")
             .remove();
     });
+    
+    
