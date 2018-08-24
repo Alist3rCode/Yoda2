@@ -30,7 +30,7 @@ body{
     
 .sidebar{
     background: black;
-    background-image: url('../img/sidebarv2.png');
+    background-image: url('../img/sidebarv2_dark.png');
     color: white;
 }
 
@@ -53,7 +53,7 @@ body{
 }
 
 .title p{
-    color:white;
+    color:gainsboro;
 }
 
 

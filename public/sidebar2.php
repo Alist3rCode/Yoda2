@@ -28,7 +28,7 @@
             </li>
             <li>
                 <a href="#">
-                    <i class="fas fa-globe-americas"></i>
+                    <i class="fas fa-globe-africa"></i>
                     <span class="sidebarLabel">Carte</span> 
                 </a>
             </li>

@@ -24,10 +24,11 @@ $db = new Database('yoda');
         <!--CSS Perso-->
 
         <link rel="stylesheet" href="public/css/yoda.css">
-        <link rel="stylesheet" href="public/css/dark.css">
+        <link rel="stylesheet" href="public/css/light.css">
         <link rel="stylesheet" href="public/css/bubble_alt.css">
         <link rel="stylesheet" href="public/css/modale.css">
         <link rel="stylesheet" href="public/css/tags.css">
+        <link rel="stylesheet" href="public/css/phones.css">
         
         <!--Add Jquery-->
         <script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
@@ -46,6 +47,7 @@ $db = new Database('yoda');
             <?php 
             require 'public/navbar.php';
             require 'public/sidebar2.php';
+//            require 'public/infoClient.php';
             ?>
             
             <div class="clients"> 
@@ -78,22 +80,6 @@ $db = new Database('yoda');
                             </div>                     
 
                         </div>
-                    
-                        <div class="telephoneIcon subBall ">
-                            <i class="bubble fas fa-phone"></i>
-                        </div>
-                        <div class="databaseIcon subBall ">
-                            <a href="<?=$clients->CLI_URL?>/sqlpacsadmin" target="_blank" id="dbb_url_<?=$clients->CLI_ID?>">
-                                <i class="bubble fas fa-database"></i>
-                            </a>
-                        </div>
-                        
-                        <div class="modifIcon subBall ">
-                            <i class="bubble fas fa-edit"></i>
-                        </div>
-                        <div class="versionIcon subBall" data-toggle="tooltip" data-html="true"  data-id="<?=$clients->CLI_ID?>" data-placement="bottom">
-                            <i class="bubble fas fa-code-branch"></i>
-                        </div> 
                 </div>
                 
 

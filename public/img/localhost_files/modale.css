@@ -1,0 +1,88 @@
+.modal-body{
+    background-image: url('../img/brick.jpg');
+    background-position: center; 
+    background-size: contain;
+    margin-left:0px;
+    height: auto;
+    width: 100%;
+    padding-left: 0;
+
+}
+
+.modal-content{
+    width: 1000px;
+    margin-left: -250px;
+}
+
+.spaceInput{
+    margin:5px 0;
+}
+
+.phoneClass{
+    font-weight: bold;
+    margin:0 0 5px 0; 
+    height:38px;
+}
+
+.siteClass{
+    font-weight: bold;
+     margin:0 0 5px 0; 
+     height:38px;
+}
+
+.formCustom{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.infoClientModale{
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: space-between;
+}
+
+.btnModale{
+    
+    float:right;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.alertModale{
+    width:100%; 
+    overflow:hidden;
+}
+
+.colPhoneModale{
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: space-between;
+    
+}
+
+.phoneModale{
+    padding-right:0px!important;
+    padding-left:0px!important;
+}
+
+.divPhoneModale{
+    border-bottom: solid 1px darkgray;
+    padding: 15px 0;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.groupModale{
+    height:38px;
+    padding-left:0px;
+    padding-right:0px;
+    margin-top:5px;
+}
+
+.btn44{
+    width: 44px!important;
+}
+
+.colInfoClient{
+    height: 100%;
+}
