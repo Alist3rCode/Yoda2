@@ -10,13 +10,19 @@
     align-items: flex-start;
     justify-content: flex-start;
     align-content: flex-start;
-    background-color: #f1f1f1;
     margin-left:286px;
     margin-top:60px;
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.5s ease;
+}
+
+#sidebar.collapsed + .clients{
+    margin-left:80px!important;
 }
 
 .vignette{
-    margin : 1px;
+    margin : 3px;
     width:  150px;
     height: 150px;   
     text-align: center;
@@ -25,20 +31,7 @@
     /*border: solid 1px black;*/
 }
 
-.vignette.v7{
-    background-image: url("../img/v7.png");
-}
-
-.vignette.v6{
-    background-image: url("../img/v6.png");
-}
-
-.vignette.v8{
-    background-image: url("../img/v8.png");
-}
-
 .vignette a{
-    color:black;
     text-decoration: none;
 }
 
@@ -58,7 +51,6 @@
 
 
 .contenu_vignette{
-    color:black;
     text-decoration: none;
     width: 100%;
     height: 100%;
@@ -72,29 +64,20 @@
     width: 285px;;
     display: flex;
     flex-flow: column wrap;
-    background: black;
-    background-image: url('../img/sidebarv2.png');
-    color: white;
-    height: 100vh;
+    height: calc(100vh - 60px);
     position: fixed;
     overflow-x: hidden;
     margin-top:60px;
+    z-index: 9;
        
 }
 
 .sidebar a{
     text-decoration: none;
-    color: darkgrey;
     padding-left:50px;
     text-transform: uppercase;
     line-height: 2.3;
     
-    
-}
-.sidebar a:hover{
-
-    background-color: #999;
-    color:white;
     
 }
 
@@ -113,18 +96,16 @@
     justify-content: flex-end;
     justify-content: space-between;
     flex-flow: row wrap;
-    background: white;
-    color: black;
     position: fixed;
     padding-left : 100px;
     padding-right : 100px;
     width: 100%!important;
+    z-index: 8;
 }
 
 
 .menu a{
     text-decoration: none;
-    color: black;
 }
 
 .filters{
@@ -135,11 +116,10 @@
 
 .logo img{
     height:100px;
-    
 }
 
 .title p::first-letter{
-    color:darkgreen;
+    color:#28a745;
 }
 
 .title p{
@@ -153,7 +133,6 @@
 
 .version{
     line-height: 0.5;
-    color:darkgrey;
     font-size: small;
     height: 100%;
     display: flex;
@@ -186,7 +165,6 @@ hr {
 
 .tag{
     font-size:x-small;
-    color:darkgrey;
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
@@ -198,7 +176,6 @@ hr {
 
 .iconVignette{
     
-    color: black;
     margin-right : 10px;
     margin-left: 10px;
 }
@@ -215,57 +192,106 @@ hr {
     margin-right:15px;
 }
 
-
-
 .ville{
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.v8.ville{
-    background-color: #cacaca;
-}
-.v7.ville{
-    background-color: #87cdf1;
-}
-
-.v6.ville{
-    background-color: #f6e18b;
-}
-
 .pulse {
-  
-  display: block;
-  
-  box-shadow: 0 0 0 rgba(34,139,34, 0.8);
+  display: block;  
+  box-shadow: 0 0 0 rgba(40,167,69, 0.8);
   animation: pulse 0.8s 5;
   z-index: 9;
 }
-/*.pulse:hover {
-  animation: none;
-}*/
 
 @-webkit-keyframes pulse {
   0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(34,139,34, 0.8);
+    -webkit-box-shadow: 0 0 0 0 rgba(40,167,69, 0.8);
   }
   70% {
-      -webkit-box-shadow: 0 0 0 10px rgba(34,139,34, 0);
+      -webkit-box-shadow: 0 0 0 10px rgba(40,167,69, 0);
   }
   100% {
-      -webkit-box-shadow: 0 0 0 0 rgba(34,139,34, 0);
+      -webkit-box-shadow: 0 0 0 0 rgba(40,167,69, 0);
   }
 }
+
 @keyframes pulse {
   0% {
-     box-shadow: 0 0 0 0 rgba(34,139,34, 0.8);
+     box-shadow: 0 0 0 0 rgba(40,167,69, 0.8);
   }
   70% {
      
-      box-shadow: 0 0 0 10px rgba(34,139,34, 0);
+      box-shadow: 0 0 0 10px rgba(40,167,69, 0);
   }
   100% {
       
-      box-shadow: 0 0 0 0 rgba(34,139,34, 0);
+      box-shadow: 0 0 0 0 rgba(40,167,69, 0);
   }
+}
+
+#sidebar{
+    transition: all 0.5s ease;
+}
+
+/* Shrinking the sidebar from 250px to 80px and center aligining its content*/
+#sidebar.collapsed {
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
+    font-size: x-small;
+
+   
+}
+
+#sidebar.collapsed .sidebarLabel{
+    display: none;
+}
+
+/* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
+#sidebar .sidebar-header strong {
+    display: none;
+}
+#sidebar.collapsed .sidebar-header h3 {
+    display: none;
+}
+#sidebar.collapsed .sidebar-header strong {
+    display: block;
+}
+
+#sidebar ul li a {
+    text-align: left;
+}
+
+#sidebar.collapsed ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+}
+#sidebar.collapsed hr {
+    margin:0!important;
+}
+
+#sidebar.collapsed ul li a i {
+    margin-right:  0;
+    padding-top: 30px;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+
+
+#sidebarCollapse{
+        position: absolute;
+        bottom: 50px;
+        width: 100%
+}
+#sidebar.collapsed #toogleSidebar{
+    transform: rotate(180deg);
+    
+}
+
+#toogleSidebar{
+   
+    transition: all 0.5s ease;
 }

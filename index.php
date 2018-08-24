@@ -24,6 +24,7 @@ $db = new Database('yoda');
         <!--CSS Perso-->
 
         <link rel="stylesheet" href="public/css/yoda.css">
+        <link rel="stylesheet" href="public/css/dark.css">
         <link rel="stylesheet" href="public/css/bubble_alt.css">
         <link rel="stylesheet" href="public/css/modale.css">
         <link rel="stylesheet" href="public/css/tags.css">
@@ -44,7 +45,7 @@ $db = new Database('yoda');
             
             <?php 
             require 'public/navbar.php';
-            require 'public/sidebar.php';
+            require 'public/sidebar2.php';
             ?>
             
             <div class="clients"> 

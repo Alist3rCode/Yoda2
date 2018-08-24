@@ -1,0 +1,80 @@
+.clients{
+    background-color: #f1f1f1;
+}
+
+body{
+    background-color: #f1f1f1;
+}
+
+.vignette.v7{
+    background-image: url("../img/v7.png");
+}
+
+.vignette.v6{
+    background-image: url("../img/v6.png");
+}
+
+.vignette.v8{
+    background-image: url("../img/v8.png");
+}
+
+.vignette a{
+    color:black;
+}
+
+.contenu_vignette{
+    color:black;
+}
+
+    
+.sidebar{
+    background: black;
+    background-image: url('../img/sidebarv2.png');
+    color: white;
+}
+
+.sidebar a{
+    color: darkgrey;
+}
+
+.sidebar a:hover{
+    background-color: #999;
+    color:white;
+}
+
+.menu{
+    background: white;
+    color: black;
+}
+
+.menu a{
+    color: black;
+}
+
+.title p{
+    color:white;
+}
+
+
+.version{
+    color:darkgrey;
+}
+
+.tag{
+    color:darkgrey;
+}
+
+.iconVignette{
+    color: black;
+}
+
+.v8.ville{
+    background-color: #cacaca;
+}
+.v7.ville{
+    background-color: #87cdf1;
+}
+
+.v6.ville{
+    background-color: #f6e18b;
+}

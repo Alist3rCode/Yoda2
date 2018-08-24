@@ -1,29 +1,4 @@
-<!--<div class="menu">
-    
-    
-    <div class="filters navbar ml-auto row">
-        <ul>
-            <li>
-                <a href="#">Filtre version</a>
-            </li>
-            <li>
-                <a href="#">Filtre activité</a>
-            </li>
-        </ul>
-        
-        
-        <div class="input-group btn-group" role="group">
-            <?php // if(in_array("rgt_cod_add_client", $right)):?>
-            <button type="button" class="btn btn-outline-success createIcon"  id="create" data-toggle="modal" data-target="#myModal"><i class="fa fa-fw fa-plus-circle"></i></button>
-            <?php // endif;?>
-            <input id="searchBar"  type="text" class="form-control searchBar" placeholder="Recherche...">
-            <button class="btn btn-outline-success " id="resetSearch" ><i class="fa fa-fw fa-times"></i></button>
-        </div>
-    </div>
-
-</div>-->
-
-<nav class=" menu navbar navbar-expand-lg navbar-light bg-light">
+<nav class=" menu navbar navbar-expand-lg">
     <span class="logo">
         <img src="public/img/yoda.png">
     </span>
@@ -46,7 +21,7 @@
                 <i class="fa fa-fw fa-plus-circle"></i>
             </button>
             <input id="searchBar"  type="text" class="form-control searchBar" placeholder="Recherche...">
-            <button class="btn btn-success " id="resetSearch" ><i class="fa fa-fw fa-times"></i></button>
+            <button class="btn btn-success resetIcon" id="resetSearch" ><i class="fa fa-fw fa-times"></i></button>
         </div>
                     <button type="button" class="btn btn-outline-secondary"  id="helpMePlease" data-toggle="modal" data-target="#modalHelp" style="margin-left:15px;"><i class="fa fa-fw fa-question-circle"></i></button>
 

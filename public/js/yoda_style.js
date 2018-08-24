@@ -83,3 +83,11 @@ function findPlaceNewCustomer(ville,nom){
     return retour;
 }
     
+$(document).ready(function () {
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('collapsed');
+        
+    });
+
+});

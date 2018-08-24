@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar ">
                 
     <h3 class="title">
         <p>Yohann</p>
@@ -11,17 +11,17 @@
         ?></p> 
     </h3>
     <br>
-    <a href="#">Dashboard</a>
-    <a href="#">Clients</a>
-    <a href="#">Carte</a>
-    <a href="#">Lien Interne</a> 
-    <hr>
-    <a href="#">Profil</a>
-    <a href="#">Notifications</a>
-    <a href="#">Planning Support</a>
-    <a href="#">Déconnexion</a> 
+    <a href="#"><span class="nav-label">Dashboard</span></a>
+    <a href="#"><span class="nav-label">Clients</span></a>
+    <a href="#"><span class="nav-label">Carte</span></a>
+    <a href="#"><span class="nav-label">Lien Interne</span></a> 
+    <hr> 
+    <a href="#"><span class="nav-label">Profil</span></a>
+    <a href="#"><span class="nav-label">Notifications</span></a>
+    <a href="#"><span class="nav-label">Planning Support</span></a>
+    <a href="#"><span class="nav-label">Déconnexion</span></a> 
     
-    
-    
+    <a href="#" class="btn-expand-collapse" style="position: absolute;
+    bottom: 0;"><span class="fas fa-2x fa-arrow-left"></span></a>
     
 </div>

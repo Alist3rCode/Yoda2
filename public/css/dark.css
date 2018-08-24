@@ -1,0 +1,89 @@
+.clients{
+    background-color: #504a4a;
+}
+
+body{
+
+    background-color: #504a4a;
+
+}
+
+.vignette.v7{
+    background-image: url("../img/v7_dark.png");
+}
+
+.vignette.v6{
+    background-image: url("../img/v6_dark.png");
+}
+
+.vignette.v8{
+    background-image: url("../img/v8_dark.png");
+}
+
+.vignette a{
+    color:#cccccc;
+}
+
+.contenu_vignette{
+    color:white;
+}
+    
+.sidebar{
+    background: black;
+    background-image: url('../img/sidebarv2.png');
+    color: white;
+}
+
+.sidebar a{
+    color: darkgrey;
+}
+
+.sidebar:not(.collapse) a:hover{
+    background-color: #999;
+    color:white;
+}
+
+.menu{
+    background: black;
+    color: white;
+}
+
+.menu a{
+    color: white;
+}
+
+.title p{
+    color:white;
+}
+
+
+.version{
+    color:darkgrey;
+}
+
+.tag{
+    color:darkgrey;
+}
+
+.iconVignette{
+    color: black;
+}
+
+.v8.ville{
+    background-color: #585858;
+}
+.v7.ville{
+    background-color: #0071ab;
+}
+
+.v6.ville{
+    background-color: #9a7a1e;
+}
+
+.createIcon{
+    color:black;
+}
+
+.resetIcon{
+    color:black;
+}
