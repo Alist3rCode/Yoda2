@@ -43,3 +43,43 @@ function displayAlertModale(type,message){
         $('#alerte').removeClass('alert-'+type);
     });
 }
+function findPlaceNewCustomer(ville,nom){
+    var array=[];
+    var flag = 0;
+    var retour = '';
+   
+    ville = ville.toLowerCase();
+    nom = nom.toLowerCase();
+    
+    $('.clients .vignette').each(function(i,e){
+        if($(this).find(".ville").html() === ville ){
+            array.push(this.id);
+            flag = 1;
+        }else if ($(this).find(".ville").html() > ville && flag === 0){
+            if ($(this).prev(".clients .vignette").length !== 0){
+                retour = $(this).prev(".clients .vignette")[0].id;
+            }else{
+                retour = this.id;
+            }
+            
+            return false;
+        }
+    });
+    
+    if (retour === ''){
+        flag = 0;
+        $.each(array, function (key, value){
+           if($('#'+value).find(".nom").html() > nom){
+               retour = array[key-1];
+               flag = 1;
+               return false;
+           }
+        });
+        if (flag === 0){
+            retour = array[array.length-1];
+        }
+           
+    }
+    return retour;
+}
+    

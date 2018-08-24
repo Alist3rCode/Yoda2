@@ -84,13 +84,13 @@
                             </button>
                             <input type="text" class="form-control col-10 TXClass formCustom" id="TX0"  placeholder="Adresse TX..." autocomplete="off">
                         </div>
-                        <div class="btn-group special col-md-6 groupModale <?=$rightTV?>" role="group">
+                        <div class="btn-group special col-md-6 groupModale" role="group">
                             <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
                                 <i class="far fa-id-card"></i>
                             </button>     
                             <input class="form-control col-md-10 idTVClass formCustom " type="text" id="idTV0" placeholder="ID Teamviewer..." autocomplete="off">
                         </div>
-                        <div class="btn-group special col-md-6 groupModale  <?=$rightTV?>" role="group">
+                        <div class="btn-group special col-md-6 groupModale" role="group">
                             <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
                                 <i class="fas fa-unlock"></i>
                             </button>

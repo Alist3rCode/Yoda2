@@ -402,7 +402,17 @@ $('#buttonSubmit').click(function(){
 //                    $.post("ajax/notifMailCreateCustomer.php", 
 //                    {id: result.id, idUser : idUser});
                     $('#modaleClient').modal('hide');
-                    location.reload();
+                    $('<div class="pulse vignette '+ array['version']+'" id="vignette_'+result.id +'">').insertAfter('#' + findPlaceNewCustomer(array['ville'],array['nom']));
+                    $("#vignette_" + result.id).load("public/client.php",
+                    {'version':array['version'],
+                     'id':result.id,
+                     'url':array['url'],
+                     'ville': array['ville'],
+                     'nom': array['nom'],
+                     'tag': array['tag'],
+                     'imagingVersion': array['imagingVersion']
+                    });
+
                 }else{
                     console.log(ok);
                 }
