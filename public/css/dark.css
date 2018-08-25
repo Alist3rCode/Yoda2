@@ -69,14 +69,14 @@ body{
     color: black;
 }
 
-.v8.ville{
+.v8.ville, .v8.villeBack{
     background-color: #585858;
 }
-.v7.ville{
+.v7.ville, .v7.villeBack{
     background-color: #0071ab;
 }
 
-.v6.ville{
+.v6.ville, .v6.villeBack{
     background-color: #9a7a1e;
 }
 
@@ -86,4 +86,9 @@ body{
 
 .resetIcon{
     color:black;
+}
+
+.backBtn{
+    border: 1px solid #343a40!important;
+    background-color: rgba(240, 242, 241, 0.2);
 }

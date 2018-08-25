@@ -56,37 +56,55 @@ $db = new Database('yoda');
 
                 foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE ASC, CLI_NOM ASC', 'Clients') as $clients):?>
 
-                <div class="vignette <?=$clients->CLI_VERSION?> manual-flip" id="vignette_<?=$clients->CLI_ID?>">
-                    <div class="contenu_vignette front">
-                        <a href="<?=$clients->CLI_URL?>" target="_blank" id="vign_url_<?=$clients->CLI_ID?>">
-                            <div class="infoClient">
-                                <p class="ville <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
-                                
-                                <p class="nom"><?=$clients->CLI_NOM?></p>
-                            </div>
-                        </a>
-                            <div class="tag">
-                            <?= $clients->formatedTag()?>
-        
-                            </div>
-                            
-                            <div class="version">
-                                    <hr class="my-4">
-                                    <span>
-                                        
-                                        <?=$clients->CLI_NUM_VERSION?>
-                                        
-                                    </span> 
-                            </div>                     
+                <div class="vignette <?=$clients->CLI_VERSION?> flip-container" id="vignette_<?=$clients->CLI_ID?>">
+                    <div class="contenu_vignette flipper">
+                        <div class="front">
+                            <a href="<?=$clients->CLI_URL?>" target="_blank" id="vign_url_<?=$clients->CLI_ID?>">
+                                <div class="infoClient">
+                                    <p class="ville <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
 
-                        </div>
-                    <div class="back">
-                        <div class="border border-secondary"><i class="fas fa-phone"></i></div>
-                        <div class="border border-secondary"><i class="fas fa-database"></i></div>
-                        <div class="border border-secondary"><i class="fas fa-pencil-alt"></i></div>
-                        <div class="border border-secondary"><i class="fas fa-code-branch"></i></div>
-                        
+                                    <p class="nom"><?=$clients->CLI_NOM?></p>
+                                </div>
+                            </a>
+                                <div class="tag">
+                                <?= $clients->formatedTag()?>
+
+                                </div>
+
+                                <div class="version">
+                                        <hr class="my-4">
+                                        <span>
+
+                                            <?=$clients->CLI_NUM_VERSION?>
+
+                                        </span> 
+                                </div>                     
+
+                            </div>
+                            <div class="back">
+                                <div class="infoClientBack">
+                                    <p class="villeBack <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
+
+                                    <p class="nomBack"><?=$clients->CLI_NOM?></p>
+                                </div>
+                                <div class="backBtn">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="backBtn">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </div>
+                                <div class="backBtn">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                
+                                
+                                <div class="backBtn"
+                                     ><i class="fas fa-code-branch"></i>
+                                </div>
+
+                            </div>
                     </div>
+                    
                     
                 </div>
                 

@@ -68,13 +68,18 @@ body{
     color: black;
 }
 
-.v8.ville{
+.v8.ville, .v8.villeBack{
     background-color: #cacaca;
 }
-.v7.ville{
+.v7.ville, .v7.villeBack{
     background-color: #87cdf1;
 }
 
-.v6.ville{
+.v6.ville, .v6.villeBack{
     background-color: #f6e18b;
+}
+
+.backBtn{
+    background-color: rgba(212, 212, 212, 0.2);
+    border: 1px solid #f8f9fa;
 }
