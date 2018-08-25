@@ -24,8 +24,8 @@ $db = new Database('yoda');
         <!--CSS Perso-->
 
         <link rel="stylesheet" href="public/css/yoda.css">
-        <link rel="stylesheet" href="public/css/light.css">
-        <link rel="stylesheet" href="public/css/bubble_alt.css">
+        <link rel="stylesheet" href="public/css/dark.css">
+        <link rel="stylesheet" href="public/css/flip.css">
         <link rel="stylesheet" href="public/css/modale.css">
         <link rel="stylesheet" href="public/css/tags.css">
         <link rel="stylesheet" href="public/css/phones.css">
@@ -56,8 +56,8 @@ $db = new Database('yoda');
 
                 foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE ASC, CLI_NOM ASC', 'Clients') as $clients):?>
 
-                <div class="vignette <?=$clients->CLI_VERSION?>" id="vignette_<?=$clients->CLI_ID?>">
-                    <div class="contenu_vignette">
+                <div class="vignette <?=$clients->CLI_VERSION?> manual-flip" id="vignette_<?=$clients->CLI_ID?>">
+                    <div class="contenu_vignette front">
                         <a href="<?=$clients->CLI_URL?>" target="_blank" id="vign_url_<?=$clients->CLI_ID?>">
                             <div class="infoClient">
                                 <p class="ville <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
@@ -80,6 +80,14 @@ $db = new Database('yoda');
                             </div>                     
 
                         </div>
+                    <div class="back">
+                        <div class="border border-secondary"><i class="fas fa-phone"></i></div>
+                        <div class="border border-secondary"><i class="fas fa-database"></i></div>
+                        <div class="border border-secondary"><i class="fas fa-pencil-alt"></i></div>
+                        <div class="border border-secondary"><i class="fas fa-code-branch"></i></div>
+                        
+                    </div>
+                    
                 </div>
                 
 

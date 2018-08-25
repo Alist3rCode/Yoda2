@@ -1,0 +1,86 @@
+.vignette {
+  -moz-perspective: 800px;
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-transition: -moz-transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: -o-transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: -webkit-transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+.vignette.manual-flip.front {
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.vignette.manual-flip .back {
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+.vignette.clicked.manual-flip .front {
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.vignette.clicked.manual-flip .back {
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+.front {
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-transition: -moz-transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: -o-transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: -webkit-transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  z-index: 2;
+}
+
+.back {
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-transition: -moz-transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: -o-transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: -webkit-transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -moz-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  position: absolute;
+  
+}

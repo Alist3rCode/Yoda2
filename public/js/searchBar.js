@@ -58,7 +58,7 @@ $('#searchBar').keyup(function(e){
         $.get("ajax/search.php?search=" + search + "&filter=" + filter, function(json){
 
             $('.vignette').addClass('d-none');
-            closeBubble();
+            unflip();
             $.each(json, function(i, item){
                 $('#vignette_' + item.CLI_ID).removeClass('d-none');
             });
@@ -107,14 +107,14 @@ $('#searchBar').keyup(function(e){
 
                     idVignette = list[idxSelect].id.substring(9);
                     list[idxSelect].classList.add('selectColor');
-                    closeBubble(idVignette);
+                    unflip(idVignette);
 
                 //Fleche du bas            
                 }else if (e.keyCode === 40) {
 
                     idVignette = list[idxSelect].id.substring(9);
                     list[idxSelect].classList.add('selectColor');
-                    openBubble(idVignette);
+                    flip(idVignette);
 
                 //Echap
                 }else if (e.keyCode === 27) {
@@ -127,7 +127,7 @@ $('#searchBar').keyup(function(e){
                     $('.vignette:not(.d-none)').removeClass('selectColor');
                     list[0].classList.add('selectColor');
                     idxSelect = 0;
-                    closeBubble();
+                    unflip();
 
                 }
             //Echap si aucune vignette affichées.        
@@ -171,7 +171,7 @@ $('#resetSearch').click(function(){
 //    }
     
     
-    closeBubble();
+    unflip();
     
     arrayVersion = [];
     

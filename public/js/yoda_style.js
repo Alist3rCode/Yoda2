@@ -1,22 +1,21 @@
 $(".vignette").click(function(e){     
     console.log($(this)[0].id);
     if($(this).hasClass('clicked')){
-        closeBubble($(this)[0].id);
+        unflip($(this)[0].id);
     }else{
-        openBubble($(this)[0].id);
+        flip($(this)[0].id);
     }
- });
+});
+
+
 
 /**
  * gère l'affichage des bubbles avec les actions sur chaque client
  * @argument elem : objet jquery représentant la div vignette sur laquelle a été fait le clic  
  */
-function openBubble(elem) {
+function flip(elem) {
     element = elem?$('#'+elem):$('.vignette');
-    $('.vignette').removeClass('clicked');
-    $('.subBall').css('z-index', '-1');
-   
-    element.children('.subBall').css('z-index', '1');  
+    $('.vignette').removeClass('clicked');  
     element.addClass('clicked'); 
 }
      
@@ -24,12 +23,9 @@ function openBubble(elem) {
  * gère la fermeture des bubbles avec les actions sur chaque client
  * @argument elem : objet jquery représentant la div vignette sur laquelle a été fait le clic  
  */
-function closeBubble(elem) {
+function unflip(elem) {
     element = elem?$('#'+elem):$('.vignette');
     $('.vignette').removeClass('clicked');
-    $('.subBall').css('z-index', '-1');
-    
-    element.children('.subBall').css('z-index', '-1');  
     element.removeClass('clicked'); 
 }     
 
