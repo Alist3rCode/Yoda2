@@ -6,7 +6,7 @@
                 <p>Direct links to</p>
                 <p>Applications
                     <?php
-                    $res = $db->query('SELECT * FROM YDA_CONFIG', 'Clients');
+                    $res = $db->queryObj('SELECT * FROM YDA_CONFIG');
                     echo ' v' . $res[0]->CFG_VERSION;
                     ?></p> 
             </h3>

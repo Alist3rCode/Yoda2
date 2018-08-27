@@ -1,13 +1,15 @@
+function ucFirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
 $(".vignette").click(function(e){     
-    console.log($(this)[0].id);
     if($(this).hasClass('clicked')){
         unflip($(this)[0].id);
     }else{
         flip($(this)[0].id);
     }
 });
-
-
 
 /**
  * gère l'affichage des bubbles avec les actions sur chaque client

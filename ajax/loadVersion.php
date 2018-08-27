@@ -11,10 +11,11 @@ $uid = '';
 $version = '';
 $historique = '';
 $color = '';
+$array = [];
 
 
-
-$client = $bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_ID ="' . $i . '"','Clients');
+foreach($bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_ID ="' . $i . '"','Clients') as $client):?>
+<?php
 
           
 //    while ($query = $select->fetch()){
@@ -63,15 +64,30 @@ $client = $bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_ID ="' . $i . '"','Cli
 //// 
 //            $historique = $historique . '<em>' . $date2 .  '</em> : <strong style="color:#87cdf1">' . $release  . '</strong><br>';
 //        }
-//}
+//
 //
 //// echo $historique;
-//if(trim($versionView)!= ''){echo "<p>Version View : <strong style='color:white;'>".$versionView."</strong></p>";}
-//if(trim($versionUview)!= ''){echo "<p>Version uView : <strong style='color:white;'>".$versionUview."</strong></p>";}?>
 
-<p>Version Imaging : <strong style='color:<?=$client[0]->colorVersion();?>'><?=$colorVersion[0]->colorVersion();?></strong></p>
-//<?php if($historique != ''):?>
-<p>Historique : <br>
-//<?=$historique;?>
-</p>
-//<?php endif;?>
+if ($_REQUEST['mode'] === 'display'):?>
+    
+   <?php if(trim($client->CLI_VIEW)!= ''){echo "<p>Version View : <strong style='color:white;'>".$client->CLI_VIEW."</strong></p>";}
+    if(trim($client->CLI_UVIEW)!= ''){echo "<p>Version uView : <strong style='color:white;'>".$client->CLI_UVIEW."</strong></p>";}?>
+
+    <p>Version Imaging : <strong style='color:<?=$client->colorVersion();?>'><?=$client->CLI_NUM_VERSION?></strong></p>
+    <?php if($historique != ''):?>
+    <p>Historique : <br>
+    <?=$historique;?>
+    </p>
+    <?php endif;?>
+
+
+<?php endif;
+if ($_REQUEST['mode'] === 'modif'){
+    header("content-type:application/json");
+    $array['version'] = $client->CLI_NUM_VERSION;
+    $array['uid'] = false;
+    echo json_encode($array);
+      
+}
+
+endforeach;?>

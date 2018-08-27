@@ -66,8 +66,9 @@ $db = new Database('yoda');
                                     <p class="nom"><?=$clients->CLI_NOM?></p>
                                 </div>
                             </a>
+                            
                                 <div class="tag">
-                                <?= $clients->formatedTag()?>
+                                <?= $clients->formatedTag?>
 
                                 </div>
 
@@ -79,30 +80,28 @@ $db = new Database('yoda');
 
                                         </span> 
                                 </div>                     
+                        </div>
+                        <div class="back">
+                            <div class="infoClientBack">
+                                <p class="villeBack <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
 
+                                <p class="nomBack"><?=$clients->CLI_NOM?></p>
                             </div>
-                            <div class="back">
-                                <div class="infoClientBack">
-                                    <p class="villeBack <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
-
-                                    <p class="nomBack"><?=$clients->CLI_NOM?></p>
-                                </div>
-                                <div class="backBtn">
-                                    <i class="fas fa-database"></i>
-                                </div>
-                                <div class="backBtn">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </div>
-                                <div class="backBtn">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                
-                                
-                                <div class="backBtn"
-                                     ><i class="fas fa-code-branch"></i>
-                                </div>
-
+                            <div class="backBtn">
+                                <i class="fas fa-database"></i>
                             </div>
+                            <div class="backBtn" onclick="modif(<?=$clients->CLI_ID?>)" data-toggle="modal" data-target="#modaleClient" >
+                                <i class="fas fa-pencil-alt" ></i>
+                            </div>
+                            <div class="backBtn">
+                                <i class="fas fa-phone"></i>
+                            </div>
+
+                            <div class="backBtn" data-toggle="tooltip" data-html="true"  data-id="<?=$clients->CLI_ID?>" data-placement="bottom" data-title="test">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+
+                        </div>
                     </div>
                     
                     

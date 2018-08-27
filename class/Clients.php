@@ -4,6 +4,15 @@ class Clients{
     
     public $formatedTag = '';
     public $colorVersion = '';
+    public $linearTag = [];
+   
+    
+    public function __construct(){
+        $this->linearTag = self::linearTag();
+        $this->colorVersion = self::colorVersion();
+        $this->formatedTag = self::formatedTag();
+    }
+    
     /**
      * 
      * @return string 
@@ -14,14 +23,28 @@ class Clients{
         if ($this->CLI_TAG != ''){
 
             $tags = explode(',',$this->CLI_TAG);
-            $lenght = (count($tags)<5)?count($tags):5;
+            $length = (count($tags)<5)?count($tags):5;
            
-                for($i=0;$i<$lenght;$i++){
+                for($i=0;$i<$length;$i++){
                     $this->formatedTag .= '#' . $tags[$i] . ' ';
                 }
             }
             
         return $this->formatedTag;
+    }
+    
+    /**
+     * 
+     * @return string
+     * Retour les tags en array
+     */
+    public function linearTag(){
+        if ($this->CLI_TAG != ''){
+
+            $this->linearTag = explode(',',$this->CLI_TAG);
+        }
+                        
+        return $this->linearTag;
     }
     
     public function colorVersion(){
@@ -36,4 +59,6 @@ class Clients{
         }
         return $colorVersion;
     }
+    
+   
 }

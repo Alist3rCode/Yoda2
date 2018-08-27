@@ -19,10 +19,7 @@ class Database{
         $this->db_pass = $db_pass;
         $this->db_host = $db_host;
     }
-    
-    
-    
-    
+        
     /**
      * 
      * @return type PDO

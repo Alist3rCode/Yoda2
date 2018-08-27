@@ -4,7 +4,10 @@ $('[data-toggle="tooltip"]').each(function(index, element){
 
     var tg = $(element);
     var idx = element.getAttribute('data-id');
-        $.get("ajax/loadVersion.php?id=" + idx, function(data) {
+        $.post("ajax/loadVersion.php",{
+          id : idx,
+          mode : "display"
+        } , function(data) {
             tg.attr('data-original-title', data);
         });
 });
@@ -45,8 +48,7 @@ function newPhone(i) {
     var newPhone = $('.newPhone');
     var phoneDisplayed = newPhone.length;
     var survivor = 0;
-    var rightTV = $('#rightTV').html();
-    
+        
     for(y=0; y < newPhone.length; y++){
         if($('#divPhone' + y).hasClass('d-none')){
             phoneDisplayed -= 1;
@@ -69,7 +71,7 @@ function newPhone(i) {
     x = newPhone.length ;
     var str = '<div id="divPhone'+x+'" class="col-12 row divPhoneModale">'+
                 '<div class="btn-group special col-12 phoneModale" role="group" >'+
-                    '<button type="button" class="btn btn-outline-success form-group col-1 newPhone"  id="newPhone0" onclick="newPhone('+x+')">'+
+                    '<button type="button" class="btn btn-outline-success form-group col-1 newPhone"  id="newPhone'+x+'" onclick="newPhone('+x+')">'+
                         '<i class="fa fa-plus"></i>'+
                     '</button>'+
                     '<input class="form-group col-5 siteClass" type="text" id="site'+x+'" placeholder="Site..." autocomplete="off">'+
@@ -102,13 +104,13 @@ function newPhone(i) {
                     '</button>'+
                     '<input type="text" class="form-control col-10 TXClass formCustom" id="TX'+x+'"  placeholder="Adresse TX..." autocomplete="off">'+
                 '</div>'+
-                '<div class="btn-group special col-md-6 groupModale '+rightTV+' " role="group">'+
+                '<div class="btn-group special col-md-6 groupModale " role="group">'+
                     '<button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">'+
                         '<i class="far fa-id-card"></i>'+
                     '</button>'+
                     '<input class="form-control col-md-10 idTVClass formCustom" type="text" id="idTV'+x+'" placeholder="ID Teamviewer..." autocomplete="off">'+
                 '</div>'+
-                '<div class="btn-group special col-md-6 groupModale  '+rightTV+'" role="group">'+
+                '<div class="btn-group special col-md-6 groupModale " role="group">'+
                     '<button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">'+
                         '<i class="fas fa-unlock"></i>'+
                     '</button>'+
@@ -119,7 +121,7 @@ function newPhone(i) {
             '<input type="hidden" value ="" id="id'+x+'">';
 
     $('#phones').append(str);
-    $('#nbPhone').val(parseInt(phoneDisplayed)+1);
+    $('#nbPhone').val(parseInt(phoneDisplayed));
 }
 
 
@@ -151,6 +153,119 @@ function deletePhone(i){
    $('#newPhone' + survivor).prop('disabled',false);
    $('#nbPhone').val(phoneDisplayed);
 }   
+
+function modif(i){
+    while($("#petitTag").length !== 0){
+        $("#petitTag").remove();
+    }
+    
+    var suppr = $('#buttonDelete');
+    $('#id').html(i);
+    
+    $('#myModalLabel').html('Modification du favori');
+    
+    $('#buttonSubmit').addClass("d-none");
+    $('#buttonModif').removeClass("d-none");
+    $('#buttonDelete').removeClass("d-none");
+    
+    
+    var ville = $('#ville');   
+    var nom = $('#nom');
+    var url = $('#url');
+
+    var v8_button = $('#v8Button');
+    var v7_button = $('#v7Button');
+    var v6_button = $('#v6Button');
+
+    var ris_button = $('#risButton');
+    var pacs_button = $('#pacsButton');
+    
+    var tag_mod = $('#tag');
+    var tag_mod_hidden = $('#tag_hidden');
+    
+    var phoneZone = $('#phones');
+    
+    var viewVersion = $('#viewVersion');
+    var uViewVersion = $('#uViewVersion');
+    var imagingVersion = $('#imagingVersion');
+    
+    
+    $.post("ajax/loadVersion.php", {
+        id : i,
+        mode : "modif"
+    }, function(retour){
+        
+        imagingVersion.val(retour['version']);
+        if(retour['uid']){
+            imagingVersion.prop('disabled', true);
+        }else{
+            imagingVersion.prop('disabled', false);
+        }
+    });
+    
+    $.get("ajax/getModif.php?id=" + i, function(json){
+        
+        viewVersion.val(json[0].CLI_VIEW);
+        uViewVersion.val(json[0].CLI_UVIEW);
+        
+        
+        if(json.length > 1){
+            
+            for (z=0; z<json.length; z++){
+               
+                newPhone(z);
+                $('#phone'+z).val(json[z].PHO_PHONE);
+                $('#site'+z).val(ucFirst(json[z].PHO_SITE));
+                $('#id'+z).val(json[z].PHO_ID);
+                $('#lat'+z).val(json[z].MPS_LAT);
+                $('#lon'+z).val(json[z].MPS_LON);
+                $('#mail'+z).val(json[z].PHO_MAIL);
+                $('#TX'+z).val(json[z].PHO_TX);
+                $('#idTV'+z).val(json[z].PHO_TV_ID);
+                $('#passTV'+z).val(json[z].PHO_TV_PASSWORD);
+            }
+            $('#divPhone' + json.length).remove();
+            $('#delete'+ json.length).remove();
+            $('#id'+ json.length).remove();
+            $('#newPhone'+ (json.length-1)).prop('disabled',false);
+            
+        }else if (json['nbPhone'] !== 0){
+
+            $('#phone0').val(json[0].PHO_PHONE);
+            $('#id0').val(json[0].PHO_ID);
+            $('#lat0').val(json[0].MPS_LAT);
+            $('#lon0').val(json[0].MPS_LON);
+            $('#mail0').val(json[0].PHO_MAIL);
+            $('#idTV0').val(json[0].PHO_TV_ID);
+            $('#passTV0').val(json[0].PHO_TV_PASSWORD);            
+        }
+  
+        ville.val(ucFirst(json[0].CLI_VILLE));
+        nom.val(ucFirst(json[0].CLI_NOM));
+        url.val(json[0].CLI_URL);
+       
+        
+        var nbTag = json[0].linearTag.length;
+        for (x=0; x<nbTag; x++){
+            if (json[0].linearTag[x] !== ''){
+                $('<li class="tags"id="petitTag"><span>' +
+                    json[0].linearTag[x] +
+                    '</span><i class="fa fa-times"></i></i></li>'
+                ).insertBefore($(".tags-new"));
+            }
+        }
+        tag_mod_hidden.value = '';
+        clickModaleVersion(json[0].CLI_VERSION);
+        if(json[0].CLI_RIS === '1'){
+            clickModaleActivity('ris');
+        }
+        if(json[0].CLI_PACS === '1'){
+            clickModaleActivity('pacs');
+        }
+    });
+}
+
+
 
 function control_form() {
     var id = $('#id').html();
@@ -199,10 +314,7 @@ function control_form() {
     }else{
         pacs = 0;
     }    
-    
-    
-   
-    
+
     var errors = [];
     var flag = 0;
    
@@ -415,6 +527,74 @@ $('#buttonSubmit').click(function(){
 
                 }else{
                     console.log(ok);
+                }
+        });
+    }
+    
+});
+
+$('#buttonModif').click(function(){
+    
+    var array = [] ;
+    array = control_form();
+    var idUser = $('#id_user').innerHTML;
+    if (array['ok'] === 1){
+        $.post("ajax/modif.php", 
+            {array}, 
+            function(ok){
+                console.log(ok)
+                result = JSON.parse(ok);
+                if(result.ok === 'ok'){
+                    
+//                  $.post("ajax/notifMailModifCustomer.php", 
+//                    {avant: result.avant, apres: result.apres, idUser : idUser}); 
+                    
+//                  $('#myModal').modal('hide');
+//                  location.reload();
+                }else{
+                    console.log(result)
+                }
+        });
+    }
+    
+});
+
+
+$('#buttonDelete').click(function(){
+    
+    var array = [] ;
+    array = control_form(2);
+    
+    if (array['ok'] == 1){
+        $.post("ajax/delete.php", 
+            {id: array['id'], 
+            ville: array['ville'], 
+            nom: array['nom'], 
+            url: array['url'], 
+            version: array['version'], 
+            ris: array['ris'], 
+            pacs: array['pacs'], 
+            tag: array['tag'], 
+            phone: array['phone'], 
+            site: array['site'], 
+            lat: array['lat'], 
+            lon: array['lon'], 
+            nbPhone: array['nbPhone'],
+            listIdPhone: array['listIdPhone'], 
+            viewVersion: array['viewVersion'], 
+            uViewVersion: array['uViewVersion'], 
+            imagingVersion: array['imagingVersion'], 
+            email : array['mail'], 
+            TX : array['TX'], 
+            idTV : array['idTV'], 
+            passwordTV : array['passwordTV']}, 
+            function(ok){
+                if(ok== 'ok'){
+                    
+                  $('#myModal').modal('hide');
+                  location.reload();
+                }else{
+                    console.log(ok)
                 }
         });
     }
