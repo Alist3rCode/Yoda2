@@ -13,7 +13,6 @@
     margin-left: 286px;
     margin-top: 60px;
     width: 100%;
-    min-height: 100vh;
     transition: all 0.5s ease;
 }
 
@@ -152,6 +151,7 @@
 .infoClient{
     transition: transform 0.5s ease-in-out;
     line-height: 1.2;
+    
 }
 
 hr {
@@ -170,6 +170,8 @@ hr {
     justify-content: flex-end;
     transition: visibility  0.5s;
     height: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
 
     
 }
@@ -315,4 +317,9 @@ hr {
 	border-radius: 10px;
 	background-color: #FFF;
 	background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#4D9C41), to(#19911D), color-stop(.6,#54DE5D))
+}
+
+.nom{
+    padding-left: 5px;
+    padding-right: 5px;
 }
