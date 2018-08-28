@@ -38,9 +38,9 @@
 
                 </div>
                 <div >
-                    <button class="btn btn-danger d-none btnModale" id ='buttonDelete'>Supprimer</button>
-                    <button class="btn btn-primary d-none btnModale" id ='buttonModif'>Modifier</button>
-                    <button class="btn btn-primary btnModale" id ='buttonSubmit'>Valider</button>
+                    <button class="btn btn-danger d-none btnModale" id ='buttonDelete' onclick="deleteCustomer()">Supprimer</button>
+                    <button class="btn btn-primary d-none btnModale" id ='buttonModif' onclick="modifCustomer()">Modifier</button>
+                    <button class="btn btn-primary btnModale" id ='buttonSubmit' onclick="createCustomer()">Valider</button>
                     <div id='alerte' class="alert  alertModale d-none"></div>
                     <div id='id' class="d-none"></div>
 

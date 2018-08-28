@@ -267,7 +267,7 @@ function modif(i){
 
 
 
-function control_form() {
+function control_form(mode) {
     var id = $('#id').html();
     
     var ville = $('#ville').val();
@@ -459,16 +459,16 @@ function control_form() {
         }
     }
     
-    if (flag === 1) {
+    if (flag === 1 && mode !== 'suppr') {
         flag = '';
-        displayAlerteModale('danger',errors.join("<br>"));
+        displayAlertModale('danger',errors.join("<br>"));
         return {
             'ok' : 0,
             'error': errors
         };
        
     } else {
-       return {
+        return {
             'ok' : 1,
             'id': id,
             'ville': ville.toLowerCase(),
@@ -496,11 +496,11 @@ function control_form() {
     }
 }
 
-$('#buttonSubmit').click(function(){
+function createCustomer(){
     
     var array = [] ;
     var idUser = $('#idUser').html();
-    array = control_form();
+    array = control_form('create');
     array.idUser = idUser;
     
     if (array['ok'] === 1){
@@ -531,72 +531,64 @@ $('#buttonSubmit').click(function(){
         });
     }
     
-});
-
-$('#buttonModif').click(function(){
+}
+function modifCustomer(){
     
     var array = [] ;
-    array = control_form();
+    array = control_form('modif');
+    $('#vignette_'+ array['id']).removeClass('pulse');
+    
     var idUser = $('#id_user').innerHTML;
     if (array['ok'] === 1){
-        $.post("ajax/modif.php", 
-            {array}, 
-            function(ok){
-                console.log(ok)
-                result = JSON.parse(ok);
-                if(result.ok === 'ok'){
-                    
+        $.post("ajax/modifCustomer.php", 
+        {array}, 
+        function(ok){
+            result = JSON.parse(ok);
+            console.log(array['id']);
+            if(result.ok === 'ok'){
+                displayAlertModale('success','Le client a bien été modifié, un mail de confirmer a été envoyé aux personnes abonnées.');
+                $('#modaleClient').modal('hide');
+
+                $('#vignette_'+ array['id']).empty();
+                $('#vignette_'+ array['id']).addClass('pulse');
+                $("#vignette_" + array['id']).load("public/client.php",
+                {'version': array['version'],
+                 'id': array['id'],
+                 'url': array['url'],
+                 'ville': array['ville'],
+                 'nom': array['nom'],
+                 'tag': array['tag'],
+                 'imagingVersion': array['imagingVersion']
+                });
 //                  $.post("ajax/notifMailModifCustomer.php", 
 //                    {avant: result.avant, apres: result.apres, idUser : idUser}); 
-                    
-//                  $('#myModal').modal('hide');
-//                  location.reload();
-                }else{
-                    console.log(result)
-                }
+            }else{
+                console.log(result);
+            }
         });
     }
-    
-});
+}
 
 
-$('#buttonDelete').click(function(){
+function deleteCustomer(){
     
     var array = [] ;
-    array = control_form(2);
+    array = control_form('suppr');
     
-    if (array['ok'] == 1){
-        $.post("ajax/delete.php", 
-            {id: array['id'], 
-            ville: array['ville'], 
-            nom: array['nom'], 
-            url: array['url'], 
-            version: array['version'], 
-            ris: array['ris'], 
-            pacs: array['pacs'], 
-            tag: array['tag'], 
-            phone: array['phone'], 
-            site: array['site'], 
-            lat: array['lat'], 
-            lon: array['lon'], 
-            nbPhone: array['nbPhone'],
-            listIdPhone: array['listIdPhone'], 
-            viewVersion: array['viewVersion'], 
-            uViewVersion: array['uViewVersion'], 
-            imagingVersion: array['imagingVersion'], 
-            email : array['mail'], 
-            TX : array['TX'], 
-            idTV : array['idTV'], 
-            passwordTV : array['passwordTV']}, 
+    if (array['ok'] === 1){
+        $.post("ajax/deleteCustomer.php", 
+            {array}, 
             function(ok){
-                if(ok== 'ok'){
-                    
-                  $('#myModal').modal('hide');
-                  location.reload();
+                if(ok === 'ok'){
+                    displayAlertModale('success','Le client a bien été supprimée, vous allez être redirigé.');
+                    setTimeout(function(){
+                        location.reload();
+                    },3000);
+                                       
                 }else{
-                    console.log(ok)
+                    console.log(ok);
                 }
         });
     }
     
-});
+}
