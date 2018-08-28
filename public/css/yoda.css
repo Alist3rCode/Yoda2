@@ -41,11 +41,16 @@
 }
 
 .contenu_vignette:hover  .version{
-    display: flex;
+   
+    opacity: 1;
 }
 
 .contenu_vignette:hover  .tag{
-    display: none;
+    opacity: 0;
+}
+
+.contenu_vignette:hover  hr{
+    width:100%;
 }
 
 
@@ -137,8 +142,9 @@
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
-    transition: visibility  0.5s;
-    display : none;
+    transition: opacity 1s;
+    opacity: 0;
+    display : flex;
      
 }
 
@@ -161,6 +167,9 @@ hr {
     border-top: 1px solid #999;
     margin: 1em 0;
     padding: 0; 
+    -webkit-transition: width 1s ease-out; /* For Safari 3.1 to 6.0 */
+    transition: width 1s  ease-out;
+    width : 0%;
 }
 
 .tag{
@@ -168,10 +177,14 @@ hr {
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
-    transition: visibility  0.5s;
+    transition: opacity  1s;
     height: 100%;
     padding-left: 5px;
     padding-right: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
 
     
 }
@@ -322,4 +335,15 @@ hr {
 .nom{
     padding-left: 5px;
     padding-right: 5px;
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

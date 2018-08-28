@@ -3,7 +3,8 @@ function ucFirst(string) {
 }
 
 
-$(".vignette").click(function(e){     
+$(".vignette").click(function(e){  
+    e.stopPropagation;
     if($(this).hasClass('clicked')){
         unflip($(this)[0].id);
     }else{
