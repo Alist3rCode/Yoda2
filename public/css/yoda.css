@@ -165,7 +165,7 @@ hr {
     height: 1px;
     border: 0;
     border-top: 1px solid #999;
-    margin: 1em 0;
+    /*margin: 1em 0;*/
     padding: 0; 
     -webkit-transition: width 1s ease-out; /* For Safari 3.1 to 6.0 */
     transition: width 1s  ease-out;
@@ -178,13 +178,13 @@ hr {
     flex-flow: column;
     justify-content: flex-end;
     transition: opacity  1s;
-    height: 100%;
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 5px;
     text-align: center;
     position: absolute;
     width: 100%;
+    bottom : 0;
 
     
 }
@@ -346,4 +346,10 @@ hr {
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+.selectColor{
+    border: 1px solid #28a745;
+    box-shadow: 0 0 0 1px rgb(2, 212, 49);
+    
 }

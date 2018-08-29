@@ -152,6 +152,7 @@ function deletePhone(i){
    }   
    $('#newPhone' + survivor).prop('disabled',false);
    $('#nbPhone').val(phoneDisplayed);
+   
 }   
 
 function modif(i){
@@ -514,6 +515,7 @@ function createCustomer(){
 //                    $.post("ajax/notifMailCreateCustomer.php", 
 //                    {id: result.id, idUser : idUser});
                     $('#modaleClient').modal('hide');
+                    $('.collapsePhone').remove();
                     $('<div class="pulse vignette '+ array['version']+'" id="vignette_'+result.id +'">').insertAfter('#' + findPlaceNewCustomer(array['ville'],array['nom']));
                     $("#vignette_" + result.id).load("public/client.php",
                     {'version':array['version'],
@@ -548,8 +550,9 @@ function modifCustomer(){
             if(result.ok === 'ok'){
                 displayAlertModale('success','Le client a bien été modifié, un mail de confirmer a été envoyé aux personnes abonnées.');
                 $('#modaleClient').modal('hide');
-
+                $('.collapsePhone').remove();
                 $('#vignette_'+ array['id']).empty();
+                $('#vignette_'+ array['id']).removeClass('clicked');
                 $('#vignette_'+ array['id']).addClass('pulse');
                 $("#vignette_" + array['id']).load("public/client.php",
                 {'version': array['version'],

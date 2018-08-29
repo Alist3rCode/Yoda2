@@ -1,6 +1,6 @@
 $('#searchBar').keyup(function(e){
-
-        
+    $('.collapsePhone').remove();
+    $('.vignette').removeClass('selectColor');    
     var search = $('#searchBar').val().toLowerCase();
 //    var filter = document.getElementById('filter').innerHTML;
         var filter = "ok";
@@ -87,7 +87,7 @@ $('#searchBar').keyup(function(e){
 
                     list[idxSelect].classList.add('selectColor');
                     idVignette = list[idxSelect].id.substring(9);
-                    window.open(document.getElementById('dbb_url_' + idVignette).href);
+                    window.open(document.getElementById('vign_url_' + idVignette).href + 'sqlpacsadmin');
 
                 //Alt + Entrée            
                 }else if (e.keyCode === 13 && e.altKey) {
@@ -141,6 +141,8 @@ $('#searchBar').keyup(function(e){
 $('#resetSearch').click(function(){
     idxSelect = 0;
     $('.vignette').removeClass('d-none');
+    $('.vignette').removeClass('selectColor');    
+
     
     $('#searchBar').val('');
     
@@ -183,9 +185,4 @@ $( document ).ready(function(){
     $('#searchBar').focus();
     $("#alerte").hide();
 
-    // console.log(vignette);
-    // vignette.forEach(function(element) {
-    //     console.log(element.offsetTop);
-    // });
-    
 });

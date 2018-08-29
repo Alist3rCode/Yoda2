@@ -123,7 +123,7 @@ if (array_key_exists('listIdPhone', $array)){
 
             $req2->execute(array(
                 'id_pho' => $idPhoneInsert,
-                'id_cli' => $id,
+                'id_cli' => $array['id'],
                 'lat' => $array['lat'][$i],
                 'lon' => $array['lon'][$i])) or die(print_r($bdd->errorInfo()));
         }

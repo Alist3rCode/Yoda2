@@ -1,7 +1,6 @@
 <?php
 
-require_once "ajaxDatabaseInit.php";
-    
+require_once "ajaxDatabaseInit.php";    
 require "../class/convertJson.php";
 
 $client = $bdd->query('SELECT * '

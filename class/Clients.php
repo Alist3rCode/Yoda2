@@ -11,6 +11,7 @@ class Clients{
         $this->linearTag = self::linearTag();
         $this->colorVersion = self::colorVersion();
         $this->formatedTag = self::formatedTag();
+
     }
     
     /**

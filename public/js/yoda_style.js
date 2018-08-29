@@ -4,11 +4,10 @@ function ucFirst(string) {
 
 
 $(".vignette").click(function(e){  
-    e.stopPropagation;
-    if($(this).hasClass('clicked')){
-        unflip($(this)[0].id);
-    }else{
+    if (e.target.className === 'version' || e.target.className === 'tag' || e.target.className === 'hr'){
         flip($(this)[0].id);
+    }else if (e.target.className === 'infoClientBack' || e.target.className === 'back'){
+        unflip($(this)[0].id);
     }
 });
 

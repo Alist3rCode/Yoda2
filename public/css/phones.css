@@ -1,14 +1,67 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 24 août 2018, 17:20:40
-    Author     : y.lopez
-*/
+.phoneWithLink{
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    /*margin-left: 20px;*/
+    display : flex;
+    flex-flow : row wrap;
+    justify-content:flex-start;
+    background: #252424;
+    color:white;
+    transition: all 0.5s ease;
+}
+
+.collapsePhone{
+    width: 100%;
+}
+
+.phoneWithLinkv7{
+    border: 1px solid #0071ab;
+}
+
+.phoneWithLinkv7 a{
+    color : #0071ab;
+}
+
+.phoneWithLinkv7 .fa:not(.fa-arrows-alt-h){
+    color : black;
+}
+
+.phoneWithLinkv8{
+    border: 1px solid #585858;
+}
+
+.phoneWithLinkv8 a{
+    color : #585858;
+}
+
+.phoneWithLinkv8 .fa:not(.fa-arrows-alt-h){
+    color : black;
+}
+
+.phoneWithLinkv6{
+    border: 1px solid #9a7a1e;
+}
+
+.phoneWithLinkv6 a{
+    color : #9a7a1e;
+}
+
+.phoneWithLinkv6 .fa{
+    color : black;
+}
+
+.fa-arrows-alt-h{
+    color: #1e90ff!important;
+}
+
 
 .phoneNumber{
-    margin:15px;
+    text-transform: capitalize;
+    padding-right:  5px;
+    /*padding-left:   5px;*/
+    padding-bottom:10px;
+    border-left: solid 1px darkgray;
+    width: 225px;
 }
 

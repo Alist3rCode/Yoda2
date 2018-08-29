@@ -50,7 +50,7 @@ $db = new Database('yoda');
 //            require 'public/infoClient.php';
             ?>
             
-            <div class="clients"> 
+            <div class="clients" id="clients"> 
                 <?php
               
 
@@ -73,7 +73,7 @@ $db = new Database('yoda');
                                 </div>
 
                                 <div class="version">
-                                        <hr class="my-4">
+                                        <hr class="hr" >
                                         <span>
 
                                             <?=$clients->CLI_NUM_VERSION?>
@@ -93,7 +93,7 @@ $db = new Database('yoda');
                             <div class="backBtn" onclick="modif(<?=$clients->CLI_ID?>)" data-toggle="modal" data-target="#modaleClient" >
                                 <i class="fas fa-pencil-alt" ></i>
                             </div>
-                            <div class="backBtn">
+                            <div class="backBtn phoneIconLink" onclick="displayPhones(<?=$clients->CLI_ID?>)">
                                 <i class="fas fa-phone"></i>
                             </div>
 
@@ -124,6 +124,7 @@ $db = new Database('yoda');
         <script src="./public/js/yoda_style.js"></script>
         <script src="./public/js/yoda_action.js"></script>
         <script src="./public/js/searchBar.js"></script>
+        <script src="./public/js/displayPhones.js"></script>
         
         
     </body>
