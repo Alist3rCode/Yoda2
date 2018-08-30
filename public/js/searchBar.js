@@ -107,14 +107,15 @@ $('#searchBar').keyup(function(e){
 
                     idVignette = list[idxSelect].id.substring(9);
                     list[idxSelect].classList.add('selectColor');
-                    unflip(idVignette);
+                    unflip('vignette_' + idVignette);
 
                 //Fleche du bas            
                 }else if (e.keyCode === 40) {
 
                     idVignette = list[idxSelect].id.substring(9);
                     list[idxSelect].classList.add('selectColor');
-                    flip(idVignette);
+                    flip('vignette_' + idVignette);
+                    displayPhones(idVignette);
 
                 //Echap
                 }else if (e.keyCode === 27) {

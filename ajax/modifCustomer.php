@@ -153,3 +153,7 @@ $retour['avant'] = convert_json($avant);
 $retour['apres'] = convert_json($arrayApres);
 
 echo json_encode($retour);
+
+
+?>
+

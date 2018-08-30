@@ -1,0 +1,25 @@
+.filterv8 a{
+    color: #585858 !important;
+}
+
+.filterv7 a{
+    color: #0071ab !important;
+    
+}
+
+.filterv6 a{
+    color: #9a7a1e !important;
+    
+
+}
+.filterVersionHead{
+    font-weight: bold;
+    font-size: x-large!important;
+    margin-top : -7px;
+}
+
+.filterUl{
+   overflow-y: hidden;
+/*   width: 75%;*/
+   height: 60px;
+}

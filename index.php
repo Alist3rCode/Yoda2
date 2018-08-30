@@ -29,6 +29,7 @@ $db = new Database('yoda');
         <link rel="stylesheet" href="public/css/modale.css">
         <link rel="stylesheet" href="public/css/tags.css">
         <link rel="stylesheet" href="public/css/phones.css">
+        <link rel="stylesheet" href="public/css/filters.css">
         
         <!--Add Jquery-->
         <script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
@@ -41,6 +42,7 @@ $db = new Database('yoda');
         ?>
         <div id='rightTV' class="d-none"><?=$rightTV?></div>
         <div id='idUser' class="d-none">1</div>
+        <div id="filter" class="d-none" >none</div>
         
         <div class="content">
             

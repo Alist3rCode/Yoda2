@@ -1,20 +1,12 @@
 <nav class=" menu navbar navbar-expand-lg">
-    <span class="logo">
+    <span class="logo col-1">
         <img src="public/img/yoda.png">
     </span>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Filtre Version</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Filtre Activité</a>
-            </li>
-        </ul>
+    <div class="collapse navbar-collapse col-11" id="navbarSupportedContent">
+        
+        <?php require 'public/filters.php'?> 
+            
+            
         
         <div class="form-inline my-2 my-lg-0 btn-group">
             <button type="button" class="btn btn-success createIcon"  id="create" data-toggle="modal" data-target="#modaleClient">
