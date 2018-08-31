@@ -8,7 +8,7 @@
             
             
         
-        <div class="form-inline my-2 my-lg-0 btn-group">
+        <div class="form-inline my-2 my-lg-0 btn-group" style="width: 330px;">
             <button type="button" class="btn btn-success createIcon"  id="create" data-toggle="modal" data-target="#modaleClient">
                 <i class="fa fa-fw fa-plus-circle"></i>
             </button>

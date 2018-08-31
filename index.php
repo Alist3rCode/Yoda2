@@ -127,6 +127,7 @@ $db = new Database('yoda');
         <script src="./public/js/yoda_action.js"></script>
         <script src="./public/js/searchBar.js"></script>
         <script src="./public/js/displayPhones.js"></script>
+        <script src="./public/js/filters.js"></script>
         
         
     </body>
