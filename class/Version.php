@@ -1,4 +1,18 @@
 <?php
+function loadParentVersion(){
+    $bdd = new Database('yoda');
+    
+    $parentVersion = $bdd->queryObj('SELECT distinct(CLI_VERSION) '
+            . 'FROM YDA_CLIENT '
+            . 'WHERE CLI_VALID = 1 '
+            . 'ORDER BY CLI_VERSION DESC');
+    
+    foreach($parentVersion as $key=>$value){
+        $result[$value->CLI_VERSION] = loadVersion($value->CLI_VERSION);
+    }
+    
+    return $result;
+}
 
 function loadVersion($v){
 

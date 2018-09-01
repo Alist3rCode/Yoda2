@@ -140,39 +140,11 @@ $('#searchBar').keyup(function(e){
     }   
 });
 $('#resetSearch').click(function(){
+    
     idxSelect = 0;
     $('.vignette').removeClass('d-none');
     $('.vignette').removeClass('selectColor');    
-
-    
     $('#searchBar').val('');
-    
-//    if (document.getElementById('tabSetV7')){
-//        if(document.getElementById('searchV7').getAttribute('data-ok') == '1'){
-//            
-//            document.getElementById('searchV7').setAttribute('data-ok','0');
-//        }
-//        $('.bigSearchV7').removeClass('searchV7');
-//        var listV7 = document.querySelectorAll(".searchV7");
-//
-//        [].forEach.call(listV7, function(el) {
-//            el.classList.remove("searchActiveV7");
-//        });
-//    }
-//    
-//    if (document.getElementById('tabSetV6')){
-//        if(document.getElementById('searchV6').getAttribute('data-ok') == '1'){
-//            
-//            document.getElementById('searchV6').setAttribute('data-ok','0');
-//        }
-//         $('.bigSearchV6').removeClass('searchV6');
-//        var listV6 = document.querySelectorAll(".searchV6");
-//
-//        [].forEach.call(listV6, function(el) {
-//            el.classList.remove("searchActiveV6");
-//        });
-//    }
-    
     
     unflip();
     
