@@ -3,8 +3,8 @@ header('Content-Type: text/html; charset=iso-8859-1');
 require 'class/Autoloader.php';
 Autoloader::register();
 
-$db = new Database('yoda');
-
+$bdd = new Database('yoda');
+$bdd2 = new Database('ecsupgrader');
 ?>
 
 <!doctype html>
@@ -56,7 +56,7 @@ $db = new Database('yoda');
                 <?php
               
 
-                foreach($db->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE ASC, CLI_NOM ASC', 'Clients') as $clients):?>
+                foreach($bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE ASC, CLI_NOM ASC', 'Clients') as $clients):?>
 
                 <div class="vignette <?=$clients->CLI_VERSION?> flip-container" id="vignette_<?=$clients->CLI_ID?>">
                     <div class="contenu_vignette flipper">
