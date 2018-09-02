@@ -15,7 +15,7 @@ function displayFilter(elem){
     }else{
         showVersionFilter(elem);
     }
-    
+    unflip();
 
 }
 
@@ -33,15 +33,28 @@ function hideFamilyFilter(family){
     if(family === 'version'){
         $('.filterVersionHead').removeClass('showFilter');
         $('.filterVersion').removeClass('showFilter');
+        arrayVersion = [];
+        displayVersionFilter();
     }
     else if (family === 'activity'){
         $('.filterActivity').removeClass('showFilter');
+        arrayVersion = [];
+        displayVersionFilter();
+    } else{
+        $('.filterVersionHead').removeClass('showFilter');
+        $('.filterVersion').removeClass('showFilter');
+        $('.filterActivity').removeClass('showFilter');
+        arrayVersion = [];
+        displayVersionFilter();
     }
 }
 
 function showVersionFilter(version){
     if ($('.filterVersion.filter'+version).hasClass('showFilter')){
         $('.filterVersion.filter'+version).removeClass('showFilter');
+        arrayVersion = [];
+        displayVersionFilter();
+        
     }else{
         $('.filterVersion.filter'+version).addClass('showFilter');
     }
@@ -60,7 +73,7 @@ function displayVersionFilter(){
             
     }else{        
             
-        $.post("ajax/searchVersion.php",
+        $.post("ajax/searchFilters.php",
         {search: arrayVersion}, 
         function(json){
                 $('.vignette').addClass('d-none');
@@ -87,36 +100,34 @@ function searchForVersion(version, numVersion){
         if (index > -1) {
             arrayVersion.splice(index, 1);
         }
-    $('#searchVersion_' + numVersion).removeClass("searchActive"+version);
+    document.getElementById('searchVersion_' + numVersion).classList.remove("searchActive"+version);
     }else{
-        console.dir(document.getElementById('searchVersion_' + numVersion));
-        $('#searchVersion_' + numVersion).addClass('searchActive' + version);
+        
+        document.getElementById('searchVersion_' + numVersion).classList.add('searchActive'+version);
         arrayVersion.push(numVersion);
     }
     
     displayVersionFilter();
 }
 
-
-
-
-function searchActivity(i){
+function searchForActivity(activity){
     
-    $('.collapsePhone').remove();
-    $('.vignette').removeClass('selectColor');
-    document.getElementById("searchBar").value = "";
+    $('.vignette').removeClass('d-none');
+    $('.vignette').removeClass('selectColor');    
+    $('#searchBar').val('');
+    unflip();
     
-    if (arrayVersion.includes(i)){
-        var index = arrayVersion.indexOf(i);
+    if (arrayVersion.includes(activity)){
+        var index = arrayVersion.indexOf(activity);
         if (index > -1) {
             arrayVersion.splice(index, 1);
         }
-    document.getElementById('SearchActivity' + i).classList.remove("searchActiveActivity");
+    document.getElementById('searchActivity_' + activity).classList.remove("searchActive"+activity);
     }else{
-        document.getElementById('SearchActivity' + i).classList.add("searchActiveActivity");
-        arrayVersion.push(i);
+        
+        document.getElementById('searchActivity_' + activity).classList.add('searchActive'+activity);
+        arrayVersion.push(activity);
     }
-
     
     displayVersionFilter();
 }

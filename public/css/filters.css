@@ -12,6 +12,24 @@
     
 
 }
+
+#searchActivity_None a{
+    color: white !important;
+}
+
+#searchActivity_Ris a{
+    color: red !important;
+}
+
+#searchActivity_Pacs a{
+    color: green !important;
+}
+
+#searchActivity_RisPacs a{
+    color: purple !important;
+}
+
+
 .filterVersionHead{
     font-weight: bold;
     font-size: x-large!important;
@@ -50,4 +68,39 @@
      width: 105px;
      white-space: nowrap;
    
+}
+
+.searchActivev8{
+    font-weight: bold;
+    border-bottom: solid 5px #585858;
+}
+
+.searchActivev7{
+    font-weight: bold;
+    border-bottom: solid 5px #0071ab;
+}
+
+.searchActivev6{
+    font-weight: bold;
+    border-bottom: solid 5px #9a7a1e;
+}
+
+.searchActiveRis{
+    font-weight: bold;
+    border-bottom: solid 5px red;
+}
+
+.searchActivePacs{
+    font-weight: bold;
+    border-bottom: solid 5px green;
+}
+
+.searchActiveRisPacs{
+    font-weight: bold;
+    border-bottom: solid 5px purple;
+}
+
+.searchActiveNone{
+    font-weight: bold;
+    border-bottom: solid 5px white;
 }

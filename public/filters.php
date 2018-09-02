@@ -1,10 +1,6 @@
 <?php 
 require 'class/Version.php';
 
-$v8 = loadVersion('v8');
-$v7 = loadVersion('v7');
-$v6 = loadVersion('v6');
-
 $versionToDisplay = loadParentVersion();
 $parentVersion = array_keys($versionToDisplay);
 
@@ -12,7 +8,7 @@ $parentVersion = array_keys($versionToDisplay);
 
 <ul class="navbar-nav filterUl"  >
     <li class="nav-item  filterParent" onclick="displayFilter('version')">
-        <a class="nav-link" href="#"><i class="fas fa-filter"></i> Version</a>
+        <a class="nav-link" href="#"><i class="fas fa-filter"></i><span id="versionFilterSpan"> Version</span></a>
     </li>
     <?php 
     foreach ($parentVersion as $parentKey=>$parentValue):
@@ -33,7 +29,19 @@ $parentVersion = array_keys($versionToDisplay);
     
     ?>
 
-    <li class="nav-item filterParent">
-        <a class="nav-link" href="#"><i class="fas fa-filter"></i> Activité</a>
+    <li class="nav-item filterParent" onclick="displayFilter('activity')">
+        <a class="nav-link" href="#"><i class="fas fa-filter"></i><span id="activityFilterSpan"> Activité</span> </a>
+    </li>
+    <li id="searchActivity_None" class="nav-item filter filterActivity" onclick="searchForActivity('None')">
+        <a class="nav-link" href="#">N/A</a>
+    </li>
+    <li id="searchActivity_Ris" class="nav-item filter filterActivity" onclick="searchForActivity('Ris')">
+        <a class="nav-link" href="#">RIS</a>
+    </li>
+    <li id="searchActivity_Pacs" class="nav-item filter filterActivity" onclick="searchForActivity('Pacs')">
+        <a class="nav-link" href="#">PACS</a>
+    </li>
+    <li id="searchActivity_RisPacs" class="nav-item filter filterActivity" onclick="searchForActivity('RisPacs')">
+        <a class="nav-link" href="#">RIS / PACS</a>
     </li>
 </ul>

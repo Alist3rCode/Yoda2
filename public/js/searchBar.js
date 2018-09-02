@@ -2,52 +2,9 @@ $('#searchBar').keyup(function(e){
     $('.collapsePhone').remove();
     $('.vignette').removeClass('selectColor');    
     var search = $('#searchBar').val().toLowerCase();
-//    var filter = document.getElementById('filter').innerHTML;
-        var filter = "ok";
-//    arrayVersion = [];
-//    vignette = document.getElementsByClassName('vignette');
-//    
-//    if (document.getElementById('tabSetV7')){
-//        if(document.getElementById('searchV7').getAttribute('data-ok') == '1'){
-//            
-//            document.getElementById('searchV7').setAttribute('data-ok','0');
-//        }
-//        
-//        $('.bigSearchV7').removeClass('searchActiveV7');
-//        var listV7 = document.querySelectorAll(".searchV7");
-//
-//        [].forEach.call(listV7, function(el) {
-//            el.classList.remove("searchActiveV7");
-//        });
-//    }
-//    if (document.getElementById('tabSetV8')){
-//        if(document.getElementById('searchV8').getAttribute('data-ok') == '1'){
-//            
-//            document.getElementById('searchV8').setAttribute('data-ok','0');
-//        }
-//        
-//        $('.bigSearchV8').removeClass('searchActiveV8');
-//        var listV8 = document.querySelectorAll(".searchV8");
-//
-//        [].forEach.call(listV7, function(el) {
-//            el.classList.remove("searchActiveV8");
-//        });
-//    }
-//    
-//    
-//    if (document.getElementById('tabSetV6')){
-//        if(document.getElementById('searchV6').getAttribute('data-ok') == '1'){
-//            
-//            document.getElementById('searchV6').setAttribute('data-ok','0');
-//        }
-//        $('.bigSearchV6').removeClass('searchActiveV6');
-//        var listV6 = document.querySelectorAll(".searchV6");
-//
-//        [].forEach.call(listV6, function(el) {
-//            el.classList.remove("searchActiveV6");
-//        });
-//    }
-//    
+    hideFamilyFilter();   
+    unflip();
+    
     if(search === ''){
         
         $('.vignette').removeClass('d-none');
@@ -55,7 +12,7 @@ $('#searchBar').keyup(function(e){
         idxSelect = 0;
     
     }else{
-        $.get("ajax/search.php?search=" + search + "&filter=" + filter, function(json){
+        $.get("ajax/search.php?search=" + search , function(json){
 
             $('.vignette').addClass('d-none');
             unflip();
@@ -145,11 +102,9 @@ $('#resetSearch').click(function(){
     $('.vignette').removeClass('d-none');
     $('.vignette').removeClass('selectColor');    
     $('#searchBar').val('');
+    hideFamilyFilter();
     
-    unflip();
-    
-    arrayVersion = [];
-    
+    unflip();    
 });
 
 var idxSelect = 0;
