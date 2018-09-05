@@ -16,6 +16,7 @@ function displayFilter(elem){
         showVersionFilter(elem);
     }
     unflip();
+    displayPhones();
 
 }
 
@@ -35,17 +36,21 @@ function hideFamilyFilter(family){
         $('.filterVersion').removeClass('showFilter');
         arrayVersion = [];
         displayVersionFilter();
+        $('.filterVersion').removeClass('searchActive');
     }
     else if (family === 'activity'){
         $('.filterActivity').removeClass('showFilter');
         arrayVersion = [];
         displayVersionFilter();
+        $('.filterActivity').removeClass('searchActive');
     } else{
         $('.filterVersionHead').removeClass('showFilter');
         $('.filterVersion').removeClass('showFilter');
         $('.filterActivity').removeClass('showFilter');
         arrayVersion = [];
         displayVersionFilter();
+        $('.filterVersion').removeClass('searchActive');
+        $('.filterActivity').removeClass('searchActive');
     }
 }
 
@@ -54,6 +59,9 @@ function showVersionFilter(version){
         $('.filterVersion.filter'+version).removeClass('showFilter');
         arrayVersion = [];
         displayVersionFilter();
+        displayPhones();
+        unflip();
+        $('.filterVersion').removeClass('searchActive');
         
     }else{
         $('.filterVersion.filter'+version).addClass('showFilter');
@@ -85,6 +93,7 @@ function displayVersionFilter(){
     }
     
 unflip();
+displayPhones();
     
 }
 
@@ -100,10 +109,10 @@ function searchForVersion(version, numVersion){
         if (index > -1) {
             arrayVersion.splice(index, 1);
         }
-    document.getElementById('searchVersion_' + numVersion).classList.remove("searchActive"+version);
+    document.getElementById('searchVersion_' + numVersion).classList.remove("searchActive");
     }else{
         
-        document.getElementById('searchVersion_' + numVersion).classList.add('searchActive'+version);
+        document.getElementById('searchVersion_' + numVersion).classList.add('searchActive');
         arrayVersion.push(numVersion);
     }
     
@@ -122,10 +131,10 @@ function searchForActivity(activity){
         if (index > -1) {
             arrayVersion.splice(index, 1);
         }
-    document.getElementById('searchActivity_' + activity).classList.remove("searchActive"+activity);
+    document.getElementById('searchActivity_' + activity).classList.remove("searchActive");
     }else{
         
-        document.getElementById('searchActivity_' + activity).classList.add('searchActive'+activity);
+        document.getElementById('searchActivity_' + activity).classList.add('searchActive');
         arrayVersion.push(activity);
     }
     

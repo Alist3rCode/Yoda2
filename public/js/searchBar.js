@@ -4,6 +4,7 @@ $('#searchBar').keyup(function(e){
     var search = $('#searchBar').val().toLowerCase();
     hideFamilyFilter();   
     unflip();
+    displayPhones();
     
     if(search === ''){
         
@@ -103,7 +104,7 @@ $('#resetSearch').click(function(){
     $('.vignette').removeClass('selectColor');    
     $('#searchBar').val('');
     hideFamilyFilter();
-    
+    displayPhones();
     unflip();    
 });
 

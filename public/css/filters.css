@@ -1,32 +1,58 @@
 .filterv8 a{
     color: #585858 !important;
 }
+.filterv8{
+    border-color : #585858;
+}
 
 .filterv7 a{
     color: #0071ab !important;
-    
+}
+.filterv7{
+    border-color : #0071ab;
 }
 
 .filterv6 a{
     color: #9a7a1e !important;
-    
-
 }
+.filterv6{
+    border-color : #9a7a1e;
+}
+
+
+.searchActive{
+    font-weight: bold;
+    border-bottom-style:  solid;
+    border-bottom-width : 5px ;
+}
+
 
 #searchActivity_None a{
     color: white !important;
+}
+#searchActivity_None{
+    border-color : white;
 }
 
 #searchActivity_Ris a{
     color: red !important;
 }
+#searchActivity_Ris{
+    border-color : red;
+}
 
 #searchActivity_Pacs a{
     color: green !important;
 }
+#searchActivity_Pacs{
+    border-color : green;
+}
 
 #searchActivity_RisPacs a{
     color: purple !important;
+}
+#searchActivity_RisPacs{
+    border-color : purple;
 }
 
 

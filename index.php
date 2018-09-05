@@ -114,9 +114,10 @@ $bdd2 = new Database('ecsupgrader');
             </div>
         </div>
         <div class="modal fade" id="modaleClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-        <?php 
-            require 'public/modaleClient.php';
-        ?>
+        <?php require 'public/modaleClient.php'; ?>
+        </div>
+        <div class="modal fade" id="ModaleFilter" tabindex="-1" role="dialog" aria-labelledby="filterModale" aria-hidden="true">
+        <?php require "public/filterModale.php"; ?>
         </div>
 
         <!-- Optional JavaScript -->

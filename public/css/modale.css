@@ -1,4 +1,4 @@
-.modal-body{
+#modaleClient.modal-body{
     background-image: url('../img/brick.jpg');
     background-position: center; 
     background-size: contain;

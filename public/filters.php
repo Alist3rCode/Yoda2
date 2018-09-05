@@ -44,4 +44,7 @@ $parentVersion = array_keys($versionToDisplay);
     <li id="searchActivity_RisPacs" class="nav-item filter filterActivity" onclick="searchForActivity('RisPacs')">
         <a class="nav-link" href="#">RIS / PACS</a>
     </li>
+    <li class="nav-item filterParent" data-toggle="modal" data-target="#ModaleFilter">
+        <a class="nav-link" href="#"><i class="fas fa-filter"></i><span id="advancedFilter"> Avancé</span> </a>
+    </li>
 </ul>
