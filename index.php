@@ -96,7 +96,7 @@ $bdd2 = new Database('ecsupgrader');
                                 <i class="fas fa-pencil-alt" ></i>
                             </div>
                             <div class="backBtn phoneIconLink" onclick="displayPhones(<?=$clients->CLI_ID?>)">
-                                <i class="fas fa-phone"></i>
+                                <i class="far fa-building"></i>
                             </div>
 
                             <div class="backBtn" data-toggle="tooltip" data-html="true"  data-id="<?=$clients->CLI_ID?>" data-placement="bottom" data-title="test">
