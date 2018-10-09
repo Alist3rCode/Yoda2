@@ -28,31 +28,31 @@
 
 
 #searchActivity_None a{
-    color: white !important;
+    color: #f8f9fa !important;
 }
 #searchActivity_None{
-    border-color : white;
+    border-color : #f8f9fa;
 }
 
 #searchActivity_Ris a{
-    color: red !important;
+    color: #dc3545 !important;
 }
 #searchActivity_Ris{
-    border-color : red;
+    border-color : #dc3545;
 }
 
 #searchActivity_Pacs a{
-    color: green !important;
+    color: #28a745 !important;
 }
 #searchActivity_Pacs{
-    border-color : green;
+    border-color : #28a745;
 }
 
 #searchActivity_RisPacs a{
-    color: purple !important;
+    color: #17a2b8 !important;
 }
 #searchActivity_RisPacs{
-    border-color : purple;
+    border-color : #17a2b8;
 }
 
 

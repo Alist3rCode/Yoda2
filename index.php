@@ -58,7 +58,7 @@ $bdd2 = new Database('ecsupgrader');
 
                 foreach($bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE ASC, CLI_NOM ASC', 'Clients') as $clients):?>
 
-                <div class="vignette <?=$clients->CLI_VERSION?> flip-container" id="vignette_<?=$clients->CLI_ID?>">
+                <div class="vignette <?=$clients->CLI_VERSION?> flip-container" id="vignette_<?=$clients->CLI_ID?>" data-activity='<?=$clients->CLI_RIS?>,<?=$clients->CLI_PACS?>' data-version="<?=$clients->CLI_VERSION?>">
                     <div class="contenu_vignette flipper">
                         <div class="front">
                             <a href="<?=$clients->CLI_URL?>" target="_blank" id="vign_url_<?=$clients->CLI_ID?>">

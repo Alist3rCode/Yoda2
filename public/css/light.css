@@ -18,6 +18,23 @@ body{
     background-image: url("../img/v8.png");
 }
 
+
+.vignette.none{
+    background-image: url("../img/none.png");
+}
+
+.vignette.ris{
+    background-image: url("../img/ris.png");
+}
+
+.vignette.pacs{
+    background-image: url("../img/pacs.png");
+}
+
+.vignette.ris-pacs{
+    background-image: url("../img/ris_pacs.png");
+}
+
 .vignette a{
     color:black;
 }

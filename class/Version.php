@@ -50,3 +50,19 @@ function loadVersion($v){
     return $array;
 }
 
+function bootstrapColorVersion($version){
+    $retour = '';
+    switch ($version) {
+    case 'v6':
+        $retour = "warning";
+        break;
+    case 'v7':
+        $retour = "primary";
+        break;
+    case 'v8':
+        $retour = "secondary";
+        break;
+    }
+    
+    return $retour;
+}

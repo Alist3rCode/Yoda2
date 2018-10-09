@@ -1,9 +1,8 @@
 <?php 
-require 'class/Version.php';
+require_once 'class/Version.php';
 
 $versionToDisplay = loadParentVersion();
 $parentVersion = array_keys($versionToDisplay);
-
 ?>
 
 <ul class="navbar-nav filterUl"  >

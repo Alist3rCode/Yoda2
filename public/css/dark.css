@@ -20,6 +20,24 @@ body{
     background-image: url("../img/v8_dark.png");
 }
 
+.vignette.none{
+    background-image: url("../img/none_dark.png");
+}
+
+.vignette.ris{
+    background-image: url("../img/ris_dark.png");
+}
+
+.vignette.pacs{
+    background-image: url("../img/pacs_dark.png");
+}
+
+.vignette.ris-pacs{
+    background-image: url("../img/ris_pacs_dark.png");
+}
+
+
+
 .vignette a{
     color:#cccccc;
 }
