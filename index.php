@@ -108,9 +108,12 @@ $bdd2 = new Database('ecsupgrader');
                     
                     
                 </div>
+
                 
 
                 <?php endforeach; ?>
+            
+                
             </div>
         </div>
         <div class="modal fade" id="modaleClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
