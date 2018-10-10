@@ -1,22 +1,22 @@
 
 
-<div class="modal-dialog" role="document">
+<div class="modal-dialog " role="document" >
     <div class="modal-content" >
         <div class="modal-header mx-auto">
             <h4 class="modal-title" id="myModalLabel">Création d'un nouveau client</h4>
         </div>
 
-        <div class="modal-body row">
+        <div class="modal-body row modaleClientBackground">
             <div class="col-4 colInfoClient">
                 <div class="form-control infoClientModale" id="formulaire">
-                    <input class="form-control spaceInput col-6" type="text" id="ville" placeholder="Ville..." autocomplete="off">
-                    <input class="form-control spaceInput col-6" type="text" id="nom" placeholder="Site Principal..." autocomplete="off" >
-                    <input class="form-control spaceInput col-12" type="text" id="url" placeholder="https://..." autocomplete="off">
+                    <input class="form-control spaceInput col-6" type="text" id="ville" placeholder="Ville..." autocomplete="nope">
+                    <input class="form-control spaceInput col-6" type="text" id="nom" placeholder="Site Principal..." autocomplete="nope" >
+                    <input class="form-control spaceInput col-12" type="text" id="url" placeholder="https://..." autocomplete="nope">
 
                     <p class="col-12" style="text-align:center;">Saisir des tags séparés par des virgules : </p>
                     <ul class="tags-input col-12" id="tags-input">
                         <li class="tags-new">
-                            <input class="spaceInput" type="text" id="tag" name="tag" value="Tags..." onfocus="if(this.value==='Tags...')this.value=''"  onblur="if(this.value==='')this.value='Tags...'" autocomplete="off"> 
+                            <input class="spaceInput" type="text" id="tag" name="tag" value="Tags..." onfocus="if(this.value==='Tags...')this.value=''"  onblur="if(this.value==='')this.value='Tags...'" autocomplete="nope"> 
                             <input type='hidden' name='tag_hidden' id='tag_hidden'  value=''>
                         </li>
                     </ul>
@@ -54,8 +54,8 @@
                             <button type="button" class="btn btn-outline-success form-group col-1 newPhone"  id="newPhone0" onclick="newPhone(0)">
                                 <i class="fa fa-plus"></i>
                             </button>
-                            <input class="form-group col-5 d-none siteClass" type="text" id="site0" placeholder="Site..." autocomplete="off">
-                            <input class="form-group col-10 phoneClass" type="text" id="phone0" placeholder="Téléphone..." autocomplete="off">
+                            <input class="form-group col-5 d-none siteClass" type="text" id="site0" placeholder="Site..." autocomplete="nope">
+                            <input class="form-group col-10 phoneClass" type="text" id="phone0" placeholder="Téléphone..." autocomplete="nope">
                             <button type="button" class="btn btn-outline-secondary form-group col-1 deletePhone"  id="deletePhone0" disabled onclick="deletePhone(0)">
                                 <i class="far fa-trash-alt"></i>
                             </button>
@@ -64,37 +64,37 @@
                             <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
                                 <i class="fas fa-map"></i>
                             </button>
-                            <input class="form-control col-md-10 latClass formCustom" type="text" id="lat0" placeholder="Latitude..." autocomplete="off">
+                            <input class="form-control col-md-10 latClass formCustom" type="text" id="lat0" placeholder="Latitude..." autocomplete="nope">
                         </div>
                         <div class="btn-group special col-md-6 groupModale" role="group">
                             <button class="btn btn-outline-primary form-group disabled btn44" disabled type="button" style="height:38px;">
                                 <i class="far fa-map"></i>
                             </button>       
-                            <input class="form-control col-md-10 lonClass formCustom" type="text" id="lon0" placeholder="Longitude..." autocomplete="off">
+                            <input class="form-control col-md-10 lonClass formCustom" type="text" id="lon0" placeholder="Longitude..." autocomplete="nope">
                         </div>
                         <div class="btn-group special col-md-6 groupModale" role="group">
                             <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
                                 <i class="far fa-envelope"></i>
                             </button>     
-                            <input class="form-control col-md-10 mailClass formCustom" type="text" id="mail0" placeholder="eMail..." autocomplete="off">
+                            <input class="form-control col-md-10 mailClass formCustom" type="text" id="mail0" placeholder="eMail..." autocomplete="nope">
                         </div>
                         <div class="btn-group special col-md-6 groupModale" role="group">
                             <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
                                 <i class="fas fa-external-link-alt"></i>
                             </button>
-                            <input type="text" class="form-control col-10 TXClass formCustom" id="TX0"  placeholder="Adresse TX..." autocomplete="off">
+                            <input type="text" class="form-control col-10 TXClass formCustom" id="TX0"  placeholder="Adresse TX..." autocomplete="nope">
                         </div>
                         <div class="btn-group special col-md-6 groupModale" role="group">
                             <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
                                 <i class="far fa-id-card"></i>
                             </button>     
-                            <input class="form-control col-md-10 idTVClass formCustom " type="text" id="idTV0" placeholder="ID Teamviewer..." autocomplete="off">
+                            <input class="form-control col-md-10 idTVClass formCustom " type="text" id="idTV0" placeholder="ID Teamviewer..." autocomplete="nope">
                         </div>
                         <div class="btn-group special col-md-6 groupModale" role="group">
                             <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
                                 <i class="fas fa-unlock"></i>
                             </button>
-                            <input type="text" class="form-control col-10 passwordTVClass formCustom" id="passTV0"  placeholder="Mot de Passe..." autocomplete="off" >
+                            <input type="text" class="form-control col-10 passwordTVClass formCustom" id="passTV0"  placeholder="Mot de Passe..." autocomplete="nope" >
                         </div>
                     </div>
                     <!--<hr>-->

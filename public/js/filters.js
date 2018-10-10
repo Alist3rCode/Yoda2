@@ -200,3 +200,107 @@ $('.folderCollapseFilters').click(function(){
         $(this).removeClass('fa-folder-open');
     }
 });
+
+function AdvancedFiltersParent(filter){
+    
+    if (!$('#advancedVersionFilterButton' + filter).hasClass('active')){
+        $('#'+ filter +'Collapse').children('a').each(function () {
+            addVersionToAdvancedFilters($(this).data('color'),$(this).data('version'));
+            $(this).addClass('active');            
+        }); 
+        $('#advancedVersionFilterButton' + filter).addClass('active');
+        
+    }else if ($('#advancedVersionFilterButton' + filter).hasClass('active')){
+        $('#'+ filter +'Collapse').children('a').each(function () {
+            removeVersionToAdvancedFilters($(this).data('version'));
+            $(this).removeClass('active');
+        }); 
+        $('#advancedVersionFilterButton' + filter).removeClass('active');
+    }
+}
+
+function addVersionToAdvancedFilters(color,version){
+    
+    var htmlToAdd = '<a href="#" id="AdvancedFilterVersionSelected_'+version+'" class="badge badge-'+color+' spacingFilters" onclick="AdvancedFilters('+version+')">'+version+'</a>';
+    if (!document.getElementById('AdvancedFilterVersionSelected_'+version)){
+        document.getElementById('advancedVersionFilters').innerHTML += htmlToAdd;
+    }
+    
+};
+
+function removeVersionToAdvancedFilters(version){
+    
+    document.getElementById('AdvancedFilterVersionSelected_'+version).remove();
+    
+};
+
+function AdvancedFiltersActivity(filter, color){
+    
+    if (!$('#advancedActivityFilterButton' + filter).hasClass('active')){
+        
+        addActivityToAdvancedFilters(color,filter);
+        $('#advancedActivityFilterButton' + filter).addClass('active');
+        
+    }else if ($('#advancedActivityFilterButton' + filter).hasClass('active')){
+       
+        removeActivityToAdvancedFilters(filter);
+        $('#advancedActivityFilterButton' + filter).removeClass('active');
+        
+    }
+}
+
+function addActivityToAdvancedFilters(color,activity){
+    
+    var htmlToAdd = '<a href="#" id="AdvancedFilterActivitySelected_'+activity+'" class="badge badge-'+color+' spacingFilters" onclick="AdvancedFilters('+activity+')">'+activity+'</a>';
+    
+    document.getElementById('advancedActivityFilters').innerHTML += htmlToAdd;
+};
+
+function removeActivityToAdvancedFilters(activity){
+    
+    document.getElementById('AdvancedFilterActivitySelected_'+activity).remove();
+    
+};
+
+function switchFilters(value){
+    
+    if (value === 'OR'){
+        $('#switchFiltersOR').addClass('d-none');
+        $('#switchFiltersAND').removeClass('d-none');
+    }
+    if (value === 'AND'){
+        $('#switchFiltersAND').addClass('d-none');
+        $('#switchFiltersOR').removeClass('d-none');
+        
+    }
+    
+}
+
+
+function AdvancedFilters(color,filter,parent){
+    var flagActive = 1;
+    var filterBtn = document.getElementById('advancedVersionFilter' + filter);
+    if (!filterBtn.classList.contains('active')){
+        addVersionToAdvancedFilters(color, filter);    
+        filterBtn.classList.add('active');
+        $('#'+ parent +'Collapse').children('a').each(function () {
+            
+            if (!$(this).hasClass('active')){
+               flagActive = 0; 
+            }
+            
+        }); 
+        if (flagActive === 1){
+            $('#advancedVersionFilterButton' + parent).addClass('active');
+        }
+        
+    }else if (filterBtn.classList.contains('active')){
+        
+        removeVersionToAdvancedFilters(filter);
+        filterBtn.classList.remove('active');
+        $('#advancedVersionFilterButton' + parent).removeClass('active');
+        
+    }
+    
+    
+}

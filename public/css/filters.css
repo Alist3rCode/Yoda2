@@ -130,3 +130,8 @@
     font-weight: bold;
     border-bottom: solid 5px white;
 }
+
+
+.spacingFilters{
+    margin : 2px;
+}

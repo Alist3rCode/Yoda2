@@ -9,7 +9,7 @@ $parentVersion = array_keys($versionToDisplay);
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Filtres Avancés</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Filtres Avancés  <small class="text-muted">- Cliquer sur une version à droite ou une activité pour les faire basculer à droite.</small></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -25,13 +25,13 @@ $parentVersion = array_keys($versionToDisplay);
                     
                 
                         <i class="far fa-folder folderCollapseFilters collapsed" data-toggle="collapse" href="#<?=$parentValue?>Collapse" role="button"></i>
-                        <button type="button" class="btn btn-<?=$bootstrapColor?> btn-sm" onclick="AdvancedFiltersVersion('<?=$parentValue?>')">
+                        <button type="button" class="btn btn-outline-<?=$bootstrapColor?> btn-sm" id="advancedVersionFilterButton<?=$parentValue?>" onclick="AdvancedFiltersParent('<?=$parentValue?>')">
                             <?=$parentValue?>
                         </button>
                         <br>
                         <div class="collapse" id="<?=$parentValue?>Collapse">
                             <?php foreach ($versionToDisplay[$parentValue] as $key=>$value):?>
-                                <a href="#" class="badge badge-<?=$bootstrapColor?>" onclick="AdvancedFiltersVersion('<?=$value?>')">
+                                <a href="#" class="btn btn-outline-<?=$bootstrapColor?> btn-sm spacingFilters" id="advancedVersionFilter<?=$value?>" onclick="AdvancedFilters('<?=$bootstrapColor?>','<?=$value?>','<?=$parentValue?>')" data-color="<?=$bootstrapColor?>" data-version="<?=$value?>">
                                     <?=$value?>
                                 </a>
                             <?php endforeach; ?>
@@ -43,28 +43,41 @@ $parentVersion = array_keys($versionToDisplay);
                 </div>
             
                 <div style="border-bottom: solid 1px darkgrey; padding-bottom:10px;">
-                    <button type="button" class="btn btn-light btn-sm" onclick="AdvancedFiltersVersion('none')">
-                        N/A
+                    <button type="button" class="btn btn-outline-light btn-sm" id="advancedActivityFilterButtonNONE"  onclick="AdvancedFiltersActivity('NONE','light')" style="color:black">
+                        NONE
                     </button>
-                    <button type="button" class="btn btn-danger btn-sm" onclick="AdvancedFiltersVersion('ris')">
+                    <button type="button" class="btn btn-outline-danger btn-sm" id="advancedActivityFilterButtonRIS"  onclick="AdvancedFiltersActivity('RIS','danger')">
                         RIS
                     </button>
-                    <button type="button" class="btn btn-success btn-sm" onclick="AdvancedFiltersVersion('pacs')">
+                    <button type="button" class="btn btn-outline-success btn-sm" id="advancedActivityFilterButtonPACS" onclick="AdvancedFiltersActivity('PACS','success')">
                         PACS
                     </button>
-                    <button type="button" class="btn btn-info btn-sm" onclick="AdvancedFiltersVersion('ris-pacs')">
-                        RIS / PACS
+                    <button type="button" class="btn btn-outline-info btn-sm" id="advancedActivityFilterButtonRIS-PACS"  onclick="AdvancedFiltersActivity('RIS-PACS','info')">
+                        RIS-PACS
                     </button>
                 </div>    
             </div>
             <div class="col-8" >
-                <p>Afficher les versions </p>
-                <div id="advancedVersionFilters"></div>
-                <button type="button" class="btn btn-secondary btn-sm" >
-                    ET
-                </button>
-                <p>Les clients ayant une activité</p>
-                <div id="advancedActivityFilters"></div>
+                <div class="text-center ">
+                    <h3>Afficher les versions </h3>
+                        <div id="advancedVersionFilters"></div>
+                    
+                        
+                </div>
+                <div class="text-center" style="border-bottom: solid 1px darkgrey;border-top: solid 1px darkgrey;padding-top:5px; padding-bottom:5px;">
+                    <button type="button" class="btn btn-secondary btn" id='switchFiltersAND' onclick="switchFilters('AND')">
+                        ET
+                    </button>
+                    <button type="button" class="btn btn-secondary btn d-none" id='switchFiltersOR' onclick="switchFilters('OR')">
+                        OU
+                    </button>
+                </div>
+                <div class="text-center">
+                    <h3>Les clients ayant une activité </h3>
+                        <div id="advancedActivityFilters"></div>
+                        
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
