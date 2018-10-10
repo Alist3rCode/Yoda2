@@ -65,13 +65,19 @@ $parentVersion = array_keys($versionToDisplay);
                         
                 </div>
                 <div class="text-center" style="border-bottom: solid 1px darkgrey;border-top: solid 1px darkgrey;padding-top:5px; padding-bottom:5px;">
-                    <button type="button" class="btn btn-secondary btn" id='switchFiltersAND' onclick="switchFilters('AND')">
-                        ET
-                    </button>
-                    <button type="button" class="btn btn-secondary btn d-none" id='switchFiltersOR' onclick="switchFilters('OR')">
-                        OU
-                    </button>
+                    <div class="btn-group" role="group" >
+                        <button type="button" class="btn btn-outline-dark btn active" id='switchFiltersAND' onclick="switchFilters('AND')">
+                            ET
+                        </button>
+                        <button type="button" class="btn btn-outline-dark btn" id='switchFiltersOR' onclick="switchFilters('OR')">
+                            OU
+                        </button>
+
+                    </div>
+                    
                 </div>
+                
+                
                 <div class="text-center">
                     <h3>Les clients ayant une activité </h3>
                         <div id="advancedActivityFilters"></div>

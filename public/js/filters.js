@@ -265,12 +265,12 @@ function removeActivityToAdvancedFilters(activity){
 function switchFilters(value){
     
     if (value === 'OR'){
-        $('#switchFiltersOR').addClass('d-none');
-        $('#switchFiltersAND').removeClass('d-none');
+        $('#switchFiltersOR').addClass('active');
+        $('#switchFiltersAND').removeClass('active');
     }
     if (value === 'AND'){
-        $('#switchFiltersAND').addClass('d-none');
-        $('#switchFiltersOR').removeClass('d-none');
+        $('#switchFiltersAND').addClass('active');
+        $('#switchFiltersOR').removeClass('active');
         
     }
     
