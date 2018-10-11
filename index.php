@@ -58,7 +58,7 @@ require 'public/dashboard.php';
             <div class="clients">
                 <!--Version-->
                 <div class="col-md-3 mt-3">
-                    <div class="card">
+                    <div class="card" onclick="initMap('','all')">
                         <div class="card-header text-left cardDashboard cardAll" >
                             <span class="card-title"><span class="display-4"><?=$selectAll[0]->Nb?></span> Clients</span>
 
@@ -151,6 +151,16 @@ require 'public/dashboard.php';
                         </div>
                     </div>
                 </div>
+                <!--map-->
+                <div class="col-md-6">
+                    
+                    <div id="map"></div>
+		
+                </div>
+                <div class="col-md-6">
+                    
+                    
+                </div>
                 
                 
                 
@@ -159,11 +169,14 @@ require 'public/dashboard.php';
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo_lLa3e8UeMBQdc6EYS5Wbw7udYxl3_o&callback=initMap"></script>
+
         <script src="./public/js/yoda_style.js"></script>
         <script src="./public/js/yoda_action.js"></script>
         <script src="./public/js/searchBar.js"></script>
         <script src="./public/js/displayPhones.js"></script>
         <script src="./public/js/filters.js"></script>
+        <script src="./public/js/maps.js"></script>
         
         
     </body>
