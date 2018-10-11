@@ -62,7 +62,7 @@ require 'public/dashboard.php';
                 
                 <div class="col-md-3 mt-3">
                     <div class="card">
-                        <div class="card-header text-left" style="background-image: url('public/img/v7_dashboard_dark.png');color:white;padding-left: 60px;">
+                        <div class="card-header text-left" style="background-image: url('public/img/v7_dashboard_dark.png');background-position:right;color:white;padding-left: 60px;">
                             <span class="card-title"><span class="display-4"><?=$selectAll[0]->Nb?></span> Clients</span>
 
                         </div>
