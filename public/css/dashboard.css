@@ -1,0 +1,45 @@
+.cardDashboard{
+    
+    background-position:right;
+    color:white;
+    padding-left: 60px;
+}
+
+.cardAll{
+    background-image: url('../img/all_dashboard_dark.png');
+}
+
+
+.cardv6{
+    background-image: url('../img/v6_dashboard_dark.png');
+}
+
+
+.cardv7{
+    background-image: url('../img/v7_dashboard_dark.png');
+}
+
+
+.cardv8{
+    background-image: url('../img/v8_dashboard_dark.png');
+}
+
+.cardRis{
+    background-image: url('../img/ris_dashboard_dark.png');
+}
+
+.cardPacs{
+    background-image: url('../img/pacs_dashboard_dark.png');
+}
+
+.cardRisPacs{
+    background-image: url('../img/ris_pacs_dashboard_dark.png');
+}
+.cardNone{
+    background-image: url('../img/none_dashboard_dark.png');
+}
+
+
+.card{
+    border:0!important;
+}

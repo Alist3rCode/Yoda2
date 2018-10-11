@@ -32,10 +32,7 @@ require 'public/dashboard.php';
 
         <link rel="stylesheet" href="public/css/yoda.css">
         <?php require 'public/checkTheme.php'; ?>        
-        <link rel="stylesheet" href="public/css/flip.css">
-        <link rel="stylesheet" href="public/css/modale.css">
-        <link rel="stylesheet" href="public/css/tags.css">
-        <link rel="stylesheet" href="public/css/phones.css">
+        <link rel="stylesheet" href="public/css/dashboard.css">
         <link rel="stylesheet" href="public/css/filters.css">
         
         <!--Add Jquery-->
@@ -59,10 +56,10 @@ require 'public/dashboard.php';
             ?>
             
             <div class="clients">
-                
+                <!--Version-->
                 <div class="col-md-3 mt-3">
                     <div class="card">
-                        <div class="card-header text-left" style="background-image: url('public/img/v7_dashboard_dark.png');background-position:right;color:white;padding-left: 60px;">
+                        <div class="card-header text-left cardDashboard cardAll" >
                             <span class="card-title"><span class="display-4"><?=$selectAll[0]->Nb?></span> Clients</span>
 
                         </div>
@@ -74,7 +71,7 @@ require 'public/dashboard.php';
                 
                 <div class="col-md-3 mt-3">
                     <div class="card">
-                        <div class="card-header text-left" style="background-image: url('public/img/v6_dashboard_dark.png');color:white;padding-left: 60px;">
+                        <div class="card-header text-left cardDashboard cardv6">
                             <span class="card-title"><span class="display-4"><?=$selectV6[0]->Nb?></span> Clients</span>
 
                         </div>
@@ -86,7 +83,7 @@ require 'public/dashboard.php';
                 
                 <div class="col-md-3 mt-3">
                     <div class="card">
-                        <div class="card-header text-left" style="background-image: url('public/img/v7_dashboard_dark.png');color:white;padding-left: 60px;">
+                        <div class="card-header text-left cardDashboard cardv7" >
                             <span class="card-title"><span class="display-4"><?=$selectV7[0]->Nb?></span> Clients</span>
 
                         </div>
@@ -96,9 +93,9 @@ require 'public/dashboard.php';
                     </div>
                 </div>
                 
-                   <div class="col-md-3 mt-3">
+                <div class="col-md-3 mt-3">
                     <div class="card">
-                        <div class="card-header text-left" style="background-image: url('public/img/v8_dashboard_dark.png');color:white;padding-left: 60px;">
+                        <div class="card-header text-left cardDashboard cardv8" >
                             <span class="card-title"><span class="display-4"><?=$selectV8[0]->Nb?></span> Clients</span>
 
                         </div>
@@ -108,7 +105,52 @@ require 'public/dashboard.php';
                     </div>
                 </div>
                 
+                <!--Activité-->
                 
+                <div class="col-md-3 mt-3">
+                    <div class="card">
+                        <div class="card-header text-left cardDashboard cardRis" >
+                            <span class="card-title"><span class="display-4"><?=$selectRis[0]->Nb?></span> Clients</span>
+
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <p class="card-text"><?=$selectRisSite[0]->Nb?> Sites</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <div class="card">
+                        <div class="card-header text-left cardDashboard cardPacs" >
+                            <span class="card-title"><span class="display-4"><?=$selectPacs[0]->Nb?></span> Clients</span>
+
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <p class="card-text"><?=$selectPacsSite[0]->Nb?> Sites</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <div class="card">
+                        <div class="card-header text-left cardDashboard cardRisPacs" >
+                            <span class="card-title"><span class="display-4"><?=$selectRisPacs[0]->Nb?></span> Clients</span>
+
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <p class="card-text"><?=$selectRisPacsSite[0]->Nb?> Sites</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <div class="card">
+                        <div class="card-header text-left cardDashboard cardNone" >
+                            <span class="card-title"><span class="display-4"><?=$selectNone[0]->Nb?></span> Clients</span>
+
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <p class="card-text"><?=$selectNoneSite[0]->Nb?> Sites</p>
+                        </div>
+                    </div>
+                </div>
                 
                 
                 
