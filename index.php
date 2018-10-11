@@ -13,8 +13,13 @@ $bdd2 = new Database('ecsupgrader');
         
         <!-- Required meta tags -->
         <meta charset="utf-8">
+        
+        
+        
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        
+        
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
          
@@ -24,7 +29,7 @@ $bdd2 = new Database('ecsupgrader');
         <!--CSS Perso-->
 
         <link rel="stylesheet" href="public/css/yoda.css">
-        <link rel="stylesheet" href="public/css/dark.css">
+        <?php require 'public/checkTheme.php'; ?>        
         <link rel="stylesheet" href="public/css/flip.css">
         <link rel="stylesheet" href="public/css/modale.css">
         <link rel="stylesheet" href="public/css/tags.css">
@@ -76,7 +81,7 @@ $bdd2 = new Database('ecsupgrader');
 
                                 <div class="version">
                                         <hr class="hr" >
-                                        <span>
+                                        <span class="spanVersion">
 
                                             <?=$clients->CLI_NUM_VERSION?>
 

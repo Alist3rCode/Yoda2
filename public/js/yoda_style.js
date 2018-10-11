@@ -4,9 +4,10 @@ function ucFirst(string) {
 
 
 $(".vignette").click(function(e){  
-    if (e.target.className === 'version' || e.target.className === 'tag' || e.target.className === 'hr'){
+    console.log(e);
+    if ($(e.target).hasClass('version') || $(e.target).hasClass('tag') || $(e.target).hasClass('hr') || $(e.target).hasClass('spanVersion')){
         flip($(this)[0].id);
-    }else if (e.target.className === 'infoClientBack' || e.target.className === 'back'){
+    }else if ($(e.target).hasClass('infoClientBack') || $(e.target).hasClass('back')){
         unflip($(this)[0].id);
     }
 });
@@ -88,5 +89,5 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('collapsed');
         
     });
-
+    
 });

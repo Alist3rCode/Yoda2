@@ -56,9 +56,14 @@ body{
     color: darkgrey;
 }
 
-.sidebar:not(.collapse) a:hover{
+.sidebar:not(.collapse) li:hover{
     background-color: #999;
+    
+}
+
+.sidebar:not(.collapse) li:hover a{
     color:white;
+    
 }
 
 .menu{

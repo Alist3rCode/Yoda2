@@ -1,4 +1,4 @@
-<nav class="sidebar" id="sidebar">
+<nav class="sidebar <?php require 'public/checkCollapse.php'?>" id="sidebar">
         <div class="sidebar-header">
             <h3 class="title">
                 <p>Yohann</p>
@@ -10,6 +10,10 @@
                     echo ' v' . $res[0]->CFG_VERSION;
                     ?></p> 
             </h3>
+            <div class="collapseTitle">
+                <p>Y.O.D.A</p>
+               <?=' v'. $res[0]->CFG_VERSION?>
+            </div>
         </div>
     <br>
 
@@ -66,7 +70,7 @@
                 </a>
             </li>
         </ul>
-        <button type="button" id="sidebarCollapse" class="btn btn-info">
+        <button type="button" id="sidebarCollapse" class="btn btn-info ">
             <i id="toogleSidebar" class="fas fa-angle-left"></i>
         </button>
 

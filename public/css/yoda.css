@@ -77,8 +77,7 @@
     position: fixed;
     overflow-x: hidden;
     margin-top:60px;
-    z-index: 9;
-       
+    z-index: 9;       
 }
 
 .sidebar a{
@@ -268,13 +267,33 @@ hr {
     display: none;
 }
 
+#sidebar.collapsed li{
+    height: 75px;
+}
+
 /* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
 #sidebar .sidebar-header strong {
     display: none;
 }
-#sidebar.collapsed .sidebar-header h3 {
+
+.collapseTitle{
     display: none;
 }
+
+#sidebar.collapsed .collapseTitle{
+    display: block;
+    font-size : medium;
+    line-height: 0rem;
+}
+
+#sidebar.collapsed .collapseTitle p{
+    color:#28a745;
+}
+
+#sidebar.collapsed .title p{
+    display: none;
+}
+
 #sidebar.collapsed .sidebar-header strong {
     display: block;
 }
