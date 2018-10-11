@@ -267,9 +267,6 @@ hr {
     display: none;
 }
 
-#sidebar.collapsed li{
-    height: 75px;
-}
 
 /* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
 #sidebar .sidebar-header strong {
@@ -313,9 +310,9 @@ hr {
 
 #sidebar.collapsed ul li a i {
     margin-right:  0;
-    padding-top: 30px;
+    padding-top:15px;
     font-size: 1.8em;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 
@@ -385,3 +382,5 @@ hr {
     line-height: 0.3;
     padding-bottom: 10px;
 }
+
+

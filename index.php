@@ -5,6 +5,8 @@ Autoloader::register();
 
 $bdd = new Database('yoda');
 $bdd2 = new Database('ecsupgrader');
+
+require 'public/dashboard.php';
 ?>
 
 <!doctype html>
@@ -56,10 +58,61 @@ $bdd2 = new Database('ecsupgrader');
             require 'public/sidebar2.php';
             ?>
             
-            
-           <!--Mettre le contenu ici-->
-        
+            <div class="clients">
+                
+                <div class="col-md-3 mt-3">
+                    <div class="card">
+                        <div class="card-header text-left" style="background-image: url('public/img/v7_dashboard_dark.png');color:white;padding-left: 60px;">
+                            <span class="card-title"><span class="display-4"><?=$selectAll[0]->Nb?></span> Clients</span>
 
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <p class="card-text"><?=$selectAllSite[0]->Nb?> Sites</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mt-3">
+                    <div class="card">
+                        <div class="card-header text-left" style="background-image: url('public/img/v6_dashboard_dark.png');color:white;padding-left: 60px;">
+                            <span class="card-title"><span class="display-4"><?=$selectV6[0]->Nb?></span> Clients</span>
+
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <p class="card-text"><?=$selectV6Site[0]->Nb?> Sites</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mt-3">
+                    <div class="card">
+                        <div class="card-header text-left" style="background-image: url('public/img/v7_dashboard_dark.png');color:white;padding-left: 60px;">
+                            <span class="card-title"><span class="display-4"><?=$selectV7[0]->Nb?></span> Clients</span>
+
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <p class="card-text"><?=$selectV7Site[0]->Nb?> Sites</p>
+                        </div>
+                    </div>
+                </div>
+                
+                   <div class="col-md-3 mt-3">
+                    <div class="card">
+                        <div class="card-header text-left" style="background-image: url('public/img/v8_dashboard_dark.png');color:white;padding-left: 60px;">
+                            <span class="card-title"><span class="display-4"><?=$selectV8[0]->Nb?></span> Clients</span>
+
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <p class="card-text"><?=$selectV8Site[0]->Nb?> Sites</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+            </div>      
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
