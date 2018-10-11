@@ -52,81 +52,11 @@ $bdd2 = new Database('ecsupgrader');
         <div class="content">
             
             <?php 
-            require 'public/navbar.php';
+            require 'public/navbar2.php';
             require 'public/sidebar2.php';
-//            require 'public/infoClient.php';
             ?>
             
-            <div class="clients" id="clients"> 
-                <?php
-              
-
-                foreach($bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE ASC, CLI_NOM ASC', 'Clients') as $clients):?>
-
-                <div class="vignette <?=$clients->CLI_VERSION?> flip-container" id="vignette_<?=$clients->CLI_ID?>" data-activity='<?=$clients->CLI_RIS?>,<?=$clients->CLI_PACS?>' data-version="<?=$clients->CLI_VERSION?>">
-                    <div class="contenu_vignette flipper">
-                        <div class="front">
-                            <a href="<?=$clients->CLI_URL?>" target="_blank" id="vign_url_<?=$clients->CLI_ID?>">
-                                <div class="infoClient">
-                                    <p class="ville <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
-
-                                    <p class="nom"><?=$clients->CLI_NOM?></p>
-                                </div>
-                            </a>
-                            
-                                <div class="tag">
-                                <?= $clients->formatedTag?>
-
-                                </div>
-
-                                <div class="version">
-                                        <hr class="hr" >
-                                        <span class="spanVersion">
-
-                                            <?=$clients->CLI_NUM_VERSION?>
-
-                                        </span> 
-                                </div>                     
-                        </div>
-                        <div class="back">
-                            <div class="infoClientBack">
-                                <p class="villeBack <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
-
-                                <p class="nomBack"><?=$clients->CLI_NOM?></p>
-                            </div>
-                            <div class="backBtn">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div class="backBtn" onclick="modif(<?=$clients->CLI_ID?>)" data-toggle="modal" data-target="#modaleClient" >
-                                <i class="fas fa-pencil-alt" ></i>
-                            </div>
-                            <div class="backBtn phoneIconLink" onclick="displayPhones(<?=$clients->CLI_ID?>)">
-                                <i class="far fa-building"></i>
-                            </div>
-
-                            <div class="backBtn" data-toggle="tooltip" data-html="true"  data-id="<?=$clients->CLI_ID?>" data-placement="bottom" data-title="test">
-                                <i class="fas fa-code-branch"></i>
-                            </div>
-
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-
-                
-
-                <?php endforeach; ?>
-            
-                
-            </div>
-        </div>
-        <div class="modal fade " id="modaleClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-        <?php require 'public/modaleClient.php'; ?>
-        </div>
-        <div class="modal fade" id="ModaleFilter" tabindex="-1" role="dialog" aria-labelledby="filterModale" aria-hidden="true">
-        <?php require "public/filterModale.php"; ?>
-        </div>
+        
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

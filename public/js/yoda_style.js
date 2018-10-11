@@ -87,7 +87,10 @@ $(document).ready(function () {
 
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('collapsed');
-        
     });
+    var page = window.location.pathname.split("/")[2].split('.')[0];
+    console.log(page);
+    $('#sidebar_'+page).addClass('activeSidebarElement');
+    
     
 });
