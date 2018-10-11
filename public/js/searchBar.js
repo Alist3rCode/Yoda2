@@ -105,7 +105,8 @@ $('#resetSearch').click(function(){
     $('#searchBar').val('');
     hideFamilyFilter();
     displayPhones();
-    unflip();    
+    unflip();  
+    resetFilterModale();
 });
 
 var idxSelect = 0;

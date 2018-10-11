@@ -27,7 +27,7 @@ class Database{
      */
     private function getPDO($db_pass = '', $db_name = 'yoda', $db_user = 'root'){  
         if ($this->pdo == null){
-            $pdo = new PDO('mysql:dbname='. $db_name.';host=localhost',$db_user,$db_pass);
+            $pdo = new PDO('mysql:dbname='. $db_name.';charset=UTF8;host=localhost',$db_user,$db_pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo = $pdo;
         }          

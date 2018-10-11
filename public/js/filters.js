@@ -18,7 +18,7 @@ function displayFilter(elem){
     unflip();
     displayPhones();
     changeVignetteBackground();
-
+    resetFilterModale();
 }
 
 function showFamilyFilter(family){
@@ -81,15 +81,22 @@ function displayVersionFilter(){
         $('.vignette').removeClass('d-none');
             
     }else{        
-            
         $.post("ajax/searchFilters.php",
         {search: arrayVersion}, 
         function(json){
+            if (json === "Aucun client trouvé pour cette recherche"){
+                alert(json);
+                $('.vignette').removeClass('d-none');
+                arrayVersion = [];
+                
+            }else{
                 $('.vignette').addClass('d-none');
                 for (i = 0; i < json.length; i++) {
-                   
+
                    $('#vignette_' + json[i]).removeClass('d-none');
                 }
+            }
+
         });
     }
     
@@ -221,7 +228,7 @@ function AdvancedFiltersParent(filter){
 
 function addVersionToAdvancedFilters(color,version){
     
-    var htmlToAdd = '<a href="#" id="AdvancedFilterVersionSelected_'+version+'" class="badge badge-'+color+' spacingFilters" onclick="AdvancedFilters('+version+')">'+version+'</a>';
+    var htmlToAdd = '<a href="#" id="AdvancedFilterVersionSelected_'+version+'" class="badge badge-'+color+' spacingFilters" data-filter="'+version+'" onclick="AdvancedFilters('+version+')">'+version+'</a>';
     if (!document.getElementById('AdvancedFilterVersionSelected_'+version)){
         document.getElementById('advancedVersionFilters').innerHTML += htmlToAdd;
     }
@@ -251,7 +258,7 @@ function AdvancedFiltersActivity(filter, color){
 
 function addActivityToAdvancedFilters(color,activity){
     
-    var htmlToAdd = '<a href="#" id="AdvancedFilterActivitySelected_'+activity+'" class="badge badge-'+color+' spacingFilters" onclick="AdvancedFilters('+activity+')">'+activity+'</a>';
+    var htmlToAdd = '<a href="#" id="AdvancedFilterActivitySelected_'+activity+'" class="badge badge-'+color+' spacingFilters" data-filter="'+activity+'" onclick="AdvancedFilters('+activity+')">'+activity+'</a>';
     
     document.getElementById('advancedActivityFilters').innerHTML += htmlToAdd;
 };
@@ -261,16 +268,18 @@ function removeActivityToAdvancedFilters(activity){
     document.getElementById('AdvancedFilterActivitySelected_'+activity).remove();
     
 };
-
+var switchFilter = 'AND';
 function switchFilters(value){
     
     if (value === 'OR'){
         $('#switchFiltersOR').addClass('active');
         $('#switchFiltersAND').removeClass('active');
+        switchFilter = 'OR';
     }
     if (value === 'AND'){
         $('#switchFiltersAND').addClass('active');
         $('#switchFiltersOR').removeClass('active');
+        switchFilter = 'AND';
         
     }
     
@@ -303,4 +312,62 @@ function AdvancedFilters(color,filter,parent){
     }
     
     
+}
+
+
+function resetFilterModale() {
+    
+    switchFilters("AND");
+    document.getElementById('advancedVersionFilters').innerHTML = '';
+    document.getElementById('advancedActivityFilters').innerHTML = '';
+    $('.filtersBtn').removeClass('active');            
+    arrayVersion = [];
+    displayVersionFilter(); 
+        
+}
+
+$('#validFilterModale').click(function (e) {
+   
+   arrayVersion = [];
+   arrayFilterVersion = [];
+   arrayFilterActivity = [];
+   
+   
+    $('#advancedVersionFilters').children('a').each(function () {
+    
+        arrayFilterVersion.push($(this).data('filter'));
+       
+    });
+    $('#advancedActivityFilters').children('a').each(function () {
+    
+        arrayFilterActivity.push($(this).data('filter'));
+       
+    });
+    if(arrayFilterVersion.length === 0 || arrayFilterActivity.length === 0 ){
+        displayAlertModaleFilter('danger','Merci de saisir au moins une version et une activité');
+        console.log('imin')
+    }else{
+        arrayVersion.push(arrayFilterVersion);
+        arrayVersion.push(arrayFilterActivity);
+
+        arrayVersion[2] = switchFilter;
+
+        arrayVersion[3] = 'advanced';
+        displayVersionFilter();    
+        $('#ModaleFilter').modal('hide')
+    }
+    
+    
+});
+
+
+function displayAlertModaleFilter(type,message){
+    $("#alerteFilter").html(message);
+    $('#alerteFilter').addClass('alert-'+type);
+    $("#alerteFilter").removeClass('d-none');
+    $("#alerteFilter").fadeTo(3000, 500).slideUp(500, function() {
+        $("#alerteFilter").slideUp(500);
+        $("#alerteFilter").addClass('d-none');
+        $('#alerteFilter').removeClass('alert-'+type);
+    });
 }

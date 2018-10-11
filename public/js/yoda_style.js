@@ -41,6 +41,7 @@ function displayAlertModale(type,message){
         $('#alerte').removeClass('alert-'+type);
     });
 }
+
 function findPlaceNewCustomer(ville,nom){
     var array=[];
     var flag = 0;
