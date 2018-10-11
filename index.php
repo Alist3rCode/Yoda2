@@ -56,6 +56,8 @@ $bdd2 = new Database('ecsupgrader');
             require 'public/sidebar2.php';
             ?>
             
+            
+           <!--Mettre le contenu ici-->
         
 
         <!-- Optional JavaScript -->

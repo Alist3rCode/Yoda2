@@ -381,3 +381,7 @@ hr {
     
 }
 
+.dateTime{
+    line-height: 0.3;
+    padding-bottom: 10px;
+}

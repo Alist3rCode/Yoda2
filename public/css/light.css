@@ -100,3 +100,7 @@ body{
     background-color: rgba(212, 212, 212, 0.2);
     border: 1px solid #f8f9fa;
 }
+
+.activeSidebarElement i{
+    color: #28a745!important;
+}

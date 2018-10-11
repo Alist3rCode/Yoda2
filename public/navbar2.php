@@ -4,7 +4,7 @@
     </span>
     <div class="collapse navbar-collapse col-11" id="navbarSupportedContent">
         
-       <div class="dateTime ">
+       <div class="dateTime text-capitalize">
         <div class="date" id="date">
             <div id="startDate" class="startDate h3 text-center"></div>
             <div class="year display-1 text-center" id="year"></div>
