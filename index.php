@@ -176,8 +176,8 @@ require 'public/dashboard.php';
                     <div class="col-md-6 mt-3 align-items-stretch" style="height: 450px; flex-flow: row wrap; display:flex; ">
                         <div class="col-md-6 card" >
                             <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
+                                <div class="chart-area" id='lineChartArea'>
+                                    <canvas id="lineChart"></canvas>
                                 </div>
                             </div>
                         </div>
