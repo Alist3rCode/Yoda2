@@ -65,7 +65,7 @@ switch ($_REQUEST['search']) {
         . "AND PHO_VALID = 1 "
         . "AND CLI_VERSION = 'v8'");
         break;
-    case 'RIS':
+    case 'ris':
         $select = $bdd->queryObj("SELECT MPS_ID, "
         . "CONCAT(CLI_VILLE, ' - ', CLI_NOM) as 'Name', "
         . "PHO_SITE, "
@@ -82,7 +82,7 @@ switch ($_REQUEST['search']) {
         . "AND CLI_RIS = 1 "
         . "AND CLI_PACS = 0");
         break;
-    case 'PACS':
+    case 'pacs':
         $select = $bdd->queryObj("SELECT MPS_ID, "
         . "CONCAT(CLI_VILLE, ' - ', CLI_NOM) as 'Name', "
         . "PHO_SITE, "
@@ -99,7 +99,7 @@ switch ($_REQUEST['search']) {
         . "AND CLI_RIS = 0 "
         . "AND CLI_PACS = 1");
         break;
-    case 'RIS-PACS':
+    case 'rispacs':
         $select = $bdd->queryObj("SELECT MPS_ID, "
         . "CONCAT(CLI_VILLE, ' - ', CLI_NOM) as 'Name', "
         . "PHO_SITE, "
@@ -116,7 +116,7 @@ switch ($_REQUEST['search']) {
         . "AND CLI_RIS = 1 "
         . "AND CLI_PACS = 1");
         break;
-    case 'NONE':
+    case 'none':
         $select = $bdd->queryObj("SELECT MPS_ID, "
         . "CONCAT(CLI_VILLE, ' - ', CLI_NOM) as 'Name', "
         . "PHO_SITE, "
@@ -166,7 +166,10 @@ $version = $value->CLI_VERSION;
 
 $xml.='</markers>';
 
-file_put_contents("../address.xml",$xml);
+unlink("../address.xml");
+$xmlFile = fopen("../address.xml", "x+");
+fwrite($xmlFile, $xml);
+//file_put_contents("../address.xml",$xml);
 
 echo $xml;
 

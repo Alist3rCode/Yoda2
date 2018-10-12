@@ -84,16 +84,24 @@ function findPlaceNewCustomer(ville,nom){
 }
     
 $(document).ready(function () {
-
+    
+    var idUser = document.getElementById('idUser').innerHTML;
+    
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('collapsed');
+        console.log($('#sidebar').hasClass('collapsed'));
+        var value =  $('#sidebar').hasClass('collapsed') ? 1 : 0;
+        $.post("ajax/setSidebar.php",{
+          idUser : idUser,
+          value : value
+        });
     });
+    
     var page = window.location.pathname.split("/")[2].split('.')[0];
     if (page === ''){
         page = 'index';
     }
-    console.log(page);
+
     $('#sidebar_'+page).addClass('activeSidebarElement');
-    
-    
+
 });

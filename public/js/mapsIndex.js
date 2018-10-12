@@ -1,15 +1,15 @@
 
 var customLabelActi = {
-    nada: { icon: '../public/img/greyPin.png'},
-    ris: { icon: '../public/img/redPin.png'},
-    pacs: { icon: '../public/img/greenPin.png' },
-    rispacs: { icon: '../public/img/purplePin.png' },
+    nada: { icon: './public/img/greyPin.png'},
+    ris: { icon: './public/img/redPin.png'},
+    pacs: { icon: './public/img/greenPin.png' },
+    rispacs: { icon: './public/img/purplePin.png' },
 };
 
 var customLabelVers = {
-    v6: { icon: '../public/img/orangePin.png'},
-    v7: { icon: '../public/img/bluePin.png'},
-    v8: { icon: '../public/img/greyPin.png'}
+    v6: { icon: './public/img/orangePin.png'},
+    v7: { icon: './public/img/bluePin.png'},
+    v8: { icon: './public/img/greyPin.png'}
 };
 
 var filter = 0;
@@ -36,20 +36,27 @@ $('input[type=radio][name=filter]').change(function() {
 
 
 function firstUpper(string) {
+    $('#map').removeClass('d-none');
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function initMap(RB,search) {
 
 var map = new google.maps.Map(document.getElementById('map'), {
-  center: new google.maps.LatLng(20,0),
+  center: new google.maps.LatLng(30,0),
   zoom: 3
 });
 var infoWindow = new google.maps.InfoWindow;
 
-$.get("ajax/CreateXML.php?search="+search, function(json){
- //   console.log(json);
-});
+$.ajax({
+        method: "GET",
+        url: "ajax/CreateXML.php?search="+search,
+        dataType : "JSON",
+        async: false,
+        success: function(json) {
+           console.log(json)
+        }
+    });
 
   // Change this depending on the name of your PHP or XML file
   downloadUrl('./address.xml' , function(data) {

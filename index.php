@@ -58,106 +58,119 @@ require 'public/dashboard.php';
             <div class="clients">
                 <!--Version-->
                 <div class="col-md-3 mt-3">
-                    <div class="card" onclick="initMap('','all')">
-                        <div class="card-header text-left cardDashboard cardAll" >
-                            <span class="card-title"><span class="display-4"><?=$selectAll[0]->Nb?></span> Clients</span>
+                    <a onclick="initMap('versionRB','all')" <?=$disableAll?>>
+                        <div class="card" >
+                            <div class="card-header text-left cardDashboard cardAll" >
+                                <span class="card-title"><span class="display-4"><?=$selectAll[0]->Nb?></span> Clients</span>
 
+                            </div>
+                            <div class="card-footer text-muted text-center">
+                                <p class="card-text"><?=$selectAllSite[0]->Nb?> Sites</p>
+                            </div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <p class="card-text"><?=$selectAllSite[0]->Nb?> Sites</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <div class="col-md-3 mt-3">
-                    <div class="card">
-                        <div class="card-header text-left cardDashboard cardv6">
-                            <span class="card-title"><span class="display-4"><?=$selectV6[0]->Nb?></span> Clients</span>
+                    <a onclick="initMap('versionRB','v6')" <?=$disablev6?>>
+                        <div class="card">
+                            <div class="card-header text-left cardDashboard cardv6">
+                                <span class="card-title"><span class="display-4"><?=$selectV6[0]->Nb?></span> Clients</span>
 
+                            </div>
+                            <div class="card-footer text-muted text-center">
+                                <p class="card-text"><?=$selectV6Site[0]->Nb?> Sites</p>
+                            </div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <p class="card-text"><?=$selectV6Site[0]->Nb?> Sites</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <div class="col-md-3 mt-3">
-                    <div class="card">
-                        <div class="card-header text-left cardDashboard cardv7" >
-                            <span class="card-title"><span class="display-4"><?=$selectV7[0]->Nb?></span> Clients</span>
+                    <a onclick="initMap('versionRB','v7')" <?=$disablev7?>>
+                        <div class="card">
+                            <div class="card-header text-left cardDashboard cardv7" >
+                                <span class="card-title"><span class="display-4"><?=$selectV7[0]->Nb?></span> Clients</span>
+
+                            </div>
+                            <div class="card-footer text-muted text-center">
+                                <p class="card-text"><?=$selectV7Site[0]->Nb?> Sites</p>
+                            </div>
 
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <p class="card-text"><?=$selectV7Site[0]->Nb?> Sites</p>
-                        </div>
-                    </div>
+                    </a> 
                 </div>
-                
                 <div class="col-md-3 mt-3">
-                    <div class="card">
-                        <div class="card-header text-left cardDashboard cardv8" >
-                            <span class="card-title"><span class="display-4"><?=$selectV8[0]->Nb?></span> Clients</span>
+                    <a onclick="initMap('versionRB','v8')" <?=$disablev8?>>
+                        <div class="card">
+                            <div class="card-header text-left cardDashboard cardv8" >
+                                <span class="card-title"><span class="display-4"><?=$selectV8[0]->Nb?></span> Clients</span>
 
+                            </div>
+                            <div class="card-footer text-muted text-center">
+                                <p class="card-text"><?=$selectV8Site[0]->Nb?> Sites</p>
+                            </div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <p class="card-text"><?=$selectV8Site[0]->Nb?> Sites</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <!--Activité-->
                 
                 <div class="col-md-3 mt-3">
-                    <div class="card">
-                        <div class="card-header text-left cardDashboard cardRis" >
-                            <span class="card-title"><span class="display-4"><?=$selectRis[0]->Nb?></span> Clients</span>
+                    <a onclick="initMap('activityRB','ris')" <?=$disableRis?>>
+                        <div class="card">
+                            <div class="card-header text-left cardDashboard cardRis" >
+                                <span class="card-title"><span class="display-4"><?=$selectRis[0]->Nb?></span> Clients</span>
 
+                            </div>
+                            <div class="card-footer text-muted text-center">
+                                <p class="card-text"><?=$selectRisSite[0]->Nb?> Sites</p>
+                            </div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <p class="card-text"><?=$selectRisSite[0]->Nb?> Sites</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-3 mt-3">
-                    <div class="card">
-                        <div class="card-header text-left cardDashboard cardPacs" >
-                            <span class="card-title"><span class="display-4"><?=$selectPacs[0]->Nb?></span> Clients</span>
+                    <a onclick="initMap('activityRB','pacs')" <?=$disablePacs?>>
+                        <div class="card">
+                            <div class="card-header text-left cardDashboard cardPacs" >
+                                <span class="card-title"><span class="display-4"><?=$selectPacs[0]->Nb?></span> Clients</span>
 
+                            </div>
+                            <div class="card-footer text-muted text-center">
+                                <p class="card-text"><?=$selectPacsSite[0]->Nb?> Sites</p>
+                            </div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <p class="card-text"><?=$selectPacsSite[0]->Nb?> Sites</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-3 mt-3">
-                    <div class="card">
-                        <div class="card-header text-left cardDashboard cardRisPacs" >
-                            <span class="card-title"><span class="display-4"><?=$selectRisPacs[0]->Nb?></span> Clients</span>
+                    <a onclick="initMap('activityRB','rispacs')" <?=$disableRisPacs?>>
+                        <div class="card">
+                            <div class="card-header text-left cardDashboard cardRisPacs" >
+                                <span class="card-title"><span class="display-4"><?=$selectRisPacs[0]->Nb?></span> Clients</span>
 
+                            </div>
+                            <div class="card-footer text-muted text-center">
+                                <p class="card-text"><?=$selectRisPacsSite[0]->Nb?> Sites</p>
+                            </div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <p class="card-text"><?=$selectRisPacsSite[0]->Nb?> Sites</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-3 mt-3">
-                    <div class="card">
-                        <div class="card-header text-left cardDashboard cardNone" >
-                            <span class="card-title"><span class="display-4"><?=$selectNone[0]->Nb?></span> Clients</span>
+                    <a onclick="initMap('activityRB','nada')" <?=$disableNone?>>
+                        <div class="card">
+                            <div class="card-header text-left cardDashboard cardNone" >
+                                <span class="card-title"><span class="display-4"><?=$selectNone[0]->Nb?></span> Clients</span>
 
+                            </div>
+                            <div class="card-footer text-muted text-center">
+                                <p class="card-text"><?=$selectNoneSite[0]->Nb?> Sites</p>
+                            </div>
                         </div>
-                        <div class="card-footer text-muted text-center">
-                            <p class="card-text"><?=$selectNoneSite[0]->Nb?> Sites</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <!--map-->
-                <div class="col-md-6">
-                    
-                    <div id="map"></div>
-		
-                </div>
-                <div class="col-md-6">
+                <div class="d-flex flex-flow col-md-12">
+                <div id="map" class="col-md-6 card mt-3 d-none" style="height: 450px; "></div>
+                <div class="col-md-6 card mt-3" style="background:white;height: 50px;">
                     
                     
                 </div>
@@ -169,14 +182,14 @@ require 'public/dashboard.php';
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo_lLa3e8UeMBQdc6EYS5Wbw7udYxl3_o&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo_lLa3e8UeMBQdc6EYS5Wbw7udYxl3_o"></script>
 
         <script src="./public/js/yoda_style.js"></script>
         <script src="./public/js/yoda_action.js"></script>
         <script src="./public/js/searchBar.js"></script>
         <script src="./public/js/displayPhones.js"></script>
         <script src="./public/js/filters.js"></script>
-        <script src="./public/js/maps.js"></script>
+        <script src="./public/js/mapsIndex.js"></script>
         
         
     </body>
