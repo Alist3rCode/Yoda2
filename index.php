@@ -58,7 +58,7 @@ require 'public/dashboard.php';
             <div class="clients">
                 <!--Version-->
                 <div class="col-md-3 mt-3">
-                    <a onclick="initMap('versionRB','all')" <?=$disableAll?>>
+                    <a onclick="initAddons('version','all')" <?=$disableAll?>>
                         <div class="card" >
                             <div class="card-header text-left cardDashboard cardAll" >
                                 <span class="card-title"><span class="display-4"><?=$selectAll[0]->Nb?></span> Clients</span>
@@ -72,7 +72,7 @@ require 'public/dashboard.php';
                 </div>
                 
                 <div class="col-md-3 mt-3">
-                    <a onclick="initMap('versionRB','v6')" <?=$disablev6?>>
+                    <a onclick="initAddons('version','v6')" <?=$disablev6?>>
                         <div class="card">
                             <div class="card-header text-left cardDashboard cardv6">
                                 <span class="card-title"><span class="display-4"><?=$selectV6[0]->Nb?></span> Clients</span>
@@ -86,7 +86,7 @@ require 'public/dashboard.php';
                 </div>
                 
                 <div class="col-md-3 mt-3">
-                    <a onclick="initMap('versionRB','v7')" <?=$disablev7?>>
+                    <a onclick="initAddons('version','v7')" <?=$disablev7?>>
                         <div class="card">
                             <div class="card-header text-left cardDashboard cardv7" >
                                 <span class="card-title"><span class="display-4"><?=$selectV7[0]->Nb?></span> Clients</span>
@@ -100,7 +100,7 @@ require 'public/dashboard.php';
                     </a> 
                 </div>
                 <div class="col-md-3 mt-3">
-                    <a onclick="initMap('versionRB','v8')" <?=$disablev8?>>
+                    <a onclick="initAddons('version','v8')" <?=$disablev8?>>
                         <div class="card">
                             <div class="card-header text-left cardDashboard cardv8" >
                                 <span class="card-title"><span class="display-4"><?=$selectV8[0]->Nb?></span> Clients</span>
@@ -116,7 +116,7 @@ require 'public/dashboard.php';
                 <!--Activité-->
                 
                 <div class="col-md-3 mt-3">
-                    <a onclick="initMap('activityRB','ris')" <?=$disableRis?>>
+                    <a onclick="initAddons('activity','ris')" <?=$disableRis?>>
                         <div class="card">
                             <div class="card-header text-left cardDashboard cardRis" >
                                 <span class="card-title"><span class="display-4"><?=$selectRis[0]->Nb?></span> Clients</span>
@@ -129,7 +129,7 @@ require 'public/dashboard.php';
                     </a>
                 </div>
                 <div class="col-md-3 mt-3">
-                    <a onclick="initMap('activityRB','pacs')" <?=$disablePacs?>>
+                    <a onclick="initAddons('activity','pacs')" <?=$disablePacs?>>
                         <div class="card">
                             <div class="card-header text-left cardDashboard cardPacs" >
                                 <span class="card-title"><span class="display-4"><?=$selectPacs[0]->Nb?></span> Clients</span>
@@ -142,7 +142,7 @@ require 'public/dashboard.php';
                     </a>
                 </div>
                 <div class="col-md-3 mt-3">
-                    <a onclick="initMap('activityRB','rispacs')" <?=$disableRisPacs?>>
+                    <a onclick="initAddons('activity','rispacs')" <?=$disableRisPacs?>>
                         <div class="card">
                             <div class="card-header text-left cardDashboard cardRisPacs" >
                                 <span class="card-title"><span class="display-4"><?=$selectRisPacs[0]->Nb?></span> Clients</span>
@@ -155,7 +155,7 @@ require 'public/dashboard.php';
                     </a>
                 </div>
                 <div class="col-md-3 mt-3">
-                    <a onclick="initMap('activityRB','nada')" <?=$disableNone?>>
+                    <a onclick="initAddons('activity','nada')" <?=$disableNone?>>
                         <div class="card">
                             <div class="card-header text-left cardDashboard cardNone" >
                                 <span class="card-title"><span class="display-4"><?=$selectNone[0]->Nb?></span> Clients</span>
@@ -168,11 +168,29 @@ require 'public/dashboard.php';
                     </a>
                 </div>
                 <!--map-->
-                <div class="d-flex flex-flow col-md-12">
-                <div id="map" class="col-md-6 card mt-3 d-none" style="height: 450px; "></div>
-                <div class="col-md-6 card mt-3" style="background:white;height: 50px;">
-                    
-                    
+                <div class="col-md-12" id="addonsDiv" style="display:flex;visibility: hidden">
+                    <div class="col-md-6">
+                        <div id="map" class="card mt-3 " style="height: 450px;"></div>
+                    </div>
+                
+                    <div class="col-md-6 mt-3 align-items-stretch" style="height: 450px; flex-flow: row wrap; display:flex; ">
+                        <div class="col-md-6 card" >
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 card " style="background:grey;">
+                            
+                        </div>
+                        <div class="col-md-6 mt-3 card " style="background:blue;">
+                            
+                        </div>
+                        <div class="col-md-6 mt-3 card" style="background:red;">
+                            
+                        </div>
+                    </div>
                 </div>
                 
                 
@@ -184,14 +202,18 @@ require 'public/dashboard.php';
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo_lLa3e8UeMBQdc6EYS5Wbw7udYxl3_o"></script>
 
+        <script src="./public/js/chartjs.min.js"></script>
         <script src="./public/js/yoda_style.js"></script>
         <script src="./public/js/yoda_action.js"></script>
         <script src="./public/js/searchBar.js"></script>
         <script src="./public/js/displayPhones.js"></script>
         <script src="./public/js/filters.js"></script>
         <script src="./public/js/mapsIndex.js"></script>
-        
-        
+        <script src="./public/js/chartIndex.js"></script>
+        <script src="./public/js/initAddons.js"></script>
+       
+       
+                     
     </body>
 
 </html>

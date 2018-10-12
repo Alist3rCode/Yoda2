@@ -4,3 +4,4 @@ require '../class/Autoloader.php';
 Autoloader::register();
 
 $bdd = new Database('yoda');
+$bdd2 = new Database('ecsupgrader');

@@ -17,46 +17,36 @@ var filter = 0;
 
 
 $('input[type=radio][name=filter]').change(function() {
-    if (this.id == 'aucunRB') {
+    if (this.id == 'aucun') {
          filter = 0;
-         initMap('aucunRB','all');
+         initMap('aucun','all');
     }
-    else if (this.id == 'versionRB') {
+    else if (this.id == 'version') {
 
         filter = 1;
-        initMap('versionRB','all');
+        initMap('version','all');
     }
-    else if (this.id == 'activityRB') {
+    else if (this.id == 'activity') {
 
         filter = 1;
-        initMap('activityRB','all');
+        initMap('activity','all');
     }
 });   
 
 
 
 function firstUpper(string) {
-    $('#map').removeClass('d-none');
+    
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function initMap(RB,search) {
+function initMap(RB) {
 
 var map = new google.maps.Map(document.getElementById('map'), {
   center: new google.maps.LatLng(30,0),
   zoom: 3
 });
 var infoWindow = new google.maps.InfoWindow;
-
-$.ajax({
-        method: "GET",
-        url: "ajax/CreateXML.php?search="+search,
-        dataType : "JSON",
-        async: false,
-        success: function(json) {
-           console.log(json)
-        }
-    });
 
   // Change this depending on the name of your PHP or XML file
   downloadUrl('./address.xml' , function(data) {
@@ -83,16 +73,16 @@ $.ajax({
       text.textContent = address
       infowincontent.appendChild(text);
 
-      if (RB== null || RB == 'aucunRB') {
+      if (RB== null || RB == 'aucun') {
          filter = 0;
 
         }
-        else if (RB == 'versionRB') {
+        else if (RB == 'version') {
              var icon = customLabelVers[version] || {};
             filter = 1;
 
         }
-        else if (RB == 'activityRB') {
+        else if (RB == 'activity') {
             var icon = customLabelActi[activity] || {};
             filter = 1;
 

@@ -25,13 +25,16 @@ class Database{
      * @return type PDO
      * Connecte la base de donnée et retourne un objet de type PDO
      */
-    private function getPDO($db_pass = '', $db_name = 'yoda', $db_user = 'root'){  
+    private function getPDO(){  
+        
+        $db_name = $this->db_name;
+        $db_user = $this->db_user;
+        $db_pass = $this->db_pass;
         if ($this->pdo == null){
             $pdo = new PDO('mysql:dbname='. $db_name.';charset=UTF8;host=localhost',$db_user,$db_pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo = $pdo;
         }          
-        
         return $this->pdo;
     }
     

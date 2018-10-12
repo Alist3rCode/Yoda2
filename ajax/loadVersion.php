@@ -14,66 +14,45 @@ $color = '';
 $array = [];
 
 
-foreach($bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_ID ="' . $i . '"','Clients') as $client):?>
-<?php
+foreach($bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_ID ="' . $i . '"','Clients') as $client):
 
           
-//    while ($query = $select->fetch()){
-//        $uid = $query['CLI_UID'];
-//        $versionUview = $query['CLI_UVIEW'];
-//        $versionView = $query['CLI_VIEW'];
-//    }
-//    // echo $uid;
-//if ($uid == ''){
-//    $select = $bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_ID ="' . $i . '"');
-//                    
-//        while ($query = $select->fetch()){
-//            $version = $query['CLI_NUM_VERSION'];
-//            
-//        }
-//        
-//}else{
-//    
-//    $select = $bdd2->query('SELECT * FROM wrk_client where wrk_client.uid = "' . $uid . '"');
-//                    
-//    while ($query = $select->fetch()){
-//        $version = $query['version'] . '.' . $query['hotfix'];
-//    }
-//    
-//    // $select2 = $bdd2->query('SELECT wrk_deploy.confirmed_at, wrk_hotfix.number, wrk_release.version  FROM `wrk_deploy` 
-//    //                         JOIN wrk_client on wrk_client.id = wrk_deploy.client_id 
-//    //                         left join wrk_hotfix on wrk_hotfix.id = wrk_deploy.hotfix_id 
-//    //                         left join wrk_release on wrk_release.id = wrk_deploy.release_id WHERE wrk_client.uid ="' . $uid . '"
-//    //                         order by confirmed_at desc, version desc, number desc
-//    //                         LIMIT 10');
-//    
-//    
-//    $select2 = $bdd2->query('SELECT * FROM `logs` WHERE uid ="' . $uid . '" AND performed_action <> "session_poke" order by inserted_at DESC LIMIT 10');
-//                        
-//        while ($query = $select2->fetch()){
-//            // echo '<pre>';
-//            // print_r($query);
-//            // echo '</pre>';
-//            
-//            $release = $query['local_version'] . '.' . $query['local_hotfix'];
-//            
-//            
-//            $date = strtotime( $query['inserted_at'] );
-//            $date2 = date( 'd-m-Y H:i:s', $date);
-//            // echo $date2;
-//// 
-//            $historique = $historique . '<em>' . $date2 .  '</em> : <strong style="color:#87cdf1">' . $release  . '</strong><br>';
-//        }
-//
-//
-//// echo $historique;
-
-if ($_REQUEST['mode'] === 'display'):?>
+if ($client->CLI_UID == ''){
+    $select = $bdd->queryObj('SELECT CLI_NUM_VERSION FROM YDA_CLIENT WHERE CLI_ID ="' . $i . '"');
+    $version = $select[0]->CLI_NUM_VERSION;
+               
+}else{
     
-   <?php if(trim($client->CLI_VIEW)!= ''){echo "<p>Version View : <strong style='color:white;'>".$client->CLI_VIEW."</strong></p>";}
-    if(trim($client->CLI_UVIEW)!= ''){echo "<p>Version uView : <strong style='color:white;'>".$client->CLI_UVIEW."</strong></p>";}?>
+    $select = $bdd2->queryObj('SELECT * FROM wrk_client where wrk_client.uid = "' . $client->CLI_UID . '"');
+                    
+    $version = $select->version . '.' . $select->hotfix;
+    
+    $select2 = $bdd2->queryObj('SELECT * FROM `logs` WHERE uid ="' . $client->CLI_UID . '" AND performed_action <> "session_poke" order by inserted_at DESC LIMIT 10');
+              
+    foreach($select2 as $key => $value){
+            $release = $value->local_version . '.' . $value->local_hotfix;
+            
+            
+            $date = strtotime( $value->inserted_at );
+            $date2 = date( 'd-m-Y H:i:s', $date);
+            // echo $date2;
+// 
+            $historique = $historique . '<em>' . $date2 .  '</em> : <strong style="color:#87cdf1">' . $release  . '</strong><br>';
+    }
+}
 
-    <p>Version Imaging : <strong style='color:<?=$client->colorVersion();?>'><?=$client->CLI_NUM_VERSION?></strong></p>
+if ($_REQUEST['mode'] === 'display'):
+    
+   if(trim($client->CLI_VIEW)!= ''){
+       echo "<p>Version View : <strong style='color:white;'>".$client->CLI_VIEW."</strong></p>";
+       
+   }
+    if(trim($client->CLI_UVIEW)!= ''){
+        echo "<p>Version uView : <strong style='color:white;'>".$client->CLI_UVIEW."</strong></p>";
+        
+    }?>
+
+    <p>Version Imaging : <strong style='color:<?=$client->colorVersion();?>'><?=$version?></strong></p>
     <?php if($historique != ''):?>
     <p>Historique : <br>
     <?=$historique;?>

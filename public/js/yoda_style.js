@@ -4,7 +4,6 @@ function ucFirst(string) {
 
 
 $(".vignette").click(function(e){  
-    console.log(e);
     if ($(e.target).hasClass('version') || $(e.target).hasClass('tag') || $(e.target).hasClass('hr') || $(e.target).hasClass('spanVersion')){
         flip($(this)[0].id);
     }else if ($(e.target).hasClass('infoClientBack') || $(e.target).hasClass('back')){
