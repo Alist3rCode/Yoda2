@@ -196,7 +196,7 @@ $("#createAccount").click(function(evt) {
                         passwordConfirm.value = '';
                         defaultPage.value = '0';
 
-                        $.post("ajax/notif/notifMailNewAccount.php", {
+                        $.post("ajax/notifMailNewAccount.php", {
                             id: retour['id'],
                             password: password.value
                         });
@@ -222,7 +222,7 @@ $("#resetPassword").click(function(evt) {
     },
     function(retour) {
         if (retour === 'WELCOME' || retour === 'WAIT') {
-            $.post("ajax/notif/resetPassword.php", {
+            $.post("ajax/resetPassword.php", {
                 numbers: true,
                 mini: true,
                 maj: true,
@@ -350,78 +350,9 @@ $("#updateProfil").click(function(evt) {
 	}
 });
 
-$("#resetProfil").click(function(evt) {
-	evt.preventDefault();
-	var name = document.getElementById('updateName');
-	var lastName = document.getElementById('updateLastName');
-	var email = document.getElementById('updateEmail');
-	var password = document.getElementById('updatePassword');
-	var passwordConfirm = document.getElementById('updateConfirmPassword');
-	var page = document.getElementById('updatePage');
-	var id_user = document.getElementById('id_user').innerHTML;
 
-	$.post("ajax/loadUser.php", {
-			id: id_user
-		},
-		function(retour) {
 
-			name.value = capFirst(retour['name']);
-			lastName.value = capFirst(retour['lastName']);
-			email.value = retour['email'];
-			page.value = retour["page"];
-			password.value = '';
-			passwordConfirm.value = '';
-
-		});
-});
-
-$("#actifUser").click(function(evt) {
-	if (document.getElementById('droitActifUser').innerHTML == 'OK') {
-
-		var active = 2;
-		var id_user = document.getElementById('selectedUser').innerHTML;
-		console.log(id_user);
-
-		if (this.classList.contains('active')) {
-			this.classList.remove('active');
-			this.classList.add('d-none');
-			document.getElementById('desactifUser').classList.add('active');
-			document.getElementById('desactifUser').classList.remove('d-none');
-			active = 0;
-
-		}
-		else if (!this.classList.contains('active')) {
-			this.classList.add('active');
-			active = 2;
-		}
-		console.log(active);
-		$.post("ajax/updateProfil.php", {
-				id: id_user,
-				actif: active,
-				mode: 'active'
-			},
-			function(retour) {
-				if (retour == 'ok' && active == 2) {
-
-					$("#confirmAdminModif").html("L'utilisateur a bien été activé");
-					$("#confirmAdminModif").fadeTo(3000, 500).slideUp(500, function() {
-						$("#confirmAdminModif").slideUp(500);
-					});
-					 
-					$.post("ajax/notifMailActiveAccount.php", {
-        				id: id_user	});
-					
-				}
-				else if (retour == 'ok' && active == 0) {
-
-					$("#confirmAdminModif").html("L'utilisateur a bien été désactivé");
-					$("#confirmAdminModif").fadeTo(3000, 500).slideUp(500, function() {
-						$("#confirmAdminModif").slideUp(500);
-					});
-				}
-			});
-	}
-});
+//Je m'arrete ici
 
 $("#desactifUser").click(function(evt) {
 	if (document.getElementById('droitActifUser').innerHTML == 'OK') {

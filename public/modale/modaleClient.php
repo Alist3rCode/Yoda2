@@ -8,6 +8,19 @@
 
         <div class="modal-body row modaleClientBackground">
             <div class="col-4 colInfoClient">
+                <div class="col-md-12 ">
+                    <div class="vignette v8 mx-auto" id="vignetteDemo">   
+                        <a href="#">
+                            <div class="infoClient">
+                                <p class="ville v8 text-capitalize" id="villeDemo"></p>
+
+                                <p class="nom text-capitalize" id="nomDemo"></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                
                 <div class="form-control infoClientModale" id="formulaire">
                     <input class="form-control spaceInput col-6" type="text" id="ville" placeholder="Ville..." autocomplete="nope">
                     <input class="form-control spaceInput col-6" type="text" id="nom" placeholder="Site Principal..." autocomplete="nope" >

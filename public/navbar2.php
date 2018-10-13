@@ -12,7 +12,7 @@ $selectName = $bdd->queryObj('SELECT USR_FIRST_NAME, '
         <img src="public/img/yoda.png">
     </span>
     <div class="collapse navbar-collapse col-11" id="navbarSupportedContent">
-        <span class="text-capitalize mx-auto" ><h3>Bienvenue <?=$selectName[0]->USR_FIRST_NAME?> <?=$selectName[0]->USR_NAME?></h3></span>
+        <span class="text-capitalize mx-auto" ><h3><i class="fab fa-jedi-order"></i> Bienvenue <?=$selectName[0]->USR_FIRST_NAME?> <?=$selectName[0]->USR_NAME?></h3></span>
         <div class="dateTime text-capitalize">
             <div class="date" id="date">
                 <div id="startDate" class="startDate h3 text-center"></div>

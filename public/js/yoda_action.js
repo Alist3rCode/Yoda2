@@ -13,13 +13,30 @@ $('[data-toggle="tooltip"]').each(function(index, element){
 });
 
 
+$('#ville').keyup(function(){
+    $('#villeDemo').html($('#ville').val());
+    
+});
+
+$('#nom').keyup(function(){
+    
+    $('#nomDemo').html($('#nom').val());
+    
+});
+
+
 function clickModaleVersion(version){
     v = version?version:'v7';
     
     $('.versionModale button').removeClass('active');
     $('#'+v+'Button').addClass('active');
-
+    $('#vignetteDemo').removeClass('v6 v7 v8');
+    $('#vignetteDemo').addClass(version);
+    $('#villeDemo').removeClass('v6 v7 v8');
+    $('#villeDemo').addClass(version);
 }
+
+
 
 function clickModaleActivity(activity){
     if (activity){
@@ -38,9 +55,11 @@ function clickModaleActivity(activity){
 
 $('#modaleClient').on('hidden.bs.modal', function (e) {
     
-    $( "#modaleClient" ).load( "public/modaleClient.php" );
+    $( "#modaleClient" ).load( "public/modale/modaleClient.php" );
     
 });
+
+
 
 
 function newPhone(i) {
@@ -244,6 +263,10 @@ function modif(i){
         ville.val(ucFirst(json[0].CLI_VILLE));
         nom.val(ucFirst(json[0].CLI_NOM));
         url.val(json[0].CLI_URL);
+        
+        $('#villeDemo').html($('#ville').val());
+        $('#nomDemo').html($('#nom').val());
+        
        
         
         var nbTag = json[0].linearTag.length;
@@ -512,7 +535,7 @@ function createCustomer(){
                 result = JSON.parse(ok);
                 if(result.result === 'ok'){
                     displayAlert('alerte','success','Le client a bien été ajouté avec l\'ID ' + result.id);
-                    $.post("ajax/notif/notifMailCreateCustomer.php", 
+                    $.post("ajax/notifMailCreateCustomer.php", 
                     {id: result.id, idUser : idUser});
                     $('#modaleClient').modal('hide');
                     $('.collapsePhone').remove();
@@ -563,7 +586,7 @@ function modifCustomer(){
                  'tag': array['tag'],
                  'imagingVersion': array['imagingVersion']
                 });
-                $.post("ajax/notif/notifMailModifCustomer.php", 
+                $.post("ajax/notifMailModifCustomer.php", 
                 {avant: result.avant, apres: result.apres, idUser : idUser}); 
             }else{
                 console.log(result);
