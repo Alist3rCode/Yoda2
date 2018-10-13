@@ -1,18 +1,26 @@
+<?php
+
+$selectName = $bdd->queryObj('SELECT USR_FIRST_NAME, '
+        . 'USR_NAME '
+        . 'FROM YDA_USERS '
+        . 'WHERE USR_ID = "'.$_SESSION["id_user"].'"');
+
+?>
+
 <nav class=" menu navbar navbar-expand-lg">
     <span class="logo col-1">
         <img src="public/img/yoda.png">
     </span>
     <div class="collapse navbar-collapse col-11" id="navbarSupportedContent">
+        <span class="text-capitalize mx-auto" ><h3>Bienvenue <?=$selectName[0]->USR_FIRST_NAME?> <?=$selectName[0]->USR_NAME?></h3></span>
+        <div class="dateTime text-capitalize">
+            <div class="date" id="date">
+                <div id="startDate" class="startDate h3 text-center"></div>
+                <div class="year display-1 text-center" id="year"></div>
+            </div>
+            <div class="time text-center" id="time"></div>
         
-       <div class="dateTime text-capitalize">
-        <div class="date" id="date">
-            <div id="startDate" class="startDate h3 text-center"></div>
-            <div class="year display-1 text-center" id="year"></div>
         </div>
-        <div class="time text-center" id="time"></div>
-        
-        
-    </div>
     </div>
 </nav>
 <script>

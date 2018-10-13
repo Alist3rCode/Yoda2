@@ -48,7 +48,7 @@ require 'public/dashboard.php';
     </head>
     <body>
         
-        <div id='idUser' class="d-none">1</div>
+        <div id='idUser' class="d-none"><?=$_SESSION['id_user']?></div>
         
         
         <div class="content">

@@ -51,7 +51,7 @@ checkCookie($bdd,'yoda.php');
         $rightTV = 'd-none';
         ?>
         <div id='rightTV' class="d-none"><?=$rightTV?></div>
-        <div id='idUser' class="d-none">1</div>
+        <div id='idUser' class="d-none"><?=$_SESSION['id_user']?></div>
         <div id="filter" class="d-none" >none</div>
         
         <div class="content">
