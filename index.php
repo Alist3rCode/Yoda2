@@ -155,7 +155,7 @@ require 'public/dashboard.php';
                     </a>
                 </div>
                 <div class="col-md-3 mt-3">
-                    <a onclick="initAddons('activity','nada')" <?=$disableNone?>>
+                    <a onclick="initAddons('activity','none')" <?=$disableNone?>>
                         <div class="card">
                             <div class="card-header text-left cardDashboard cardNone" >
                                 <span class="card-title"><span class="display-4"><?=$selectNone[0]->Nb?></span> Clients</span>
@@ -200,20 +200,14 @@ require 'public/dashboard.php';
                                 </div>
                             </div>                            
                         </div>
-                        <div class="col-md-6 mt-3" style="height: 50%;padding-left:0;background:red;">
+                        <div class="col-md-12 mt-3" style="height: 50%;padding:0;">
                             <div class="card" >
-                                <div class="card-body">
-                                    
+                                <div class="card-body text-center text-muted">
+                                    <a href='yoda.php'>Accéder aux clients</a>
                                 </div>
                             </div>                            
                         </div>
-                        <div class="col-md-6 mt-3" style="height: 50%;background:green;padding-right:0">
-                            <div class="card" >
-                                <div class="card-body">
-                                    
-                                </div>
-                            </div>                            
-                        </div>
+                        
                     </div>
                 </div>
                 

@@ -1,6 +1,6 @@
 
 var customLabelActi = {
-    nada: { icon: './public/img/greyPin.png'},
+    none: { icon: './public/img/greyPin.png'},
     ris: { icon: './public/img/redPin.png'},
     pacs: { icon: './public/img/greenPin.png' },
     rispacs: { icon: './public/img/purplePin.png' },
