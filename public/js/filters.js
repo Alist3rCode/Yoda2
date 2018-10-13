@@ -344,7 +344,7 @@ $('#validFilterModale').click(function (e) {
        
     });
     if(arrayFilterVersion.length === 0 || arrayFilterActivity.length === 0 ){
-        displayAlertModaleFilter('danger','Merci de saisir au moins une version et une activité');
+        displayAlert('alerteFilter','danger','Merci de saisir au moins une version et une activité');
         console.log('imin')
     }else{
         arrayVersion.push(arrayFilterVersion);
@@ -361,13 +361,3 @@ $('#validFilterModale').click(function (e) {
 });
 
 
-function displayAlertModaleFilter(type,message){
-    $("#alerteFilter").html(message);
-    $('#alerteFilter').addClass('alert-'+type);
-    $("#alerteFilter").removeClass('d-none');
-    $("#alerteFilter").fadeTo(3000, 500).slideUp(500, function() {
-        $("#alerteFilter").slideUp(500);
-        $("#alerteFilter").addClass('d-none');
-        $('#alerteFilter').removeClass('alert-'+type);
-    });
-}

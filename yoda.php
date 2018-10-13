@@ -1,14 +1,19 @@
 <?php
+session_start();
+
 header('Content-Type: text/html; charset=utf-8');
 require 'class/Autoloader.php';
 Autoloader::register();
 
 $bdd = new Database('yoda');
 $bdd2 = new Database('ecsupgrader');
+
+require_once('./class/checkCookie.php');
+checkCookie($bdd,'yoda.php');
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
     <head>
         
         <!-- Required meta tags -->
@@ -122,10 +127,10 @@ $bdd2 = new Database('ecsupgrader');
             </div>
         </div>
         <div class="modal fade " id="modaleClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-        <?php require 'public/modaleClient.php'; ?>
+        <?php require 'public/modale/modaleClient.php'; ?>
         </div>
         <div class="modal fade" id="ModaleFilter" tabindex="-1" role="dialog" aria-labelledby="filterModale" aria-hidden="true">
-        <?php require "public/filterModale.php"; ?>
+        <?php require "public/modale/filterModale.php"; ?>
         </div>
 
         <!-- Optional JavaScript -->
@@ -133,6 +138,7 @@ $bdd2 = new Database('ecsupgrader');
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="./public/js/yoda_style.js"></script>
+        <script src="./public/js/displayAlert.js"></script>
         <script src="./public/js/yoda_action.js"></script>
         <script src="./public/js/searchBar.js"></script>
         <script src="./public/js/displayPhones.js"></script>

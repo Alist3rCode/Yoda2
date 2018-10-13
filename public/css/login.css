@@ -1,0 +1,43 @@
+.login{
+     width: 25%;
+     margin-top:200px;
+}
+
+.loginInput{    
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #FFF;
+    background-clip: padding-box;
+    border : 0px;
+    border-bottom: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-bottom : 15px;
+}
+
+.loginInput:focus{    
+    border-bottom: 2px solid forestgreen;
+    outline: none;
+}
+
+
+
+
+
+
+.cardInput{
+    background:#FFF!important;
+}
+
+.iconLogin{
+    padding-top:7px;
+    padding-right:5px;
+}
+
+.headLogin{
+    background-color: #cacaca;
+    border-radius: 0!important;
+}

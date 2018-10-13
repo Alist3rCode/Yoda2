@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 header('Content-Type: text/html; charset=utf-8');
 require 'class/Autoloader.php';
 Autoloader::register();
@@ -6,11 +8,15 @@ Autoloader::register();
 $bdd = new Database('yoda');
 $bdd2 = new Database('ecsupgrader');
 
+require_once('./class/checkCookie.php');
+checkCookie($bdd,'index.php');
+
+
 require 'public/dashboard.php';
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
     <head>
         
         <!-- Required meta tags -->
@@ -41,12 +47,9 @@ require 'public/dashboard.php';
 
     </head>
     <body>
-        <?php
-        $rightTV = 'd-none';
-        ?>
-        <div id='rightTV' class="d-none"><?=$rightTV?></div>
+        
         <div id='idUser' class="d-none">1</div>
-        <div id="filter" class="d-none" >none</div>
+        
         
         <div class="content">
             
@@ -237,7 +240,8 @@ require 'public/dashboard.php';
         <script src="./public/js/mapsIndex.js"></script>
         <script src="./public/js/chartIndex.js"></script>
         <script src="./public/js/initAddons.js"></script>
-        
+        <script src="./public/js/displayAlert.js"></script>
+
        
        
                      

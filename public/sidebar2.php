@@ -64,7 +64,7 @@
                 </a>
             </li>
             <li>
-                <a href="publc/logout.php" >
+                <a href="public/logout.php" >
                     <i class="fas fa-sign-out-alt" style="color:red!important"></i>
                     <span class="sidebarLabel" > Déconnexion</span> 
                 </a>

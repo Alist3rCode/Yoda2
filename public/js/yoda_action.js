@@ -462,7 +462,7 @@ function control_form(mode) {
     
     if (flag === 1 && mode !== 'suppr') {
         flag = '';
-        displayAlertModale('danger',errors.join("<br>"));
+        displayAlert('alerte','danger',errors.join("<br>"));
         return {
             'ok' : 0,
             'error': errors
@@ -511,9 +511,9 @@ function createCustomer(){
             function(ok){
                 result = JSON.parse(ok);
                 if(result.result === 'ok'){
-                    displayAlertModale('success','Le client a bien été ajouté avec l\'ID ' + result.id);
-//                    $.post("ajax/notifMailCreateCustomer.php", 
-//                    {id: result.id, idUser : idUser});
+                    displayAlert('alerte','success','Le client a bien été ajouté avec l\'ID ' + result.id);
+                    $.post("ajax/notif/notifMailCreateCustomer.php", 
+                    {id: result.id, idUser : idUser});
                     $('#modaleClient').modal('hide');
                     $('.collapsePhone').remove();
                     $('<div class="pulse vignette '+ array['version']+'" id="vignette_'+result.id +'">').insertAfter('#' + findPlaceNewCustomer(array['ville'],array['nom']));
@@ -548,7 +548,7 @@ function modifCustomer(){
             result = JSON.parse(ok);
             console.log(array['id']);
             if(result.ok === 'ok'){
-                displayAlertModale('success','Le client a bien été modifié, un mail de confirmer a été envoyé aux personnes abonnées.');
+                displayAlert('alerte','success','Le client a bien été modifié, un mail de confirmer a été envoyé aux personnes abonnées.');
                 $('#modaleClient').modal('hide');
                 $('.collapsePhone').remove();
                 $('#vignette_'+ array['id']).empty();
@@ -563,8 +563,8 @@ function modifCustomer(){
                  'tag': array['tag'],
                  'imagingVersion': array['imagingVersion']
                 });
-//                  $.post("ajax/notifMailModifCustomer.php", 
-//                    {avant: result.avant, apres: result.apres, idUser : idUser}); 
+                $.post("ajax/notif/notifMailModifCustomer.php", 
+                {avant: result.avant, apres: result.apres, idUser : idUser}); 
             }else{
                 console.log(result);
             }
@@ -583,7 +583,7 @@ function deleteCustomer(){
             {array}, 
             function(ok){
                 if(ok === 'ok'){
-                    displayAlertModale('success','Le client a bien été supprimée, vous allez être redirigé.');
+                    displayAlert('alerte','success','Le client a bien été supprimée, vous allez être redirigé.');
                     setTimeout(function(){
                         location.reload();
                     },3000);
