@@ -169,26 +169,50 @@ require 'public/dashboard.php';
                 </div>
                 <!--map-->
                 <div class="col-md-12" id="addonsDiv" style="display:flex;visibility: hidden">
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="padding-left:0;">
                         <div id="map" class="card mt-3 " style="height: 450px;"></div>
                     </div>
                 
-                    <div class="col-md-6 mt-3 align-items-stretch" style="height: 450px; flex-flow: row wrap; display:flex; ">
-                        <div class="col-md-6 card" >
-                            <div class="card-body">
-                                <div class="chart-area" id='lineChartArea'>
-                                    <canvas id="lineChart"></canvas>
+                    <div class="col-md-6 mt-3 align-items-stretch d-flex flex-row flex-wrap justify-content-between" style="height: 450px;padding-right:0;">
+                        <div class="col-md-6" style="height: 50%;padding-left:0;">
+                            <div class="card" >
+                                <div class="card-body">
+                                    <div class="chart-area" id='lineChartArea'>
+                                        <canvas id="lineChart"></canvas>
+                                    </div>
+                                    <div class=" text-muted text-center">
+                                        <p class="card-text" id="infoChart"></p>
+                                    </div>
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
-                        <div class="col-md-6 card " style="background:grey;">
-                            
+                        <div class="col-md-6" style="height: 50%;padding-right:0">
+                            <div class="card" >
+                                <div class="card-body">
+                                    <div class="chart-area" id="pieChartArea">
+  
+                                        <div class="flot-chart-content" id="flot-pie-chart" style="height: 150px;"></div>
+          
+                                    </div>
+                                    <div class=" text-muted text-center">
+                                        <p class="card-text" id="infoPieChart"></p>
+                                    </div>
+                                </div>
+                            </div>                            
                         </div>
-                        <div class="col-md-6 mt-3 card " style="background:blue;">
-                            
+                        <div class="col-md-6 mt-3" style="height: 50%;padding-left:0;background:red;">
+                            <div class="card" >
+                                <div class="card-body">
+                                    
+                                </div>
+                            </div>                            
                         </div>
-                        <div class="col-md-6 mt-3 card" style="background:red;">
-                            
+                        <div class="col-md-6 mt-3" style="height: 50%;background:green;padding-right:0">
+                            <div class="card" >
+                                <div class="card-body">
+                                    
+                                </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>
@@ -202,6 +226,14 @@ require 'public/dashboard.php';
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo_lLa3e8UeMBQdc6EYS5Wbw7udYxl3_o"></script>
 
+        <!--Flot chart JS-->
+        <script src="./public/js/flot/excanvas.min.js"></script>
+        <script src="./public/js/flot/jquery.flot.js"></script>
+        <script src="./public/js/flot/jquery.flot.pie.js"></script>
+        <script src="./public/js/flot/jquery.flot.resize.js"></script>
+        <script src="./public/js/flot/jquery.flot.time.js"></script>
+        <script src="./public/js/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+        
         <script src="./public/js/chartjs.min.js"></script>
         <script src="./public/js/yoda_style.js"></script>
         <script src="./public/js/yoda_action.js"></script>
@@ -211,6 +243,7 @@ require 'public/dashboard.php';
         <script src="./public/js/mapsIndex.js"></script>
         <script src="./public/js/chartIndex.js"></script>
         <script src="./public/js/initAddons.js"></script>
+        
        
        
                      
