@@ -352,6 +352,11 @@ function control_form(mode) {
         flag = 1;
     }
     
+    if (imagingVersion === '') {
+        errors.push('Merci de renseigner un version de Evolucare Imaging');
+        flag = 1;
+    }
+    
     var match = regexUrl.test(url);
     var match2 = regexUrl2.test(url);
 

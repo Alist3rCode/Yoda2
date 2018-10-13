@@ -1,5 +1,5 @@
 <?php
-if(isset($_REQUEST["id_user"]) && $_REQUEST["id_user"] != ''){
+if(isset($_SESSION["id_user"]) && $_SESSION["id_user"] != ''){
     $selectName = $bdd->queryObj('SELECT USR_FIRST_NAME, '
             . 'USR_NAME '
             . 'FROM YDA_USERS '
