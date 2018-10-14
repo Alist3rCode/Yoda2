@@ -237,7 +237,7 @@ require 'public/dashboard.php';
         <script src="./public/js/searchBar.js"></script>
         <script src="./public/js/displayPhones.js"></script>
         <script src="./public/js/filters.js"></script>
-        <script src="./public/js/mapsIndex.js"></script>
+        <script src="./public/js/maps.js"></script>
         <script src="./public/js/chartIndex.js"></script>
         <script src="./public/js/initAddons.js"></script>
         <script src="./public/js/displayAlert.js"></script>

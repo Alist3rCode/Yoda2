@@ -1,13 +1,6 @@
 function initAddons(type, value){
-    $.ajax({
-        method: "GET",
-        url: "ajax/CreateXML.php?search="+value,
-        dataType : "JSON",
-        async: false,
-        success: function() {
-            
-        }
-    });                
+    
+    createXML(value);
     initMap(type);
     
     var couleur;
@@ -75,10 +68,18 @@ function initAddons(type, value){
     });   
 
     $('#addonsDiv').css('visibility', 'visible');
-
-    
-   
-    
     
 }
-            
+       
+       
+function createXML(value){
+    $.ajax({
+    method: "GET",
+    url: "ajax/CreateXML.php?search="+value,
+    dataType : "JSON",
+    async: false,
+    success: function() {
+
+        }
+    }); 
+}

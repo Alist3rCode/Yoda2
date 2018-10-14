@@ -40,7 +40,7 @@
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
     flex-flow: row wrap;
-    align-content: flex-end;
+    /*align-content: flex-end;*/
     text-align: center;
 }
 

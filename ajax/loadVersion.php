@@ -25,7 +25,7 @@ if ($client->CLI_UID == ''){
     
     $select = $bdd2->queryObj('SELECT * FROM wrk_client where wrk_client.uid = "' . $client->CLI_UID . '"');
                     
-    $version = $select->version . '.' . $select->hotfix;
+    $version = $select[0]->version . '.' . $select[0]->hotfix;
     
     $select2 = $bdd2->queryObj('SELECT * FROM `logs` WHERE uid ="' . $client->CLI_UID . '" AND performed_action <> "session_poke" order by inserted_at DESC LIMIT 10');
               

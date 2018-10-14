@@ -41,7 +41,7 @@ function firstUpper(string) {
 }
 
 function initMap(RB) {
-
+    console.log('imin')
 var map = new google.maps.Map(document.getElementById('map'), {
   center: new google.maps.LatLng(30,0),
   zoom: 3
