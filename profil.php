@@ -20,14 +20,9 @@ require_once './public/fetchInfoUser.php';
     <head>
         
         <!-- Required meta tags -->
-        <meta charset="utf-8">
-        
-        
-        
+        <meta charset="utf-8">       
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        
-        
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
          
@@ -261,18 +256,11 @@ require_once './public/fetchInfoUser.php';
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        
-                                                        
-                                                        
                                                     </div>
                                                 </div>
+                                                <br>
                                             </div>
                                         </div>
-                                        
-                                        
-                                        
-                                        
-                                        
                                         <div id='alertAdminModif' class="alert d-none col-12 text-center" style="margin-top:15px;"></div>
                                         <div id='confirmAdminModif' class="alert d-none col-12 text-center" style="margin-top:15px;"></div>
                                         <div class="col-12" style="margin-bottom:15px;">
@@ -301,7 +289,7 @@ require_once './public/fetchInfoUser.php';
                                         <div class="col-md-8 col-xs-12 dropdown" style='margin-bottom:15px;'>
                                             <input class="form-control rounded-right" id="configNameProfil" type="text" placeholder="Libellé...">
                                         </div>
-                                        <div class="row col-12 mx-auto">
+                                        <div class="row col-12 mx-auto ">
                                             <div class="col-md-6 mx-auto">
                                                 <button type="button" id="selectAllRights" class="btn btn-primary" style="margin-bottom:15px;">
                                                     <i class="fa fa-plus"></i> Tout ajouter
@@ -317,6 +305,7 @@ require_once './public/fetchInfoUser.php';
                                                 </ul>
                                             </div>
                                         </div>
+                                        
                                         <div id='alertProfilModif' class="alert d-none col-12 text-center" style="margin-top:15px;"></div>
                                         <div id='confirmProfilModif' class="alert d-none  col-12 text-center" style="margin-top:15px;"></div>
                                         <div class="col-12" style="margin-bottom:15px;">

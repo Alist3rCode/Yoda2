@@ -35,6 +35,7 @@ foreach($select3 as $key=>$value){
     array_push($array['hook'],$value->HOK_ID_RGT);
 
 }   
+ header("content-type:application/json");
 
 echo json_encode($array);
     

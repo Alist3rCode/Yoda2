@@ -6,7 +6,7 @@ $("#resetProfil").click(function(evt) {
     var password = document.getElementById('updatePassword');
     var passwordConfirm = document.getElementById('updateConfirmPassword');
     var page = document.getElementById('updatePage');
-    var id_user = document.getElementById('id_user').innerHTML;
+    var id_user = document.getElementById('idUser').innerHTML;
 
     $.post("ajax/loadUser.php", {
         id: id_user
@@ -305,6 +305,7 @@ $("#updateAdminProfil").click(function(evt) {
         if (password == '') {
                 password = 'PASTOUCHE';
         }
+        console.log(lastName);
         $.post("ajax/updateProfil.php", {
             id: id_user.innerHTML,
             email: email,
@@ -329,7 +330,7 @@ $("#updateAdminProfil").click(function(evt) {
                 name.value = capFirst(name);
                 lastName.value = capFirst(lastName);
 
-                if (document.getElementById('id_user').innerHTML === document.getElementById('selectedUser').innerHTML) {
+                if (document.getElementById('idUser').innerHTML === document.getElementById('selectedUser').innerHTML) {
                     administratorName.innerHTML = capFirst(lastName);
                 }
 
@@ -342,7 +343,7 @@ $("#updateAdminProfil").click(function(evt) {
                 lastName.value = capFirst(lastName);
                 profilSelected.innerHTML = profil.value;
 
-                if (document.getElementById('id_user').innerHTML == document.getElementById('selectedUser').innerHTML) {
+                if (document.getElementById('idUser').innerHTML == document.getElementById('selectedUser').innerHTML) {
                     administratorName.innerHTML = capFirst(lastName);
                 }
 

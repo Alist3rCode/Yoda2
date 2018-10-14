@@ -30,6 +30,8 @@ if ($_REQUEST['mode'] == 'reset'){
     $surname = $select[0]->USR_SURNAME;
         
     $retour = 'ok';
+    
+   
 }
 
 if ($_REQUEST['mode'] == 'update' && $_REQUEST['id'] != 'NEW'){
@@ -204,8 +206,7 @@ $update = $bdd->prepare('UPDATE YDA_USERS '
         . 'USR_TECH = :isTech, '
         . 'USR_SURNAME = :surname '
         . 'WHERE USR_ID = :id');
-
-
+//var_dump($_REQUEST);
 //var_dump($id, $email, $password, $profil, $name, $firstName, $page, $create, $delete, $isTech, $surname);
     
 $update ->execute(array(
