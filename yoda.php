@@ -10,6 +10,10 @@ $bdd2 = new Database('ecsupgrader');
 
 require_once('./class/checkCookie.php');
 checkCookie($bdd,'yoda.php');
+
+require_once('./class/checkRights.php');
+$right = checkRights($bdd,$_SESSION['id_user']);
+
 ?>
 
 <!doctype html>

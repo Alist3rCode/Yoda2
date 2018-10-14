@@ -4,27 +4,23 @@
     </span>
     <div class="collapse navbar-collapse col-11" id="navbarSupportedContent">
         
-        <?php require 'public/filters.php'?> 
+        <?php require 'public/filters.php';
+       
+        ?> 
             
             
         
         <div class="form-inline my-2 my-lg-0 btn-group" style="width: 330px;">
+            <?php if(in_array("rgt_cod_add_client", $right)):?>
             <button type="button" class="btn btn-success createIcon"  id="create" data-toggle="modal" data-target="#modaleClient">
                 <i class="fa fa-fw fa-plus-circle"></i>
             </button>
+            <?php endif;?>
             <input id="searchBar"  type="text" class="form-control searchBar" placeholder="Recherche...">
             <button class="btn btn-success resetIcon" id="resetSearch" ><i class="fa fa-fw fa-times"></i></button>
         </div>
-                    <button type="button" class="btn btn-outline-secondary"  id="helpMePlease" data-toggle="modal" data-target="#modalHelp" style="margin-left:15px;"><i class="fa fa-fw fa-question-circle"></i></button>
-
-<!--        <div class="input-group btn-group form-inline my-2 my-lg-0" role="group">
-            <?php // if(in_array("rgt_cod_add_client", $right)):?>
-            <button type="button" class="btn btn-outline-success createIcon"  id="create" data-toggle="modal" data-target="#myModal"><i class="fa fa-fw fa-plus-circle"></i></button>
-            <?php // endif;?>
-            <input id="searchBar"  type="text" class="form-control searchBar" placeholder="Recherche...">
-            <button class="btn btn-outline-success " id="resetSearch" ><i class="fa fa-fw fa-times"></i></button>
-        </div>-->
-    </div>
+        <button type="button" class="btn btn-outline-secondary"  id="helpMePlease" data-toggle="modal" data-target="#modalHelp" style="margin-left:15px;"><i class="fa fa-fw fa-question-circle"></i></button>
+     </div>
 </nav>
 
 <div class="modal fade bd-example-modal-lg" id="modalHelp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
