@@ -43,7 +43,7 @@ if ($flag == 0){
 	'page' => $page)) or die(print_r($req->errorInfo()));
 	$array['ok'] = 'ok';
 
-    $array['id'] = $bdd->lastInsertId;
+    $array['id'] = $bdd->lastInsertId();
     
 }else{
     

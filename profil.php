@@ -94,6 +94,9 @@ require_once './public/fetchInfoUser.php';
                                     <span class="iconLogin"><i class="fas fa-at"></i></span>
                                     <input class="loginInput" id="updateEmail" type="email" placeholder="Adresse eMail" value="<?=$mail?>">
                                 </div>
+                                <div class="col-12 text-center text-muted">
+                                        <p>Page par défaut à la connexion : </p>
+                                </div>
                                 <div class="col-12 form-group" id="selectPageUser">
                                     <select class="custom-select" id="updatePage">
                                         <option value="0"<?=$page == '0' ? 'selected' : '';?>>Page par défaut...</option>
@@ -104,7 +107,7 @@ require_once './public/fetchInfoUser.php';
                                     </select>
                                 </div>
 					
-                                <div class="col-12 text-center">
+                                <div class="col-12 text-center text-muted">
                                         <p>Modifier le mot de passe ? </p>
                                 </div>
                                 <div class="col-md-6 d-flex">
@@ -115,8 +118,8 @@ require_once './public/fetchInfoUser.php';
                                     <span class="iconLogin"><i class="fas fa-lock"></i></i></span>
                                     <input class="loginInput" id="updateConfirmPassword" type="password" placeholder="Confirmer Mot de Passe">
                                 </div>
-                                <div id='alertModif' class="alert col-12 text-center" style="margin-top:15px;"></div>
-                                <div id='confirmModif' class="alert col-12 text-center" style="margin-top:15px;"></div>
+                                <div id='alertModif' class="alert d-none col-12 text-center" style="margin-top:15px;"></div>
+                                <div id='confirmModif' class="alert d-none col-12 text-center" style="margin-top:15px;"></div>
                                 <div class="col-12" style="margin-bottom:15px;">
                                     <a href="mdp.php" target="_blank"><button type="button" class="btn btn-info">
                                             Mot de passe aléatoire</button>
@@ -207,58 +210,18 @@ require_once './public/fetchInfoUser.php';
                                             </select>
                                         </div>
                                         <div class="col-12 row" id="isTechnician" style="margin-bottom:15px;">
-                                            <div class="col-md-6" id='planningAccess' style="margin-bottom:15px;">
-                                                Accès Planning Maintenance : 
+                                            
+                                            <div class="col-md-4 col-xs-12" id='technicianQuestion'>
+                                                Technicien Support : 
 
-                                                <button class="btn btn-success  d-none" type="button" id='activePlanning'>
+                                                <button class="btn btn-success  d-none"  type="button" id='isTech'>
                                                     <i class="fa fa-check" style="color:darkGreen;"></i>
                                                 </button>
-                                                <button class="btn btn-danger " type="button" id='desactivePlanning'>
+                                                <button class="btn btn-danger "  type="button" id='isNotTech'>
                                                     <i class="fa fa-times" style="color:darkRed;"></i>
                                                 </button>
                                             </div>
-                                            <div class="col-md-6" id='teamviewerAccess' style="margin-bottom:15px;">
-                                                Accès TeamViewer VM Support : 
-                                
-                                                <button class="btn btn-success  d-none" type="button" id='activeTV'>
-                                                    <i class="fa fa-check" style="color:darkGreen;"></i>
-                                                </button>
-                                                <button class="btn btn-danger " type="button" id='desactiveTV'>
-                                                    <i class="fa fa-times" style="color:darkRed;"></i>
-                                                </button>
-                                            </div>
-                                            <div class="col-12 row" id="technicianPlanningQuestion">
-                                                <div class="col-md-4 col-xs-12" id='technicianQuestion'>
-                                                    Technicien Support : 
-
-                                                    <button class="btn btn-success  d-none" disabled type="button" id='isTech'>
-                                                        <i class="fa fa-check" style="color:darkGreen;"></i>
-                                                    </button>
-                                                    <button class="btn btn-danger " disabled type="button" id='isNotTech'>
-                                                        <i class="fa fa-times" style="color:darkRed;"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-4 col-xs-12" id='ReferringQuestion'>
-                                                    Référent Support : 
-
-                                                    <button class="btn btn-success  d-none" type="button" id='isRef'>
-                                                        <i class="fa fa-check" style="color:darkGreen;"></i>
-                                                    </button>
-                                                    <button class="btn btn-danger " type="button" id='isNotRef'>
-                                                        <i class="fa fa-times" style="color:darkRed;"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-4 col-xs-12" id='DirectingQuestion'>
-                                                    Responsable : 
-
-                                                    <button class="btn btn-success  d-none" type="button" id='isDirection'>
-                                                        <i class="fa fa-check" style="color:darkGreen;"></i>
-                                                    </button>
-                                                    <button class="btn btn-danger " type="button" id='isNotDirection'>
-                                                        <i class="fa fa-times" style="color:darkRed;"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
+                                                
                                         </div>
                                         <div class="col-12 text-center">
                                                 <p>Modifier le mot de passe ?</p>
@@ -269,8 +232,49 @@ require_once './public/fetchInfoUser.php';
                                         <div class="col-md-6 col-12 form-group">
                                                 <input class="form-control" id="updateAdminConfirmPassword" type="password" placeholder="Confirmer Mot de Passe">
                                         </div>
-                                        <div id='alertAdminModif' class="alert col-12 text-center" style="margin-top:15px;"></div>
-                                        <div id='confirmAdminModif' class="alert col-12 text-center" style="margin-top:15px;"></div>
+                                        
+                                        <div class="accordion cardLogin" style="width:100%">
+                                            <div class="card">
+                                                <div class="card-header cardInput" id="headingOne">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                          <i class="fas fa-user-cog"></i> Gestion des Droits
+                                                        </button>
+                                                    </h5>
+                                                </div>
+
+                                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <div class="row col-12 mx-auto">
+                                                            <div class="col-md-6 mx-auto">
+                                                                <button type="button" id="selectAllRightsUser" class="btn btn-primary" style="margin-bottom:15px;">
+                                                                    <i class="fa fa-plus"></i> Tout ajouter
+                                                                </button>
+                                                                <ul class="list-group" id="unselectedRightsUser" style="max-height:30vh; overflow:auto;margin-bottom:15px;">
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-6 mx-auto">
+                                                                <button type="button" id="unselectAllRightsUser" class="btn btn-info" style="margin-bottom:15px;">
+                                                                    <i class="fa fa-undo"></i> Tout retirer</button>
+                                                                <br>
+                                                                <ul class="list-group" id="selectedRightsUser" style="max-height:30vh; overflow:auto;margin-bottom:15px;">
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div id='alertAdminModif' class="alert d-none col-12 text-center" style="margin-top:15px;"></div>
+                                        <div id='confirmAdminModif' class="alert d-none col-12 text-center" style="margin-top:15px;"></div>
                                         <div class="col-12" style="margin-bottom:15px;">
                                             <a href="mdp.php" target="_blank"><button type="button" class="btn btn-info">Mot de passe aléatoire</button></a>
                                             <button type="button" class="btn btn-warning" id="resetAdminProfil">Réinitialiser</button>
@@ -313,8 +317,8 @@ require_once './public/fetchInfoUser.php';
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div id='alertProfilModif' class="alert col-12 text-center" style="margin-top:15px;"></div>
-                                        <div id='confirmProfilModif' class="alert  col-12 text-center" style="margin-top:15px;"></div>
+                                        <div id='alertProfilModif' class="alert d-none col-12 text-center" style="margin-top:15px;"></div>
+                                        <div id='confirmProfilModif' class="alert d-none  col-12 text-center" style="margin-top:15px;"></div>
                                         <div class="col-12" style="margin-bottom:15px;">
                                             <button type="button" class="btn btn-warning" id="resetConfigProfil">Réinitialiser</button>
                                             <button type="button" class="btn btn-success" id="updateConfigProfil">Enregistrer</button>
@@ -337,9 +341,11 @@ require_once './public/fetchInfoUser.php';
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script src="./public/js/yoda_style.js"></script>
+        <script src="./public/js/capFirst.js"></script>
         <script src="./public/js/yoda_action.js"></script>
         <script src="./public/js/displayAlert.js"></script>
         <script src="./public/js/filters.js"></script>
+        <script src="./public/js/login/rights.js"></script>
         <script src="./public/js/login/profil.js"></script>
 
        
