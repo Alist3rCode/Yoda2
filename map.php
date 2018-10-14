@@ -69,7 +69,7 @@ checkCookie($bdd,'map.php');
 		</div>
 		<div class="d-none" id='filterResult'></div>
                 
-                <div class="col-md-12" style="padding-left:0;">
+                <div class="col-md-12">
                     <div id="map" class="card mt-3 " style="height: calc(100vh - 120px);"></div>
                 </div>
                 
