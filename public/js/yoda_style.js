@@ -19,6 +19,7 @@ function flip(elem) {
     element = elem?$('#'+elem):$('.vignette');
     $('.vignette').removeClass('clicked');  
     element.addClass('clicked'); 
+    displayPhones();
 }
      
 /**
@@ -29,6 +30,7 @@ function unflip(elem) {
     element = elem?$('#'+elem):$('.vignette');
     $('.vignette').removeClass('clicked');
     element.removeClass('clicked'); 
+    displayPhones();
 }     
 
 

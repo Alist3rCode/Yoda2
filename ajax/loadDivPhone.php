@@ -1,12 +1,11 @@
 <?php
-
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+session_start();
 
 require_once "ajaxDatabaseInit.php";
 require_once "../class/CalculGPS.php";
-    
+require_once('../class/checkRights.php');
+$right = checkRights($bdd,$_SESSION['id_user']);
+
 $i = $_REQUEST['id'];
 
 $version = $bdd->queryObj('SELECT CLI_VERSION '
@@ -23,11 +22,6 @@ if($version[0]->CLI_VERSION == 'v6'){
     $iconMaps = 'btn-secondary';
     
 }
-
-                               
-$rightTV = $bdd->queryObj('SELECT USR_TEAMVIEWER '
-        . 'FROM YDA_USERS '
-        . 'WHERE USR_ID ="'.$_REQUEST["user"].'"');
 
 $phones = $bdd->queryObj('SELECT * '
         . 'FROM YDA_PHONE '
@@ -85,7 +79,7 @@ $phones = $bdd->queryObj('SELECT * '
                         </button>
                     <?php endif;?>
 
-                    <?php if(trim($phones[$key]->PHO_TV_ID) != '' && $phones[$key]->PHO_TV_ID != 'NULL' && $rightTV[0]->USR_TEAMVIEWER == 1):?>
+                    <?php if(trim($phones[$key]->PHO_TV_ID) != '' && $phones[$key]->PHO_TV_ID != 'NULL' && in_array("rgt_cod_teamviewer", $right)):?>
                     <a href='teamviewer10://control?device=<?=$phones[$key]->PHO_TV_ID;?>' class="rounded-circle">
                             <div style="background:dodgerBlue;width:32px;;height:32px;border-top-right-radius:.2rem;border-bottom-right-radius:.2rem;padding-top:2px;padding-left:2px;" >
                                 <div class="rounded-circle" style="background:white;width:28px;height:28px;">

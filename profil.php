@@ -73,6 +73,19 @@ require_once './public/fetchInfoUser.php';
                                 <div class="col-12">
                                     <p class="text-muted">Que la force soit avec toi.</p>
                                 </div>
+                                <div class="col-md-12" id='technicianQuestion'>
+                                    Theme visuel : 
+
+                                    <button class="btn btn-light <?=$light?>"  type="button" id='lightTheme' onclick="changeTheme('dark')">
+                                        <i class="fab fa-jedi-order"></i>
+                                    </button>
+                                    <button class="btn btn-dark <?=$dark?>"  type="button" id='darkTheme' onclick="changeTheme('light')">
+                                        <i class="fab fa-empire"></i>
+                                    </button>
+                                </div>
+                                
+                                
+                                
                                 <div class="col-md-4 d-flex">
                                     <span class="iconLogin"><i class="fas fa-address-card"></i></span>
                                     <input class="loginInput " id="updateName" type="text" placeholder="Prénom" value="<?=$name?>">

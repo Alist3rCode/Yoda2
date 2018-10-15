@@ -8,10 +8,10 @@ function checkRights($bdd,$idUser){
             . 'WHERE HOK_ID in ( '
                 . 'SELECT HOK_ID '
                 . 'FROM yda_hook '
-                . 'WHERE ((HOK_ID_TYPE = 1 AND HOK_TYPE = "User") '
+                . 'WHERE ((HOK_ID_TYPE ="'.$idUser.'" AND HOK_TYPE = "User") '
                 . 'OR (HOK_ID_TYPE = (SELECT USR_ID_PRO '
                     . 'FROM yda_users '
-                    . 'WHERE USR_ID =1) '
+                    . 'WHERE USR_ID ="'.$idUser.'") '
             . 'AND HOK_TYPE = "Profil")))');
 
     

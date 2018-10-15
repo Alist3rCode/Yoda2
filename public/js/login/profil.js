@@ -610,3 +610,37 @@ $("#desactifProfil").click(function(evt) {
         }
     });
 });
+
+
+function changeTheme(theme){
+    
+    if(theme == 'dark'){
+        $.post("ajax/changeTheme.php", {
+        theme: 'dark',
+        id : document.getElementById('idUser').innerHTML
+        },
+        function(retour) {
+            if (retour == 'ok') {
+                document.querySelector("link[href='./public/css/light.css']").href = "./public/css/dark.css";
+                $('#darkTheme').removeClass('d-none');
+                $('#lightTheme').addClass('d-none');
+            }
+        });
+        
+    }else if(theme == 'light'){
+        $.post("ajax/changeTheme.php", {
+        theme: 'light',
+        id : document.getElementById('idUser').innerHTML
+        },
+        function(retour) {
+            if (retour == 'ok') {
+                document.querySelector("link[href='./public/css/dark.css']").href = "./public/css/light.css";
+                $('#darkTheme').addClass('d-none');
+                $('#lightTheme').removeClass('d-none');
+            }
+        });
+    }
+    
+    
+    
+}

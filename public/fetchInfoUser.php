@@ -14,5 +14,13 @@ if(isset($_SESSION['id_user']) && $_SESSION['id_user'] != ''){
         $lastName = ucfirst($selectUser[0]->USR_NAME);
         $surname = $selectUser[0]->USR_SURNAME;
         $page = $selectUser[0]->USR_PAGE;
+        
+        if($selectUser[0]->USR_THEME == 0){
+            $dark = '';
+            $light = "d-none";
+        }else{
+             $dark = 'd-none';
+            $light = "";
+        }
     
 }

@@ -13,7 +13,6 @@ checkCookie($bdd,'yoda.php');
 
 require_once('./class/checkRights.php');
 $right = checkRights($bdd,$_SESSION['id_user']);
-
 ?>
 
 <!doctype html>
@@ -54,9 +53,7 @@ $right = checkRights($bdd,$_SESSION['id_user']);
         <?php
         $rightTV = 'd-none';
         ?>
-        <div id='rightTV' class="d-none"><?=$rightTV?></div>
         <div id='idUser' class="d-none"><?=$_SESSION['id_user']?></div>
-        <div id="filter" class="d-none" >none</div>
         
         <div class="content">
             

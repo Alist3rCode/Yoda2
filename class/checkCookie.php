@@ -43,7 +43,7 @@ function checkCookie($bdd,$page){
                     )) or die(print_r($bdd->errorCode()));
                 }
             }else{
-                header('Location: logout.php');
+                header('Location: public/logout.php');
             }
         }
             
@@ -53,7 +53,7 @@ function checkCookie($bdd,$page){
 
         }else if(!isset($_SESSION['id_user']) || $_SESSION['id_user'] == ''){
 
-           header('Location: login.php?redirect='.$page);
+           header('Location: public/login.php?redirect='.$page);
 
         }else{
             setcookie('yoda', $_SESSION['id_user'] . '====' . $_SESSION['token'] . '====' . $_SESSION['timeout'], time() + 60 * 60 * 24 * 4);

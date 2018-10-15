@@ -1,5 +1,6 @@
 <?php 
 require_once "ajaxDatabaseInit.php";
+header('Content-Type: text/plain; charset=utf-8');
 
 $id = '';
 $email = '';

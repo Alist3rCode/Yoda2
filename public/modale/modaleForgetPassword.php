@@ -11,7 +11,7 @@
 
         <div class="d-flex col-md-12">
                 
-            <span class="iconLogin"><i class="far fa-address-card"></i></span>
+            <span class="iconLogin"><i class="fas fa-at"></i></span>
             <input class="loginInput" id="forgetEmail" type="email" placeholder="Adresse eMail" autocomplete="nope">
         </div>
         
