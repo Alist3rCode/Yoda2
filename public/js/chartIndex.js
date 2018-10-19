@@ -189,7 +189,7 @@ demo = {
     gradientFill.addColorStop(1, hexToRGB(couleurGraph, 0.4));
 
     myChart = new Chart(ctx, {
-      type: 'line',
+      type: 'bar',
       responsive: true,
       data: {
         labels: arrayAjax['version'],

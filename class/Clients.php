@@ -61,5 +61,14 @@ class Clients{
         return $colorVersion;
     }
     
+    public function urlProd(){
+        if ($this->CLI_VERSION == 'v6'){
+            $urlProd = $this->CLI_URL . 'home.php';
+        }else{
+            $urlProd = $this->CLI_URL . 'main.php';
+        }
+        
+        return $urlProd;
+    }
    
 }

@@ -72,7 +72,7 @@ $right = checkRights($bdd,$_SESSION['id_user']);
                 <div class="vignette <?=$clients->CLI_VERSION?> flip-container" id="vignette_<?=$clients->CLI_ID?>" data-activity='<?=$clients->CLI_RIS?>,<?=$clients->CLI_PACS?>' data-version="<?=$clients->CLI_VERSION?>">
                     <div class="contenu_vignette flipper">
                         <div class="front">
-                            <a href="<?=$clients->CLI_URL?>" target="_blank" id="vign_url_<?=$clients->CLI_ID?>">
+                            <a href="<?=$clients->urlProd()?>" target="_blank" id="vign_url_<?=$clients->CLI_ID?>">
                                 <div class="infoClient">
                                     <p class="ville <?=$clients->CLI_VERSION?>"><?=$clients->CLI_VILLE?></p>
 
@@ -102,12 +102,12 @@ $right = checkRights($bdd,$_SESSION['id_user']);
                             </div>
                             <?php if(in_array("rgt_cod_database", $right)):?>
                             <div class="backBtn">
-                                <i class="fas fa-database"></i>
+                                <a href="<?=$clients->CLI_URL?>sqlpacsadmin" target="_blank"><i class="fas fa-database"></i></a>
                             </div>
                             <?php endif; ?>
                             <?php if(in_array("rgt_cod_modif_client", $right)):?>
                             <div class="backBtn" onclick="modif(<?=$clients->CLI_ID?>)" data-toggle="modal" data-target="#modaleClient" >
-                                <i class="fas fa-pencil-alt" ></i>
+                                <i class="far fa-file-alt"></i>
                             </div>
                             <?php endif;?>
                             <div class="backBtn phoneIconLink" onclick="displayPhones(<?=$clients->CLI_ID?>)">
@@ -117,11 +117,8 @@ $right = checkRights($bdd,$_SESSION['id_user']);
                             <div class="backBtn" data-toggle="tooltip" data-html="true"  data-id="<?=$clients->CLI_ID?>" data-placement="bottom" data-title="test">
                                 <i class="fas fa-code-branch"></i>
                             </div>
-
                         </div>
                     </div>
-                    
-                    
                 </div>
 
                 

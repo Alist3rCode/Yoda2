@@ -1,6 +1,7 @@
 $('#searchBar').keyup(function(e){
     $('.collapsePhone').remove();
-    $('.vignette').removeClass('selectColor');    
+    $('.vignette').removeClass('selectColor');   
+    $('.clients').css('justify-content', 'flex-start');
     var search = $('#searchBar').val().toLowerCase();
     hideFamilyFilter();   
     unflip();
@@ -10,6 +11,8 @@ $('#searchBar').keyup(function(e){
         
         $('.vignette').removeClass('d-none');
         $('.vignette').removeClass('selectColor');
+        $('.clients').css('justify-content', 'space-between');
+
         idxSelect = 0;
     
     }else{
@@ -101,7 +104,9 @@ $('#resetSearch').click(function(){
     
     idxSelect = 0;
     $('.vignette').removeClass('d-none');
-    $('.vignette').removeClass('selectColor');    
+    $('.vignette').removeClass('selectColor');  
+    $('.clients').css('justify-content', 'space-between');
+
     $('#searchBar').val('');
     hideFamilyFilter();
     displayPhones();

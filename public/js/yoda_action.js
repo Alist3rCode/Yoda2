@@ -181,9 +181,7 @@ function modif(i){
     
     var suppr = $('#buttonDelete');
     $('#id').html(i);
-    
-    $('#myModalLabel').html('Modification du favori');
-    
+        
     $('#buttonSubmit').addClass("d-none");
     $('#buttonModif').removeClass("d-none");
     $('#buttonDelete').removeClass("d-none");
@@ -263,6 +261,8 @@ function modif(i){
         ville.val(ucFirst(json[0].CLI_VILLE));
         nom.val(ucFirst(json[0].CLI_NOM));
         url.val(json[0].CLI_URL);
+        
+        $('#myModalLabel').html('Fiche client : ' + ucFirst(json[0].CLI_VILLE) + ' - ' + ucFirst(json[0].CLI_NOM));
         
         $('#villeDemo').html($('#ville').val());
         $('#nomDemo').html($('#nom').val());
