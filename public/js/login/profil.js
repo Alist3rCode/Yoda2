@@ -23,6 +23,101 @@ $("#resetProfil").click(function(evt) {
     });
 });
 
+$("#updateProfil").click(function(evt) {
+    var name = document.getElementById('updateName').value;
+    var lastName = document.getElementById('updateLastName').value;
+    var email = document.getElementById('updateEmail').value;
+    var page = document.getElementById('updatePage').value;
+    var password = document.getElementById('updatePassword').value;
+    var passwordConfirm = document.getElementById('updateConfirmPassword').value;
+    var id_user = document.getElementById('idUser').innerHTML;
+    var surname = document.getElementById('updateSurname').value;
+
+    var regex = /^[\w.-]+@[\w.-]+\.[a-z]{2,6}$/;
+
+    var match = regex.test(email);
+
+    var errors = [];
+    var flag = 0;
+
+    if (name === '') {
+        errors.push('Merci de renseigner votre prénom');
+        flag = 1;
+
+    }
+    if (lastName === '') {
+        errors.push('Merci de renseigner votre nom');
+        flag = 1;
+
+    }
+    if (email === '' || !match) {
+        errors.push('Merci de renseigner une adresse eMail valide');
+        flag = 1;
+
+    } else {
+        
+        $.ajax({
+            method: "POST",
+            url: "ajax/checkModifUser.php",
+            data: {
+                id: id_user,
+                email: email
+            },
+            async: false,
+        }).done(function(retour) {
+            if (retour != id_user && retour != '') {
+                    errors.push('Cette adresse mail est déjà rattachée à un compte.');
+                    flag = 1;
+            }
+        });
+    }
+
+    if (password != passwordConfirm) {
+        errors.push('Merci de vérifier les mot de passe saisis');
+        flag = 1;
+
+    }
+
+    if (page == '0') {
+        errors.push('Merci de renseigner la page par défault lors de la connexion');
+        flag = 1;
+
+    }
+
+    if (flag === 0) {
+
+        if (password == '') {
+                password = 'PASTOUCHE';
+        }
+        $.post("ajax/updateProfil.php", {
+            id: id_user,
+            email: email,
+            password: password,
+            name: name,
+            lastName: lastName,
+            page: page,
+            surname : surname,
+            idProfil: 'PASTOUCHE',
+            mode: 'update'
+        },
+        function(retour) {
+            if (retour == 'ok') {
+                displayAlert('confirmModif','success','Les modification apportées ont été sauvegardées')
+                document.getElementById('nameDisplay').innerHTML = capFirst(name);
+                document.getElementById('lastNameDisplay').innerHTML = capFirst(lastName);
+                document.getElementById('updateName').value = capFirst(name);
+                document.getElementById('updateLastName').value = capFirst(lastName);
+            }
+        });
+
+    } else {
+        displayAlert('alertModif','danger',errors.join("<br>"));
+
+    }
+});
+
+
+
 $("#actifUser").click(function(evt) {
     if (document.getElementById('droitActifUser').innerHTML == 'OK') {
 
@@ -235,6 +330,10 @@ $("#updateAdminProfil").click(function(evt) {
         }
        
     });
+    console.log(hook);
+    if(hook.length == 0){
+        hook.push('null');
+    }
     
    
    
@@ -305,7 +404,6 @@ $("#updateAdminProfil").click(function(evt) {
         if (password == '') {
                 password = 'PASTOUCHE';
         }
-        console.log(lastName);
         $.post("ajax/updateProfil.php", {
             id: id_user.innerHTML,
             email: email,
@@ -323,25 +421,20 @@ $("#updateAdminProfil").click(function(evt) {
             var testId = retour.substring(0, 3);
             if (retour == 'ok') {
                 displayAlert('confirmAdminModif','success',"Les modifications apportées ont été sauvegardées.");
-                
-                nameSelect.innerHTML = capFirst(name);
-                profilSelected.innerHTML = profil.value;
-                lastNameSelect.innerHTML = capFirst(lastName);
-                name.value = capFirst(name);
-                lastName.value = capFirst(lastName);
+                $("#resetAdminProfil").click();
+
 
                 if (document.getElementById('idUser').innerHTML === document.getElementById('selectedUser').innerHTML) {
                     administratorName.innerHTML = capFirst(lastName);
                 }
 
             }else if (testId == 'id-') {
+                
                 displayAlert('confirmAdminModif','success','Les modifications apportées ont été sauvegardées.');
                 
-                nameSelect.innerHTML = capFirst(name);
-                lastNameSelect.innerHTML = capFirst(lastName);
-                name.value = capFirst(name);
-                lastName.value = capFirst(lastName);
-                profilSelected.innerHTML = profil.value;
+                $("#resetAdminProfil").click();
+                
+                
 
                 if (document.getElementById('idUser').innerHTML == document.getElementById('selectedUser').innerHTML) {
                     administratorName.innerHTML = capFirst(lastName);

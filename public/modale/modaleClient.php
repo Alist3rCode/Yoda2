@@ -1,4 +1,9 @@
+<?php 
 
+require_once('./class/checkRights.php');
+$right = checkRights($bdd,$_SESSION['id_user']);
+
+?>
 
 <div class="modal-dialog " role="document" >
     <div class="modal-content" >
@@ -13,7 +18,6 @@
                         <a href="#">
                             <div class="infoClient">
                                 <p class="ville v8 text-capitalize" id="villeDemo"></p>
-
                                 <p class="nom text-capitalize" id="nomDemo"></p>
                             </div>
                         </a>
@@ -50,10 +54,13 @@
                     <input type="text" class="form-control spaceInput col-12" id="imagingVersion" placeholder="Version Imaging">
 
                 </div>
-                <div >
+                <div>
+                    <?php if(in_array("rgt_cod_modif_client", $right)):?>
+                    
                     <button class="btn btn-danger d-none btnModale" id ='buttonDelete' onclick="deleteCustomer()">Supprimer</button>
                     <button class="btn btn-primary d-none btnModale" id ='buttonModif' onclick="modifCustomer()">Modifier</button>
                     <button class="btn btn-primary btnModale" id ='buttonSubmit' onclick="createCustomer()">Valider</button>
+                    <?php endif;?>
                     <div id='alerte' class="alert  alertModale d-none"></div>
                     <div id='id' class="d-none"></div>
 

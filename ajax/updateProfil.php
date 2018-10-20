@@ -46,11 +46,22 @@ if ($_REQUEST['mode'] == 'update' && $_REQUEST['id'] != 'NEW'){
     $email = $_REQUEST['email'];
 
     if($_REQUEST['password'] == 'PASTOUCHE'){
+        
         $password = $select[0]->USR_PASSWORD;
     }else{
        $password = sha1($_REQUEST['password']);
+       
     }
-    $profil = $_REQUEST['idProfil'];
+    
+    if($_REQUEST['idProfil'] == 'PASTOUCHE'){
+        
+        $profil = $select[0]->USR_ID_PRO;
+    }else{
+       $profil = $_REQUEST['idProfil'];
+       
+    }
+    
+    
         
     $name = strtolower($_REQUEST['lastName']);
     $firstName = strtolower($_REQUEST['name']);
@@ -73,29 +84,40 @@ if ($_REQUEST['mode'] == 'update' && $_REQUEST['id'] != 'NEW'){
             $page = 'interne.php';
             break;
     }
-        
-    $isTech = $_REQUEST['isTech'];
+    if(isset($_REQUEST['isTech'])){
+        $isTech = $_REQUEST['isTech'];
+    }else{
+        $isTech = $select[0]->USR_TECH;
+    }
+    
     $surname = $_REQUEST['surname'];
     
-    $deleteRequest = $bdd->prepare('DELETE FROM YDA_HOOK '
+    if (isset($_REQUEST['hook'])){
+        
+        $deleteRequest = $bdd->prepare('DELETE FROM YDA_HOOK '
             . 'WHERE HOK_ID_TYPE = :idUser '
             . 'AND HOK_TYPE = :type');
     
-    $deleteRequest->execute(array(
-	'idUser' => $_REQUEST["id"],
-        'type' => "User")) or die(print_r($req->errorInfo()));
-    
-    for($i=0; $i<count($_REQUEST['hook']); $i++){
-    
-        $req = $bdd->prepare('INSERT INTO YDA_HOOK( HOK_ID_TYPE, HOK_ID_RGT, HOK_TYPE) '
-                . 'VALUES (:idUser, :right, :type)');
-
-        $req->execute(array(
+        $deleteRequest->execute(array(
             'idUser' => $_REQUEST["id"],
-            'right' => $_REQUEST['hook'][$i],
             'type' => "User")) or die(print_r($req->errorInfo()));
+        if($_REQUEST['hook'][0] != 'null'){
+            for($i=0; $i<count($_REQUEST['hook']); $i++){
+
+            $req = $bdd->prepare('INSERT INTO YDA_HOOK( HOK_ID_TYPE, HOK_ID_RGT, HOK_TYPE) '
+                    . 'VALUES (:idUser, :right, :type)');
+
+            $req->execute(array(
+                'idUser' => $_REQUEST["id"],
+                'right' => $_REQUEST['hook'][$i],
+                'type' => "User")) or die(print_r($req->errorInfo()));
+
+            } 
+        }
+        
+    }
     
-    } 
+    
     
     $retour = 'ok';
      

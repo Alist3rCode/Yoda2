@@ -13,6 +13,9 @@ checkCookie($bdd,'profile.php');
 
 require_once './public/fetchInfoUser.php';
 
+require_once('./class/checkRights.php');
+$right = checkRights($bdd,$_SESSION['id_user']);
+
 ?>
 
 <!doctype html>
@@ -62,9 +65,11 @@ require_once './public/fetchInfoUser.php';
                             <a class="nav-item nav-link active" id="nav-profil-tab" data-toggle="tab" href="#nav-profil" role="tab" aria-controls="nav-profil" aria-selected="true">
                                 Mon Profil
                             </a>
+                            <?php if(in_array("rgt_cod_configuration", $right)):?>
                             <a class="nav-item nav-link" id="nav-config-tab" data-toggle="tab" href="#nav-config" role="tab" aria-controls="nav-config" aria-selected="false">
                                 Configuration
                             </a>
+                            <?php endif;?>
                         </div>
                     </nav>
                     <div class="tab-content cardInput" id="nav-tabContent">
@@ -137,7 +142,7 @@ require_once './public/fetchInfoUser.php';
                                 </div>
                             </div>
                         </div>
-				
+                        <?php if(in_array("rgt_cod_configuration", $right)):?>
                         <div class="tab-pane fade col-12" id="nav-config" role="tabpanel" aria-labelledby="nav-config-tab">
                             <div style="display:flex;flex-flow: row wrap;">
                                 <div class="col-12">
@@ -330,6 +335,7 @@ require_once './public/fetchInfoUser.php';
 				</div>
                             </div>
 			</div>
+                        <?php endif;?>
                     </div>
 		</div>
                 

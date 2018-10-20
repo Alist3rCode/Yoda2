@@ -105,11 +105,11 @@ $right = checkRights($bdd,$_SESSION['id_user']);
                                 <a href="<?=$clients->CLI_URL?>sqlpacsadmin" target="_blank"><i class="fas fa-database"></i></a>
                             </div>
                             <?php endif; ?>
-                            <?php if(in_array("rgt_cod_modif_client", $right)):?>
+                            
                             <div class="backBtn" onclick="modif(<?=$clients->CLI_ID?>)" data-toggle="modal" data-target="#modaleClient" >
                                 <i class="far fa-file-alt"></i>
                             </div>
-                            <?php endif;?>
+                            
                             <div class="backBtn phoneIconLink" onclick="displayPhones(<?=$clients->CLI_ID?>)">
                                 <i class="far fa-building"></i>
                             </div>
