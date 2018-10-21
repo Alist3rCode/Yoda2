@@ -34,6 +34,8 @@ checkCookie($bdd,'map.php');
         <?php require 'public/checkTheme.php'; ?>        
         <link rel="stylesheet" href="public/css/dashboard.css">
         <link rel="stylesheet" href="public/css/filters.css">
+                <!--<link rel="icon" type="image/png" href="./public/img/yodaTitle.png" />-->
+
         
         <!--Add Jquery-->
         <script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>

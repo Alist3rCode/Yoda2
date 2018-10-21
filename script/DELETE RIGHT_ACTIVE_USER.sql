@@ -1,0 +1,1 @@
+DELETE FROM `yda_right` WHERE `yda_right`.`RGT_ID` = 3
