@@ -44,6 +44,6 @@ $parentVersion = array_keys($versionToDisplay);
         <a class="nav-link" href="#">RIS / PACS</a>
     </li>
     <li class="nav-item filterParent" data-toggle="modal" data-target="#ModaleFilter">
-        <a class="nav-link" href="#"><i class="fas fa-filter"></i><span id="advancedFilter"> Avancé</span> </a>
+        <a class="nav-link" href="#"><i class="fas fa-filter" id="iconAdvancedFilter"></i><span id="advancedFilter"> Avancé</span> </a>
     </li>
 </ul>

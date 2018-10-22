@@ -106,27 +106,27 @@ if (!array_key_exists(3, $arrayRequest)){
     
     
     foreach($arrayRequest[1] as $key=>$value){
-        
-    switch ($value) {
-        case "RIS":
-            $selectActivity = $bdd->queryObj('SELECT CLI_ID FROM YDA_CLIENT WHERE CLI_RIS = "1" AND CLI_PACS = "0" AND CLI_VALID = "1"');
-            break;
-        case "PACS":
-            $selectActivity = $bdd->queryObj('SELECT CLI_ID FROM YDA_CLIENT WHERE CLI_RIS = "0" AND CLI_PACS = "1" AND CLI_VALID = "1"');
-            break;
-        case "RIS-PACS":
-            $selectActivity = $bdd->queryObj('SELECT CLI_ID FROM YDA_CLIENT WHERE CLI_RIS = "1" AND CLI_PACS = "1" AND CLI_VALID = "1"');
-            break;
-        case "NONE":
-            $selectActivity = $bdd->queryObj('SELECT CLI_ID FROM YDA_CLIENT WHERE CLI_RIS = "0" AND CLI_PACS = "0" AND CLI_VALID = "0"');
-            break;
-        }
-        
+
+        switch ($value) {
+            case "RIS":
+                $selectActivity = $bdd->queryObj('SELECT CLI_ID FROM YDA_CLIENT WHERE CLI_RIS = "1" AND CLI_PACS = "0" AND CLI_VALID = "1"');
+                break;
+            case "PACS":
+                $selectActivity = $bdd->queryObj('SELECT CLI_ID FROM YDA_CLIENT WHERE CLI_RIS = "0" AND CLI_PACS = "1" AND CLI_VALID = "1"');
+                break;
+            case "RIS-PACS":
+                $selectActivity = $bdd->queryObj('SELECT CLI_ID FROM YDA_CLIENT WHERE CLI_RIS = "1" AND CLI_PACS = "1" AND CLI_VALID = "1"');
+                break;
+            case "NONE":
+                $selectActivity = $bdd->queryObj('SELECT CLI_ID FROM YDA_CLIENT WHERE CLI_RIS = "0" AND CLI_PACS = "0" AND CLI_VALID = "0"');
+                break;
+            }
+        foreach($selectActivity as $key=>$value){
+            array_push($arrayFilterActivity, $value->CLI_ID);
+         }
+
     } 
     
-    foreach($selectActivity as $key=>$value){
-       array_push($arrayFilterActivity, $value->CLI_ID);
-    }
     
     $arrayFinalActivity = array_unique($arrayFilterActivity);
     

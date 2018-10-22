@@ -44,35 +44,36 @@
         </a>
  
     </ul>
-        <hr>
-        <ul class="list-unstyled components">
-            <a href="profil.php">
-                <li id="sidebar_profil">
-                    <i class="fas fa-users"></i>
-                    <span class="sidebarLabel"> Profil</span> 
-                </li>
-            </a>
-            <a href="notif.php">
-                <li id="sidebar_notif">
-                    <i class="fas fa-bell"></i>
-                    <span class="sidebarLabel"> Notifications</span> 
-                </li>
-            </a>
-            <a href="planning.php">
-                <li id="sidebar_planning">
-                    <i class="far fa-calendar-alt"></i>
-                    <span class="sidebarLabel"> Planning Support</span> 
-                </li>
-            </a>
-            <a href="public/logout.php" >
-                <li>
-                    <i class="fas fa-sign-out-alt" style="color:red!important"></i>
-                    <span class="sidebarLabel" > Déconnexion</span> 
-                </li>
-            </a>
-        </ul>
-        <button type="button" id="sidebarCollapse" class="btn btn-info ">
-            <i id="toogleSidebar" class="fas fa-angle-left"></i>
-        </button>
-    </nav>
+    
+      
+    <ul class="list-unstyled components">
+        <a href="profil.php">
+            <li id="sidebar_profil">
+                <i class="fas fa-users"></i>
+                <span class="sidebarLabel"> Profil</span> 
+            </li>
+        </a>
+        <a href="notif.php">
+            <li id="sidebar_notif">
+                <i class="fas fa-bell"></i>
+                <span class="sidebarLabel"> Notifications</span> 
+            </li>
+        </a>
+        <a href="planning.php">
+            <li id="sidebar_planning">
+                <i class="far fa-calendar-alt"></i>
+                <span class="sidebarLabel"> Planning Support</span> 
+            </li>
+        </a>
+        <a href="public/logout.php" >
+            <li>
+                <i class="fas fa-sign-out-alt" style="color:red!important"></i>
+                <span class="sidebarLabel" > Déconnexion</span> 
+            </li>
+        </a>
+    </ul>
+    <button type="button" id="sidebarCollapse" class="btn btn-info ">
+        <i id="toogleSidebar" class="fas fa-angle-left"></i>
+    </button>
+</nav>
     

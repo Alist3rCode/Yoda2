@@ -2,8 +2,10 @@ $('#searchBar').keyup(function(e){
     $('.collapsePhone').remove();
     $('.vignette').removeClass('selectColor');   
     $('.clients').css('justify-content', 'flex-start');
+    $('#iconAdvancedFilter').css('color', 'white');
     var search = $('#searchBar').val().toLowerCase();
-    hideFamilyFilter();   
+    hideFamilyFilter(); 
+    
     unflip();
     displayPhones();
     
@@ -106,7 +108,10 @@ $('#resetSearch').click(function(){
     $('.vignette').removeClass('d-none');
     $('.vignette').removeClass('selectColor');  
     $('.clients').css('justify-content', 'space-between');
-
+    $('#iconAdvancedFilter').css('color', 'white');
+    advancedFiltersAreOn = 0;
+    arrayVersion = [];
+    
     $('#searchBar').val('');
     hideFamilyFilter();
     displayPhones();

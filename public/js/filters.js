@@ -1,5 +1,8 @@
 function displayFilter(elem){
-    
+    unflip();
+    displayPhones();
+    changeVignetteBackground();
+    resetFilterModale();
     if(elem === 'version'){
         if($('.filterVersionHead').hasClass('showFilter')){
             hideFamilyFilter('version');
@@ -15,10 +18,7 @@ function displayFilter(elem){
     }else{
         showVersionFilter(elem);
     }
-    unflip();
-    displayPhones();
-    changeVignetteBackground();
-    resetFilterModale();
+    
 }
 
 function showFamilyFilter(family){
@@ -73,6 +73,7 @@ function showVersionFilter(version){
 
 
 var arrayVersion = [];
+var advancedFiltersAreON = 0;
 
 function displayVersionFilter(){
 
@@ -111,7 +112,14 @@ function searchForVersion(version, numVersion){
     $('.vignette').removeClass('selectColor');    
     $('#searchBar').val('');
     unflip();
-    
+    console.log(advancedFiltersAreON);
+
+    if(advancedFiltersAreON == 1 ){
+        arrayVersion = [];
+        advancedFiltersAreON = 0;
+        $('#iconAdvancedFilter').css('color', 'white');
+       
+    }
     if (arrayVersion.includes(numVersion)){
         var index = arrayVersion.indexOf(numVersion);
         if (index > -1) {
@@ -133,7 +141,13 @@ function searchForActivity(activity){
     $('.vignette').removeClass('selectColor');    
     $('#searchBar').val('');
     unflip();
-    
+    console.log(advancedFiltersAreON);
+    if(advancedFiltersAreON == 1 ){
+        arrayVersion = [];
+        advancedFiltersAreON = 0;
+        $('#iconAdvancedFilter').css('color', 'white');
+       
+    }
     if (arrayVersion.includes(activity)){
         var index = arrayVersion.indexOf(activity);
         if (index > -1) {
@@ -293,11 +307,9 @@ function AdvancedFilters(color,filter,parent){
         addVersionToAdvancedFilters(color, filter);    
         filterBtn.classList.add('active');
         $('#'+ parent +'Collapse').children('a').each(function () {
-            
             if (!$(this).hasClass('active')){
                flagActive = 0; 
             }
-            
         }); 
         if (flagActive === 1){
             $('#advancedVersionFilterButton' + parent).addClass('active');
@@ -320,9 +332,16 @@ function resetFilterModale() {
     switchFilters("AND");
     document.getElementById('advancedVersionFilters').innerHTML = '';
     document.getElementById('advancedActivityFilters').innerHTML = '';
-    $('.filtersBtn').removeClass('active');            
-    arrayVersion = [];
-    displayVersionFilter(); 
+    $('.filtersBtn').removeClass('active');   
+    if (advancedFiltersAreON === 1){
+        arrayVersion = [];
+        displayVersionFilter(); 
+        $('#iconAdvancedFilter').css('color', 'white');
+        advancedFiltersAreON = 0;
+        hideFamilyFilter();
+    }
+    
+    
         
 }
 
@@ -331,7 +350,7 @@ $('#validFilterModale').click(function (e) {
    arrayVersion = [];
    arrayFilterVersion = [];
    arrayFilterActivity = [];
-   
+   hideFamilyFilter();
    
     $('#advancedVersionFilters').children('a').each(function () {
     
@@ -344,8 +363,9 @@ $('#validFilterModale').click(function (e) {
        
     });
     if(arrayFilterVersion.length === 0 || arrayFilterActivity.length === 0 ){
-        displayAlert('alerteFilter','danger','Merci de saisir au moins une version et une activité');
-        console.log('imin')
+        displayAlert('alerteFilter','danger','Merci de saisir au moins une version et une activité');        
+        $('#iconAdvancedFilter').css('color', 'white');
+        advancedFiltersAreON = 0;
     }else{
         arrayVersion.push(arrayFilterVersion);
         arrayVersion.push(arrayFilterActivity);
@@ -354,7 +374,9 @@ $('#validFilterModale').click(function (e) {
 
         arrayVersion[3] = 'advanced';
         displayVersionFilter();    
-        $('#ModaleFilter').modal('hide')
+        $('#ModaleFilter').modal('hide');
+        advancedFiltersAreON = 1;
+        $('#iconAdvancedFilter').css('color', '#28a745');
     }
     
     
