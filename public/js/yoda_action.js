@@ -55,9 +55,19 @@ function clickModaleActivity(activity){
 
 $('#modaleClient').on('hidden.bs.modal', function (e) {
     
-    $( "#modaleClient" ).load( "public/modale/modaleClient.php" );
+    $.ajax({
+        method: "POST",
+        url: "ajax/loadModaleClient.php",        
+        async: false
+    }).done(function(retour) {
+        
+        $("#modaleClient").load(retour);
+    });
     
 });
+
+
+
 
 
 
@@ -175,18 +185,20 @@ function deletePhone(i){
 }   
 
 function modif(i){
+    
+       
     while($("#petitTag").length !== 0){
         $("#petitTag").remove();
     }
-    
+
     var suppr = $('#buttonDelete');
     $('#id').html(i);
-        
+
     $('#buttonSubmit').addClass("d-none");
     $('#buttonModif').removeClass("d-none");
     $('#buttonDelete').removeClass("d-none");
-    
-    
+
+
     var ville = $('#ville');   
     var nom = $('#nom');
     var url = $('#url');
@@ -197,22 +209,22 @@ function modif(i){
 
     var ris_button = $('#risButton');
     var pacs_button = $('#pacsButton');
-    
+
     var tag_mod = $('#tag');
     var tag_mod_hidden = $('#tag_hidden');
-    
+
     var phoneZone = $('#phones');
-    
+
     var viewVersion = $('#viewVersion');
     var uViewVersion = $('#uViewVersion');
     var imagingVersion = $('#imagingVersion');
-    
-    
+
+
     $.post("ajax/loadVersion.php", {
         id : i,
         mode : "modif"
     }, function(retour){
-        
+
         imagingVersion.val(retour['version']);
         if(retour['uid']){
             imagingVersion.prop('disabled', true);
@@ -220,17 +232,17 @@ function modif(i){
             imagingVersion.prop('disabled', false);
         }
     });
-    
+
     $.get("ajax/getModif.php?id=" + i, function(json){
-        
+
         viewVersion.val(json[0].CLI_VIEW);
         uViewVersion.val(json[0].CLI_UVIEW);
-        
-        
+
+
         if(json.length > 1){
-            
+
             for (z=0; z<json.length; z++){
-               
+
                 newPhone(z);
                 $('#phone'+z).val(json[z].PHO_PHONE);
                 $('#site'+z).val(ucFirst(json[z].PHO_SITE));
@@ -246,7 +258,7 @@ function modif(i){
             $('#delete'+ json.length).remove();
             $('#id'+ json.length).remove();
             $('#newPhone'+ (json.length-1)).prop('disabled',false);
-            
+
         }else if (json['nbPhone'] !== 0){
 
             $('#phone0').val(json[0].PHO_PHONE);
@@ -257,18 +269,18 @@ function modif(i){
             $('#idTV0').val(json[0].PHO_TV_ID);
             $('#passTV0').val(json[0].PHO_TV_PASSWORD);            
         }
-  
+
         ville.val(ucFirst(json[0].CLI_VILLE));
         nom.val(ucFirst(json[0].CLI_NOM));
         url.val(json[0].CLI_URL);
-        
+
         $('#myModalLabel').html('Fiche client : ' + ucFirst(json[0].CLI_VILLE) + ' - ' + ucFirst(json[0].CLI_NOM));
-        
+
         $('#villeDemo').html($('#ville').val());
         $('#nomDemo').html($('#nom').val());
-        
-       
-        
+
+
+
         var nbTag = json[0].linearTag.length;
         for (x=0; x<nbTag; x++){
             if (json[0].linearTag[x] !== ''){
@@ -287,6 +299,8 @@ function modif(i){
             clickModaleActivity('pacs');
         }
     });
+       
+ 
 }
 
 

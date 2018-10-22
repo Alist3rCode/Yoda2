@@ -1,10 +1,11 @@
 <?php 
+session_start();
+require_once "ajaxDatabaseInit.php";
 
-require_once('./class/checkRights.php');
+require_once('../class/checkRights.php');
 $right = checkRights($bdd,$_SESSION['id_user']);
 
 ?>
-
 <div class="modal-dialog " role="document" >
     <div class="modal-content" >
         <div class="modal-header mx-auto">
@@ -30,7 +31,7 @@ $right = checkRights($bdd,$_SESSION['id_user']);
                     <input class="form-control spaceInput col-6" type="text" id="nom" placeholder="Site Principal..." autocomplete="nope" >
                     <input class="form-control spaceInput col-12" type="text" id="url" placeholder="https://..." autocomplete="nope">
 
-                    <p class="col-12" style="text-align:center;">Mauvaise Modale</p>
+                    <p class="col-12" style="text-align:center;">Saisir des tags séparés par des virgules : </p>
                     <ul class="tags-input col-12" id="tags-input">
                         <li class="tags-new">
                             <input class="spaceInput" type="text" id="tag" name="tag" value="Tags..." onfocus="if(this.value==='Tags...')this.value=''"  onblur="if(this.value==='')this.value='Tags...'" autocomplete="nope"> 
@@ -39,7 +40,7 @@ $right = checkRights($bdd,$_SESSION['id_user']);
                     </ul>
 
                     <div class="btn-group spaceInput versionModale" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-warning" id="v6Button" onclick="clickModaleVersion('v6')">v6</button>
+                        <button type="button" class="btn btn-outline-warning " id="v6Button" onclick="clickModaleVersion('v6')">v6</button>
                         <button type="button" class="btn btn-outline-primary " id="v7Button" onclick="clickModaleVersion('v7')">v7</button>
                         <button type="button" class="btn btn-outline-dark active" id="v8Button" onclick="clickModaleVersion('v8')">v8</button>
                     </div>

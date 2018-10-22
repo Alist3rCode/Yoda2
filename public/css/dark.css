@@ -61,7 +61,13 @@ body{
     
 }
 
-.sidebar:not(.collapse) li:hover a{
+.sidebar li:hover i{
+    color:white;
+    
+}
+
+
+.sidebar li:hover span{
     color:white;
     
 }

@@ -18,57 +18,58 @@
     <br>
 
     <ul class="list-unstyled components sidebarUl">
-        <li id="sidebar_index">
-            <a href="index.php">
+        <a href="index.php">
+            <li id="sidebar_index">
                 <i class="fas fa-home"></i>
                 <span class="sidebarLabel"> Home</span> 
-            </a>
-        </li>
-        <li  id="sidebar_yoda">
-            <a href="yoda.php">
+            </li>
+        </a>
+        <a href="yoda.php">
+            <li  id="sidebar_yoda">
                 <i class="fas fa-th"></i>
                 <span class="sidebarLabel"> Clients</span> 
-            </a>
-        </li>
-        <li id="sidebar_map">
-            <a href="map.php">
+            </li>
+        </a>
+        <a href="map.php">
+            <li id="sidebar_map">
                 <i class="fas fa-globe-africa"></i>
                 <span class="sidebarLabel"> Carte</span> 
-            </a>
-        </li>
-        <li id="sidebar_interne">
-            <a href="interne.php">
+            </li>
+        </a>
+        <a href="interne.php">
+            <li id="sidebar_interne">
                 <i class="fas fa-link"></i>
                 <span class="sidebarLabel"> Lien Interne</span> 
-            </a>
-        </li>
+           </li>
+        </a>
+ 
     </ul>
         <hr>
         <ul class="list-unstyled components">
-            <li id="sidebar_profil">
-                <a href="profil.php">
+            <a href="profil.php">
+                <li id="sidebar_profil">
                     <i class="fas fa-users"></i>
                     <span class="sidebarLabel"> Profil</span> 
-                </a>
-            </li>
-            <li id="sidebar_notif">
-                <a href="notif.php">
+                </li>
+            </a>
+            <a href="notif.php">
+                <li id="sidebar_notif">
                     <i class="fas fa-bell"></i>
                     <span class="sidebarLabel"> Notifications</span> 
-                </a>
-            </li>
-            <li id="sidebar_planning">
-                <a href="planning.php">
+                </li>
+            </a>
+            <a href="planning.php">
+                <li id="sidebar_planning">
                     <i class="far fa-calendar-alt"></i>
                     <span class="sidebarLabel"> Planning Support</span> 
-                </a>
-            </li>
-            <li>
-                <a href="public/logout.php" >
+                </li>
+            </a>
+            <a href="public/logout.php" >
+                <li>
                     <i class="fas fa-sign-out-alt" style="color:red!important"></i>
                     <span class="sidebarLabel" > Déconnexion</span> 
-                </a>
-            </li>
+                </li>
+            </a>
         </ul>
         <button type="button" id="sidebarCollapse" class="btn btn-info ">
             <i id="toogleSidebar" class="fas fa-angle-left"></i>
