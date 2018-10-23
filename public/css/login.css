@@ -20,7 +20,8 @@
 
 .loginInput:focus{    
     border-bottom: 2px solid forestgreen;
-    outline: none;
+    outline: none!important;
+    box-shadow: none;
 }
 
 .cardInput{

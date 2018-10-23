@@ -34,6 +34,8 @@ checkCookie($bdd,'interne.php');
         <?php require 'public/checkTheme.php'; ?>        
         <link rel="stylesheet" href="public/css/dashboard.css">
         <link rel="stylesheet" href="public/css/filters.css">
+        <link rel="stylesheet" href="public/css/modale.css">
+        <link rel="stylesheet" href="public/css/login.css">
         
         <!--Add Jquery-->
         <script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
@@ -48,11 +50,15 @@ checkCookie($bdd,'interne.php');
         <div class="content">
             
             <?php 
-            require 'public/navbar2.php';
+            require 'public/navbar_interne.php';
             require 'public/sidebar2.php';
             ?>
             
             <div class="clients">
+                
+                <div class="modal fade" id="modaleCreateInternalLink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <?php require 'public/modale/modaleCreateInternalLink.php';?>
+                </div>
                 
             </div>      
         <!-- Optional JavaScript -->
@@ -60,6 +66,9 @@ checkCookie($bdd,'interne.php');
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="./public/js/yoda_style.js"></script>
+        <script src="./public/js/displayAlert.js"></script>
+        <script src="./public/js/interne.js"></script>
+
        
                      
     </body>

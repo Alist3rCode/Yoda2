@@ -1,0 +1,1 @@
+INSERT INTO `int_section` (`SEC_ID`, `SEC_NAME`, `SEC_VALID`) VALUES (NULL, 'Outil Interne', '1'), (NULL, 'Liens Utiles', '1'), (NULL, 'Base de tests', '1'), (NULL, 'Base de démo', '1'), (NULL, 'Base de devs', '1');
