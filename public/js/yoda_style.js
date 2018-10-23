@@ -93,6 +93,7 @@ $(document).ready(function () {
     if (page === ''){
         page = 'index';
     }
+    console.log(page);
 
     $('#sidebar_'+page).addClass('activeSidebarElement');
 

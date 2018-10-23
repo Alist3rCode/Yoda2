@@ -1,7 +1,7 @@
 function displayFilter(elem){
     unflip();
     displayPhones();
-    changeVignetteBackground();
+   
     resetFilterModale();
     if(elem === 'version'){
         if($('.filterVersionHead').hasClass('showFilter')){
@@ -18,7 +18,7 @@ function displayFilter(elem){
     }else{
         showVersionFilter(elem);
     }
-    
+     changeVignetteBackground();
 }
 
 function showFamilyFilter(family){
@@ -112,12 +112,12 @@ function searchForVersion(version, numVersion){
     $('.vignette').removeClass('selectColor');    
     $('#searchBar').val('');
     unflip();
-    console.log(advancedFiltersAreON);
 
     if(advancedFiltersAreON == 1 ){
         arrayVersion = [];
         advancedFiltersAreON = 0;
-        $('#iconAdvancedFilter').css('color', 'white');
+//        $('#iconAdvancedFilter').css('color', 'white');
+        $('#advancedFilterLi').removeClass('searchActiveAdvanced');
        
     }
     if (arrayVersion.includes(numVersion)){
@@ -141,11 +141,11 @@ function searchForActivity(activity){
     $('.vignette').removeClass('selectColor');    
     $('#searchBar').val('');
     unflip();
-    console.log(advancedFiltersAreON);
     if(advancedFiltersAreON == 1 ){
         arrayVersion = [];
         advancedFiltersAreON = 0;
-        $('#iconAdvancedFilter').css('color', 'white');
+//        $('#iconAdvancedFilter').css('color', 'white');
+        $('#advancedFilterLi').removeClass('searchActiveAdvanced');
        
     }
     if (arrayVersion.includes(activity)){
@@ -169,7 +169,6 @@ function changeVignetteBackground(){
      
         $('.vignette').removeClass('v6 v7 v8');
         $('.vignette').each(function(id,elem){
-           console.log(1);
             switch($(elem).attr('data-activity')) {
                 case "0,0":
                     $(elem).addClass('none');
@@ -191,7 +190,6 @@ function changeVignetteBackground(){
      
         $('.vignette').removeClass('none ris pacs ris-pacs');
         $('.vignette').each(function(id,elem){
-           console.log(2);
             switch($(elem).attr('data-version')) {
                 case "v6":
                     $(elem).addClass('v6');
@@ -336,7 +334,8 @@ function resetFilterModale() {
     if (advancedFiltersAreON === 1){
         arrayVersion = [];
         displayVersionFilter(); 
-        $('#iconAdvancedFilter').css('color', 'white');
+//        $('#iconAdvancedFilter').css('color', 'white');
+        $('#advancedFilterLi').removeClass('searchActiveAdvanced');
         advancedFiltersAreON = 0;
         hideFamilyFilter();
     }
@@ -364,7 +363,8 @@ $('#validFilterModale').click(function (e) {
     });
     if(arrayFilterVersion.length === 0 || arrayFilterActivity.length === 0 ){
         displayAlert('alerteFilter','danger','Merci de saisir au moins une version et une activité');        
-        $('#iconAdvancedFilter').css('color', 'white');
+//        $('#iconAdvancedFilter').css('color', 'white');
+        $('#advancedFilterLi').removeClass('searchActiveAdvanced');
         advancedFiltersAreON = 0;
     }else{
         arrayVersion.push(arrayFilterVersion);
@@ -376,7 +376,9 @@ $('#validFilterModale').click(function (e) {
         displayVersionFilter();    
         $('#ModaleFilter').modal('hide');
         advancedFiltersAreON = 1;
-        $('#iconAdvancedFilter').css('color', '#28a745');
+//        $('#iconAdvancedFilter').css('color', '#28a745');
+        $('#advancedFilterLi').addClass('searchActiveAdvanced');
+        
     }
     
     

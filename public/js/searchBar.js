@@ -2,7 +2,8 @@ $('#searchBar').keyup(function(e){
     $('.collapsePhone').remove();
     $('.vignette').removeClass('selectColor');   
     $('.clients').css('justify-content', 'flex-start');
-    $('#iconAdvancedFilter').css('color', 'white');
+//    $('#iconAdvancedFilter').css('color', 'white');
+    $('#advancedFilterLi').removeClass('searchActiveAdvanced');
     var search = $('#searchBar').val().toLowerCase();
     hideFamilyFilter(); 
     
@@ -108,7 +109,8 @@ $('#resetSearch').click(function(){
     $('.vignette').removeClass('d-none');
     $('.vignette').removeClass('selectColor');  
     $('.clients').css('justify-content', 'space-between');
-    $('#iconAdvancedFilter').css('color', 'white');
+//    $('#iconAdvancedFilter').css('color', 'white');
+    $('#advancedFilterLi').removeClass('searchActiveAdvanced');
     advancedFiltersAreOn = 0;
     arrayVersion = [];
     

@@ -9,14 +9,12 @@ $bdd = new Database('yoda');
 $bdd2 = new Database('ecsupgrader');
 
 require_once('./class/checkCookie.php');
-checkCookie($bdd,'profil.php');
+checkCookie($bdd,'interne.php');
     
 
 ?>
 
 <!doctype html>
-
-
 <html lang="fr">
     <head>
         
@@ -55,13 +53,13 @@ checkCookie($bdd,'profil.php');
             ?>
             
             <div class="clients">
-
+                
             </div>      
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-       
+        <script src="./public/js/yoda_style.js"></script>
        
                      
     </body>

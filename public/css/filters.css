@@ -113,22 +113,27 @@
 
 .searchActiveRis{
     font-weight: bold;
-    border-bottom: solid 5px red;
+    border-bottom: solid 5px #dc3545;
 }
 
 .searchActivePacs{
     font-weight: bold;
-    border-bottom: solid 5px green;
+    border-bottom: solid 5px #28a745;
 }
 
 .searchActiveRisPacs{
     font-weight: bold;
-    border-bottom: solid 5px purple;
+    border-bottom: solid 5px #17a2b8;
 }
 
 .searchActiveNone{
     font-weight: bold;
-    border-bottom: solid 5px white;
+    border-bottom: solid 5px #f8f9fa;
+}
+
+.searchActiveAdvanced{
+    font-weight: bold;
+    border-bottom: solid 5px #28a745;
 }
 
 
