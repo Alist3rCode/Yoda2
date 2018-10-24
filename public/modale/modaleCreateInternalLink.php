@@ -16,7 +16,7 @@ foreach($select as $key=>$value){
 <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Création d'un lien interne</h5>
+        <h5 class="modal-title" id="linkModalTitle">Création d'un lien interne</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -83,6 +83,7 @@ foreach($select as $key=>$value){
                           <label class="custom-file-label text-left" for="inputGroupFile01">Image du lien</label>
                     </div>
                     <img class="d-none mt-3 mb-3" id="previewLink" src="#" height="100" />
+                    <div class="d-none" id="modifImage">0</div>
                 </div>
 
                 <div class="col-md-6">
@@ -94,8 +95,12 @@ foreach($select as $key=>$value){
           
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary" id="validNewLink">Valider</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelModaleLink">Annuler</button>
+        <button type="button" class="btn btn-primary" id="validNewLink" >Valider</button>
+        
+        <div class="d-none" id="linkToModif"></div>
+        <button type="button" class="btn btn-danger d-none" id='deleteLink'>Supprimer</button>
+        <button type="button" class="btn btn-success d-none" id="modifLink">Modifier</button>
       </div>
     </div>
   </div>

@@ -75,9 +75,9 @@ $selectLink = $bdd->QueryObj('SELECT * FROM INT_LINK WHERE LNK_VALID = 1 ORDER B
                                 <button class="btn btn-primary buttonModifLinks d-none btnLinkBefore" onclick="moveBefore(<?=$valueLink->LNK_ID?>)">
                                     <i class="fas fa-chevron-left"></i>
                                 </button>
-                                <a href="<?=$valueLink->LNK_URL?>" target="_blank">
-                                    <img src="public/img/interne/<?= $valueLink->LNK_IMAGE?>" height="100" />
-                                    <p><?=$valueLink->LNK_NAME?></p>
+                                <a id="urlLink_<?=$valueLink->LNK_ID?>" href="<?=$valueLink->LNK_URL?>" target="_blank">
+                                    <img id="imgLink_<?=$valueLink->LNK_ID?>" src="public/img/interne/<?= $valueLink->LNK_IMAGE?>" height="100" />
+                                    <p id="nameLink_<?=$valueLink->LNK_ID?>"><?=$valueLink->LNK_NAME?></p>
                                 </a>
                                 <div class="d-flex flex-column">
                                     <button class="btn btn-primary buttonModifLinks btnLinkAfter d-none" onclick="moveAfter(<?=$valueLink->LNK_ID?>)">
