@@ -125,3 +125,12 @@ body{
 .activeSidebarElement i{
     color: #28a745!important;
 }
+
+.section{
+    color:white;
+}
+
+.links a{
+    text-decoration : none;
+    color : white;
+}

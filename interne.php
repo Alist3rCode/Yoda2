@@ -11,6 +11,10 @@ $bdd2 = new Database('ecsupgrader');
 require_once('./class/checkCookie.php');
 checkCookie($bdd,'interne.php');
     
+$selectSection = $bdd->QueryObj('SELECT * FROM INT_SECTION WHERE SEC_VALID = 1');
+
+$selectLink = $bdd->QueryObj('SELECT * FROM INT_LINK WHERE LNK_VALID = 1');
+
 
 ?>
 
@@ -55,6 +59,30 @@ checkCookie($bdd,'interne.php');
             ?>
             
             <div class="clients">
+                
+                <?php foreach($selectSection as $key=>$value):?>
+                   
+                <div class="col-md-12 text-center section">
+                    <div class="display-4"><?=$value->SEC_NAME?></div>
+                </div>
+                <div class="col-md-12 links text-center d-flex flex-row justify-content-around">
+                    <?php foreach($selectLink as $keyLink=>$valueLink):
+                        if($valueLink->LNK_ID_SEC == $value->SEC_ID):?>
+
+                            <a href="<?=$valueLink->LNK_URL?>" target="_blank">
+                                <img src="public/img/interne/<?= $valueLink->LNK_IMAGE?>" height="100" />
+                                <p><?=$valueLink->LNK_NAME?></p>
+                            </a>
+
+                        <?php endif;?>
+                    <?php endforeach;?>
+                </div>
+                    
+                <?php endforeach; ?>
+                
+                
+                
+                
                 
                 <div class="modal fade" id="modaleCreateInternalLink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <?php require 'public/modale/modaleCreateInternalLink.php';?>

@@ -30,7 +30,7 @@ foreach($select as $key=>$value){
                         </button>
                     </div>
                     <select class="custom-select" id="selectSection" >
-                        <option selected>Section...</option>
+                        <option selected value="0">Section...</option>
                         <?= $dropdown?>
 
                     </select>
@@ -77,12 +77,12 @@ foreach($select as $key=>$value){
                 
             </div>
             <div class="col-md-12 row">
-                <div class="col-md-6">
-                    <div class="custom-file">
+                <div class="col-md-6 text-center">
+                    <div class="custom-file ">
                           <input type="file" class="custom-file-input" id="internalLinkImage"  accept="image/*">
-                          <label class="custom-file-label" for="inputGroupFile01">Image du lien</label>
+                          <label class="custom-file-label text-left" for="inputGroupFile01">Image du lien</label>
                     </div>
-                    <img class="d-none" id="previewLink" src="#" alt="your image" />
+                    <img class="d-none mt-3 mb-3" id="previewLink" src="#" height="100" />
                 </div>
 
                 <div class="col-md-6">
@@ -95,7 +95,7 @@ foreach($select as $key=>$value){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary">Valider</button>
+        <button type="button" class="btn btn-primary" id="validNewLink">Valider</button>
       </div>
     </div>
   </div>
