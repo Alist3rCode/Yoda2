@@ -10,10 +10,13 @@ $bdd2 = new Database('ecsupgrader');
 
 require_once('./class/checkCookie.php');
 checkCookie($bdd,'interne.php');
+
+require_once('./class/checkRights.php');
+$right = checkRights($bdd,$_SESSION['id_user']);
     
 $selectSection = $bdd->QueryObj('SELECT * FROM INT_SECTION WHERE SEC_VALID = 1');
 
-$selectLink = $bdd->QueryObj('SELECT * FROM INT_LINK WHERE LNK_VALID = 1');
+$selectLink = $bdd->QueryObj('SELECT * FROM INT_LINK WHERE LNK_VALID = 1 ORDER BY LNK_ID_SEC, LNK_ORDER');
 
 
 ?>
@@ -65,15 +68,29 @@ $selectLink = $bdd->QueryObj('SELECT * FROM INT_LINK WHERE LNK_VALID = 1');
                 <div class="col-md-12 text-center section">
                     <div class="display-4"><?=$value->SEC_NAME?></div>
                 </div>
-                <div class="col-md-12 links text-center d-flex flex-row justify-content-around">
+                <div class="col-md-12 links text-center d-flex flex-row justify-content-around flex-wrap">
                     <?php foreach($selectLink as $keyLink=>$valueLink):
                         if($valueLink->LNK_ID_SEC == $value->SEC_ID):?>
-
-                            <a href="<?=$valueLink->LNK_URL?>" target="_blank">
-                                <img src="public/img/interne/<?= $valueLink->LNK_IMAGE?>" height="100" />
-                                <p><?=$valueLink->LNK_NAME?></p>
-                            </a>
-
+                            <div class="d-flex flex-row align-items-start" id="divLinkParent_<?=$valueLink->LNK_ID?>" data-order="<?=$valueLink->LNK_ORDER?>" data-section="<?=$value->SEC_ID?>">
+                                <button class="btn btn-primary buttonModifLinks d-none btnLinkBefore" onclick="moveBefore(<?=$valueLink->LNK_ID?>)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <a href="<?=$valueLink->LNK_URL?>" target="_blank">
+                                    <img src="public/img/interne/<?= $valueLink->LNK_IMAGE?>" height="100" />
+                                    <p><?=$valueLink->LNK_NAME?></p>
+                                </a>
+                                <div class="d-flex flex-column">
+                                    <button class="btn btn-primary buttonModifLinks btnLinkAfter d-none" onclick="moveAfter(<?=$valueLink->LNK_ID?>)">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                    <button class="btn btn-secondary buttonModifLinks btnLinkModif d-none" onclick="linkEdit(<?=$valueLink->LNK_ID?>)">
+                                        <i class="far fa-edit"></i>
+                                    </button>
+                                    
+                                </div>
+                                
+                            </div>
+                            
                         <?php endif;?>
                     <?php endforeach;?>
                 </div>

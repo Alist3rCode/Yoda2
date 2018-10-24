@@ -130,8 +130,6 @@ $('#deleteSection').click(function () {
 });
 
 $('#validNewLink').click(function () {
-
-
     var preview = document.getElementById('previewLink');
     var section = $('#selectSection').val();
     var name = $('#internalLinkName').val();
@@ -196,14 +194,39 @@ $('#validNewLink').click(function () {
                         }else{
                             displayAlert('alertModaleInternalLink', 'danger', retour['error']);
                         }
-
                     });
-                    
                 }
             }
         });
     }
-
-    
-
 });
+
+
+$('#modifLinks').click(function(){
+    
+    if($('.buttonModifLinks').hasClass('d-none')){
+        $('.buttonModifLinks').removeClass('d-none');
+    }else{
+        $('.buttonModifLinks').addClass('d-none');
+    }
+        
+});
+
+function moveBefore(id){
+    
+    var parent = document.getElementById('divLinkParent_'+id);
+    
+    var order = parent.dataset.order;
+    var section = parent.dataset.section;
+    console.log(parent.dataset) ;  
+    var parentBefore = document.querySelectorAll('[data-order="'+(order-1)+'"][data-section="'+section+'"]')[0];
+        console.log(parentBefore)
+    $(parent).insertBefore(parentBefore);
+    
+    parent.dataset.order = (order-1);
+    parentBefore.dataset.order =  order;
+    
+    console.log(parent.dataset) ;   
+};
+
+
