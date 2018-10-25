@@ -150,7 +150,8 @@ require('./public/fetchInfoPlanning.php');
                 </table>
                 
                 
-            </div>      
+            </div>     
+            
             
             <div class="modal fade" id="modaleConfigPlanning" tabindex="-1" role="dialog" aria-hidden="true">
                 
