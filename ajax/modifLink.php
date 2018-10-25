@@ -16,14 +16,21 @@ if ($select[0]->Count === '0'){
             . 'LNK_IMAGE = :image '
             . 'WHERE LNK_ID = :id');
     
+    $extension = explode('.', $_REQUEST['image']);
+    
     $req->execute(array(
     'name' => ucfirst($_REQUEST['name']),
     'url' => $_REQUEST['url'],
     'section' => $_REQUEST['section'],
     'valid' => $_REQUEST['valid'],
-    'image' => $_REQUEST['image'],
+    'image' => $_REQUEST['name'].'.'.$extension[(count($extension)-1)],
     'id' => $_REQUEST['id']
     )) or die(print_r($req->errorInfo()));
+    
+    $extension = explode('.', $_REQUEST['image']);
+    
+    rename("../public/img/interne/".$_REQUEST['image'], "../public/img/interne/".$_REQUEST['name'].'.'.$extension[(count($extension)-1)]);
+    
     
     $array['ok'] = 'ok';
 }else{

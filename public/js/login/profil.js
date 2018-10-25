@@ -737,3 +737,17 @@ function changeTheme(theme){
     
     
 }
+$('#isNotTech').click(function(){
+       
+    $('#isNotTech').addClass('d-none');
+    $('#isTech').removeClass('d-none');
+   
+    
+});
+$('#isTech').click(function(){
+       
+    $('#isNotTech').removeClass('d-none');
+    $('#isTech').addClass('d-none');
+   
+    
+});

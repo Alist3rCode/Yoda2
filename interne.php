@@ -65,20 +65,23 @@ $selectLink = $bdd->QueryObj('SELECT * FROM INT_LINK WHERE LNK_VALID = 1 ORDER B
                 
                 <?php foreach($selectSection as $key=>$value):?>
                    
-                <div class="col-md-12 text-center section">
-                    <div class="display-4"><?=$value->SEC_NAME?></div>
+                <div class="col-md-10 text-center section mb-3 mt-3 mx-auto" style="border-bottom:solid 1px #cacaca;">
+                    <h2><?=$value->SEC_NAME?></h2>
                 </div>
                 <div class="col-md-12 links text-center d-flex flex-row justify-content-around flex-wrap">
                     <?php foreach($selectLink as $keyLink=>$valueLink):
                         if($valueLink->LNK_ID_SEC == $value->SEC_ID):?>
                             <div class="d-flex flex-row align-items-start" id="divLinkParent_<?=$valueLink->LNK_ID?>" data-order="<?=$valueLink->LNK_ORDER?>" data-section="<?=$value->SEC_ID?>">
+                                <?php if(in_array("rgt_cod_link", $right)):?>
                                 <button class="btn btn-primary buttonModifLinks d-none btnLinkBefore" onclick="moveBefore(<?=$valueLink->LNK_ID?>)">
                                     <i class="fas fa-chevron-left"></i>
                                 </button>
+                                <?php endif;?>
                                 <a id="urlLink_<?=$valueLink->LNK_ID?>" href="<?=$valueLink->LNK_URL?>" target="_blank">
                                     <img id="imgLink_<?=$valueLink->LNK_ID?>" src="public/img/interne/<?= $valueLink->LNK_IMAGE?>" height="100" />
                                     <p id="nameLink_<?=$valueLink->LNK_ID?>"><?=$valueLink->LNK_NAME?></p>
                                 </a>
+                                <?php if(in_array("rgt_cod_link", $right)):?>
                                 <div class="d-flex flex-column">
                                     <button class="btn btn-primary buttonModifLinks btnLinkAfter d-none" onclick="moveAfter(<?=$valueLink->LNK_ID?>)">
                                         <i class="fas fa-chevron-right"></i>
@@ -88,6 +91,7 @@ $selectLink = $bdd->QueryObj('SELECT * FROM INT_LINK WHERE LNK_VALID = 1 ORDER B
                                     </button>
                                     
                                 </div>
+                                <?php endif;?>
                                 
                             </div>
                             

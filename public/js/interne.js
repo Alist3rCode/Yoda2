@@ -165,22 +165,22 @@ $('#validNewLink').click(function () {
         errors.push('Merci de choisir une image avec un ratio de 1.5 de proportion (100x150px par exemple).');
     }
     
-    if(section === '0'){
+    if(section == '0'){
         flag = 1;
         errors.push('Merci de saisir une section pour ce lien');
     }
     
-    if(name === ''){
+    if(name == ''){
         flag = 1;
         errors.push('Merci de saisir un nom pour ce lien');
     }
     
-    if(url === ''){
+    if(url == ''){
         flag = 1;
         errors.push('Merci de saisir un URL valide pour ce lien');
     }
 
-    if (flag === 1){
+    if (flag == 1){
         displayAlert('alertModaleInternalLink', 'danger', errors.join('<br>'));
     } else{
         $.ajax({
@@ -303,9 +303,9 @@ function linkEdit(id){
     
 }
 
-$('#modifLink').click(function(){
+function modifLink(){
     
-    
+    console.log('imin')
     var section = $('#selectSection').val();
     var name = $('#internalLinkName').val();
     var url = $('#internalLinkURL').val();
@@ -322,6 +322,7 @@ $('#modifLink').click(function(){
         var nameImage = "";
         var formdata = new FormData();
         formdata.append('file', $('input[type=file]')[0].files[0]);
+        
         if(preview.width > '150'){
             flag = 1;
             errors.push('Merci de choisir une image avec un ratio de 1.5 de proportion (100x150px par exemple).');
@@ -336,7 +337,8 @@ $('#modifLink').click(function(){
                 data: formdata, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
                 contentType: false, // The content type used when sending data to the server.
                 cache: false, // To unable request pages to be cached
-                processData: false, // To send DOMDocument or non processed data file it is set to false
+                processData: false,
+                async : false,// To send DOMDocument or non processed data file it is set to false
                 success: function (data)   // A function to be called if request succeeds
                 {
                     if(data['ok'] === 'nok'){
@@ -345,12 +347,12 @@ $('#modifLink').click(function(){
                     }else if (data['ok'] === 'ok'){
                         flagImage = 0;
                         image = data['name'];
+                        
                     }
                 }
             });
         }
     }
-    
     if(section === '0'){
         flag = 1;
         errors.push('Merci de saisir une section pour ce lien');
@@ -369,7 +371,6 @@ $('#modifLink').click(function(){
     if (flag === 1 ){
         displayAlert('alertModaleInternalLink', 'danger', errors.join('<br>'));
     } else if(flagImage === 0){
-       
                     
         $.post("ajax/modifLink.php",
             {
@@ -392,9 +393,9 @@ $('#modifLink').click(function(){
             }
         });
     }
-});
+}
 
-$('#deleteLink').click(function(){
+function deleteLink(){
     
     var section = $('#selectSection').val();
     var name = $('#internalLinkName').val();
@@ -424,4 +425,4 @@ $('#deleteLink').click(function(){
             displayAlert('alertModaleInternalLink', 'danger', retour['error']);
         }
     });
-})
+}

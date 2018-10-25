@@ -32,7 +32,8 @@ switch ($_REQUEST['page']) {
 }
 
 if ($flag == 0){
-    $req = $bdd->prepare('INSERT INTO YDA_USERS( USR_MAIL, USR_PASSWORD, USR_ID_PRO, USR_FIRST_NAME, USR_NAME, USR_PAGE) VALUES (:email, :password, :profil, :name, :lastName, :page)');
+    $req = $bdd->prepare('INSERT INTO YDA_USERS( USR_MAIL, USR_PASSWORD, USR_ID_PRO, USR_FIRST_NAME, USR_NAME, USR_PAGE, USR_SURNAME) '
+            . 'VALUES (:email, :password, :profil, :name, :lastName, :page, :surname)');
     
     $req->execute(array(
 	'email' => strtolower($_REQUEST['email']),
@@ -40,7 +41,8 @@ if ($flag == 0){
 	'profil' => '2',
 	'name' => strtolower($_REQUEST['name']),
 	'lastName' => strtolower($_REQUEST['lastName']),
-	'page' => $page)) or die(print_r($req->errorInfo()));
+	'page' => $page,
+        'surname' => strtoupper(substr($_REQUEST['name'], 0, 1).substr($_REQUEST['lastName'], 0, 2)))) or die(print_r($req->errorInfo()));
 	$array['ok'] = 'ok';
 
     $array['id'] = $bdd->lastInsertId();

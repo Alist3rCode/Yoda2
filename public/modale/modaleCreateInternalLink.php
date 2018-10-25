@@ -99,8 +99,8 @@ foreach($select as $key=>$value){
         <button type="button" class="btn btn-primary" id="validNewLink" >Valider</button>
         
         <div class="d-none" id="linkToModif"></div>
-        <button type="button" class="btn btn-danger d-none" id='deleteLink'>Supprimer</button>
-        <button type="button" class="btn btn-success d-none" id="modifLink">Modifier</button>
+        <button type="button" class="btn btn-danger d-none" id="deleteLink" onclick="deleteLink()">Supprimer</button>
+        <button type="button" class="btn btn-success d-none" id="modifLink" onclick="modifLink()">Modifier</button>
       </div>
     </div>
   </div>

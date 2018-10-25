@@ -27,7 +27,6 @@ if ($_REQUEST['tag'] != ''){
             <?= $formatedTag?>
 
             </div>
-
             <div class="version">
                     <hr class="my-4">
                     <span>
@@ -56,7 +55,6 @@ if ($_REQUEST['tag'] != ''){
         <div class="backBtn" data-toggle="tooltip" data-html="true"  data-id="<?=$_REQUEST['id']?>" data-placement="bottom" data-title="test">
             <i class="fas fa-code-branch"></i>
         </div>
-
     </div>
 </div>                 
 
