@@ -45,3 +45,17 @@
    
     
 }
+
+.table td, .table th{
+    padding: .25rem!important;
+}
+
+input[type="color"]{
+    height: 38px;
+    border-radius: 5px;
+    border: none;
+}
+
+.loginInput{
+    margin-bottom:0!important;
+}

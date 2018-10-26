@@ -12,6 +12,14 @@ require_once('./class/checkCookie.php');
 checkCookie($bdd,'profil.php');
     
 
+$ip = $_SERVER['REMOTE_ADDR'];
+$page = $_SERVER['PHP_SELF'];
+$browserArray = get_browser(NULL, true);
+$browser = $browserArray['parent'];
+
+
+var_dump($browser)
+
 ?>
 
 <!doctype html>
