@@ -46,7 +46,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                             </div>
                             <input type="text" class="loginInput col-md-3 inputDateWithText" placeholder="Début">
                             <input type="text" class="loginInput col-md-3 inputDateWithText" placeholder="Fin">
-                            <button class="btn btn-primary col-md-1" > 
+                            <button class="btn btn-primary col-md-1" data-toggle="collapse" data-target="#resultSlotSearch" aria-expanded="false" aria-controls="resultSlotSearch"> 
                                 <i class="fas fa-search"></i>
                             </button>
                             <button class="btn btn-success col-md-1" data-toggle="collapse" data-target="#createAssocSlot" aria-expanded="false" aria-controls="createAssocSlot"> 
@@ -130,7 +130,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12" >
+                        <div class="col-md-12 collapse" id="resultSlotSearch">
                             <table class="table table-striped mb-3"  > 
                                 <thead>
                                     <tr>
@@ -169,236 +169,10 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         </td>
                                     </tr>
                                     <?php endfor;?>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-
-                                        </th>
-                                        <td>Yohann Lopez</td>
-                                        <td>Après-Midi</td>
-                                        <td>25/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>MAT</td>
-                                        <td>25/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>YLP</td>
-                                        <td>ALL</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>JSA</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td>YLP</td>
-                                        <td>ABS</td>
-                                        <td>26/10/2018</td>
-                                        <td>
-                                            <button class="btn btn-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    
                                 </tbody>
                             </table>
                         </div>
+                        <div class="alert alert-warning">Cliquer sur la loupe effectuer une recherche d'association de créneaux, ou sur le + vert pour paramétrer des associations de créneaux. </div>
                     </div>
                 </div>
                 <div class="col-md-6" style="border-left: solid 1px darkgrey">
@@ -412,7 +186,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                             <input class="loginInput inputTimeWithText" style="width:inherit;margin-left:30px" type="time" id="endPlanning" placeholder="Fin" value="<?=$arrayPlanning['stop']->format('H:i:s')?>">
                         </div>
                         <div class="row mx-auto">
-                            <div class="btn-group mx-auto mb-3" role="group">
+                            <div class="btn-group mx-auto mb-3" role="group" id="workingDaysButton">
                                 <?php foreach($arrayDays as $key=>$value):?>
                                     <button type="button" class="btn btn-outline-primary daysButton <?=(in_array($value, $workingDays)? "active": "");?>"><?=$value?></button>
                                 <?php endforeach; ?>
@@ -428,11 +202,11 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                             <h4>Créneaux Types</h4>
                         </div>
                         <table class="table table-striped mb-3">
-                            <thead>
+                            <thead class="d-none" id="theadSlotInput">
                                 <tr>
                                     <th scope="col" style="width: 5%">
-                                        <button class="btn btn-primary">
-                                            <i class="far fa-plus-square"></i>
+                                        <button class="btn btn-secondary" onclick="switchHeadTable('headSlot')">
+                                            <i class="fas fa-table"></i>
                                         </button>
                                     </th>
                                     <th scope="col" style="width: 14.28%">
@@ -454,6 +228,33 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         <button class="btn btn-success">
                                             <i class="fas fa-check"></i>
                                         </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead id="theadSlot">
+                                <tr>
+                                    <th scope="col" style="width: 5%">
+                                        <button class="btn btn-success" onclick="switchHeadTable('inputSlot')">
+                                            <i class="fas fa-plus-square"></i>
+                                        </button>
+                                    </th>
+                                    <th scope="col" style="width: 14.28%">
+                                        Code
+                                    </th>
+                                    <th scope="col" style="width: 14.28%">
+                                        Nom
+                                    </th>
+                                    <th scope="col" style="width: 14.28%">
+                                        Début
+                                    </th>
+                                    <th scope="col" style="width: 14.28%">
+                                        Fin
+                                    </th>
+                                    <th scope="col" style="width: 5%">
+                                        Couleur
+                                    </th>
+                                    <th scope="col" style="width: 5%">
+                                        
                                     </th>
                                 </tr>
                             </thead>
@@ -480,6 +281,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 <?php endfor;?>
                             </tbody>
                         </table>
+                        <div class="alert d-none" id="alertSlot"></div>    
                     </div>
                     
                     <div class="col-md-12 mt-3">
@@ -487,11 +289,11 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                             <h4>Jours fériés / Jours fermés </h4>
                         </div>
                         <table class="table table-striped">
-                            <thead>
+                            <thead class="d-none" id="theadOffInput">
                                 <tr>
                                     <th scope="col">
-                                        <button class="btn btn-primary">
-                                            <i class="far fa-plus-square"></i>
+                                        <button class="btn btn-secondary"  onclick="switchHeadTable('headOff')">
+                                            <i class="fas fa-table"></i>
                                         </button>
                                     </th>
                                     <th scope="col">
@@ -501,7 +303,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         <input class="loginInput" type="text" id="nameOff" placeholder="Nom">
                                     </th>
                                     <th scope="col">
-                                        <button class="btn btn-outline-secondary">
+                                        <button class="btn btn-outline-primary">
                                             <i class="fas fa-redo"></i>
                                         </button>
                                     </th>
@@ -509,6 +311,27 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         <button class="btn btn-success">
                                             <i class="fas fa-check"></i>
                                         </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead id="theadOff">
+                                <tr>
+                                    <th scope="col">
+                                        <button class="btn btn-success"  onclick="switchHeadTable('inputOff')">
+                                            <i class="fas fa-plus-square"></i>
+                                        </button>
+                                    </th>
+                                    <th scope="col">
+                                        Date
+                                    </th>
+                                    <th scope="col">
+                                        Nom
+                                    </th>
+                                    <th scope="col">
+                                        Répétition
+                                    </th>
+                                    <th scope="col">
+                                       
                                     </th>
                                 </tr>
                             </thead>
@@ -522,7 +345,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                     </th>
                                     <td><?=$arrayOff[$i]['day'].$arrayOff[$i]['month'].$arrayOff[$i]['year']?></td>
                                     <td><?=$arrayOff[$i]['name']?></td>
-                                    <td><button class="btn btn-outline-secondary <?=($arrayOff[$i]['repeat']==1? "active": "");?>" diabled>
+                                    <td><button class="btn btn-outline-primary <?=($arrayOff[$i]['repeat']==1? "active": "");?>" diabled>
                                             <i class="fas fa-redo"></i>
                                         </button>
                                     <td>
@@ -534,6 +357,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 <?php endfor;?>
                             </tbody>
                         </table>
+                        <div class="alert d-none" id="alertOff"></div>   
                     </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-secondary mb-3" data-dismiss="modal">Fermer</button>
