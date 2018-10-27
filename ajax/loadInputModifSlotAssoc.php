@@ -29,41 +29,41 @@ $idSlotSelected = $select2[0]->SCO_ID;
 
 <tr>
     <th scope="col" style="width: 5%">
-        <button class="btn btn-secondary" onclick="resetModif($_REQUEST['id'])">
+        <button class="btn btn-warning" onclick="resetModif(<?=$_REQUEST['id']?>)">
             <i class="fas fa-undo-alt"></i>
         </button>
     </th>
     <th scope="col">
-        <button id="btnModifTech" type="button" data-id="<?=$idSelected?>" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
+        <button id="btnModifTech_<?=$_REQUEST['id']?>" type="button" data-id="<?=$idSelected?>" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
             <?=$firstNameSelected.' '.$nameSelected?>
         </button>
         <div class="dropdown-menu" aria-labelledby="btnModifTech">
          
             <?php for($i=0;$i < count($arrayTech);$i++):?>
-                <a class="dropdown-item searchModifTech" onclick="dropdown('btnModifTech','<?=$arrayTech[$i]['firstName'].' '.$arrayTech[$i]['name']?>',<?=$arrayTech[$i]['id']?>)">
+                <a class="dropdown-item searchModifTech" onclick="dropdown('btnModifTech_<?=$_REQUEST['id']?>','<?=$arrayTech[$i]['firstName'].' '.$arrayTech[$i]['name']?>',<?=$arrayTech[$i]['id']?>)">
                     <?=$arrayTech[$i]['firstName'].' '.$arrayTech[$i]['name']?>
                 </a>
             <?php endfor;?>
         </div>
     </th>
     <th scope="col">
-        <button id="btnModifSlot" type="button" data-id="<?=$idSlotSelected?>" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
+        <button id="btnModifSlot_<?=$_REQUEST['id']?>" type="button" data-id="<?=$idSlotSelected?>" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
             <?=$nameSlotSelected?>
         </button>
         <div class="dropdown-menu" aria-labelledby="btnModifSlot">
        
             <?php for($i=0;$i < count($arrayConfig);$i++):?>
-                <a class="dropdown-item searchSlot" onclick="dropdown('btnModifSlot','<?=$arrayConfig[$i]['name']?>',<?=$arrayConfig[$i]['id']?>)">
+                <a class="dropdown-item searchSlot" onclick="dropdown('btnModifSlot_<?=$_REQUEST['id']?>','<?=$arrayConfig[$i]['name']?>',<?=$arrayConfig[$i]['id']?>)">
                     <?=$arrayConfig[$i]['name']?>
                 </a>
             <?php endfor;?>
         </div>
     </th>
     <th scope="col">
-        <input class="loginInput inputTimeWithText" type="date" id="dateModifSlot" value="<?=DateTime::createFromFormat('d/m/Y', $_REQUEST['date'])->format('Y-m-d')?>">
+        <input class="loginInput inputTimeWithText" type="date" id="dateModifSlot_<?=$_REQUEST['id']?>" value="<?=DateTime::createFromFormat('d/m/Y', $_REQUEST['date'])->format('Y-m-d')?>">
     </th>
     <th scope="col" style="width: 5%">
-        <button class="btn btn-success" onclick="validModifSlotAssoc($_REQUEST['id'])">
+        <button class="btn btn-success" onclick="modifSlotAssoc('valid',<?=$_REQUEST['id']?>)">
             <i class="fas fa-check"></i>
         </button>
     </th>

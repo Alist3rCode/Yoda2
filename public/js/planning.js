@@ -178,7 +178,7 @@ $('#slotSearch').click(function(e){
         }
 });
 
-function modifSlotAssoc(id){
+function switchSlotAssoc(id){
     var tr = document.getElementById('resultTrSlot_'+id);
     var tech = document.getElementById('resultTech_'+id).dataset.idtech;
     var slot = document.getElementById('resultSlot_'+id).dataset.idslot;
@@ -203,6 +203,67 @@ function modifSlotAssoc(id){
         success: function(retour){
 //            console.log(retour);
             tr.innerHTML = retour;
+        }
+    });
+}
+
+function resetModif(id){
+    
+    var tr = document.getElementById('resultTrSlot_'+id);
+    console.log(id);
+    $.ajax({
+        url: "ajax/resetSlotAssoc.php", 
+        type: "POST", 
+        data: {
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+//            console.log(retour);
+            tr.innerHTML = retour;
+        }
+    });
+}
+
+function modifSlotAssoc(mode, id){
+   
+   
+    if (mode == 'valid'){
+
+        var tr = document.getElementById('resultTrSlot_'+id);
+        var tech = document.getElementById('btnModifTech_'+id).dataset.id;
+        var slot = document.getElementById('btnModifSlot_'+id).dataset.id;
+        var date = document.getElementById('dateModifSlot_'+id).value;
+        
+    } else if (mode == 'delete'){
+        
+        var tr = document.getElementById('resultTrSlot_'+id);
+        var tech = document.getElementById('resultTech_'+id).dataset.idtech;
+        var slot = document.getElementById('resultSlot_'+id).dataset.idslot;
+        var date = document.getElementById('resultDate_'+id).innerHTML;
+    }   
+    
+    $.ajax({
+        url: "ajax/modifSlotAssoc.php", 
+        type: "POST", 
+        data: {
+            id : id,
+            tech : tech,
+            slot : slot,
+            date : date, 
+            mode : mode
+        }, 
+        async : false,
+        success: function(retour){
+            if (mode == 'valid'){
+                tr.innerHTML = retour;
+                displayAlert('alertSearchOrCreate','success','Les modifications ont été enregistrées.');
+            } else if (mode == 'delete'){
+                if (retour == 'ok'){
+                    tr.innerHTML = '';
+                    displayAlert('alertSearchOrCreate','success','La ligne a été supprimée avec succès.');
+                }
+            }
         }
     });
     

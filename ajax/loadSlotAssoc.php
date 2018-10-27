@@ -36,7 +36,7 @@ foreach($search as $key=>$value):
     ?>    
     <tr id="resultTrSlot_<?=$value->SLO_ID?>">
         <th scope="row">
-            <button class="btn btn-secondary" onclick='modifSlotAssoc(<?=$value->SLO_ID?>)'>
+            <button class="btn btn-secondary" onclick='switchSlotAssoc(<?=$value->SLO_ID?>)'>
                 <i class="far fa-edit"></i>
             </button>
         </th>
@@ -44,7 +44,7 @@ foreach($search as $key=>$value):
         <td id="resultSlot_<?=$value->SLO_ID?>" data-idSlot="<?=$value->SLO_ID_SCO?>"><?=$arraySlot['nameSlot']?></td>
         <td id="resultDate_<?=$value->SLO_ID?>"><?=$arraySlot['dateSlot']?></td>
         <td>
-            <button class="btn btn-danger" onclick='deleteSlotAssoc(<?=$value->SLO_ID?>)'>
+            <button class="btn btn-danger" onclick='modifSlotAssoc("delete",<?=$value->SLO_ID?>)'>
                 <i class="far fa-trash-alt"></i>
             </button>
         </td>
