@@ -52,6 +52,7 @@ foreach($select5 as $key=>$value){
    $arrayTech[$idxTech]['name'] = ucfirst($value->USR_NAME);
    $arrayTech[$idxTech]['firstName'] = ucfirst($value->USR_FIRST_NAME);
    $arrayTech[$idxTech]['surname'] = strtoupper($value->USR_SURNAME);
+   $arrayTech[$idxTech]['id'] = $value->USR_ID;
 
    $idxTech ++;
 }
@@ -77,18 +78,5 @@ foreach($select6 as $key=>$value){
    $idxOff ++;
 }
 
-$select7 = $bdd->queryObj('SELECT *'
-        . 'FROM PLA_SLOT '
-        . 'INNER JOIN YDA_USERS ON SLO_ID_USR = USR_ID '
-        . 'INNER JOIN PLA_SLOT_CONFIG ON SLO_ID_SCO = SCO_ID '
-        . 'WHERE SLO_VALID = 1');
-$idxSlot = 0;
 
-foreach($select7 as $key=>$value){
-    $arraySlot[$idxSlot]['nameTech'] = ucfirst($value->USR_FIRST_NAME). ' ' . ucfirst($value->USR_NAME);
-    $arraySlot[$idxSlot]['nameSlot'] = ucfirst($value->SCO_NAME);
-    $arraySlot[$idxSlot]['dateSlot'] = DateTime::createFromFormat('Y-m-d',$value->SLO_DATE)->format('d/m/Y');
-    $arraySlot[$idxSlot]['id'] = $value->SLO_ID;
-    $idxSlot ++;
-}
 

@@ -22,21 +22,21 @@ $('.inputDateWithText').focus(function (){
    }
 });
 
-    $('.inputDateWithText').blur(function (){
+$('.inputDateWithText').blur(function (){
 
    if(this.value == ''){
        this.type = "text";
    }
 });
 
-    $('.inputTimeWithText').focus(function (){
+$('.inputTimeWithText').focus(function (){
 
    if(this.value == ''){
        this.type = "time";
    }
 });
 
-    $('.inputTimeWithText').blur(function (){
+$('.inputTimeWithText').blur(function (){
 
    if(this.value == ''){
        this.type = "text";
@@ -53,33 +53,10 @@ $('.daysButton').click(function(){
 });  
     
     
-$('.searchTech').click(function(){
-   
-   var techName = $(this).html();
-   $('#btnTech').html(techName);
-    
-});
-
-$('.searchSlot').click(function(){
-   
-   var slotName = $(this).html();
-   $('#btnSlot').html(slotName);
-    
-});
-
-$('.createTech').click(function(){
-   
-   var techName = $(this).html();
-   $('#btnAddTech').html(techName);
-    
-});
-
-$('.createSlot').click(function(){
-   
-   var slotName = $(this).html();
-   $('#btnAddSlot').html(slotName);
-    
-});
+function dropdown(btn, content, id){
+    $('#'+btn).html(content);
+    document.getElementById(btn).dataset.id = id;
+}
 
 
 $('#validPlanningTime').click(function(){
@@ -133,3 +110,102 @@ function switchHeadTable(type){
         $('#theadOffInput').addClass('d-none');
     }
 }
+
+$('.collapse').on('shown.bs.collapse', function () {
+    if(!$('#resultSlotSearch').hasClass('show') && !$('#createAssocSlot').hasClass('show')){
+        $('#noSearchNorCreate').collapse('show');
+    } else {
+        $('#noSearchNorCreate').collapse('hide');
+    }
+});
+
+$('.collapse').on('hidden.bs.collapse', function () {
+    if(!$('#resultSlotSearch').hasClass('show') && !$('#createAssocSlot').hasClass('show')){
+        $('#noSearchNorCreate').collapse('show');
+    } else {
+        $('#noSearchNorCreate').collapse('hide');
+    }
+});
+
+$('#slotSearch').click(function(e){
+    
+    var tech = document.getElementById('btnTech').dataset.id;
+    var slot = document.getElementById('btnSlot').dataset.id;
+    var start = $('#startSearchSlot').val();
+    var end = $('#endSearchSlot').val();  
+    var flag = 0;
+    var errors = [];
+    
+    $('#createAssocSlot').collapse('hide');
+
+        if(tech == ''){
+            flag = 1;
+            errors.push('Technicien non renseigné');
+        }
+        if(slot == ''){
+            flag = 1;
+            errors.push('Créneau non renseigné');
+        }
+        if(start == ''){
+            flag = 1;
+            errors.push('Saisir une date de début de recherche');
+        }
+        if(end == ''){
+            flag = 1;
+            errors.push('Saisir une date de fin de recherche');
+        }
+        
+        if(flag == 1){
+            displayAlert('alertSearchOrCreate','danger',errors.join("<br>"));
+        } else{
+            console.log('tech : '+tech, 'slot : '+slot, 'start : '+start, 'end : '+end);
+            $('#tableResultSlot').html('');
+            $.ajax({
+                url: "ajax/loadSlotAssoc.php", 
+                type: "POST", 
+                data: {
+                    start: start,
+                    end : end,
+                    tech : tech,
+                    slot : slot
+                }, 
+                async : false,
+                success: function(retour){
+                    $('#tableResultSlot').html(retour);
+                }
+            });
+            $('#resultSlotSearch').collapse('show');
+        }
+});
+
+function modifSlotAssoc(id){
+    var tr = document.getElementById('resultTrSlot_'+id);
+    var tech = document.getElementById('resultTech_'+id).dataset.idtech;
+    var slot = document.getElementById('resultSlot_'+id).dataset.idslot;
+    var date = document.getElementById('resultDate_'+id).innerHTML;
+    
+    console.log('imin');
+    
+    console.log(tr, tech, slot, date);
+    
+    tr.innerHTML = '';
+    
+    $.ajax({
+        url: "ajax/loadInputModifSlotAssoc.php", 
+        type: "POST", 
+        data: {
+            tech: tech,
+            slot : slot,
+            date : date,
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+//            console.log(retour);
+            tr.innerHTML = retour;
+        }
+    });
+    
+    
+}
+

@@ -20,36 +20,40 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                         <div class="btn-group text-center mx-auto col-md-12 mb-3" role="group" aria-label="Button group with nested dropdown" style="height:40px" >
 
                             <div class="btn-group  col-md-2" role="group" style="padding:0">
-                                <button id="btnTech" type="button" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
+                                <button id="btnTech" type="button" data-id="" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
                                   Technicien
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnTech">
-                                    <a class="dropdown-item searchTech">Tous</a>
+                                    <a class="dropdown-item searchTech" onclick="dropdown('btnTech','Tous',0)">Tous</a>
                                     <div class="dropdown-divider"></div>
                                     <?php for($i=0;$i < count($arrayTech);$i++):?>
-                                        <a class="dropdown-item searchTech"><?=$arrayTech[$i]['firstName'].' '.$arrayTech[$i]['name']?></a>
+                                        <a class="dropdown-item searchTech" onclick="dropdown('btnTech','<?=$arrayTech[$i]['firstName'].' '.$arrayTech[$i]['name']?>',<?=$arrayTech[$i]['id']?>)">
+                                            <?=$arrayTech[$i]['firstName'].' '.$arrayTech[$i]['name']?>
+                                        </a>
                                     <?php endfor;?>
                                 </div>
                             </div>
 
                             <div class="btn-group col-md-2" role="group" style="padding:0">
-                                <button id="btnSlot" type="button" class="btn btn-secondary dropdown-toggle  col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
+                                <button id="btnSlot" type="button" data-id="" class="btn btn-secondary dropdown-toggle  col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
                                   Créneaux
                                 </button>
                                 <div class="dropdown-menu col-md-12" aria-labelledby="btnSlot">
-                                    <a class="dropdown-item searchSlot">Tous</a>
+                                    <a class="dropdown-item searchSlot" data-id="0" onclick="dropdown('btnSlot','Tous',0)">Tous</a>
                                     <div class="dropdown-divider"></div>
                                     <?php for($i=0;$i < count($arrayConfig);$i++):?>
-                                        <a class="dropdown-item searchSlot"><?=$arrayConfig[$i]['name']?></a>
+                                        <a class="dropdown-item searchSlot" onclick="dropdown('btnSlot','<?=$arrayConfig[$i]['name']?>',<?=$arrayConfig[$i]['id']?>)">
+                                            <?=$arrayConfig[$i]['name']?>
+                                        </a>
                                     <?php endfor;?>
                                 </div>
                             </div>
-                            <input type="text" class="loginInput col-md-3 inputDateWithText" placeholder="Début">
-                            <input type="text" class="loginInput col-md-3 inputDateWithText" placeholder="Fin">
-                            <button class="btn btn-primary col-md-1" data-toggle="collapse" data-target="#resultSlotSearch" aria-expanded="false" aria-controls="resultSlotSearch"> 
+                            <input type="text" class="loginInput col-md-3 inputDateWithText" id="startSearchSlot" placeholder="Début">
+                            <input type="text" class="loginInput col-md-3 inputDateWithText" id="endSearchSlot" placeholder="Fin">
+                            <button class="btn btn-primary col-md-1 btnCollapse" id="slotSearch"> 
                                 <i class="fas fa-search"></i>
                             </button>
-                            <button class="btn btn-success col-md-1" data-toggle="collapse" data-target="#createAssocSlot" aria-expanded="false" aria-controls="createAssocSlot"> 
+                            <button class="btn btn-success col-md-1 btnCollapse" data-toggle="collapse" data-target="#createAssocSlot" aria-expanded="false" aria-controls="createAssocSlot"> 
                                 <i class="fas fa-plus-square"></i>
                             </button>
                         </div>
@@ -58,23 +62,27 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 <div class="btn-group text-center mx-auto col-md-12 mt-3 mb-3" role="group" aria-label="Button group with nested dropdown" style="height:40px;padding:0" >
 
                                     <div class="btn-group  col-md-3" role="group" style="padding:0">
-                                        <button id="btnAddTech" type="button" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
+                                        <button id="btnAddTech" data-id="" type="button" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
                                           Technicien
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnAddTech">
                                             <?php for($i=0;$i < count($arrayTech);$i++):?>
-                                                <a class="dropdown-item createTech"><?=$arrayTech[$i]['firstName'].' '.$arrayTech[$i]['name']?></a>
+                                                <a class="dropdown-item createTech" onclick="dropdown('btnAddTech','<?=$arrayTech[$i]['firstName'].' '.$arrayTech[$i]['name']?>',<?=$arrayTech[$i]['id']?>)">
+                                                    <?=$arrayTech[$i]['firstName'].' '.$arrayTech[$i]['name']?>
+                                                </a>
                                             <?php endfor;?>
                                         </div>
                                     </div>
 
                                     <div class="btn-group col-md-3" role="group" style="padding:0">
-                                        <button id="btnAddSlot" type="button" class="btn btn-secondary dropdown-toggle  col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
+                                        <button id="btnAddSlot" data-id="" type="button" class="btn btn-secondary dropdown-toggle  col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
                                           Créneaux
                                         </button>
                                         <div class="dropdown-menu col-md-12" aria-labelledby="btnAddSlot">
                                             <?php for($i=0;$i < count($arrayConfig);$i++):?>
-                                                <a class="dropdown-item createSlot"><?=$arrayConfig[$i]['name']?></a>
+                                                <a class="dropdown-item " onclick="dropdown('btnAddSlot','<?=$arrayConfig[$i]['name']?>',<?=$arrayConfig[$i]['id']?>)">
+                                                    <?=$arrayConfig[$i]['name']?>
+                                                </a>
                                             <?php endfor;?>
                                         </div>
                                     </div>
@@ -130,12 +138,13 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 </div>
                             </div>
                         </div>
+                        <div class="d-none alert" id="alertSearchOrCreate"></div>
                         <div class="col-md-12 collapse" id="resultSlotSearch">
                             <table class="table table-striped mb-3"  > 
                                 <thead>
                                     <tr>
-                                        <th scope="col">
-                                            Editer
+                                        <th scope="col" style="width: 5%">
+                                           
                                         </th>
                                         <th scope="col">
                                             Technicien
@@ -146,33 +155,17 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         <th scope="col">
                                             Date
                                         </th>
-                                        <th scope="col">
-                                            Supprimer
+                                        <th scope="col" style="width: 5%">
+                                           
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php for($i=0;$i<count($arraySlot);$i++):?>
-                                    <tr>
-                                        <th scope="row">
-                                            <button class="btn btn-secondary" onclick='modifSlotAssoc(<?=$arraySlot[$i]['id']?>)'>
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </th>
-                                        <td><?=$arraySlot[$i]['nameTech']?></td>
-                                        <td><?=$arraySlot[$i]['nameSlot']?></td>
-                                        <td><?=$arraySlot[$i]['dateSlot']?></td>
-                                        <td>
-                                            <button class="btn btn-danger" onclick='deleteSlotAssoc(<?=$arraySlot[$i]['id']?>)'>
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <?php endfor;?>
+                                <tbody id="tableResultSlot">
+                                    
                                 </tbody>
                             </table>
                         </div>
-                        <div class="alert alert-warning">Cliquer sur la loupe effectuer une recherche d'association de créneaux, ou sur le + vert pour paramétrer des associations de créneaux. </div>
+                        <div id="noSearchNorCreate" class="alert alert-warning collapse show">Cliquer sur la loupe effectuer une recherche d'association de créneaux, ou sur le + vert pour paramétrer des associations de créneaux. </div>
                     </div>
                 </div>
                 <div class="col-md-6" style="border-left: solid 1px darkgrey">
