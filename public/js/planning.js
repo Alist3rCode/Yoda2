@@ -29,6 +29,20 @@ $('.inputDateWithText').blur(function (){
    }
 });
 
+$('.inputMonthWithText').focus(function (){
+
+   if(this.value == ''){
+       this.type = "month";
+   }
+});
+
+$('.inputMonthWithText').blur(function (){
+
+   if(this.value == ''){
+       this.type = "text";
+   }
+});
+
 $('.inputTimeWithText').focus(function (){
 
    if(this.value == ''){
@@ -337,7 +351,78 @@ function addNewSlot(){
                 
             }
         });
-        
     }
+}
+
+function switchFormatOffDate(){
+    var currentYear = (new Date).getFullYear();
+    var btn = $('#btnRepeatOff');
+    console.log(btn)
+    
+    if(btn.hasClass('active')){
+        $("#dateOff").attr({
+           "max" : "",      
+           "min" : ""  
+        });
+        btn.removeClass('active');
+        
+    } else if(!btn.hasClass('active')){
+        $("#dateOff").attr({
+           "max" : currentYear+"-01-01",      
+           "min" : currentYear+"-12-31"
+        });
+        btn.addClass('active');
+    }
+    $('#dateOff').val('');
+}
+
+function addOff(){
+    var date = $('#dateOff').val();
+    var repeat = $('#btnRepeatOff').hasClass('active')? 1 : 0 ;
+    var name = $('#nameOff').val();
+    
+    var flag = 0;
+    var errors = [];
+    
+    if(date == ''){
+        flag = 1;
+        errors.push('Merci de renseigner une date pour ce jour fermé');
+    }
+    if(name == ''){
+        flag = 1;
+        errors.push('Merci de renseigner un nom pour ce jour fermé');
+    }
+    
+    if (flag == 1){
+        displayAlert('alertOff','danger',errors.join('<br>'));
+    } else{
+        
+        $.ajax({
+            url: "ajax/planning/addOff.php", 
+            type: "POST", 
+            data: {
+                name : name,
+                date : date,
+                repeat : repeat                
+            }, 
+            async : false,
+            success: function(retour){
+                
+                if (retour['ok'] == 'ok'){
+                    displayAlert('alertOff','success','Le jour fermé a bien été ajouté.');
+                    $('#tableOff').append(retour['html']);
+                    switchHeadTable('headOff');
+                    $('#nameOff').val('');
+                    $('#dateOff').val('');
+                    $('#btnRepeatOff').removeClass('active')
+                    
+                } else if (retour['ok'] == 'nok'){
+                    displayAlert('alertOff','danger',retour['error']);
+                }
+                
+            }
+        });
+    }
+    
 }
 

@@ -6,11 +6,11 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
 ?>
 
 <div class="modal-dialog" role="document" style="margin : 15px">
-    <div class="modal-content" style="width: calc(100vw - 30px);margin:0; padding: 0; max-height: 930px">
+    <div class="modal-content" style="width: calc(100vw - 30px);margin:0; padding: 0; max-height: calc(100vh - 30px)">
         <div class="modal-header text-center">
           <h4 class="modal-title mx-auto" id="exampleModalLabel">Configuration Planning Support</h4>
         </div>
-        <div class="modal-body" style="height:800px;">
+        <div class="modal-body" style="height:calc(100vh - 110px);">
             <div class="col-md-12 d-flex flex-row" style="height:100%;">
                 <div class="col-md-6" style="overflow-y:scroll;">
                     <div class="col-md-12">
@@ -168,7 +168,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                         <div id="noSearchNorCreate" class="alert alert-warning collapse show">Cliquer sur la loupe effectuer une recherche d'association de créneaux, ou sur le + vert pour paramétrer des associations de créneaux. </div>
                     </div>
                 </div>
-                <div class="col-md-6" style="border-left: solid 1px darkgrey">
+                <div class="col-md-6" style="border-left: solid 1px darkgrey;overflow-y: scroll">
                     <div class="col-md-12" style="border-bottom : solid 2px darkgrey;">
                         <div class="row d-flex flex-row text-center mb-3 ">
                             
@@ -290,18 +290,19 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         </button>
                                     </th>
                                     <th scope="col">
+                                        <button class="btn btn-outline-primary" id="btnRepeatOff" onclick="switchFormatOffDate()">
+                                            <i class="fas fa-redo"></i>
+                                        </button>
+                                    </th>
+                                    <th scope="col">
                                         <input class="loginInput inputDateWithText" type="text" id="dateOff" placeholder="Date">
                                     </th>
                                     <th scope="col">
                                         <input class="loginInput" type="text" id="nameOff" placeholder="Nom">
                                     </th>
+                                    
                                     <th scope="col">
-                                        <button class="btn btn-outline-primary">
-                                            <i class="fas fa-redo"></i>
-                                        </button>
-                                    </th>
-                                    <th scope="col">
-                                        <button class="btn btn-success">
+                                        <button class="btn btn-success" onclick="addOff()">
                                             <i class="fas fa-check"></i>
                                         </button>
                                     </th>
@@ -315,20 +316,20 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         </button>
                                     </th>
                                     <th scope="col">
+                                        Répétition
+                                    </th>
+                                    <th scope="col">
                                         Date
                                     </th>
                                     <th scope="col">
                                         Nom
                                     </th>
                                     <th scope="col">
-                                        Répétition
-                                    </th>
-                                    <th scope="col">
                                        
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody  style="overflow-y: scroll;">
+                            <tbody  id="tableOff">
                                 <?php for($i=0;$i<count($arrayOff);$i++):?>
                                 <tr>
                                     <th scope="row">
@@ -336,11 +337,14 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                             <i class="far fa-edit"></i>
                                         </button>
                                     </th>
-                                    <td><?=$arrayOff[$i]['day'].$arrayOff[$i]['month'].$arrayOff[$i]['year']?></td>
-                                    <td><?=$arrayOff[$i]['name']?></td>
-                                    <td><button class="btn btn-outline-primary <?=($arrayOff[$i]['repeat']==1? "active": "");?>" diabled>
+                                    <td>
+                                        <button class="btn btn-<?=($arrayOff[$i]['repeat']==0? "outline-": "");?>primary " disabled>
                                             <i class="fas fa-redo"></i>
                                         </button>
+                                    </td>
+                                    <td><?=$arrayOff[$i]['date']?></td>
+                                    <td><?=$arrayOff[$i]['name']?></td>
+                                    
                                     <td>
                                         <button class="btn btn-danger" onclick='deleteOff(<?=$arrayOff[$i]['id']?>)'>
                                             <i class="far fa-trash-alt"></i>

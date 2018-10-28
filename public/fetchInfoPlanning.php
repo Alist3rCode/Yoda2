@@ -65,15 +65,14 @@ $idxOff = 0;
 foreach($select6 as $key=>$value){
    $arrayOff[$idxOff]['id'] = $value->OFF_ID;
    $arrayOff[$idxOff]['name'] = ucfirst($value->OFF_NAME);
-   $arrayOff[$idxOff]['day'] = $value->OFF_DAY;
-   $arrayOff[$idxOff]['month'] = '/'.$value->OFF_MONTH;
-   if($value->OFF_YEAR != ''){
-       $arrayOff[$idxOff]['year'] = '/'.$value->OFF_YEAR;
-   }else{
-       $arrayOff[$idxOff]['year'] = "";
-   }
-   
+      
    $arrayOff[$idxOff]['repeat'] = $value->OFF_REPEAT;
+   
+   if($arrayOff[$idxOff]['repeat'] == '1'){
+       $arrayOff[$idxOff]['date'] = DateTime::createFromFormat('j-n',$value->OFF_DAY.'-'.$value->OFF_MONTH)->format('d/m');
+   }else if ($arrayOff[$idxOff]['repeat'] == '0'){
+       $arrayOff[$idxOff]['date'] = DateTime::createFromFormat('j-n-Y',$value->OFF_DAY.'-'.$value->OFF_MONTH.'-'.$value->OFF_YEAR)->format('d/m/Y');
+   }
 
    $idxOff ++;
 }
