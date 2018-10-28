@@ -57,6 +57,12 @@ else{
                             .'</td>'
                         .'</tr>';
         
+        $array['dropdownSearch'] = '<a class="dropdown-item searchSlot" onclick="dropdown(\'btnSlot\','.ucfirst($_REQUEST['name']).','.$insertID.')">'
+                                    .ucfirst($_REQUEST['name'])
+                                    .'</a>' ;
+        $array['dropdownCreate'] = '<a class="dropdown-item" onclick="dropdown(\'btnAddSlot\','.ucfirst($_REQUEST['name']).','.$insertID.')">'
+                                    .ucfirst($_REQUEST['name'])
+                                    .'</a>' ;
     }
 }
 

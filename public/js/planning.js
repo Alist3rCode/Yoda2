@@ -1,6 +1,6 @@
 
 function displayModaleConfig(){
-
+    
     $.ajax({
        url: 'ajax/planning/loadModaleConfigPlanning.php',
        type: 'POST',
@@ -316,11 +316,23 @@ function addNewSlot(){
             }, 
             async : false,
             success: function(retour){
+                
+                console.log(retour['error']);
                 if (retour['ok'] == 'ok'){
                     displayAlert('alertSlot','success','Le créneau a bien été ajouté.');
                     $('#tableSlot').append(retour['html']);
+                    $('#dropdownSearchSlot').append(retour['dropdownSearch']);
+                    $('#dropdownCreateSlot').append(retour['dropdownCreate']);
+                    switchHeadTable('headSlot');
+                    $('#codeSlot').val('');
+                    $('#nameSlot').val('');
+                    $('#startSlot').val('');
+                    $('#endSlot').val('');
+                    $('#colorSlot').val('');
+                    
+                    
                 } else if (retour['ok'] == 'nok'){
-                    displayAlert('alertSlot','danger',retour['error'].join('<br>'));
+                    displayAlert('alertSlot','danger',retour['error']);
                 }
                 
             }

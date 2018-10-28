@@ -38,7 +38,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 <button id="btnSlot" type="button" data-id="" class="btn btn-secondary dropdown-toggle  col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
                                   Créneaux
                                 </button>
-                                <div class="dropdown-menu col-md-12" aria-labelledby="btnSlot">
+                                <div class="dropdown-menu col-md-12" id="dropdownSearchSlot" aria-labelledby="btnSlot">
                                     <a class="dropdown-item searchSlot" data-id="0" onclick="dropdown('btnSlot','Tous',0)">Tous</a>
                                     <div class="dropdown-divider"></div>
                                     <?php for($i=0;$i < count($arrayConfig);$i++):?>
@@ -78,7 +78,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         <button id="btnAddSlot" data-id="" type="button" class="btn btn-secondary dropdown-toggle  col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
                                           Créneaux
                                         </button>
-                                        <div class="dropdown-menu col-md-12" aria-labelledby="btnAddSlot">
+                                        <div class="dropdown-menu col-md-12" id="dropdownCreateSlot" aria-labelledby="btnAddSlot">
                                             <?php for($i=0;$i < count($arrayConfig);$i++):?>
                                                 <a class="dropdown-item " onclick="dropdown('btnAddSlot','<?=$arrayConfig[$i]['name']?>',<?=$arrayConfig[$i]['id']?>)">
                                                     <?=$arrayConfig[$i]['name']?>
