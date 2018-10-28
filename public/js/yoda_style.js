@@ -83,7 +83,7 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('collapsed');
         console.log($('#sidebar').hasClass('collapsed'));
         var value =  $('#sidebar').hasClass('collapsed') ? 1 : 0;
-        $.post("ajax/setSidebar.php",{
+        $.post("ajax/yoda/setSidebar.php",{
           idUser : idUser,
           value : value
         });

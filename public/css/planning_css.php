@@ -9,13 +9,26 @@ $arraySlot = [];
 $arrayPlanning = [];
 $arrayTech = [];
 
+
+if ($_GET['month'] != '' & $_GET['year'] != ''){
+    $dateGet = '01-'.$_GET['month'].'-'.$_GET['year'];
+    $dateDelete = DateTime::createFromFormat('d-n-Y', $dateGet)->format('Y-m-d');
+}else{
+    $dateDelete = date('Y-m-d');
+}
+
+//var_dump($dateDelete);
+
+
+
 $idx = 0;
 $y = 0;
     $selectUser = $bdd->queryObj('SELECT USR_SURNAME '
             . 'FROM YDA_USERS '
             . 'WHERE USR_TECH = 1 '
-//            . 'AND USR_DELETE IS NULL '
+            . 'AND (USR_DELETE > "'. $dateDelete . '" OR USR_DELETE IS NULL) ' 
             . 'ORDER BY USR_ID ASC');
+//    var_dump($selectUser);
         
    foreach($selectUser as $key=>$value){
         $arrayTech['trigramme'][$y] = $value->USR_SURNAME;

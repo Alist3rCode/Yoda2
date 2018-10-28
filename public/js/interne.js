@@ -81,7 +81,7 @@ $('#validNewSection').click(function () {
 
     } else {
 
-        $.get("ajax/createSection.php?value=" + value, function (retour) {
+        $.get("ajax/interne/createSection.php?value=" + value, function (retour) {
 
             if (retour['ok'] === 'ok') {
                 $('#selectSection').append('<option value="' + retour['id'] + '">' + value + '</option>');
@@ -106,7 +106,7 @@ $('#validModifSection').click(function () {
 
     } else {
 
-        $.get("ajax/modifSection.php?value=" + value + "&id=" + id + "&valid=1", function (retour) {
+        $.get("ajax/interne/modifSection.php?value=" + value + "&id=" + id + "&valid=1", function (retour) {
 
             if (retour['ok'] === 'ok') {
                 $('#selectSection option:contains("' + retour['name'] + '")').text(value);
@@ -123,11 +123,11 @@ $('#deleteSection').click(function () {
     var value = $('#internalEditSectionName').val();
     var id = $('#selectSection').val();
 
-    $.get("ajax/checkDeleteSection.php?id=" + id, function (retour) {
+    $.get("ajax/interne/checkDeleteSection.php?id=" + id, function (retour) {
 
         if (retour['ok'] === 'ok' && retour['delete'] === 'YES') {
 
-            $.get("ajax/modifSection.php?value=" + value + "&id=" + id + "&valid=0", function (retour) {
+            $.get("ajax/interne/modifSection.php?value=" + value + "&id=" + id + "&valid=0", function (retour) {
 
                 if (retour['ok'] === 'ok') {
                     $('#selectSection').val(0);
@@ -184,7 +184,7 @@ $('#validNewLink').click(function () {
         displayAlert('alertModaleInternalLink', 'danger', errors.join('<br>'));
     } else{
         $.ajax({
-            url: "ajax/saveLinkImage.php", // Url to which the request is send
+            url: "ajax/interne/saveLinkImage.php", // Url to which the request is send
             type: "POST", // Type of request to be send, called as method
             data: formdata, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
             contentType: false, // The content type used when sending data to the server.
@@ -196,7 +196,7 @@ $('#validNewLink').click(function () {
                     displayAlert('alertModaleInternalLink', 'danger', data['error']);
                 }else if (data['ok'] === 'ok'){
                     
-                    $.post("ajax/saveLink.php",
+                    $.post("ajax/interne/saveLink.php",
                         {
                         section: section,
                         name : name,
@@ -238,7 +238,7 @@ function moveBefore(id){
     var section = parent.dataset.section;
     var parentBefore = document.querySelectorAll('[data-order="'+(order-1)+'"][data-section="'+section+'"]')[0];
     var idParentBefore = parentBefore.id.substring(14)
-     $.post("ajax/changeOrderLink.php",
+     $.post("ajax/interne/changeOrderLink.php",
         {
         id: id,
         idOther : idParentBefore,
@@ -261,7 +261,7 @@ function moveAfter(id){
     var section = parseInt(parent.dataset.section);
     var parentAfter = document.querySelectorAll('[data-order="'+(order + 1)+'"][data-section="'+section+'"]')[0];
     var idParentAfter = parentAfter.id.substring(14);
-     $.post("ajax/changeOrderLink.php",
+     $.post("ajax/interne/changeOrderLink.php",
         {
         id: id,
         idOther : idParentAfter,
@@ -332,7 +332,7 @@ function modifLink(){
         displayAlert('alertModaleInternalLink', 'danger', errors.join('<br>'));
         } else{
             $.ajax({
-                url: "ajax/saveLinkImage.php", // Url to which the request is send
+                url: "ajax/interne/saveLinkImage.php", // Url to which the request is send
                 type: "POST", // Type of request to be send, called as method
                 data: formdata, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
                 contentType: false, // The content type used when sending data to the server.
@@ -372,7 +372,7 @@ function modifLink(){
         displayAlert('alertModaleInternalLink', 'danger', errors.join('<br>'));
     } else if(flagImage === 0){
                     
-        $.post("ajax/modifLink.php",
+        $.post("ajax/interne/modifLink.php",
             {
             section: section,
             name : name,
@@ -405,7 +405,7 @@ function deleteLink(){
     var image = arrayImage[arrayImage.length - 1];
     var id = $('#linkToModif').html();
     
-    $.post("ajax/modifLink.php",
+    $.post("ajax/interne/modifLink.php",
         {
         section: section,
         name : name,

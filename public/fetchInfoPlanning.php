@@ -80,3 +80,29 @@ foreach($select6 as $key=>$value){
 
 
 
+$events = new Events();
+		
+if(!isset($_GET['month']) || $_GET['month'] == ''){
+    $monthGet = null;
+}else{
+    $monthGet = $_GET['month'];
+}
+
+if(!isset($_GET['year']) || $_GET['year'] == ''){
+    $yearGet = null;
+}else{
+    $yearGet = $_GET['year'];
+}
+
+try{
+    $month = new Month($monthGet, $yearGet);
+}catch (Exception $e){
+    $month = new Month();
+}
+
+$weeks = $month->getWeeks();
+$start = $month->getStartingDay();
+$start = $start->format('N') === '1' ? $start : $month->getStartingDay()->modify('last monday');
+$startClone = clone $start;
+$end = $startClone->modify("+". (6 + 7 * ($weeks -1)). " days");
+$events = $events->getEventsBetweenByDay($start,$end);

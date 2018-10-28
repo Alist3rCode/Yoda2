@@ -51,7 +51,7 @@ function initAddons(type, value){
 
     $.ajax({
         method: "GET",
-        url: "ajax/initChart.php?search="+value+"&type="+type,
+        url: "ajax/dashboard/initChart.php?search="+value+"&type="+type,
         dataType : "JSON",
         async: false,
         success: function(retour) {
@@ -75,7 +75,7 @@ function initAddons(type, value){
 function createXML(value){
     $.ajax({
     method: "GET",
-    url: "ajax/CreateXML.php?search="+value,
+    url: "ajax/dashboard/CreateXML.php?search="+value,
     dataType : "JSON",
     async: false,
     success: function() {

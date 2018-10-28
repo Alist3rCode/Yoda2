@@ -19,7 +19,7 @@ $('#searchBar').keyup(function(e){
         idxSelect = 0;
     
     }else{
-        $.get("ajax/search.php?search=" + search , function(json){
+        $.get("ajax/yoda/search.php?search=" + search , function(json){
 
             $('.vignette').addClass('d-none');
             unflip();

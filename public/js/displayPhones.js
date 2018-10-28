@@ -20,7 +20,7 @@ function displayPhones(id){
             newItem.classList.add('collapsePhone');
 
             clients.insertBefore(newItem, document.getElementById('vignette_' + newLocation) );
-            $("#collapse_" + id).load("ajax/loadDivPhone.php?id=" + id + "&user="+ document.getElementById('idUser').innerHTML); 
+            $("#collapse_" + id).load("ajax/phones/loadDivPhone.php?id=" + id + "&user="+ document.getElementById('idUser').innerHTML); 
 
             collapseDiv = document.getElementById('collapse_' + id);
         }

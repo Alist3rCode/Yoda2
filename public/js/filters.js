@@ -82,7 +82,7 @@ function displayVersionFilter(){
         $('.vignette').removeClass('d-none');
             
     }else{        
-        $.post("ajax/searchFilters.php",
+        $.post("ajax/filters/searchFilters.php",
         {search: arrayVersion}, 
         function(json){
             if (json === "Aucun client trouvé pour cette recherche"){

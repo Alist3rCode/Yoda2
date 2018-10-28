@@ -3,12 +3,12 @@ $("#login").click(function(evt) {
     var email = document.getElementById('inputEmail').value;
     var password = document.getElementById('inputPassword').value;
 
-    $.post("ajax/checkUser.php", {
+    $.post("ajax/loing/checkUser.php", {
         email: email
     },
         function(retour) {
         if (retour == 'WELCOME') {
-            $.post("ajax/checkPassword.php", {
+            $.post("ajax/login/checkPassword.php", {
                 email: email,
                 password: password,
                 mode : 'login'
@@ -159,7 +159,7 @@ $("#createAccount").click(function(evt) {
 
     if (flag === 0) {
 
-        $.post("ajax/checkUser.php", {
+        $.post("ajax/login/checkUser.php", {
             email: email.value
         },
         function(retour) {
@@ -173,7 +173,7 @@ $("#createAccount").click(function(evt) {
                 displayAlert('alertCreate','warning',"Votre compte est en cours de validation par l'administrateur.");
 
             }else if (retour === 'DUNNO') {
-                $.post("ajax/createUser.php", {
+                $.post("ajax/login/createUser.php", {
                     email: email.value,
                     password: password.value,
                     name: name.value,
@@ -190,7 +190,7 @@ $("#createAccount").click(function(evt) {
                         passwordConfirm.value = '';
                         defaultPage.value = '0';
 
-                        $.post("ajax/notifMailNewAccount.php", {
+                        $.post("ajax/notif/notifMailNewAccount.php", {
                             id: retour['id'],
                             password: password.value
                         });
@@ -211,12 +211,12 @@ $("#resetPassword").click(function(evt) {
     var email = document.getElementById('forgetEmail').value;
     var newPassword = '';
 
-    $.post("ajax/checkUser.php", {
+    $.post("ajax/login/checkUser.php", {
         email: email
     },
     function(retour) {
         if (retour === 'WELCOME' || retour === 'WAIT') {
-            $.post("ajax/resetPassword.php", {
+            $.post("ajax/login/resetPassword.php", {
                 numbers: true,
                 mini: true,
                 maj: true,

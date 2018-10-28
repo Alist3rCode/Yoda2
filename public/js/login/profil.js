@@ -8,7 +8,7 @@ $("#resetProfil").click(function(evt) {
     var page = document.getElementById('updatePage');
     var id_user = document.getElementById('idUser').innerHTML;
 
-    $.post("ajax/loadUser.php", {
+    $.post("ajax/profil/loadUser.php", {
         id: id_user
     },
     function(retour) {
@@ -58,7 +58,7 @@ $("#updateProfil").click(function(evt) {
         
         $.ajax({
             method: "POST",
-            url: "ajax/checkModifUser.php",
+            url: "ajax/profil/checkModifUser.php",
             data: {
                 id: id_user,
                 email: email
@@ -89,7 +89,7 @@ $("#updateProfil").click(function(evt) {
         if (password == '') {
                 password = 'PASTOUCHE';
         }
-        $.post("ajax/updateProfil.php", {
+        $.post("ajax/profil/updateProfil.php", {
             id: id_user,
             email: email,
             password: password,
@@ -140,7 +140,7 @@ $("#actifUser").click(function(evt) {
         
        
         console.log(active);
-        $.post("ajax/updateProfil.php", {
+        $.post("ajax/profil/updateProfil.php", {
             id: id_user,
             actif: active,
             mode: 'active'
@@ -173,7 +173,7 @@ $("#desactifUser").click(function(evt) {
             active = 1;
         }
 
-        $.post("ajax/updateProfil.php", {
+        $.post("ajax/profil/updateProfil.php", {
             id: id_user,
             actif: active,
             mode: 'active'
@@ -193,7 +193,7 @@ $("#divDropDown").on('show.bs.dropdown', function() {
         document.getElementById('listUser').innerHTML = 'ALL';
     }
 
-    $.post("ajax/loadAllUser.php", {
+    $.post("ajax/profil/loadAllUser.php", {
         id: document.getElementById('listUser').innerHTML,
         mode : 'profil'
     },
@@ -231,7 +231,7 @@ function selectUserToModif(id_select) {
 
     document.getElementById('activeOrNot').classList.remove('invisible');
 	
-    $.post("ajax/loadUser.php", {
+    $.post("ajax/profil/loadUser.php", {
         id: id_select
     },
     function(retour) {
@@ -387,7 +387,7 @@ $("#updateAdminProfil").click(function(evt) {
     }
 
     if (id_user.innerHTML == "NEW" && flagMail === 0) {
-        $.post("ajax/checkUser.php", {
+        $.post("ajax/login/checkUser.php", {
             email: email
         },
         function(retour) {
@@ -404,7 +404,7 @@ $("#updateAdminProfil").click(function(evt) {
         if (password == '') {
                 password = 'PASTOUCHE';
         }
-        $.post("ajax/updateProfil.php", {
+        $.post("ajax/profil/updateProfil.php", {
             id: id_user.innerHTML,
             email: email,
             password: password,
@@ -508,7 +508,7 @@ $("#searchUser").keyup(function(e) {
         listUser.innerHTLM = 'ALL';
     }
     else {
-        $.get("ajax/searchForUser.php?search=" + search, 
+        $.get("ajax/profil/searchForUser.php?search=" + search, 
         function(json) {
             listUser.innerHTML = json;
             if (json.length == 1) {
@@ -524,7 +524,7 @@ $("#searchUser").keyup(function(e) {
 
 $("#configChooseProfil").click(function(evt) {
 
-    $.post("ajax/loadProfil.php",
+    $.post("ajax/profil/loadProfil.php",
     function(retour) {
         var arrayLength = retour.length;
         document.getElementById('dropdownProfil').innerHTML = '';
@@ -540,7 +540,7 @@ $("#configChooseProfil").click(function(evt) {
 
 $("#configUserProfil").click(function(evt) {
 
-    $.post("ajax/loadProfil.php",
+    $.post("ajax/profil/loadProfil.php",
         function(retour) {
             var arrayLength = retour.length;
             document.getElementById('dropdownUserProfil').innerHTML = '';
@@ -570,7 +570,7 @@ function selectProfilToModif(idProfil) {
     var name = document.getElementById('configNameProfil');
     var nameSelect = document.getElementById('profilConfSelected');
 
-    $.post("ajax/loadConfProfil.php", {
+    $.post("ajax/profil/loadConfProfil.php", {
         id: idProfil
     },
     function(retour) {
@@ -626,7 +626,7 @@ $("#updateConfigProfil").click(function(evt) {
     });
     // console.log(hook);
 
-    $.post("ajax/updateConfProfil.php", {
+    $.post("ajax/profil/updateConfProfil.php", {
         id: idProfil,
         name: name,
         hook: hook,
@@ -653,7 +653,7 @@ $("#updateConfigProfil").click(function(evt) {
     });
     // console.log(hook);
 
-    $.post("ajax/updateConfProfil.php", {
+    $.post("ajax/profil/updateConfProfil.php", {
         id: idProfil,
         name: name,
         hook: hook,
@@ -673,7 +673,7 @@ $("#actifProfil").click(function(evt) {
     this.classList.add('d-none');
 
     document.getElementById('desactifProfil').classList.remove('d-none');
-    $.post("ajax/updateConfProfil.php", {
+    $.post("ajax/profil/updateConfProfil.php", {
         id: idProfil,
         valid: active,
         mode: 'valid'
@@ -692,7 +692,7 @@ $("#desactifProfil").click(function(evt) {
     this.classList.add('d-none');
 
     document.getElementById('actifProfil').classList.remove('d-none');
-    $.post("ajax/updateConfProfil.php", {
+    $.post("ajax/profil/updateConfProfil.php", {
         id: idProfil,
         valid: active,
         mode: 'valid'
@@ -708,7 +708,7 @@ $("#desactifProfil").click(function(evt) {
 function changeTheme(theme){
     
     if(theme == 'dark'){
-        $.post("ajax/changeTheme.php", {
+        $.post("ajax/profil/changeTheme.php", {
         theme: 'dark',
         id : document.getElementById('idUser').innerHTML
         },
@@ -721,7 +721,7 @@ function changeTheme(theme){
         });
         
     }else if(theme == 'light'){
-        $.post("ajax/changeTheme.php", {
+        $.post("ajax/profil/changeTheme.php", {
         theme: 'light',
         id : document.getElementById('idUser').innerHTML
         },

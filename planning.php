@@ -41,7 +41,7 @@ require('./public/fetchInfoPlanning.php');
         <link rel="stylesheet" href="public/css/modale.css">
         <link rel="stylesheet" href="public/css/login.css">
         <link rel="stylesheet" href="public/css/calendar.css">
-        <link rel="stylesheet" href="public/css/planning_css.php">
+        <link rel="stylesheet" href="public/css/planning_css.php?month=<?=$monthGet?>&year=<?=$yearGet?>">
         
         <!--Add Jquery-->
         <script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
@@ -62,37 +62,6 @@ require('./public/fetchInfoPlanning.php');
             
             <div class="clients" style="display:block;">
                 
-                
-                <?php
-		
-		$events = new Events();
-		
-		if(!isset($_GET['month']) || $_GET['month'] == ''){
-		    $monthGet = null;
-		}else{
-		    $monthGet = $_GET['month'];
-		}
-		
-		if(!isset($_GET['year']) || $_GET['year'] == ''){
-		    $yearGet = null;
-		}else{
-		    $yearGet = $_GET['year'];
-		}
-		
-		try{
-		    $month = new Month($monthGet, $yearGet);
-		}catch (Exception $e){
-		    $month = new Month();
-		}
-                
-		$weeks = $month->getWeeks();
-		$start = $month->getStartingDay();
-		$start = $start->format('N') === '1' ? $start : $month->getStartingDay()->modify('last monday');
-		$startClone = clone $start;
-		$end = $startClone->modify("+". (6 + 7 * ($weeks -1)). " days");
-		$events = $events->getEventsBetweenByDay($start,$end);
-		
-		?>
 		<div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
 		    <h1 style="color:white;"><?=$month->toString();?></h1>
 		    <div>

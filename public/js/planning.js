@@ -2,7 +2,7 @@
 function displayModaleConfig(){
 
     $.ajax({
-       url: 'ajax/loadModaleConfigPlanning.php',
+       url: 'ajax/planning/loadModaleConfigPlanning.php',
        type: 'POST',
        dataType: 'html',
        success : function(data){
@@ -74,7 +74,7 @@ $('#validPlanningTime').click(function(){
     }
     console.log(workingDaysArray)
     
-    $.post("ajax/savePlanningTime.php",
+    $.post("ajax/planning/savePlanningTime.php",
     {
         start: start,
         end : end,
@@ -161,7 +161,7 @@ $('#slotSearch').click(function(e){
             console.log('tech : '+tech, 'slot : '+slot, 'start : '+start, 'end : '+end);
             $('#tableResultSlot').html('');
             $.ajax({
-                url: "ajax/loadSlotAssoc.php", 
+                url: "ajax/planning/loadSlotAssoc.php", 
                 type: "POST", 
                 data: {
                     start: start,
@@ -191,7 +191,7 @@ function switchSlotAssoc(id){
     tr.innerHTML = '';
     
     $.ajax({
-        url: "ajax/loadInputModifSlotAssoc.php", 
+        url: "ajax/planning/loadInputModifSlotAssoc.php", 
         type: "POST", 
         data: {
             tech: tech,
@@ -212,7 +212,7 @@ function resetModif(id){
     var tr = document.getElementById('resultTrSlot_'+id);
     console.log(id);
     $.ajax({
-        url: "ajax/resetSlotAssoc.php", 
+        url: "ajax/planning/resetSlotAssoc.php", 
         type: "POST", 
         data: {
             id : id
@@ -244,7 +244,7 @@ function modifSlotAssoc(mode, id){
     }   
     
     $.ajax({
-        url: "ajax/modifSlotAssoc.php", 
+        url: "ajax/planning/modifSlotAssoc.php", 
         type: "POST", 
         data: {
             id : id,
@@ -266,7 +266,66 @@ function modifSlotAssoc(mode, id){
             }
         }
     });
+}
+
+
+function addNewSlot(){
+    var code = $('#codeSlot').val();
+    var name = $('#nameSlot').val();
+    var start = $('#startSlot').val();
+    var end = $('#endSlot').val();
+    var color = $('#colorSlot').val();
     
+    var flag = 0;
+    var errors = [];
     
+    if(code == ''){
+        flag = 1;
+        errors.push('Merci de renseigner un code pour ce créneau');
+    }
+    if(name == ''){
+        flag = 1;
+        errors.push('Merci de renseigner un nom pour ce créneau');
+    }
+    if(start == ''){
+        flag = 1;
+        errors.push('Merci de renseigner une heure de début pour ce créneau');
+    }
+    if(end == ''){
+        flag = 1;
+        errors.push('Merci de renseigner une heure de fin pour ce créneau');
+    }
+    if(color == ''){
+        flag = 1;
+        errors.push('Merci de renseigner une couleur pour ce créneau');
+    }
+    
+    if (flag == 1){
+        displayAlert('alertSlot','danger',errors.join('<br>'));
+    } else{
+        
+        $.ajax({
+            url: "ajax/planning/addSlot.php", 
+            type: "POST", 
+            data: {
+                code : code,
+                name : name,
+                start : start,
+                stop : end, 
+                color : color
+            }, 
+            async : false,
+            success: function(retour){
+                if (retour['ok'] == 'ok'){
+                    displayAlert('alertSlot','success','Le créneau a bien été ajouté.');
+                    $('#tableSlot').append(retour['html']);
+                } else if (retour['ok'] == 'nok'){
+                    displayAlert('alertSlot','danger',retour['error'].join('<br>'));
+                }
+                
+            }
+        });
+        
+    }
 }
 

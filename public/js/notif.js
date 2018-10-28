@@ -265,7 +265,7 @@ $("#updateNotif").click(function(evt) {
     // console.log(desactiveCreate)
     $.ajax({
         method: "POST",
-        url: "ajax/updateNotif.php",
+        url: "ajax/notif/updateNotif.php",
         data: {
             id: id_user,
             update: selectedCustomer,
@@ -295,7 +295,7 @@ $("#searchSelectCustomer").keyup(function(evt){
         $('.unselected').removeClass('d-none');
         $('#alertSelectedCustomer').addClass('d-none');
     }else{
-        $.get("ajax/search.php?search=" + search , function(json){
+        $.get("ajax/yoda/search.php?search=" + search , function(json){
                
             $('.unselected').addClass('d-none');
             $('#alertSelectedCustomer').removeClass('d-none');
@@ -324,7 +324,7 @@ $("#searchUnselectCustomer").keyup(function(evt){
         $('.selected').removeClass('d-none');
         $('#alertUnselectedCustomer').addClass('d-none');
     }else{
-        $.get("ajax/search.php?search=" + search , function(json){
+        $.get("ajax/yoda/search.php?search=" + search , function(json){
                
             $('.selected').addClass('d-none');
             $('#alertUnselectedCustomer').removeClass('d-none');  
@@ -490,7 +490,7 @@ $('#sendMailButton').click(function(){
         
         $.ajax({
             method: "POST",
-            url: "ajax/NotifMailUsers.php",
+            url: "ajax/notif/NotifMailUsers.php",
             data: {
                 destinataires: destinataires,
                 objet: objet.value,
@@ -523,7 +523,7 @@ $("#searchUser").keyup(function(e) {
         listUser.innerHTML = 'ALL';
 
     } else {
-        $.get("ajax/searchForUser.php?search=" + search, function(json) {
+        $.get("ajax/profil/searchForUser.php?search=" + search, function(json) {
 
             listUser.innerHTML = json;
             if (json.length == 1) {
@@ -542,7 +542,7 @@ $("#divDropDown").on('show.bs.dropdown', function() {
         document.getElementById('listUser').innerHTML = 'ALL';
     }
 
-    $.post("ajax/loadAllUser.php", {
+    $.post("ajax/profil/loadAllUser.php", {
         id: document.getElementById('listUser').innerHTML,
         mode : 'notif'
     },
@@ -566,7 +566,7 @@ function selectUserNotif(id){
 	
     $.ajax({
         method: "POST",
-        url: "ajax/loadNotifUser.php",
+        url: "ajax/notif/loadNotifUser.php",
         data: {
                 id: id
         },
@@ -755,7 +755,7 @@ $("#updateNotifConfig").click(function(evt) {
     }
     $.ajax({
         method: "POST",
-        url: "ajax/updateNotif.php",
+        url: "ajax/notif/updateNotif.php",
         data: {
             id: id_user,
             update: selectedCustomer,

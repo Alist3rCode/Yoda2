@@ -4,7 +4,7 @@ $('[data-toggle="tooltip"]').each(function(index, element){
 
     var tg = $(element);
     var idx = element.getAttribute('data-id');
-        $.post("ajax/loadVersion.php",{
+        $.post("ajax/yoda/loadVersion.php",{
           id : idx,
           mode : "display"
         } , function(data) {
@@ -57,7 +57,7 @@ $('#modaleClient').on('hidden.bs.modal', function (e) {
     
     $.ajax({
         method: "POST",
-        url: "ajax/loadModaleClient.php",        
+        url: "ajax/yoda/loadModaleClient.php",        
         async: false
     }).done(function(retour) {
         
@@ -220,7 +220,7 @@ function modif(i){
     var imagingVersion = $('#imagingVersion');
 
 
-    $.post("ajax/loadVersion.php", {
+    $.post("ajax/yoda/loadVersion.php", {
         id : i,
         mode : "modif"
     }, function(retour){
@@ -233,7 +233,7 @@ function modif(i){
         }
     });
 
-    $.get("ajax/getModif.php?id=" + i, function(json){
+    $.get("ajax/yoda/getModif.php?id=" + i, function(json){
 
         viewVersion.val(json[0].CLI_VIEW);
         uViewVersion.val(json[0].CLI_UVIEW);
@@ -547,14 +547,14 @@ function createCustomer(){
     array.idUser = idUser;
     
     if (array['ok'] === 1){
-        $.post("ajax/createCustomer.php", 
+        $.post("ajax/yoda/createCustomer.php", 
             {array},
             
             function(ok){
                 result = JSON.parse(ok);
                 if(result.result === 'ok'){
                     displayAlert('alerte','success','Le client a bien été ajouté avec l\'ID ' + result.id);
-                    $.post("ajax/notifMailCreateCustomer.php", 
+                    $.post("ajax/notif/notifMailCreateCustomer.php", 
                     {id: result.id, idUser : idUser});
                     $('#modaleClient').modal('hide');
                     $('.collapsePhone').remove();
@@ -584,7 +584,7 @@ function modifCustomer(){
     
     var idUser = $('#id_user').innerHTML;
     if (array['ok'] === 1){
-        $.post("ajax/modifCustomer.php", 
+        $.post("ajax/yoda/modifCustomer.php", 
         {array}, 
         function(ok){
             result = JSON.parse(ok);
@@ -605,7 +605,7 @@ function modifCustomer(){
                  'tag': array['tag'],
                  'imagingVersion': array['imagingVersion']
                 });
-                $.post("ajax/notifMailModifCustomer.php", 
+                $.post("ajax/notif/notifMailModifCustomer.php", 
                 {avant: result.avant, apres: result.apres, idUser : idUser}); 
             }else{
                 console.log(result);
