@@ -42,7 +42,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                     <a class="dropdown-item searchSlot" data-id="0" onclick="dropdown('btnSlot','Tous',0)">Tous</a>
                                     <div class="dropdown-divider"></div>
                                     <?php for($i=0;$i < count($arrayConfig);$i++):?>
-                                        <a class="dropdown-item searchSlot" onclick="dropdown('btnSlot','<?=$arrayConfig[$i]['name']?>',<?=$arrayConfig[$i]['id']?>)">
+                                        <a id="dropdownSlotSearch_<?=$arrayConfig[$i]['id']?>" class="dropdown-item searchSlot" onclick="dropdown('btnSlot','<?=$arrayConfig[$i]['name']?>',<?=$arrayConfig[$i]['id']?>)">
                                             <?=$arrayConfig[$i]['name']?>
                                         </a>
                                     <?php endfor;?>
@@ -80,7 +80,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         </button>
                                         <div class="dropdown-menu col-md-12" id="dropdownCreateSlot" aria-labelledby="btnAddSlot">
                                             <?php for($i=0;$i < count($arrayConfig);$i++):?>
-                                                <a class="dropdown-item " onclick="dropdown('btnAddSlot','<?=$arrayConfig[$i]['name']?>',<?=$arrayConfig[$i]['id']?>)">
+                                                <a id="dropdownSlotCreate_<?=$arrayConfig[$i]['id']?>" class="dropdown-item " onclick="dropdown('btnAddSlot','<?=$arrayConfig[$i]['name']?>',<?=$arrayConfig[$i]['id']?>)">
                                                     <?=$arrayConfig[$i]['name']?>
                                                 </a>
                                             <?php endfor;?>
@@ -168,7 +168,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                         <div id="noSearchNorCreate" class="alert alert-warning collapse show">Cliquer sur la loupe effectuer une recherche d'association de créneaux, ou sur le + vert pour paramétrer des associations de créneaux. </div>
                     </div>
                 </div>
-                <div class="col-md-6" style="border-left: solid 1px darkgrey;overflow-y: scroll">
+                <div class="col-md-6" style="border-left: solid 1px darkgrey;">
                     <div class="col-md-12" style="border-bottom : solid 2px darkgrey;">
                         <div class="row d-flex flex-row text-center mb-3 ">
                             
@@ -190,10 +190,11 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                         <div class="alert d-none" id="alertPlanningTime"></div>                        
                         
                     </div>
-                    <div class="col-md-12 mt-3" style="border-bottom: solid 2px darkgrey">
+                    <div class="col-md-12 mt-3" style="border-bottom: solid 2px darkgrey;height:calc(100vh - 600px);overflow-y:scroll;">
                         <div class="text-center">
                             <h4>Créneaux Types</h4>
                         </div>
+                        <div class="alert d-none" id="alertSlot"></div>   
                         <table class="table table-striped mb-3">
                             <thead class="d-none" id="theadSlotInput">
                                 <tr>
@@ -203,7 +204,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         </button>
                                     </th>
                                     <th scope="col" style="width: 14.28%">
-                                        <input class="loginInput" type="text" id="codeSlot" placeholder="Code">
+                                        <input class="loginInput" type="text" id="codeSlot" placeholder="Code" maxlength="5">
                                     </th>
                                     <th scope="col" style="width: 14.28%">
                                         <input class="loginInput" type="text" id="nameSlot" placeholder="Nom">
@@ -251,22 +252,22 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody id="tableSlot" style="overflow-y: scroll;">
+                            <tbody id="tableSlot">
                                 
                                 <?php for($i=0;$i<count($arrayConfig);$i++):?>
-                                <tr>
+                                <tr id="trSlot_<?=$arrayConfig[$i]['id']?>">
                                     <th scope="row">
-                                        <button class="btn btn-secondary" onclick='modifSlot(<?=$arrayConfig[$i]['id']?>)'>
+                                        <button class="btn btn-secondary" onclick='switchSlot(<?=$arrayConfig[$i]['id']?>)'>
                                             <i class="far fa-edit"></i>
                                         </button>
                                     </th>
-                                    <td><?=$arrayConfig[$i]['code']?></td>
-                                    <td><?=$arrayConfig[$i]['name']?></td>
-                                    <td><?=$arrayConfig[$i]['start']->format('H:i:s')?></td>
-                                    <td><?=$arrayConfig[$i]['stop']->format('H:i:s')?></td>
-                                    <td><input  type="color" value="<?=$arrayConfig[$i]['color']?>" disabled></td>
+                                    <td id="slotCode_<?=$arrayConfig[$i]['id']?>"><?=$arrayConfig[$i]['code']?></td>
+                                    <td id="slotName_<?=$arrayConfig[$i]['id']?>"><?=$arrayConfig[$i]['name']?></td>
+                                    <td id="slotStart_<?=$arrayConfig[$i]['id']?>"><?=$arrayConfig[$i]['start']->format('H:i:s')?></td>
+                                    <td id="slotStop_<?=$arrayConfig[$i]['id']?>"><?=$arrayConfig[$i]['stop']->format('H:i:s')?></td>
+                                    <td><input  id="slotColor_<?=$arrayConfig[$i]['id']?>" type="color" value="<?=$arrayConfig[$i]['color']?>" disabled></td>
                                     <td>
-                                        <button class="btn btn-danger" onclick='deleteSlot(<?=$arrayConfig[$i]['id']?>)'>
+                                        <button class="btn btn-danger" onclick='modifSlot("delete",<?=$arrayConfig[$i]['id']?>)'>
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                     </td>
@@ -274,34 +275,35 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 <?php endfor;?>
                             </tbody>
                         </table>
-                        <div class="alert d-none" id="alertSlot"></div>    
+                         
                     </div>
                     
-                    <div class="col-md-12 mt-3">
+                    <div class="col-md-12 mt-3" style="height:calc(100vh - 700px);overflow-y:scroll;">
                         <div class="text-center">
                             <h4>Jours fériés / Jours fermés </h4>
                         </div>
+                        <div class="alert d-none" id="alertOff"></div>   
                         <table class="table table-striped">
                             <thead class="d-none" id="theadOffInput">
                                 <tr>
-                                    <th scope="col">
+                                    <th scope="col" style="width: 5%">
                                         <button class="btn btn-secondary"  onclick="switchHeadTable('headOff')">
                                             <i class="fas fa-table"></i>
                                         </button>
                                     </th>
-                                    <th scope="col">
-                                        <button class="btn btn-outline-primary" id="btnRepeatOff" onclick="switchFormatOffDate()">
+                                    <th scope="col" style="width: 15%">
+                                        <button class="btn btn-outline-primary" id="repeatOff" onclick="switchFormatOffDate()">
                                             <i class="fas fa-redo"></i>
                                         </button>
                                     </th>
-                                    <th scope="col">
+                                    <th scope="col" style="width: 25%">
                                         <input class="loginInput inputDateWithText" type="text" id="dateOff" placeholder="Date">
                                     </th>
-                                    <th scope="col">
+                                    <th scope="col" style="width: 50%">
                                         <input class="loginInput" type="text" id="nameOff" placeholder="Nom">
                                     </th>
                                     
-                                    <th scope="col">
+                                    <th scope="col" style="width: 5%">
                                         <button class="btn btn-success" onclick="addOff()">
                                             <i class="fas fa-check"></i>
                                         </button>
@@ -310,43 +312,43 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                             </thead>
                             <thead id="theadOff">
                                 <tr>
-                                    <th scope="col">
+                                    <th scope="col" style="width: 5%">
                                         <button class="btn btn-success"  onclick="switchHeadTable('inputOff')">
                                             <i class="fas fa-plus-square"></i>
                                         </button>
                                     </th>
-                                    <th scope="col">
+                                    <th scope="col" style="width: 15%">
                                         Répétition
                                     </th>
-                                    <th scope="col">
+                                    <th scope="col" style="width: 25%">
                                         Date
                                     </th>
-                                    <th scope="col">
+                                    <th scope="col" style="width: 50%">
                                         Nom
                                     </th>
-                                    <th scope="col">
+                                    <th scope="col" style="width: 5%">
                                        
                                     </th>
                                 </tr>
                             </thead>
                             <tbody  id="tableOff">
                                 <?php for($i=0;$i<count($arrayOff);$i++):?>
-                                <tr>
+                                <tr id="trOff_<?=$arrayOff[$i]['id']?>">
                                     <th scope="row">
-                                        <button class="btn btn-secondary" onclick='modifOff(<?=$arrayOff[$i]['id']?>)'>
+                                        <button class="btn btn-secondary" onclick='switchOff(<?=$arrayOff[$i]['id']?>)'>
                                             <i class="far fa-edit"></i>
                                         </button>
                                     </th>
                                     <td>
-                                        <button class="btn btn-<?=($arrayOff[$i]['repeat']==0? "outline-": "");?>primary " disabled>
+                                        <button class="btn btn-<?=($arrayOff[$i]['repeat']==0? "outline-": "");?>primary " data-repeat="<?=$arrayOff[$i]['repeat']?>" id="repeatOff_<?=$arrayOff[$i]['id']?>" disabled>
                                             <i class="fas fa-redo"></i>
                                         </button>
                                     </td>
-                                    <td><?=$arrayOff[$i]['date']?></td>
-                                    <td><?=$arrayOff[$i]['name']?></td>
+                                    <td id="dateOff_<?=$arrayOff[$i]['id']?>"><?=$arrayOff[$i]['date']?></td>
+                                    <td id="nameOff_<?=$arrayOff[$i]['id']?>"><?=$arrayOff[$i]['name']?></td>
                                     
                                     <td>
-                                        <button class="btn btn-danger" onclick='deleteOff(<?=$arrayOff[$i]['id']?>)'>
+                                        <button class="btn btn-danger" onclick='modifOff("delete",<?=$arrayOff[$i]['id']?>)'>
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                     </td>
@@ -354,7 +356,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 <?php endfor;?>
                             </tbody>
                         </table>
-                        <div class="alert d-none" id="alertOff"></div>   
+                        
                     </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-secondary mb-3" data-dismiss="modal">Fermer</button>

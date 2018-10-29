@@ -1,7 +1,7 @@
 <?php
 $search = $bdd->queryObj('SELECT USR_THEME '
         . 'FROM YDA_USERS '
-        . 'WHERE USR_ID = 1');
+        . 'WHERE USR_ID = "'.$_SESSION['id_user'].'"');
 
 
 if($search[0]->USR_THEME == 1){

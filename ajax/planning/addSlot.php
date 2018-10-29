@@ -39,28 +39,28 @@ else{
 
         $array['ok'] = 'ok';
         
-        $array['html'] = '<tr>'
-                          .  '<th scope="row">'
-                              .  '<button class="btn btn-secondary" onclick="modifSlot('.$insertID.')">'
-                                   .'<i class="far fa-edit"></i>'
-                               .' </button>'
-                            .'</th>'
-                            .'<td>'.strtoupper($_REQUEST['code']).'</td>'
-                            .'<td>'.ucfirst($_REQUEST['name']).'</td>'
-                            .'<td>'.$_REQUEST['start'].'</td>'
-                            .'<td>'.$_REQUEST['stop'].'</td>'
-                            .'<td><input  type="color" value="'.$_REQUEST['color'].'" disabled></td>'
-                            .'<td>'
-                                .'<button class="btn btn-danger" onclick="deleteSlot('.$insertID.')">'
-                                    .'<i class="far fa-trash-alt"></i>'
-                                .'</button>'
-                            .'</td>'
-                        .'</tr>';
+        $array['html'] = '<tr id="trSlot_'.$insertID.'">'
+                            . '<th scope="row">'
+                                . '<button class="btn btn-secondary" onclick="switchSlot('.$insertID.')">'
+                                    . '<i class="far fa-edit"></i>'
+                                . '</button>'
+                           . ' </th>'
+                            . '<td id="slotCode_'.$insertID.'">'.strtoupper($_REQUEST['code']).'</td>'
+                            . '<td id="slotName_'.$insertID.'">'.ucfirst($_REQUEST['name']).'</td>'
+                            . '<td id="slotStart_'.$insertID.'">'.$_REQUEST['start'].'</td>'
+                            . '<td id="slotStop_'.$insertID.'">'.$_REQUEST['stop'].'</td>'
+                            . '<td><input  id="slotColor_'.$insertID.'" type="color" value="'.$_REQUEST['color'].'" disabled></td>'
+                            . '<td>'
+                                . '<button class="btn btn-danger" onclick="modifSlot("delete",'.$insertID.')">'
+                                    . '<i class="far fa-trash-alt"></i>'
+                                . '</button>'
+                            . '</td>'
+                        . '</tr>';
         
-        $array['dropdownSearch'] = '<a class="dropdown-item searchSlot" onclick="dropdown(\'btnSlot\','.ucfirst($_REQUEST['name']).','.$insertID.')">'
+        $array['dropdownSearch'] = '<a id="dropdownSlotSearch_'.$insertID.'" class="dropdown-item searchSlot" onclick="dropdown(\'btnSlot\','.ucfirst($_REQUEST['name']).','.$insertID.')">'
                                     .ucfirst($_REQUEST['name'])
                                     .'</a>' ;
-        $array['dropdownCreate'] = '<a class="dropdown-item" onclick="dropdown(\'btnAddSlot\','.ucfirst($_REQUEST['name']).','.$insertID.')">'
+        $array['dropdownCreate'] = '<a id="dropdownSlotCreate_'.$insertID.'" class="dropdown-item" onclick="dropdown(\'btnAddSlot\','.ucfirst($_REQUEST['name']).','.$insertID.')">'
                                     .ucfirst($_REQUEST['name'])
                                     .'</a>' ;
     }

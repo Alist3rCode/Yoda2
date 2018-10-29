@@ -3,7 +3,7 @@ $("#login").click(function(evt) {
     var email = document.getElementById('inputEmail').value;
     var password = document.getElementById('inputPassword').value;
 
-    $.post("ajax/loing/checkUser.php", {
+    $.post("ajax/login/checkUser.php", {
         email: email
     },
         function(retour) {

@@ -50,6 +50,14 @@ $y = 0;
        $arraySlot['start'][$idx] = date_create_from_format('H:i:s', $value->SCO_START);
        $arraySlot['stop'][$idx] = date_create_from_format('H:i:s', $value->SCO_STOP);
        $arraySlot['color'][$idx] = $value->SCO_COLOR;
+       list($r, $g, $b) = sscanf('#'.$arraySlot['color'][$idx], "#%02x%02x%02x");
+       $L = 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+       if ($L > 0.179){
+           $arraySlot['textColor'][$idx] = '#000000';
+       } else {
+           $arraySlot['textColor'][$idx] = '#FFFFFF';
+       }
+       
        
        $idx +=1;
     }
@@ -120,6 +128,7 @@ for($i = 0; $i< $idx; $i++):
 .<?=$arraySlot['code'][$i]?>{
     background-color:#<?=$arraySlot['color'][$i]?>;
     grid-column: <?=$startDay . ' / span ' . $longDay?>;
+    color : <?=$arraySlot['textColor'][$i];?>!important;
     
 }
 

@@ -27,7 +27,7 @@ $idSlotSelected = $select2[0]->SCO_ID;
 
 
 
-<tr>
+
     <th scope="col" style="width: 5%">
         <button class="btn btn-warning" onclick="resetModif(<?=$_REQUEST['id']?>)">
             <i class="fas fa-undo-alt"></i>
@@ -67,5 +67,5 @@ $idSlotSelected = $select2[0]->SCO_ID;
             <i class="fas fa-check"></i>
         </button>
     </th>
-</tr>
+
 

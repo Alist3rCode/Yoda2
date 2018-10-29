@@ -18,7 +18,7 @@ foreach($search as $key=>$value):
     ?>    
     
     <th scope="row">
-        <button class="btn btn-secondary" onclick='modifSlotAssoc(<?=$value->SLO_ID?>)'>
+        <button class="btn btn-secondary" onclick='switchSlotAssoc(<?=$value->SLO_ID?>)'>
             <i class="far fa-edit"></i>
         </button>
     </th>

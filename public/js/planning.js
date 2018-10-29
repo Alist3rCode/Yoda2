@@ -79,6 +79,17 @@ $('#validPlanningTime').click(function(){
    var end = document.getElementById('endPlanning').value;
    var workingDays = $('#workingDaysButton button');
    var workingDaysArray = [];
+   var flag = 0;
+   var errors =[];
+   
+   if (start == ''){
+       flag = 1;
+       errors.push('Merci de saisir une heure d\'ouverture');
+   }
+    if (end == ''){
+       flag = 1;
+       errors.push('Merci de saisir une heure de fermeture');
+   }
    
     for (var i = 0; i < workingDays.length; i++) {
         if(workingDays[i].classList.contains('active')){
@@ -86,23 +97,27 @@ $('#validPlanningTime').click(function(){
         }
 
     }
-    console.log(workingDaysArray)
+    if (flag == 1){
+        displayAlert('alertPlanningTime','danger',errors.join("<br>"));
+    }else{
+        $.post("ajax/planning/savePlanningTime.php",
+        {
+            start: start,
+            end : end,
+            workingday : workingDaysArray
+
+        }, 
+        function(retour){
+
+            if( retour['ok'] == 'ok'){
+                displayAlert('alertPlanningTime', 'success', 'Les modifications effectuées ont été enregistrées.');
+            }else{
+                displayAlert('alertPlanningTime', 'danger', 'Une erreur est survenue');
+            }
+        });
+    }
     
-    $.post("ajax/planning/savePlanningTime.php",
-    {
-        start: start,
-        end : end,
-        workingday : workingDaysArray
-
-    }, 
-    function(retour){
-
-        if( retour['ok'] == 'ok'){
-            displayAlert('alertPlanningTime', 'success', 'Les modifications effectuées ont été enregistrées.');
-        }else{
-            displayAlert('alertPlanningTime', 'danger', 'Une erreur est survenue');
-        }
-    });
+    
    
 });
 
@@ -293,6 +308,10 @@ function addNewSlot(){
     var flag = 0;
     var errors = [];
     
+    if(code.length > 5){
+        flag = 1;
+        errors.push('Merci de renseigner un code de 5 caractères ou moins');
+    }
     if(code == ''){
         flag = 1;
         errors.push('Merci de renseigner un code pour ce créneau');
@@ -312,8 +331,7 @@ function addNewSlot(){
     if(color == ''){
         flag = 1;
         errors.push('Merci de renseigner une couleur pour ce créneau');
-    }
-    
+    }    
     if (flag == 1){
         displayAlert('alertSlot','danger',errors.join('<br>'));
     } else{
@@ -348,32 +366,35 @@ function addNewSlot(){
                 } else if (retour['ok'] == 'nok'){
                     displayAlert('alertSlot','danger',retour['error']);
                 }
-                
             }
         });
     }
 }
 
-function switchFormatOffDate(){
+function switchFormatOffDate(id){
+    if (id == null){
+        id = '';
+    } else {
+        id = '_'+id;
+    }
     var currentYear = (new Date).getFullYear();
-    var btn = $('#btnRepeatOff');
-    console.log(btn)
+    var btn = $('#repeatOff'+id);
     
     if(btn.hasClass('active')){
-        $("#dateOff").attr({
+        $("#dateOff"+id).attr({
            "max" : "",      
            "min" : ""  
         });
         btn.removeClass('active');
         
     } else if(!btn.hasClass('active')){
-        $("#dateOff").attr({
+        $("#dateOff"+id).attr({
            "max" : currentYear+"-01-01",      
            "min" : currentYear+"-12-31"
         });
         btn.addClass('active');
     }
-    $('#dateOff').val('');
+    $('#dateOff'+id).val('');
 }
 
 function addOff(){
@@ -426,3 +447,260 @@ function addOff(){
     
 }
 
+function switchSlot(id){
+    var tr = document.getElementById('trSlot_'+id);
+    var code = document.getElementById('slotCode_'+id).innerHTML;
+    var name = document.getElementById('slotName_'+id).innerHTML;
+    var start = document.getElementById('slotStart_'+id).innerHTML;
+    var stop = document.getElementById('slotStop_'+id).innerHTML;
+    var color = document.getElementById('slotColor_'+id).value;
+    
+    tr.innerHTML = '';
+    
+    $.ajax({
+        url: "ajax/planning/loadInputModifSlot.php", 
+        type: "POST", 
+        data: {
+            code: code,
+            name : name,
+            start : start,
+            stop : stop,
+            color: color,
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+//            console.log(retour);
+            tr.innerHTML = retour;
+        }
+    });
+}
+
+function resetModifSlot(id){
+    
+    var tr = document.getElementById('trSlot_'+id);
+    
+
+    $.ajax({
+        url: "ajax/planning/resetSlot.php", 
+        type: "POST", 
+        data: {
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+//            console.log(retour);
+            tr.innerHTML = retour;
+        }
+    });
+}
+
+function modifSlot(mode, id){
+    
+    var flag = 0;
+    var errors = [];
+   
+    if (mode == 'delete'){
+
+        var tr = document.getElementById('trSlot_'+id);
+        var code = document.getElementById('slotCode_'+id).innerHTML;
+        var name = document.getElementById('slotName_'+id).innerHTML;
+        var start = document.getElementById('slotStart_'+id).innerHTML;
+        var stop = document.getElementById('slotStop_'+id).innerHTML;
+        var color = document.getElementById('slotColor_'+id).value;
+        
+        
+        
+    } else if (mode == 'valid'){
+        
+        var tr = document.getElementById('trSlot_'+id);
+        var code = document.getElementById('slotCode_'+id).value;
+        var name = document.getElementById('slotName_'+id).value;
+        var start = document.getElementById('slotStart_'+id).value;
+        var stop = document.getElementById('slotStop_'+id).value;
+        var color = document.getElementById('slotColor_'+id).value;
+        
+        if(code.length > 5){
+            flag = 1;
+            errors.push('Merci de renseigner un code de 5 caractères ou moins');
+        }
+    }   
+    if (flag == 1){
+        displayAlert('alertSlot','danger',errors.join('<br>'));
+    } else{
+        $.ajax({
+            url: "ajax/planning/modifSlot.php", 
+            type: "POST", 
+            data: {
+                code: code,
+                name : name,
+                start : start,
+                stop : stop,
+                color: color,
+                id : id,
+                mode: mode
+            }, 
+            async : false,
+            success: function(retour){
+                if (mode == 'valid'){
+                    tr.innerHTML = retour;
+                    displayAlert('alertSlot','success','Les modifications ont été enregistrées.');
+                    tr.innerHTML = retour['html'];
+
+                    console.log(retour['dropdownSearch']);
+
+                    document.getElementById('dropdownSlotSearch_'+id).remove();
+                    document.getElementById('dropdownSearchSlot').innerHTML += retour['dropdownSearch'];
+                    document.getElementById('dropdownSlotCreate_'+id).remove();
+                    document.getElementById('dropdownCreateSlot').innerHTML += retour['dropdownCreate'];
+
+                    displayAlert('alertSlot','success','Les modifications ont été enregistrées.');
+
+                } else if (mode == 'delete'){
+                    if (retour["ok"] == 'ok'){
+
+                        tr.innerHTML = '';
+                        document.getElementById('dropdownSlotSearch_'+id).remove();
+                        document.getElementById('dropdownSlotCreate_'+id).remove();
+                        displayAlert('alertSlot','success','La ligne a été supprimée avec succès.');
+
+                    }
+                }
+            }
+        });
+    }
+}
+
+document.onkeyup = function(e){
+   
+    if(e.keyCode == 13){
+
+        switch (document.activeElement.id) {
+            case 'startSearchSlot':
+                $('#slotSearch').click();
+                break;
+            case 'endSearchSlot':
+                $('#slotSearch').click();
+                break;
+            case 'startPlanning':
+                $('#validPlanningTime').click();
+                break;
+            case 'endPlanning':
+                $('#validPlanningTime').click();
+                break;
+            case 'codeSlot':
+                addNewSlot();
+                break;
+            case 'nameSlot':
+                addNewSlot();
+                break;
+            case 'startSlot':
+                addNewSlot();
+                break;
+            case 'stopSlot':
+                addNewSlot();
+                break;
+            case 'dateOff':
+                addOff();
+                break;
+            case 'nameOff':
+                addOff();
+                break;
+        }
+    }
+};
+
+function switchOff(id){
+    var tr = document.getElementById('trOff_'+id);
+    var name = document.getElementById('nameOff_'+id).innerHTML;
+    var date = document.getElementById('dateOff_'+id).innerHTML;
+    var repeat = document.getElementById('repeatOff_'+id).dataset.repeat;
+    
+    tr.innerHTML = '';
+    
+    $.ajax({
+        url: "ajax/planning/loadInputModifOff.php", 
+        type: "POST", 
+        data: {
+           
+            name : name,
+            date : date,
+            repeat : repeat,
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+            tr.innerHTML = retour;
+        }
+    });
+}
+
+function resetModifOff(id){
+    
+    var tr = document.getElementById('trOff_'+id);
+    
+
+    $.ajax({
+        url: "ajax/planning/resetOff.php", 
+        type: "POST", 
+        data: {
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+            tr.innerHTML = retour;
+        }
+    });
+}
+
+function modifOff(mode, id){
+    
+    var flag = 0;
+    var errors = [];
+   
+    if (mode == 'valid'){
+
+        var tr = document.getElementById('trOff_'+id);
+        var name = document.getElementById('nameOff_'+id).value;
+        var date = document.getElementById('dateOff_'+id).value;
+        var repeat = $('#repeatOff_'+id).hasClass('active')? 1 : 0 ;           
+        
+    } else if (mode == 'delete'){
+        
+        var tr = document.getElementById('trOff_'+id);
+        var name = document.getElementById('nameOff_'+id).innerHTML;
+        var date = document.getElementById('dateOff_'+id).innerHTML;
+        var repeat = document.getElementById('repeatOff_'+id).dataset.repeat;
+        
+    }   
+    
+    $.ajax({
+        url: "ajax/planning/modifOff.php", 
+        type: "POST", 
+        data: {
+            name : name,
+            date : date,
+            repeat : repeat,
+            id : id,
+            mode : mode
+        }, 
+        async : false,
+        success: function(retour){
+            if (mode == 'valid' && retour['ok'] == 'ok'){
+
+                tr.innerHTML = retour['html'];
+                displayAlert('alertOff','success','Les modifications ont été enregistrées.');
+
+
+            } else if (mode == 'delete' && retour['ok'] == 'ok'){
+                
+
+                tr.innerHTML = '';
+                displayAlert('alertOff','success','La ligne a été supprimée avec succès.');
+
+                
+            }
+        }
+    });
+    
+}

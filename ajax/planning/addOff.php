@@ -7,10 +7,13 @@ $year = DateTime::createFromFormat('Y-m-d',$_REQUEST['date'])->format('Y');
 
 if($_REQUEST['repeat'] == 1){
     $year = '';
+    $date = DateTime::createFromFormat('Y-m-d',$_REQUEST['date'])->format('d/m');
+}else{
+    $date = DateTime::createFromFormat('Y-m-d',$_REQUEST['date'])->format('d/m/Y');
 }
 
 $select = $bdd->queryObj('SELECT count(*) as Count '
-        . 'FROM PLA_OFf '
+        . 'FROM PLA_OFF '
         . 'WHERE OFF_NAME = "'.$_REQUEST['name'].'"');
 
 if ($select[0]->Count != 0){
@@ -54,15 +57,15 @@ else{
                                 .'</button>'
                             .'</th>'
                             .'<td>'
-                                .'<button class="btn btn-'.$class.'primary " disabled>'
+                                .'<button class="btn btn-'.$class.'primary " data-repeat="'.$_REQUEST['repeat'].'" id="repeatOff_'.$insertID.'" disabled>'
                                     .'<i class="fas fa-redo"></i>'
                                 .'</button>'
                             .'</td>'
-                            .'<td>'.$_REQUEST['date'].'</td>'
-                            .'<td>'.$_REQUEST['name'].'</td>'
+                            .'<td id="dateOff_'.$insertID.'">'.$date.'</td>'
+                            .'<td id="nameOff_'.$insertID.'">'.$_REQUEST['name'].'</td>'
 
                             .'<td>'
-                                .'<button class="btn btn-danger" onclick="deleteOff('.$insertID.')">'
+                                .'<button class="btn btn-danger" onclick="modifOff(\'delete\','.$insertID.')">'
                                     .'<i class="far fa-trash-alt"></i>'
                                 .'</button>'
                             .'</td>'
