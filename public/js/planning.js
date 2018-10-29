@@ -691,16 +691,42 @@ function modifOff(mode, id){
                 tr.innerHTML = retour['html'];
                 displayAlert('alertOff','success','Les modifications ont été enregistrées.');
 
-
             } else if (mode == 'delete' && retour['ok'] == 'ok'){
                 
-
                 tr.innerHTML = '';
                 displayAlert('alertOff','success','La ligne a été supprimée avec succès.');
 
-                
             }
         }
     });
     
+}
+
+function switchRecurrSlotCreation(mode){
+    if(mode == 'one'){
+        
+        $('#hebdoCreate').collapse('hide');
+        $('#monthCreate').collapse('hide');
+        $('#btnOneCreate').addClass('active');
+        $('#btnHebdoCreate').removeClass('active');
+        $('#btnMonthCreate').removeClass('active');
+        
+    } else if (mode == 'hebdo'){
+        
+        $('#hebdoCreate').collapse('show');
+        $('#monthCreate').collapse('hide');
+        $('#btnOneCreate').removeClass('active');
+        $('#btnHebdoCreate').addClass('active');
+        $('#btnMonthCreate').removeClass('active');
+         
+        
+    } else if (mode == 'mois'){
+        
+        $('#hebdoCreate').collapse('hide');
+        $('#monthCreate').collapse('show');
+        $('#btnOneCreate').removeClass('active');
+        $('#btnHebdoCreate').removeClass('active');
+        $('#btnMonthCreate').addClass('active');
+        
+    }
 }

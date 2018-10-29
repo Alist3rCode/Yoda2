@@ -93,33 +93,38 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                             </div>
                             <div class="col-md-12">
                                 
-                                <div class="row mx-auto mb-3">
-                                    <button class="btn btn-outline-secondary">
-                                        Une fois
-                                    </button>
-                                    
+                                <div class="row mx-auto mb-3 text-center" style="width:100%;border-bottom:solid 1px darkgrey;padding-bottom : 15px;">
+                                    <div class="btn-group text-center col-md-12" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-outline-secondary col-md-4" id="btnOneCreate" onclick="switchRecurrSlotCreation('one')">Une Fois</button>
+                                        <button type="button" class="btn btn-outline-secondary col-md-4" id="btnHebdoCreate" onclick="switchRecurrSlotCreation('hebdo')">Hebdomadaire</button>
+                                        <button type="button" class="btn btn-outline-secondary col-md-4" id="btnMonthCreate" onclick="switchRecurrSlotCreation('mois')">Mensuel</button>
+                                    </div>
+
                                 </div>
                                 
-                                <div class="row mx-auto mb-3">
-                                    <button class="btn btn-outline-secondary">
-                                        Hebdo
-                                    </button>
-                                    <div class="btn-group ml-3" role="group">
-                                        <?php foreach($workingDays as $key=>$value):?>
-                                            <button type="button" class="btn btn-outline-primary daysButton>"><?=$value?></button>
-                                        <?php endforeach; ?>
+                                <div class="collapse" id="hebdoCreate" style="width:100%;border-bottom:solid 1px darkgrey;padding-bottom : 15px;">
+                                    <div class="row mx-auto mb-3 ">
+                                        <h5>Récurrence : </h5>
+                                        <div class="btn-group ml-3 " role="group">
+                                            <?php foreach($workingDays as $key=>$value):?>
+                                                <button type="button" class="btn btn-outline-primary daysButton>"><?=$value?></button>
+                                            <?php endforeach; ?>
+                                        </div>
                                     </div>
+                                    
                                 </div>
-                                <div class="row mx-auto mb-3">
-                                    <button class="btn btn-outline-secondary">
-                                        Mensuel
-                                    </button>
-                                    <div class="row ml-3" role="group">
-                                        Le 
-                                        <input type="text" class="loginInput" placeholder="1" style="width:50px;">
-                                         tous les 
-                                        <input type="text" class="loginInput" placeholder="1" style="width:50px;">
-                                         mois
+                                <div class="collapse" id="monthCreate" style="width:100%;border-bottom:solid 1px darkgrey;padding-bottom : 15px;">
+                                    <div class="row mx-auto mb-3 ">
+                                        
+                                        <h5>Récurrence : </h5>
+                                        <div class="row ml-3" role="group">
+                                            Le 
+                                            <input type="text" class="loginInput" placeholder="1" style="width:50px;">
+                                             tous les 
+                                            <input type="text" class="loginInput" placeholder="1" style="width:50px;">
+                                             mois
+
+                                        </div>
                                         
                                     </div>
                                     
@@ -278,7 +283,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                          
                     </div>
                     
-                    <div class="col-md-12 mt-3" style="height:calc(100vh - 700px);overflow-y:scroll;">
+                    <div class="col-md-12 mt-3" style="height:calc(100vh - 680px);overflow-y:scroll;">
                         <div class="text-center">
                             <h4>Jours fériés / Jours fermés </h4>
                         </div>

@@ -31,7 +31,7 @@ class Month{
 
 	
 	public function getStartingDay(){
-	    return new \DateTime("{$this->year}-{$this->month}-01");
+	    return new DateTime("{$this->year}-{$this->month}-01");
 	}
 
 	public function toString(){
@@ -41,12 +41,16 @@ class Month{
 	
 	public function getWeeks(){
 	    $start = $this->getStartingDay();
-	    $end = new \DateTime("{$this->year}-{$this->month}-01");
+     	    $end = new DateTime("{$this->year}-{$this->month}-01");
 	    $end->modify('+1 month - 1day');
 	    $weeks =  intval($end->format('W')) -  intval($start->format('W')) +1;
+           
 	    if ($weeks < 0){
 	        $weeks = intval($end->format('W'));
-	    }
+                if ($weeks == 1){
+                    $weeks = 52  -  intval($start->format('W')) +1;;
+                }
+	    } 
 	    return $weeks;
 	}
 	
