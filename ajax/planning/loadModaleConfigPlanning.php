@@ -289,7 +289,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                          
                     </div>
                     
-                    <div class="col-md-12 mt-3" style="height:calc(100vh - 680px);overflow-y:scroll;">
+                    <div class="col-md-12 mt-3" style="height:calc(100vh - 32em);overflow-y:scroll;">
                         <div class="text-center">
                             <h4>Jours fériés / Jours fermés </h4>
                         </div>
