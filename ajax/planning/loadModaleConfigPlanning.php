@@ -201,7 +201,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                         <div class="alert d-none" id="alertPlanningTime"></div>                        
                         
                     </div>
-                    <div class="col-md-12 mt-3" style="border-bottom: solid 2px darkgrey;height:calc(100vh - 600px);overflow-y:scroll;">
+                    <div class="col-md-12 mt-3" style="border-bottom: solid 2px darkgrey;height:32vh;overflow-y:scroll;">
                         <div class="text-center">
                             <h4>Créneaux Types</h4>
                         </div>
@@ -289,7 +289,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                          
                     </div>
                     
-                    <div class="col-md-12 mt-3" style="height:calc(100vh - 32em);overflow-y:scroll;">
+                    <div class="col-md-12 mt-3" style="height:23vh;overflow-y:scroll;">
                         <div class="text-center">
                             <h4>Jours fériés / Jours fermés </h4>
                         </div>

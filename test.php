@@ -88,9 +88,11 @@ checkCookie($bdd,'profil.php');
 
                     // Modify the date it contains
                     $date->modify('next tuesday');
+                    
 
                     // Output
                     echo $date->format('Y-m-d');
+                    echo date("l");
                     
                 ?>   
                 

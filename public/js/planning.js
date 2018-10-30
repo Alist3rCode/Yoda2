@@ -854,13 +854,13 @@ $('#btnCreateSlotAssoc').click(function(){
         errors.push('Merci de choisir une date de début');
     }
     if (hebdo){
-        mode = hebdo;
+        mode = 'hebdo';
         if(workingDaysArray.length == 0){
             flag = 1;
             errors.push('Merci de renseigner des jours de répétition hebdomadaire');
         }
     } else if (month){
-        mode = month; 
+        mode = 'month'; 
         if(dayMonthCreate == '' || !isNumber(dayMonthCreate)){
             flag = 1;
             errors.push('Merci de renseigner un jours de répétition mensuel');
@@ -870,10 +870,7 @@ $('#btnCreateSlotAssoc').click(function(){
             errors.push('Merci de renseigner un nombre de répétition mensuel entre 1 et 10');
         }
     } else if (one){
-        if(start !== endAssocSlot){
-            flag = 1;
-            errors.push('Merci de renseigner un nombre de répétition mensuel entre 1 et 10');
-        }
+        mode = 'one';
         
     }else if (!one && !hebdo && !month){
         flag = 1;
@@ -893,7 +890,7 @@ $('#btnCreateSlotAssoc').click(function(){
         console.log(idTech, idSlot, start, one, hebdo, month, workingDaysArray, dayMonthCreate, repeatMonthCreate, endAssocSlot, repeatAssocSlot);
         
         $.ajax({
-            url: "ajax/planning/createSlotAssoc.php", 
+            url: "ajax/planning/addSlotAssoc.php", 
             type: "POST", 
             data: {
                 idTech : idTech, 
