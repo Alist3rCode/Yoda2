@@ -12,19 +12,38 @@ require_once('./class/checkCookie.php');
 checkCookie($bdd,'profil.php');
     
 
-$ip = $_SERVER['REMOTE_ADDR'];
-$page = $_SERVER['PHP_SELF'];
-$browserArray = get_browser(NULL, true);
-$browser = $browserArray['parent'];
 
-
-var_dump($browser)
 
 ?>
 
 <!doctype html>
 
-
+<style>
+    .loader{
+        position:absolute;
+        background : rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        width: 100%;
+        height: 100%;        
+    }
+    .iconSpinner{
+        
+        left : 45%;
+        color : white;
+        position : relative;
+        animation: a 3s infinite linear;
+        margin-top: 80px;
+       
+    }
+    .textLoader{
+        color : white;
+        text-align: center;
+        font-size: x-large;
+        
+        
+    }
+    
+</style>
 <html lang="fr">
     <head>
         
@@ -61,10 +80,22 @@ var_dump($browser)
             require 'public/navbar2.php';
             require 'public/sidebar2.php';
             ?>
-            
             <div class="clients">
+                <?php 
 
-            </div>      
+                    // Create a new DateTime object
+                    $date = new DateTime();
+
+                    // Modify the date it contains
+                    $date->modify('next tuesday');
+
+                    // Output
+                    echo $date->format('Y-m-d');
+                    
+                ?>   
+                
+            </div>
+             
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

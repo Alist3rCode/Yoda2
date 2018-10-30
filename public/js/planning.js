@@ -1,3 +1,7 @@
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 
 function displayModaleConfig(){
     
@@ -58,14 +62,23 @@ $('.inputTimeWithText').blur(function (){
 });
     
 $('.daysButton').click(function(){
-   
+
     if($(this).hasClass('active')){
         $(this).removeClass('active');
     }else{
         $(this).addClass('active');
     }
 });  
-    
+
+$('.daysButtonCreate').click(function(){
+
+    if($(this).hasClass('active')){
+        $(this).removeClass('active');
+    }else{
+        $(this).addClass('active');
+    }
+}); 
+
     
 function dropdown(btn, content, id){
     $('#'+btn).html(content);
@@ -154,6 +167,14 @@ $('.collapse').on('hidden.bs.collapse', function () {
     } else {
         $('#noSearchNorCreate').collapse('hide');
     }
+});
+
+$('#slotCreate').click(function(e){
+    
+   
+    $('#createAssocSlot').collapse('show');
+     $('#resultSlotSearch').collapse('hide');
+    
 });
 
 $('#slotSearch').click(function(e){
@@ -703,6 +724,9 @@ function modifOff(mode, id){
 }
 
 function switchRecurrSlotCreation(mode){
+    
+    console.log(document.getElementById('startAssocSlot').value);
+    
     if(mode == 'one'){
         
         $('#hebdoCreate').collapse('hide');
@@ -711,6 +735,10 @@ function switchRecurrSlotCreation(mode){
         $('#btnHebdoCreate').removeClass('active');
         $('#btnMonthCreate').removeClass('active');
         
+        document.getElementById('endAssocSlot').value = document.getElementById('startAssocSlot').value;
+        document.getElementById('endAssocSlot').disabled = true;
+        $('#endAfterCreateSlot').addClass('d-none');
+        
     } else if (mode == 'hebdo'){
         
         $('#hebdoCreate').collapse('show');
@@ -718,6 +746,10 @@ function switchRecurrSlotCreation(mode){
         $('#btnOneCreate').removeClass('active');
         $('#btnHebdoCreate').addClass('active');
         $('#btnMonthCreate').removeClass('active');
+        
+        document.getElementById('endAssocSlot').value = '';
+        document.getElementById('endAssocSlot').disabled = false;
+        $('#endAfterCreateSlot').removeClass('d-none');
          
         
     } else if (mode == 'mois'){
@@ -727,6 +759,185 @@ function switchRecurrSlotCreation(mode){
         $('#btnOneCreate').removeClass('active');
         $('#btnHebdoCreate').removeClass('active');
         $('#btnMonthCreate').addClass('active');
+        document.getElementById('endAssocSlot').value = '';
+        document.getElementById('endAssocSlot').disabled = false;
+        $('#endAfterCreateSlot').removeClass('d-none');
+
         
+    } else if (mode == "tout"){
+        $('#hebdoCreate').collapse('hide');
+        $('#monthCreate').collapse('hide');
+        $('#btnOneCreate').removeClass('active');
+        $('#btnHebdoCreate').removeClass('active');
+        $('#btnMonthCreate').removeClass('active');
+        document.getElementById('endAssocSlot').value = '';
+        document.getElementById('endAssocSlot').disabled = false;
+        $('#endAfterCreateSlot').removeClass('d-none');
+
     }
 }
+
+$('#startAssocSlot').keyup(function(){
+    if($('#btnOneCreate').hasClass('active')){
+        document.getElementById('endAssocSlot').value = document.getElementById('startAssocSlot').value;
+    }
+});
+
+
+function resetCreateAssoc(){
+    
+    document.getElementById('btnAddTech').innerHTML = 'Technicien';
+    document.getElementById('btnAddTech').dataset.id = '';
+    document.getElementById('btnAddSlot').innerHTML = 'Créneaux';
+    document.getElementById('btnAddSlot').dataset.id = '';
+    
+    document.getElementById('startAssocSlot').value = '';
+    
+    switchRecurrSlotCreation('tout');
+    
+    $('.daysButtonCreate').removeClass('active');
+    
+    document.getElementById('dayMonthCreate').value = '';
+    document.getElementById('repeatMonthCreate').value = '';
+    document.getElementById('endAssocSlot').value = '';
+    document.getElementById('repeatAssocSlot').value = '';
+       
+}
+
+
+$('#btnCreateSlotAssoc').click(function(){
+
+    $("#loaderCreate").removeClass('d-none');
+    
+    var idTech = document.getElementById('btnAddTech').dataset.id;
+    var idSlot = document.getElementById('btnAddSlot').dataset.id;
+    
+    var start = document.getElementById('startAssocSlot').value;
+    
+    var one = $('#btnOneCreate').hasClass('active');
+    var hebdo = $('#btnHebdoCreate').hasClass('active');
+    var month = $('#btnMonthCreate').hasClass('active');
+    
+    var workingDays = $('.daysButtonCreate');
+    var workingDaysArray = [];
+    
+    for (var i = 0; i < workingDays.length; i++) {
+        if(workingDays[i].classList.contains('active')){
+            workingDaysArray.push(workingDays[i].innerHTML);
+            console.log(workingDays[i].innerHTML);
+        }
+    }
+    
+    console.log(workingDaysArray);
+ 
+    
+    var dayMonthCreate = document.getElementById('dayMonthCreate').value;
+    var repeatMonthCreate = document.getElementById('repeatMonthCreate').value;
+    
+    var endAssocSlot = document.getElementById('endAssocSlot').value;
+    var repeatAssocSlot = document.getElementById('repeatAssocSlot').value;
+    var mode = '';
+    
+    var flag = 0;
+    var errors = [];
+    
+    if(idSlot == ''){
+        flag = 1;
+        errors.push('Merci de choisir un créneau');
+    }
+    if(idTech == ''){
+        flag = 1;
+        errors.push('Merci de choisir un technicien');
+    }
+    if(start == ''){
+        flag = 1;
+        errors.push('Merci de choisir une date de début');
+    }
+    if (hebdo){
+        mode = hebdo;
+        if(workingDaysArray.length == 0){
+            flag = 1;
+            errors.push('Merci de renseigner des jours de répétition hebdomadaire');
+        }
+    } else if (month){
+        mode = month; 
+        if(dayMonthCreate == '' || !isNumber(dayMonthCreate)){
+            flag = 1;
+            errors.push('Merci de renseigner un jours de répétition mensuel');
+        }
+        if(repeatMonthCreate == '' || !isNumber(dayMonthCreate) || repeatMonthCreate > 10){
+            flag = 1;
+            errors.push('Merci de renseigner un nombre de répétition mensuel entre 1 et 10');
+        }
+    } else if (one){
+        if(start !== endAssocSlot){
+            flag = 1;
+            errors.push('Merci de renseigner un nombre de répétition mensuel entre 1 et 10');
+        }
+        
+    }else if (!one && !hebdo && !month){
+        flag = 1;
+        errors.push('Merci de renseigner selectionner un mode de répétition');
+    }
+    
+    if(endAssocSlot == '' && (repeatAssocSlot > 10 || repeatAssocSlot == '')){
+        flag = 1;
+        errors.push('Merci de renseigner une fin à la série en cours de création');
+    }
+    
+    if (flag == 1){
+        $("#loaderCreate").addClass('d-none');
+        displayAlert('alertSearchOrCreate','danger',errors.join('<br>'));
+    } else{
+        
+        console.log(idTech, idSlot, start, one, hebdo, month, workingDaysArray, dayMonthCreate, repeatMonthCreate, endAssocSlot, repeatAssocSlot);
+        
+        $.ajax({
+            url: "ajax/planning/createSlotAssoc.php", 
+            type: "POST", 
+            data: {
+                idTech : idTech, 
+                idSlot : idSlot, 
+                start : start, 
+                mode : mode, 
+                workingDaysArray : workingDaysArray, 
+                dayMonthCreate : dayMonthCreate, 
+                repeatMonthCreate : repeatMonthCreate, 
+                endAssocSlot : endAssocSlot, 
+                repeatAssocSlot : repeatAssocSlot
+            }, 
+            async : false,
+            success: function(retour){
+                
+                $("#loaderCreate").addClass('d-none');
+                
+                
+                if(retour['error'] == 'BUSY'){
+                    $('#tableResultSlot').html('');
+                    $.ajax({
+                        url: "ajax/planning/loadSlotAssoc.php", 
+                        type: "POST", 
+                        data: {
+                            start: start,
+                            end : retour['end'],
+                            tech : idTech,
+                            slot : 0
+                        }, 
+                        async : false,
+                        success: function(retour){
+                            $('#tableResultSlot').html(retour);
+                        }
+                    });
+                    $('#createAssocSlot').collapse('show');
+                    $('#resultSlotSearch').collapse('hide');
+                }
+            }
+        });
+        
+        
+    }
+
+    
+    
+    
+});

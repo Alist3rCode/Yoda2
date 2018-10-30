@@ -51,7 +51,7 @@ require('./public/fetchInfoPlanning.php');
     <body>
         
         <div id='idUser' class="d-none"><?=$_SESSION['id_user']?></div>
-        
+        <div class="d-none" id="nbTech"><?=$nbTech?></div>
         
         <div class="content">
             
@@ -133,6 +133,25 @@ require('./public/fetchInfoPlanning.php');
         <script src="./public/js/yoda_style.js"></script>
         <script src="./public/js/displayAlert.js"></script>
         <script src="./public/js/planning.js"></script>
+        
+        <script>
+    
+            function redBarFunction() {
+                $('.redBar').remove();
+                var time = new Date().toLocaleTimeString('fr-FR', { hour: "numeric", minute:"numeric"});
+                var timeSplit = time.split(':');
+                var startTime = Number(document.getElementsByClassName('startJquery')[0].innerHTML);
+                var hour = timeSplit[0]-startTime + 1;
+                var nbTech = document.getElementById('nbTech').innerHTML;
+                // console.log(startTime);
+                $( "#today" ).append( '<div class="redBar" style="grid-row:1/'+ (parseInt(nbTech)+1) +';grid-column:'+ 2 * hour +';"></div>' );
+                console.log();
+            }
+            redBarFunction();
+            setInterval(redBarFunction, 30*1000);
+
+
+            </script>
 
        
                      

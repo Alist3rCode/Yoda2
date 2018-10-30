@@ -33,8 +33,9 @@ foreach($search as $key=>$value):
     $arraySlot['nameTech'] = ucfirst($value->USR_FIRST_NAME). ' ' . ucfirst($value->USR_NAME);
     $arraySlot['nameSlot'] = ucfirst($value->SCO_NAME);
     $arraySlot['dateSlot'] = DateTime::createFromFormat('Y-m-d',$value->SLO_DATE)->format('d/m/Y');
+    list($r, $g, $b) = sscanf('#'.$value->SCO_COLOR, "#%02x%02x%02x");
     ?>    
-    <tr id="resultTrSlot_<?=$value->SLO_ID?>">
+    <tr id="resultTrSlot_<?=$value->SLO_ID?>" style="background:rgba(<?=$r?>,<?=$g?>,<?=$b?>,0.2)">
         <th scope="row">
             <button class="btn btn-secondary" onclick='switchSlotAssoc(<?=$value->SLO_ID?>)'>
                 <i class="far fa-edit"></i>

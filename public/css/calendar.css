@@ -65,3 +65,28 @@ input[type="color"]{
    border-bottom:solid 1px darkgrey; 
    padding-bottom : 15px;
 }
+
+
+.loader{
+    position:absolute;
+    background : rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    width: 100%;
+    height: 100%;        
+}
+.iconSpinner{
+
+    left : 45%;
+    color : white;
+    position : relative;
+    animation: a 3s infinite linear;
+    margin-top: 80px;
+
+}
+.textLoader{
+    color : white;
+    text-align: center;
+    font-size: x-large;
+
+
+}

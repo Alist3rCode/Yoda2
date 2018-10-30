@@ -53,11 +53,17 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                             <button class="btn btn-primary col-md-1 btnCollapse" id="slotSearch"> 
                                 <i class="fas fa-search"></i>
                             </button>
-                            <button class="btn btn-success col-md-1 btnCollapse" data-toggle="collapse" data-target="#createAssocSlot" aria-expanded="false" aria-controls="createAssocSlot"> 
+                            <button class="btn btn-success col-md-1 btnCollapse" id="slotCreate"> 
                                 <i class="fas fa-plus-square"></i>
                             </button>
                         </div>
-                        <div class="collapse mb-3" id="createAssocSlot" style="border: solid 1px darkgrey; border-radius: 5px;">
+                        <div class="collapse mb-3" id="createAssocSlot" style="border: solid 1px darkgrey; border-radius: 5px;position:relative">
+                            <div class=" loader d-none col-md-12" id="loaderCreate">
+                                <i class="fas fa-spinner fa-5x iconSpinner"></i>
+                                <span class="textLoader">
+                                    <p>Enregistrement en cours</p>
+                                </span>         
+                            </div>
                             <div class="row ml-3">
                                 <div class="btn-group text-center mx-auto col-md-12 mt-3 mb-3" role="group" aria-label="Button group with nested dropdown" style="height:40px;padding:0" >
 
@@ -75,7 +81,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                     </div>
 
                                     <div class="btn-group col-md-3" role="group" style="padding:0">
-                                        <button id="btnAddSlot" data-id="" type="button" class="btn btn-secondary dropdown-toggle  col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
+                                        <button id="btnAddSlot" data-id="" type="button" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
                                           Créneaux
                                         </button>
                                         <div class="dropdown-menu col-md-12" id="dropdownCreateSlot" aria-labelledby="btnAddSlot">
@@ -86,60 +92,60 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                             <?php endfor;?>
                                         </div>
                                     </div>
-                                    <p class="col-md-2">Début : </p>
-                                    <input class="loginInput col-md-3 inputDateWithText" style="width:inherit;" type="date" id="startAssocSlot" placeholder="Début">
+                                    <h5 class="col-md-2">Début : </h5>
+                                    <input class="loginInput col-md-3" style="width:inherit;" type="date" id="startAssocSlot">
                                 </div>
                                 
                             </div>
                             <div class="col-md-12">
                                 
-                                <div class="row mx-auto mb-3 text-center" style="width:100%;border-bottom:solid 1px darkgrey;padding-bottom : 15px;">
+                                <div class="row mx-auto mb-3 pt-3 pb-3 text-center" style="width:100%;border-bottom:solid 1px darkgrey; border-top:solid 1px darkgrey">
                                     <div class="btn-group text-center col-md-12" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-outline-secondary col-md-4" id="btnOneCreate" onclick="switchRecurrSlotCreation('one')">Une Fois</button>
                                         <button type="button" class="btn btn-outline-secondary col-md-4" id="btnHebdoCreate" onclick="switchRecurrSlotCreation('hebdo')">Hebdomadaire</button>
                                         <button type="button" class="btn btn-outline-secondary col-md-4" id="btnMonthCreate" onclick="switchRecurrSlotCreation('mois')">Mensuel</button>
                                     </div>
-
+                                    
                                 </div>
                                 
-                                <div class="collapse" id="hebdoCreate" style="width:100%;border-bottom:solid 1px darkgrey;padding-bottom : 15px;">
-                                    <div class="row mx-auto mb-3 ">
+                                <div class="collapse" id="hebdoCreate" style="width:100%;border-bottom:solid 1px darkgrey;">
+                                    <div class="row d-flex flex-row mx-auto mb-3 pl-3">
                                         <h5>Récurrence : </h5>
-                                        <div class="btn-group ml-3 " role="group">
+                                        <div class="btn-group ml-3" id="repeatWorkingDays" role="group">
                                             <?php foreach($workingDays as $key=>$value):?>
-                                                <button type="button" class="btn btn-outline-primary daysButton>"><?=$value?></button>
+                                                <button type="button" class="btn btn-outline-primary daysButtonCreate"><?=$value?></button>
                                             <?php endforeach; ?>
                                         </div>
                                     </div>
                                     
                                 </div>
-                                <div class="collapse" id="monthCreate" style="width:100%;border-bottom:solid 1px darkgrey;padding-bottom : 15px;">
-                                    <div class="row mx-auto mb-3 ">
+                                <div class="collapse" id="monthCreate" style="width:100%;border-bottom:solid 1px darkgrey;">
+                                    <div class="row mx-auto mb-3 pl-3">
                                         
                                         <h5>Récurrence : </h5>
-                                        <div class="row ml-3" role="group">
-                                            Le 
-                                            <input type="text" class="loginInput" placeholder="1" style="width:50px;">
-                                             tous les 
-                                            <input type="text" class="loginInput" placeholder="1" style="width:50px;">
-                                             mois
+                                        <div class="row d-flex flex-row ml-3" role="group">
+                                            <span class="pt-1">Le</span> 
+                                            <input type="text" class="loginInput" id="dayMonthCreate" placeholder="<?=date('d')?>" style="width:50px;">
+                                            <span class="pt-1">tous les</span> 
+                                            <input type="text" class="loginInput"  id="repeatMonthCreate"placeholder="1" style="width:50px;">
+                                            <span class="pt-1">mois</span>
 
                                         </div>
                                         
                                     </div>
                                     
                                 </div>
-                                <div class="row mb-3 d-flex justify-content-between">
+                                <div class="row mb-3 mt-3 d-flex justify-content-around">
                                     <div class="row ml-3">
-                                        Fin le : <input type="date" class="loginInput" style="width:inherit;">
+                                        <h5>Fin le : </h5><input type="date" class="loginInput" id="endAssocSlot" style="width:inherit;">
                                     </div>
-                                    <div class="row mr-3">
-                                        Fin après <input type="text" class="loginInput" placeholder="1" style="width:50px;"> répétitions
+                                    <div class="row mr-3 " id="endAfterCreateSlot">
+                                        <h5>Fin après </h5><input type="text" class="loginInput" id="repeatAssocSlot" placeholder="1" style="width:50px;"> <h5>répétitions</h5>
                                     </div>
                                 </div>
                                 <div class="row mb-3 mx-3 d-flex justify-content-between">
-                                    <button class="btn btn-warning">Réinitialiser</button>
-                                    <button class="btn btn-success">Valider</button>
+                                    <button class="btn btn-warning" onclick="resetCreateAssoc()">Réinitialiser</button>
+                                    <button class="btn btn-success" id="btnCreateSlotAssoc" >Valider</button>
                                 </div>
                             </div>
                         </div>
