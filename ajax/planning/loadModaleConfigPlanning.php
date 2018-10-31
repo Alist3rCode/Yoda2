@@ -127,7 +127,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                             <span class="pt-1">Le</span> 
                                             <input type="text" class="loginInput" id="dayMonthCreate" placeholder="<?=date('d')?>" style="width:50px;">
                                             <span class="pt-1">tous les</span> 
-                                            <input type="text" class="loginInput"  id="repeatMonthCreate"placeholder="1" style="width:50px;">
+                                            <input type="text" class="loginInput"  id="repeatMonthCreate"placeholder="X" style="width:50px;">
                                             <span class="pt-1">mois</span>
 
                                         </div>
@@ -140,7 +140,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                         <h5>Fin le : </h5><input type="date" class="loginInput" id="endAssocSlot" style="width:inherit;">
                                     </div>
                                     <div class="row mr-3 " id="endAfterCreateSlot">
-                                        <h5>Fin après </h5><input type="text" class="loginInput" id="repeatAssocSlot" placeholder="1" style="width:50px;"> <h5>répétitions</h5>
+                                        <h5>Fin après </h5><input type="text" class="loginInput" id="repeatAssocSlot" placeholder="X" style="width:50px;"> <h5>répétitions</h5>
                                     </div>
                                 </div>
                                 <div class="row mb-3 mx-3 d-flex justify-content-between">
@@ -289,7 +289,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                          
                     </div>
                     
-                    <div class="col-md-12 mt-3" style="height:23vh;overflow-y:scroll;">
+                    <div class="col-md-12 mt-3" style="height:28vh;overflow-y:scroll;">
                         <div class="text-center">
                             <h4>Jours fériés / Jours fermés </h4>
                         </div>

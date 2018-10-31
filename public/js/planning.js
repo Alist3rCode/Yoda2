@@ -174,6 +174,7 @@ $('#slotCreate').click(function(e){
    
     $('#createAssocSlot').collapse('show');
      $('#resultSlotSearch').collapse('hide');
+     switchRecurrSlotCreation('one');
     
 });
 
@@ -234,9 +235,9 @@ function switchSlotAssoc(id){
     var slot = document.getElementById('resultSlot_'+id).dataset.idslot;
     var date = document.getElementById('resultDate_'+id).innerHTML;
     
-    console.log('imin');
+//    console.log('imin');
     
-    console.log(tr, tech, slot, date);
+//    console.log(tr, tech, slot, date);
     
     tr.innerHTML = '';
     
@@ -725,7 +726,7 @@ function modifOff(mode, id){
 
 function switchRecurrSlotCreation(mode){
     
-    console.log(document.getElementById('startAssocSlot').value);
+//    console.log(document.getElementById('startAssocSlot').value);
     
     if(mode == 'one'){
         
@@ -824,11 +825,10 @@ $('#btnCreateSlotAssoc').click(function(){
     for (var i = 0; i < workingDays.length; i++) {
         if(workingDays[i].classList.contains('active')){
             workingDaysArray.push(workingDays[i].innerHTML);
-            console.log(workingDays[i].innerHTML);
         }
     }
     
-    console.log(workingDaysArray);
+//    console.log(workingDaysArray);
  
     
     var dayMonthCreate = document.getElementById('dayMonthCreate').value;
@@ -877,7 +877,7 @@ $('#btnCreateSlotAssoc').click(function(){
         errors.push('Merci de renseigner selectionner un mode de répétition');
     }
     
-    if(endAssocSlot == '' && (repeatAssocSlot > 10 || repeatAssocSlot == '')){
+    if(endAssocSlot == '' && (repeatAssocSlot > 20 || repeatAssocSlot == '')){
         flag = 1;
         errors.push('Merci de renseigner une fin à la série en cours de création');
     }
@@ -887,7 +887,7 @@ $('#btnCreateSlotAssoc').click(function(){
         displayAlert('alertSearchOrCreate','danger',errors.join('<br>'));
     } else{
         
-        console.log(idTech, idSlot, start, one, hebdo, month, workingDaysArray, dayMonthCreate, repeatMonthCreate, endAssocSlot, repeatAssocSlot);
+//        console.log(idTech, idSlot, start, one, hebdo, month, workingDaysArray, dayMonthCreate, repeatMonthCreate, endAssocSlot, repeatAssocSlot);
         
         $.ajax({
             url: "ajax/planning/addSlotAssoc.php", 
@@ -908,26 +908,26 @@ $('#btnCreateSlotAssoc').click(function(){
                 
                 $("#loaderCreate").addClass('d-none');
                 
-                
-                if(retour['error'] == 'BUSY'){
-                    $('#tableResultSlot').html('');
-                    $.ajax({
-                        url: "ajax/planning/loadSlotAssoc.php", 
-                        type: "POST", 
-                        data: {
-                            start: start,
-                            end : retour['end'],
-                            tech : idTech,
-                            slot : 0
-                        }, 
-                        async : false,
-                        success: function(retour){
-                            $('#tableResultSlot').html(retour);
-                        }
-                    });
-                    $('#createAssocSlot').collapse('show');
-                    $('#resultSlotSearch').collapse('hide');
-                }
+                console.log(retour);
+//                if(retour['error'] == 'BUSY'){
+//                    $('#tableResultSlot').html('');
+//                    $.ajax({
+//                        url: "ajax/planning/loadSlotAssoc.php", 
+//                        type: "POST", 
+//                        data: {
+//                            start: start,
+//                            end : retour['end'],
+//                            tech : idTech,
+//                            slot : 0
+//                        }, 
+//                        async : false,
+//                        success: function(retour){
+//                            $('#tableResultSlot').html(retour);
+//                        }
+//                    });
+//                    $('#createAssocSlot').collapse('show');
+//                    $('#resultSlotSearch').collapse('hide');
+//                }
             }
         });
         
