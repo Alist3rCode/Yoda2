@@ -82,6 +82,8 @@ $('.daysButtonCreate').click(function(){
     
 function dropdown(btn, content, id){
     $('#'+btn).html(content);
+    $('#'+btn).removeClass('btn-outline-secondary');
+    $('#'+btn).addClass('btn-secondary');
     document.getElementById(btn).dataset.id = id;
 }
 
@@ -789,8 +791,13 @@ function resetCreateAssoc(){
     
     document.getElementById('btnAddTech').innerHTML = 'Technicien';
     document.getElementById('btnAddTech').dataset.id = '';
+    $('#btnAddTech').removeClass('btn-outline-secondary');
+    $('#btnAddTech').addClass('btn-secondary');
+    
     document.getElementById('btnAddSlot').innerHTML = 'Créneaux';
     document.getElementById('btnAddSlot').dataset.id = '';
+    $('#btnAddSlot').removeClass('btn-outline-secondary');
+    $('#btnAddSlot').addClass('btn-secondary');
     
     document.getElementById('startAssocSlot').value = '';
     
@@ -808,7 +815,8 @@ function resetCreateAssoc(){
 
 $('#btnCreateSlotAssoc').click(function(){
 
-    $("#loaderCreate").removeClass('d-none');
+//    $("#loaderCreate").removeClass('d-none');
+//    console.log('remove class');
     
     var idTech = document.getElementById('btnAddTech').dataset.id;
     var idSlot = document.getElementById('btnAddSlot').dataset.id;
@@ -904,11 +912,16 @@ $('#btnCreateSlotAssoc').click(function(){
                 repeatAssocSlot : repeatAssocSlot
             }, 
             async : false,
+            beforeSend: function (){
+                console.log('just before the ajax');
+                document.getElementById('loaderCreate').classList.remove('d-none');
+            },
             success: function(retour){
-                
-                $("#loaderCreate").addClass('d-none');
-                
+                console.log('retour ok de ajax');
                 console.log(retour);
+
+                document.getElementById('loaderCreate').classList.add('d-none');
+                
 //                if(retour['error'] == 'BUSY'){
 //                    $('#tableResultSlot').html('');
 //                    $.ajax({

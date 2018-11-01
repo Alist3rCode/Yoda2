@@ -68,7 +68,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 <div class="btn-group text-center mx-auto col-md-12 mt-3 mb-3" role="group" aria-label="Button group with nested dropdown" style="height:40px;padding:0" >
 
                                     <div class="btn-group  col-md-3" role="group" style="padding:0">
-                                        <button id="btnAddTech" data-id="" type="button" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
+                                        <button id="btnAddTech" data-id="" type="button" class="btn btn-outline-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
                                           Technicien
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnAddTech">
@@ -81,7 +81,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                     </div>
 
                                     <div class="btn-group col-md-3" role="group" style="padding:0">
-                                        <button id="btnAddSlot" data-id="" type="button" class="btn btn-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
+                                        <button id="btnAddSlot" data-id="" type="button" class="btn btn-outline-secondary dropdown-toggle col-md-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0">
                                           Créneaux
                                         </button>
                                         <div class="dropdown-menu col-md-12" id="dropdownCreateSlot" aria-labelledby="btnAddSlot">
