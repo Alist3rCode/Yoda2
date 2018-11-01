@@ -98,7 +98,7 @@ $y = 0;
     grid-column: 1/ <?=$workingTime + 1 ?>;
     opacity:0.9;
     display:grid;
-    grid-template-columns : repeat(3, 1fr);
+    grid-template-columns : repeat(<?=$workingTime?>, 1fr);
     font-size:0.3em;
     
 }
@@ -127,7 +127,7 @@ for($i = 0; $i< $idx; $i++):
 
 .<?=$arraySlot['code'][$i]?>{
     background-color:#<?=$arraySlot['color'][$i]?>;
-    grid-column: <?=$startDay . ' / span ' . $longDay?>;
+    grid-column: <?=($startDay+1) . ' / span ' . $longDay?>;
     color : <?=$arraySlot['textColor'][$i];?>!important;
     
 }
@@ -144,7 +144,7 @@ for($i=0; $i< $y; $i++):?>
 
 
 .start{
-    grid-column-start: 1;
+    grid-column: 1 / span 2;
     grid-row-start : 1;
     /*font-size: 0.2em;*/
     text-align : left;
@@ -152,14 +152,14 @@ for($i=0; $i< $y; $i++):?>
 }
 
 .middle{
-    grid-column-start: 2;
+    grid-column: <?=intval($workingTime/2) -1?> / span 1;
     grid-row-start : 1;
     /*font-size: 0.2em; */
     text-align:center;
     
 }
 .end{
-    grid-column-start: 3;
+    grid-column: <?=intval($workingTime-1)?> / span 2;
     grid-row-start : 1;
     /*font-size: 0.2em; */
     text-align: right;

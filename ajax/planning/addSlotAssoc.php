@@ -18,6 +18,7 @@ if (isset($_REQUEST['endAssocSlot']) && $_REQUEST['endAssocSlot'] != ""){
 }
 
 $arrayDayToCreate = [];
+$arrayDayToInsert = [];
 $array = [];
 $array['flag'] = [];
 $array['error'] = [];
@@ -128,9 +129,9 @@ if($_REQUEST['mode']== 'hebdo'){
             
         }
         
-        echo "date avant = ".$date->format('Y-m-d')."<br>";
+//        echo "date avant = ".$date->format('Y-m-d')."<br>";
         $date = $dayNextMonth;
-        echo "date après = ".$date->format('Y-m-d')."<br>";
+//        echo "date après = ".$date->format('Y-m-d')."<br>";
         
         if($flagEnd == 1){
             $interval = $date->diff($end);
@@ -206,14 +207,50 @@ foreach($arrayDayToCreate as $key=>$value){
     if(count($select) > 0){
         
         array_push($array['flag'],'D');
-        array_push($array['error'],"Aucun créneau créé le ".$value." pour ".ucfirst($select[0]->USR_FIRST_NAME).' '.strtoupper($select[0]->USR_NAME)." car un créneau est déja posé pour ce technicien.");
-        unset($arrayDayToCreate[$key]);
+        array_push($array['error'],"Aucun créneau créé le ".date_create_from_format('Y-m-d',$value)->format('d/m/Y')." pour ".ucfirst($select[0]->USR_FIRST_NAME).' '.strtoupper($select[0]->USR_NAME)." car un créneau est déja posé pour ce technicien.");
+        
+    } else {
+        array_push($arrayDayToInsert,$value);
+    }
+}
+
+$insert = $bdd->prepare('INSERT INTO PLA_SLOT '
+            . ' (SLO_ID_SCO, SLO_ID_USR, SLO_DATE, SLO_VALID) '
+            . ' VALUES (:idSlot, :idTech, :date, :valid) ');
+
+foreach($arrayDayToInsert as $key=>$value){
+    
+    $insert->execute(array(
+    'idSlot' => intval($_REQUEST['idSlot']),
+    'idTech' => intval($_REQUEST['idTech']),
+    'date' => $value,
+    'valid' => 1
+    )) or die(print_r($req->errorInfo()));
+       
+}
+
+$selectNbTech = $bdd ->queryObj('SELECT count(USR_ID) as Count '
+                                . 'FROM YDA_USERS '
+                                . 'WHERE USR_TECH = 1 '
+                                . 'AND USR_DELETE IS NULL');
+
+$nbTech = $selectNbTech[0]->Count;
+
+foreach($arrayDayToCreate as $key=>$value){
+    $selectNbTechPerDays = $bdd->queryObj('SELECT SLO_ID_USR '
+            . 'FROM PLA_SLOT '
+            . 'WHERE SLO_DATE = "'.$value.'" '
+            . 'AND SLO_VALID = 1');
+    
+    if(count($selectNbTechPerDays) < $nbTech){
+        
+        array_push($array['flag'],'W');
+        array_push($array['error'],"Attention, le ".date_create_from_format('Y-m-d',$value)->format('d/m/Y').", tous les techniciens n'ont pas de créneaux assignés. ". count($selectNbTechPerDays)." déja posés / ".$nbTech." techniciens.");
         
     }
 }
 
-
-
-    
-//header("content-type:application/json");
-//echo json_encode($arrayDayToCreate);
+$array['ok'] = 'ok';
+   
+header("content-type:application/json");
+echo json_encode($array);

@@ -145,7 +145,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 </div>
                                 <div class="row mb-3 mx-3 d-flex justify-content-between">
                                     <button class="btn btn-warning" onclick="resetCreateAssoc()">Réinitialiser</button>
-                                    <button class="btn btn-success" id="btnCreateSlotAssoc" >Valider</button>
+                                    <button class="btn btn-success" onclick="createSlotAssoc()" >Valider</button>
                                 </div>
                             </div>
                         </div>
@@ -177,6 +177,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                             </table>
                         </div>
                         <div id="noSearchNorCreate" class="alert alert-warning collapse show">Cliquer sur la loupe effectuer une recherche d'association de créneaux, ou sur le + vert pour paramétrer des associations de créneaux. </div>
+                        <div id="createErrorResult" class="alert alert-info collapse"></div>
                     </div>
                 </div>
                 <div class="col-md-6" style="border-left: solid 1px darkgrey;">

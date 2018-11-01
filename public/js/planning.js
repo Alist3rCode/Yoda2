@@ -161,6 +161,8 @@ $('.collapse').on('shown.bs.collapse', function () {
     } else {
         $('#noSearchNorCreate').collapse('hide');
     }
+    
+    
 });
 
 $('.collapse').on('hidden.bs.collapse', function () {
@@ -169,14 +171,18 @@ $('.collapse').on('hidden.bs.collapse', function () {
     } else {
         $('#noSearchNorCreate').collapse('hide');
     }
+        
+
 });
 
 $('#slotCreate').click(function(e){
     
    
     $('#createAssocSlot').collapse('show');
-     $('#resultSlotSearch').collapse('hide');
-     switchRecurrSlotCreation('one');
+    $('#resultSlotSearch').collapse('hide');
+    switchRecurrSlotCreation('one');
+    $('#createErrorResult').collapse('hide');
+
     
 });
 
@@ -190,6 +196,8 @@ $('#slotSearch').click(function(e){
     var errors = [];
     
     $('#createAssocSlot').collapse('hide');
+    $('#createErrorResult').collapse('hide');
+
 
         if(tech == ''){
             flag = 1;
@@ -788,20 +796,19 @@ $('#startAssocSlot').keyup(function(){
 
 
 function resetCreateAssoc(){
-    
     document.getElementById('btnAddTech').innerHTML = 'Technicien';
     document.getElementById('btnAddTech').dataset.id = '';
-    $('#btnAddTech').removeClass('btn-outline-secondary');
-    $('#btnAddTech').addClass('btn-secondary');
+    $('#btnAddTech').addClass('btn-outline-secondary');
+    $('#btnAddTech').removeClass('btn-secondary');
     
     document.getElementById('btnAddSlot').innerHTML = 'Créneaux';
     document.getElementById('btnAddSlot').dataset.id = '';
-    $('#btnAddSlot').removeClass('btn-outline-secondary');
-    $('#btnAddSlot').addClass('btn-secondary');
+    $('#btnAddSlot').addClass('btn-outline-secondary');
+    $('#btnAddSlot').removeClass('btn-secondary');
     
     document.getElementById('startAssocSlot').value = '';
     
-    switchRecurrSlotCreation('tout');
+    switchRecurrSlotCreation('one');
     
     $('.daysButtonCreate').removeClass('active');
     
@@ -813,10 +820,9 @@ function resetCreateAssoc(){
 }
 
 
-$('#btnCreateSlotAssoc').click(function(){
+function createSlotAssoc(){
 
-//    $("#loaderCreate").removeClass('d-none');
-//    console.log('remove class');
+    $('#createErrorResult').collapse('hide');
     
     var idTech = document.getElementById('btnAddTech').dataset.id;
     var idSlot = document.getElementById('btnAddSlot').dataset.id;
@@ -894,7 +900,6 @@ $('#btnCreateSlotAssoc').click(function(){
         $("#loaderCreate").addClass('d-none');
         displayAlert('alertSearchOrCreate','danger',errors.join('<br>'));
     } else{
-        
 //        console.log(idTech, idSlot, start, one, hebdo, month, workingDaysArray, dayMonthCreate, repeatMonthCreate, endAssocSlot, repeatAssocSlot);
         
         $.ajax({
@@ -913,41 +918,33 @@ $('#btnCreateSlotAssoc').click(function(){
             }, 
             async : false,
             beforeSend: function (){
+                
                 console.log('just before the ajax');
                 document.getElementById('loaderCreate').classList.remove('d-none');
             },
             success: function(retour){
-                console.log('retour ok de ajax');
-                console.log(retour);
+                if (retour['ok'] == 'ok'){
+                    displayAlert('alertSearchOrCreate','success','Les créneaux ont bien été créés. <br> Une liste des erreurs bloquantes ou non est disponible ci-dessous.')
 
-                document.getElementById('loaderCreate').classList.add('d-none');
-                
-//                if(retour['error'] == 'BUSY'){
-//                    $('#tableResultSlot').html('');
-//                    $.ajax({
-//                        url: "ajax/planning/loadSlotAssoc.php", 
-//                        type: "POST", 
-//                        data: {
-//                            start: start,
-//                            end : retour['end'],
-//                            tech : idTech,
-//                            slot : 0
-//                        }, 
-//                        async : false,
-//                        success: function(retour){
-//                            $('#tableResultSlot').html(retour);
-//                        }
-//                    });
-//                    $('#createAssocSlot').collapse('show');
-//                    $('#resultSlotSearch').collapse('hide');
-//                }
+                    document.getElementById('loaderCreate').classList.add('d-none');
+                    $('#createAssocSlot').collapse('hide');
+                    
+                    document.getElementById('createErrorResult').innerHTML = '';
+                    var color = '';
+                    for (i=0; i<retour['flag'].length;i++){
+                        
+                        if(retour['flag'][i] == "W"){
+                            color = "orange";
+                           
+                        }else if (retour['flag'][i] == "D"){
+                            color = 'red'; 
+                        }
+                        document.getElementById('createErrorResult').innerHTML += '<span style="color:'+color+'">'+ retour['error'][i]+'</span><br><br>';
+                    }
+                    $('#createErrorResult').collapse('show');
+                    $('#noSearchNorCreate').collapse('hide');
+                }
             }
         });
-        
-        
     }
-
-    
-    
-    
-});
+};
