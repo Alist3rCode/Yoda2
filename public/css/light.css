@@ -54,9 +54,20 @@ body{
     color: darkgrey;
 }
 
-.sidebar a:hover{
-    background-color: #999;
+.sidebar:not(.collapse) li:hover{
+    background-color: #cacaca;
+    
+}
+
+.sidebar li:hover i{
     color:white;
+    
+}
+
+
+.sidebar li:hover span{
+    color:white;
+    
 }
 
 .menu{
@@ -103,4 +114,16 @@ body{
 
 .activeSidebarElement i{
     color: #28a745!important;
+}
+
+.h1Planning{
+    color:black;
+}
+
+.btnChoicePlanning{
+    color:black!important;
+}
+
+.headPlanning{
+    background-color : darkgrey;
 }

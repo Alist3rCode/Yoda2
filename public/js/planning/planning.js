@@ -819,6 +819,64 @@ function resetCreateAssoc(){
        
 }
 
+$('#endAssocSlot').change(function(){
+   
+   if(document.getElementById('endAssocSlot').value != ''){
+       
+       $('#repeatAssocSlot').val('');
+       $('#spanRepeatAssocSlot1').removeClass('h5');
+       $('#spanRepeatAssocSlot1').addClass('text-muted pt-1');
+       $('#spanRepeatAssocSlot2').removeClass('h5');
+       $('#spanRepeatAssocSlot2').addClass('text-muted pt-1');
+       
+       $('#spanEndAssocSlot').addClass('h5');
+       $('#spanEndAssocSlot').removeClass('text-muted pt-1');
+
+       
+   } else{
+       
+       $('#spanRepeatAssocSlot1').addClass('h5');
+       $('#spanRepeatAssocSlot1').removeClass('text-muted pt-1');
+       $('#spanRepeatAssocSlot2').addClass('h5');
+       $('#spanRepeatAssocSlot2').removeClass('text-muted pt-1');
+       $('#spanEndAssocSlot').addClass('h5');
+       $('#spanEndAssocSlot').removeClass('text-muted pt-1');
+   }
+    
+    
+});
+
+$('#repeatAssocSlot').keyup(function(){
+
+    if(document.getElementById('repeatAssocSlot').value != ''){
+        
+       $('#endAssocSlot').val('');
+       $('#spanEndAssocSlot').removeClass('h5');
+       $('#spanEndAssocSlot').addClass('text-muted pt-1');
+       $('#spanRepeatAssocSlot1').addClass('h5');
+       $('#spanRepeatAssocSlot1').removeClass('text-muted pt-1');
+       $('#spanRepeatAssocSlot2').addClass('h5');
+       $('#spanRepeatAssocSlot2').removeClass('text-muted pt-1');
+       
+      
+       
+   } else{
+       
+       $('#spanEndAssocSlot').addClass('h5');
+       $('#spanEndAssocSlot').removeClass('text-muted pt-1');
+       $('#spanRepeatAssocSlot1').addClass('h5');
+       $('#spanRepeatAssocSlot1').removeClass('text-muted pt-1');
+       $('#spanRepeatAssocSlot2').addClass('h5');
+       $('#spanRepeatAssocSlot2').removeClass('text-muted pt-1');
+       
+       
+   }
+    
+});
+
+
+
+
 
 function createSlotAssoc(){
 
@@ -828,7 +886,7 @@ function createSlotAssoc(){
     var idSlot = document.getElementById('btnAddSlot').dataset.id;
     
     var start = document.getElementById('startAssocSlot').value;
-    
+    console.log(start);
     var one = $('#btnOneCreate').hasClass('active');
     var hebdo = $('#btnHebdoCreate').hasClass('active');
     var month = $('#btnMonthCreate').hasClass('active');
@@ -841,8 +899,22 @@ function createSlotAssoc(){
             workingDaysArray.push(workingDays[i].innerHTML);
         }
     }
-    
-//    console.log(workingDaysArray);
+    var dateStart = new Date(start);
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth()+1; 
+    var yyyy = today.getFullYear();
+    if(dd<10) 
+    {
+        dd='0'+dd;
+    } 
+
+    if(mm<10) 
+    {
+        mm='0'+mm;
+    } 
+    today = yyyy+'-'+mm+'-'+dd;
  
     
     var dayMonthCreate = document.getElementById('dayMonthCreate').value;
@@ -863,9 +935,9 @@ function createSlotAssoc(){
         flag = 1;
         errors.push('Merci de choisir un technicien');
     }
-    if(start == ''){
+    if(start == '' && (dateStart < today)){
         flag = 1;
-        errors.push('Merci de choisir une date de début');
+        errors.push('Merci de choisir une date de début supérieure à la date du jour.');
     }
     if (hebdo){
         mode = 'hebdo';
@@ -879,9 +951,9 @@ function createSlotAssoc(){
             flag = 1;
             errors.push('Merci de renseigner un jours de répétition mensuel');
         }
-        if(repeatMonthCreate == '' || !isNumber(dayMonthCreate) || repeatMonthCreate > 10){
+        if(repeatMonthCreate == '' || !isNumber(dayMonthCreate)){
             flag = 1;
-            errors.push('Merci de renseigner un nombre de répétition mensuel entre 1 et 10');
+            errors.push('Merci de renseigner un nombre de répétition mensuel.');
         }
     } else if (one){
         mode = 'one';
@@ -890,15 +962,23 @@ function createSlotAssoc(){
         flag = 1;
         errors.push('Merci de renseigner selectionner un mode de répétition');
     }
-    
-    if(endAssocSlot == '' && (repeatAssocSlot > 20 || repeatAssocSlot == '')){
-        flag = 1;
-        errors.push('Merci de renseigner une fin à la série en cours de création');
+    if($('#spanEndAssocSlot').hasClass('h5')){
+        if(endAssocSlot == '' && !checkDate('date', start, endAssocSlot)){
+            flag = 1;
+            errors.push('Merci de renseigner une date de fin à la série en cours de création supérieure à la date de début');
+        }
+        
+    } else if ($('#spanRepeatAssocSlot').hasClass('h5')){
+        if(repeatAssocSlot > 20 || repeatAssocSlot == ''){
+            flag = 1;
+            errors.push('Merci de renseigner un nombre de répétition à la série en cours de création entre 1 et 20');
+        }
     }
     
     if (flag == 1){
         $("#loaderCreate").addClass('d-none');
         displayAlert('alertSearchOrCreate','danger',errors.join('<br>'));
+       
     } else{
 //        console.log(idTech, idSlot, start, one, hebdo, month, workingDaysArray, dayMonthCreate, repeatMonthCreate, endAssocSlot, repeatAssocSlot);
         
@@ -920,13 +1000,12 @@ function createSlotAssoc(){
             beforeSend: function (){
                 
                 console.log('just before the ajax');
-                document.getElementById('loaderCreate').classList.remove('d-none');
+                
             },
             success: function(retour){
                 if (retour['ok'] == 'ok'){
                     displayAlert('alertSearchOrCreate','success','Les créneaux ont bien été créés. <br> Une liste des erreurs bloquantes ou non est disponible ci-dessous.')
 
-                    document.getElementById('loaderCreate').classList.add('d-none');
                     $('#createAssocSlot').collapse('hide');
                     
                     document.getElementById('createErrorResult').innerHTML = '';
@@ -946,5 +1025,134 @@ function createSlotAssoc(){
                 }
             }
         });
+        
+         
     }
+
+   
 };
+
+function checkDate(mode, start, end){
+    
+    var flag = 0;
+    
+    if(start == ''){
+        flag = 1;
+        return false;
+    }else if (end == ''){
+        flag = 1; 
+        return false;
+    }else if (mode == 'time' && flag == 0){
+        var timeStart  = start.split(':');
+        var timeEnd = end.split(':');
+        if(timeStart[0] > timeEnd[0]){
+            return false;
+        } else if(timeStart[0] < timeEnd[0]){
+            return true;
+        } else if (timeStart[0] == timeEnd[0]){
+            if(timeStart[1] > timeEnd[1]){
+                return false;
+            } else if(timeStart[1] == timeEnd[1]){
+                return false;
+            } else if (timeStart[1] < timeEnd[1]){
+                return true;
+            }
+        }
+    } else if (mode == 'date'&& flag == 0){
+        var dateStart  = start.split('-');
+        var dateEnd = end.split('-');
+        if(timeStart[0] > timeEnd[0]){
+            return false;
+        } else if(timeStart[0] < timeEnd[0]){
+            return true;
+        } else if (timeStart[0] == timeEnd[0]){
+            if(timeStart[1] > timeEnd[1]){
+                return false;
+            } else if(timeStart[1] < timeEnd[1]){
+                return true;
+            } else if (timeStart[1] == timeEnd[1]){
+                if(timeStart[2] > timeEnd[2]){
+                    return false;
+                } else if(timeStart[2] < timeEnd[2]){
+                    return true;
+                } else if (timeStart[2] == timeEnd[2]){
+                    return false;
+                }
+            }
+        }
+    }
+}
+
+function switchTech(id){
+    var tr = document.getElementById('trTech_'+id);
+    var name = document.getElementById('techName_'+id).innerHTML;
+    var surname = document.getElementById('techSurname_'+id).innerHTML;
+    var color = document.getElementById('techColor_'+id).value;
+    
+    tr.innerHTML = '';
+    
+    $.ajax({
+        url: "ajax/planning/loadInputModifTech.php", 
+        type: "POST", 
+        data: {
+           
+            name : name,
+            surname : surname,
+            color : color,
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+            tr.innerHTML = retour;
+        }
+    });
+}
+
+function resetModifTech(id){
+    
+    var tr = document.getElementById('trTech_'+id);
+    
+
+    $.ajax({
+        url: "ajax/planning/resetTech.php", 
+        type: "POST", 
+        data: {
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+            tr.innerHTML = retour;
+        }
+    });
+}
+
+function modifTech(id){
+    
+    var flag = 0;
+    var errors = [];
+
+    var tr = document.getElementById('trTech_'+id);
+    var name = document.getElementById('techName_'+id).innerHTML;
+    var surname = document.getElementById('techSurname_'+id).value;
+    var color = document.getElementById('techColor_'+id).value;   
+        
+    
+    $.ajax({
+        url: "ajax/planning/modifTech.php", 
+        type: "POST", 
+        data: {
+            surname : surname,
+            name : name,
+            color : color,
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+           
+            tr.innerHTML = retour;
+            displayAlert('alertTech','success','Les modifications ont été enregistrées.');
+           
+        }
+    });
+    
+}

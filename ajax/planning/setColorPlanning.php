@@ -3,7 +3,7 @@
 require_once "../ajaxDatabaseInit.php";
 
 $select= $bdd->queryObj('SELECT * FROM CFG_PREFERENCES '
-        . 'WHERE CPR_ID_USR = "'.$_REQUEST['id'].'"');
+        . 'WHERE CPR_ID_USR = "'.$_REQUEST['idUser'].'"');
 
 if(count($select) > 0){
     
@@ -16,22 +16,24 @@ if(count($select) > 0){
     
     $update ->execute(array(
         'sidebar' => $select[0]->CPR_SIDEBAR,
-        'theme' => $_REQUEST['theme'],
-        'color' => $select[0]->CPR_COLOR_PLANNING,
+        'theme' => $select[0]->CPR_THEME,
+        'color' => $_REQUEST['value'],
         'label' => $select[0]->CPR_LABEL_PLANNING,
-        'id' => $_REQUEST['id'] ));
+        'id' => $_REQUEST['idUser']
+        
+    ));
 
 } else {
     $update = $bdd->prepare('INSERT INTO CFG_PREFERENCES '
-        . '(CPR_THEME, CPR_ID_USR) VALUES '
-        . '(:sidebar, :id)');
+        . '(CPR_COLOR_PLANNING, CPR_ID_USR) VALUES '
+        . '(:color, :id)');
     
     $update ->execute(array(
-        'theme' => $_REQUEST['theme'],
-        'id' => $_REQUEST['id']
+        'color' => $_REQUEST['value'],
+        'id' => $_REQUEST['idUser']
         
         ));
 
 } 
-echo 'ok';
+
 ?>

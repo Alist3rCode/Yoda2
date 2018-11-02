@@ -137,15 +137,15 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                 </div>
                                 <div class="row mb-3 mt-3 d-flex justify-content-around">
                                     <div class="row ml-3">
-                                        <h5>Fin le : </h5><input type="date" class="loginInput" id="endAssocSlot" style="width:inherit;">
+                                        <span class="h5" id="spanEndAssocSlot">Fin le : </span><input type="date" class="loginInput" id="endAssocSlot" style="width:inherit;">
                                     </div>
                                     <div class="row mr-3 " id="endAfterCreateSlot">
-                                        <h5>Fin après </h5><input type="text" class="loginInput" id="repeatAssocSlot" placeholder="X" style="width:50px;"> <h5>répétitions</h5>
+                                        <span class="h5" id="spanRepeatAssocSlot1">Fin après </span><input type="text" class="loginInput" id="repeatAssocSlot" placeholder="X" style="width:50px;"> <span class="h5" id="spanRepeatAssocSlot2">répétitions</span>
                                     </div>
                                 </div>
                                 <div class="row mb-3 mx-3 d-flex justify-content-between">
                                     <button class="btn btn-warning" onclick="resetCreateAssoc()">Réinitialiser</button>
-                                    <button class="btn btn-success" onclick="createSlotAssoc()" >Valider</button>
+                                    <button class="btn btn-success" onclick="createSlotAssoc()">Valider</button>
                                 </div>
                             </div>
                         </div>
@@ -180,7 +180,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                         <div id="createErrorResult" class="alert alert-info collapse"></div>
                     </div>
                 </div>
-                <div class="col-md-6" style="border-left: solid 1px darkgrey;">
+                <div class="col-md-6" style="border-left: solid 1px darkgrey;overflow-y: scroll">
                     <div class="col-md-12" style="border-bottom : solid 2px darkgrey;">
                         <div class="row d-flex flex-row text-center mb-3 ">
                             
@@ -202,7 +202,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                         <div class="alert d-none" id="alertPlanningTime"></div>                        
                         
                     </div>
-                    <div class="col-md-12 mt-3" style="border-bottom: solid 2px darkgrey;height:32vh;overflow-y:scroll;">
+                    <div class="col-md-12 mt-3" style="border-bottom: solid 2px darkgrey;height:29vh;overflow-y:scroll;">
                         <div class="text-center">
                             <h4>Créneaux Types</h4>
                         </div>
@@ -290,7 +290,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                          
                     </div>
                     
-                    <div class="col-md-12 mt-3" style="height:28vh;overflow-y:scroll;">
+                    <div class="col-md-12 mt-3" style="border-bottom: solid 2px darkgrey;height:25vh;overflow-y:scroll;">
                         <div class="text-center">
                             <h4>Jours fériés / Jours fermés </h4>
                         </div>
@@ -370,6 +370,45 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                         </table>
                         
                     </div>
+                    <div class="col-md-12 mt-3" style="height:20vh;overflow-y:scroll;">
+                        <div class="text-center">
+                            <h4>Couleur Techniciens </h4>
+                        </div>
+                        <div class="alert d-none" id="alertTech"></div>   
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 5%">
+                                       
+                                    </th>
+                                    <th scope="col" style="width: 33%">
+                                        Technicien
+                                    </th>
+                                    <th scope="col" style="width: 31%">
+                                        Trigramme
+                                    </th>
+                                    <th scope="col" style="width: 31%">
+                                        Couleur
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody  id="tableOff">
+                                <?php for($i=0;$i<count($arrayTech);$i++):?>
+                                <tr id="trTech_<?=$arrayTech[$i]['id']?>">
+                                    <th scope="row">
+                                        <button class="btn btn-secondary" onclick='switchTech(<?=$arrayTech[$i]['id']?>)'>
+                                            <i class="far fa-edit"></i>
+                                        </button>
+                                    </th>
+                                    <td id="techName_<?=$arrayTech[$i]['id']?>"><?=ucfirst($arrayTech[$i]['firstName']).' '. strtoupper($arrayTech[$i]['name'])?></td>
+                                    <td id="techSurname_<?=$arrayTech[$i]['id']?>"><?= strtoupper($arrayTech[$i]['surname'])?></td>
+                                    <td><input  id="techColor_<?=$arrayTech[$i]['id']?>" type="color" disabled value="<?=$arrayTech[$i]['color']?>"></td>
+                                </tr>
+                                <?php endfor;?>
+                            </tbody>
+                        </table>
+                        
+                    </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-secondary mb-3" data-dismiss="modal">Fermer</button>
                     </div>
@@ -378,6 +417,6 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
         </div>
     </div>
 </div>
-<script src="./public/js/planning.js"></script>
+<script src="./public/js/planning/planning.js"></script>
     
     

@@ -1,9 +1,12 @@
 <?php
-    header('content-type: text/css');//Déclare la page en tant que feuille de style
+session_start();
+header('content-type: text/css');//Déclare la page en tant que feuille de style
 require '../../class/Autoloader.php';
 Autoloader::register();
 
 $bdd = new Database('yoda');
+
+require '../fetchInfoPlanning.php';
 
 $arraySlot = []; 
 $arrayPlanning = [];
@@ -23,7 +26,7 @@ if ($_GET['month'] != '' & $_GET['year'] != ''){
 
 $idx = 0;
 $y = 0;
-    $selectUser = $bdd->queryObj('SELECT USR_SURNAME '
+    $selectUser = $bdd->queryObj('SELECT USR_COLOR, USR_SURNAME '
             . 'FROM YDA_USERS '
             . 'WHERE USR_TECH = 1 '
             . 'AND (USR_DELETE > "'. $dateDelete . '" OR USR_DELETE IS NULL) ' 
@@ -32,6 +35,7 @@ $y = 0;
         
    foreach($selectUser as $key=>$value){
         $arrayTech['trigramme'][$y] = $value->USR_SURNAME;
+        $arrayTech['color'][$y] = $value->USR_COLOR;
         $y += 1;
     }
     
@@ -126,9 +130,11 @@ for($i = 0; $i< $idx; $i++):
 ?>
 
 .<?=$arraySlot['code'][$i]?>{
-    background-color:#<?=$arraySlot['color'][$i]?>;
-    grid-column: <?=($startDay+1) . ' / span ' . $longDay?>;
     color : <?=$arraySlot['textColor'][$i];?>!important;
+    grid-column: <?=($startDay+1) . ' / span ' . $longDay?>;
+    <?php if ($colorSlot == "active"):?>
+        background-color:#<?=$arraySlot['color'][$i]?>;
+    <?php endif;?>
     
 }
 
@@ -138,6 +144,9 @@ for($i=0; $i< $y; $i++):?>
 
 .<?=$arrayTech['trigramme'][$i]?>{
     grid-row : <?=$i+1?>;
+    <?php if ($colorTech == "active"):?>
+     background-color: <?=$arrayTech['color'][$i];?>!important;
+    <?php endif;?>
 }
 
 <?php endfor;?>

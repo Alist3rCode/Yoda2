@@ -81,21 +81,13 @@ checkCookie($bdd,'profil.php');
             require 'public/sidebar2.php';
             ?>
             <div class="clients">
-                <?php 
+              <button onclick="myFunction()">Try it</button>
 
-                    // Create a new DateTime object
-                    $date = new DateTime();
-
-                    // Modify the date it contains
-                    $date->modify('next tuesday');
-                    
-
-                    // Output
-                    echo $date->format('Y-m-d');
-                    echo date("l");
-                    
-                ?>   
-                
+                <script>
+                function myFunction() {
+                    setTimeout(function(){ alert("Hello"); }, 3000);
+                }
+                </script>
             </div>
              
         <!-- Optional JavaScript -->

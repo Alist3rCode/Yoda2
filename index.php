@@ -243,6 +243,14 @@ require 'public/dashboard.php';
         <script src="./public/js/chartIndex.js"></script>
         <script src="./public/js/initAddons.js"></script>
         <script src="./public/js/displayAlert.js"></script>
+        
+        <script>
+        
+        $( document ).ready(function() {
+            initAddons('version','all');
+        });
+        
+        </script>
 
        
        

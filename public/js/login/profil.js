@@ -709,7 +709,7 @@ function changeTheme(theme){
     
     if(theme == 'dark'){
         $.post("ajax/profil/changeTheme.php", {
-        theme: 'dark',
+        theme: '0',
         id : document.getElementById('idUser').innerHTML
         },
         function(retour) {
@@ -722,7 +722,7 @@ function changeTheme(theme){
         
     }else if(theme == 'light'){
         $.post("ajax/profil/changeTheme.php", {
-        theme: 'light',
+        theme: '1',
         id : document.getElementById('idUser').innerHTML
         },
         function(retour) {

@@ -63,8 +63,18 @@ require('./public/fetchInfoPlanning.php');
             <div class="clients" style="display:block;">
                 
 		<div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
-		    <h1 style="color:white;"><?=$month->toString();?></h1>
+		    <h1 class="h1Planning"><?=$month->toString();?></h1>
 		    <div>
+                        <div class="btn-group" role="group" >
+                            <button type="button" class="btn btn-sm btn-outline-light <?=$colorTech?> btnChoicePlanning" onclick="changeColor(1)">Couleur Technicien</button>
+                            <button type="button" class="btn btn-sm btn-outline-light <?=$colorSlot?> btnChoicePlanning" onclick="changeColor(0)">Couleur Créneau</button>
+                            
+                        </div>
+                        <div class="btn-group" role="group" >
+                            <button type="button" class="btn btn-sm btn-outline-light <?=$labelNom?> btnChoicePlanning"  onclick="changeLabel('1')">Noms</button>
+                            <button type="button" class="btn btn-sm btn-outline-light <?=$labelCode?> btnChoicePlanning" onclick="changeLabel('0')">Code</button>
+                            
+                        </div>
 		        <?php if(in_array("rgt_cod_planning_config", $right)):?>
                         <btn class="btn btn-light" onclick='displayModaleConfig()'>
                             <i class="fas fa-users-cog"></i>
@@ -88,19 +98,38 @@ require('./public/fetchInfoPlanning.php');
                             }else{
                                 $eventForDay = [];
                             }
+                            if($date->format('Y-m-d') === date("Y-m-d")){
+                                $today = 'today';
+                            
+                            }else {
+                                $today = '';
+                            }
+                            foreach($arrayOff as $key=>$value){
+//                                echo "date off : ".$value['datePlanning'].' et date : '.$date->format('Y-m-d').'<br>';
+                                if($value['datePlanning'] == $date->format('Y-m-d')){
+                                    $dayOff = "dayOff";
+                                    break;
+                                } else {
+                                    $dayOff = '';
+                                }
+                            }
+                            
+                            
                         ?>
 
-                            <td class="<?= $month->withinMonth($date) ? '' : 'calendar__othermonth'; ?>">
+                            <td class="<?= $month->withinMonth($date) ? '' : 'calendar__othermonth'; ?> <?=$dayOff?>">
                                 <div class="d-flex flex-row align-items-center justify-content-between">
                                     <?php if($i ==0):?>
                                         <div class="calendar__weekday"><?=$day?></div>
                                     <?php endif;?>
-                                    <div class="calendar__day text-right <?php if($date->format('Y-m-d') === date("Y-m-d")){echo 'today';}?>" ><?= $date->format('d');?></div>
+                                    <div class="calendar__day text-right <?=$today?>" ><?= $date->format('d');?></div>
                                 </div>
-
-                                <div class="grid" id='<?php if($date->format('Y-m-d') === date("Y-m-d")){echo 'today';}?>'>
-                                    <?php foreach($eventForDay as $key=>$event):?>
-                                    <div class="<?=$event->SCO_CODE?> tech <?=$event->USR_SURNAME?>"><?php echo $event->USR_SURNAME .' - '. $event->SCO_CODE;?></div>
+                                <?php if ($dayOff == ''):?>    
+                                <div class="grid" id='<?=$today?>'>
+                                    <?php foreach($eventForDay as $key=>$event):
+                                        if($labelCode=="active"){$label = $event->USR_SURNAME .' - '. $event->SCO_CODE;}
+                                        if($labelNom=="active"){$label = ucfirst($event->USR_FIRST_NAME) .' '. strtoupper($event->USR_NAME).' - '. $event->SCO_NAME;}?>
+                                    <div class="<?=$event->SCO_CODE?> tech <?=$event->USR_SURNAME?>"><?=$label?></div>
 
                                     <?php endforeach;?>
                                     <div class="hour mx-sm-1">
@@ -111,6 +140,7 @@ require('./public/fetchInfoPlanning.php');
 
                                     </div>
                                 </div>
+                                <?php endif;?>
                            </td>
                         <?php endforeach;?>
                     </tr>
@@ -132,7 +162,8 @@ require('./public/fetchInfoPlanning.php');
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="./public/js/yoda_style.js"></script>
         <script src="./public/js/displayAlert.js"></script>
-        <script src="./public/js/planning.js"></script>
+        <script src="./public/js/planning/planning.js"></script>
+        <script src="./public/js/planning/planning_style.js"></script>
         
         <script>
     

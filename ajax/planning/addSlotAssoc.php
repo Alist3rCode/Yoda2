@@ -6,7 +6,7 @@ $arrayDays =[];
 $arrayWeekdays = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
 $arrayWeekdaysFr = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
 
-
+echo $plop;
 $start = DateTime::createFromFormat('Y-m-d',$_REQUEST['start']);
 
 if (isset($_REQUEST['endAssocSlot']) && $_REQUEST['endAssocSlot'] != ""){
@@ -204,12 +204,38 @@ foreach($arrayDayToCreate as $key=>$value){
             . 'AND SLO_DATE = "'.$value.'" '
             . 'AND SLO_VALID = 1');
     
+    $selectOffDays = $bdd->queryObj('SELECT * '
+            . 'FROM PLA_OFF '
+            . 'WHERE OFF_DAY = "'.date_create_from_format('Y-m-d',$value)->format('d').'" '
+            . 'AND OFF_MONTH = "'.date_create_from_format('Y-m-d',$value)->format('m').'" '
+            . 'AND OFF_VALID = 1');
+    
+    $flag = 0; 
+    
+    if (count($selectOffDays) > 0){
+        foreach($selectOffDays as $keyOff=>$valueOff){
+            if($valueOff->OFF_REPEAT == '0' && $valueOff->OFF_YEAR == date_create_from_format('Y-m-d',$value)->format('Y')){
+                $flag = 1;
+            } else if($valueOff->OFF_REPEAT == '1'){
+                $flag = 1;
+            } else{
+                $flag = 0;
+            }
+            
+            if ($flag ==1) {
+                
+                array_push($array['flag'],'D');
+                array_push($array['error'],"Aucun créneau créé le ".date_create_from_format('Y-m-d',$value)->format('d/m/Y')." pour ".ucfirst($select[0]->USR_FIRST_NAME).' '.strtoupper($select[0]->USR_NAME)." car il s'agit d'un jour férié / fermé.");
+            }
+        }
+    }
+    
     if(count($select) > 0){
         
         array_push($array['flag'],'D');
         array_push($array['error'],"Aucun créneau créé le ".date_create_from_format('Y-m-d',$value)->format('d/m/Y')." pour ".ucfirst($select[0]->USR_FIRST_NAME).' '.strtoupper($select[0]->USR_NAME)." car un créneau est déja posé pour ce technicien.");
         
-    } else {
+    } else if (count($select) == 0 && $flag == 0){
         array_push($arrayDayToInsert,$value);
     }
 }
