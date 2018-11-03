@@ -431,7 +431,7 @@ function switchFormatOffDate(id){
 
 function addOff(){
     var date = $('#dateOff').val();
-    var repeat = $('#btnRepeatOff').hasClass('active')? 1 : 0 ;
+    var repeat = $('#repeatOff').hasClass('active')? 1 : 0 ;
     var name = $('#nameOff').val();
     
     var flag = 0;
@@ -1009,18 +1009,22 @@ function createSlotAssoc(){
                     $('#createAssocSlot').collapse('hide');
                     
                     document.getElementById('createErrorResult').innerHTML = '';
-                    var color = '';
-                    for (i=0; i<retour['flag'].length;i++){
-                        
-                        if(retour['flag'][i] == "W"){
-                            color = "orange";
-                           
-                        }else if (retour['flag'][i] == "D"){
-                            color = 'red'; 
+                    
+                    if(retour['flag'].length > 0){
+                        var color = '';
+                        for (i=0; i<retour['flag'].length;i++){
+
+                            if(retour['flag'][i] == "W"){
+                                color = "orange";
+
+                            }else if (retour['flag'][i] == "D"){
+                                color = 'red'; 
+                            }
+                            document.getElementById('createErrorResult').innerHTML += '<span style="color:'+color+'">'+ retour['error'][i]+'</span><br><br>';
                         }
-                        document.getElementById('createErrorResult').innerHTML += '<span style="color:'+color+'">'+ retour['error'][i]+'</span><br><br>';
+                        $('#createErrorResult').collapse('show');
                     }
-                    $('#createErrorResult').collapse('show');
+                    
                     $('#noSearchNorCreate').collapse('hide');
                 }
             }

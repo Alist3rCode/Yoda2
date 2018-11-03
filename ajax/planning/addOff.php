@@ -14,7 +14,8 @@ if($_REQUEST['repeat'] == 1){
 
 $select = $bdd->queryObj('SELECT count(*) as Count '
         . 'FROM PLA_OFF '
-        . 'WHERE OFF_NAME = "'.$_REQUEST['name'].'"');
+        . 'WHERE OFF_NAME = "'.$_REQUEST['name'].'"'
+        . 'AND OFF_VALID = 1');
 
 if ($select[0]->Count != 0){
     $array['ok'] = 'nok';
@@ -25,7 +26,8 @@ else{
     $select2 = $bdd->queryObj('SELECT count(*) as Count '
         . 'FROM PLA_OFF '
         . 'WHERE OFF_DAY = "'.$day.'" '
-        . 'AND OFF_MONTH = "'.$month.'"');
+        . 'AND OFF_MONTH = "'.$month.'"'
+        . 'AND OFF_VALID = 1');
 
     if ($select2[0]->Count != 0){
         $array['ok'] = 'nok';
@@ -50,7 +52,7 @@ else{
         $array['ok'] = 'ok';
         $class = $_REQUEST['repeat']==0? "outline-": "";
         
-        $array['html'] = '<tr>'
+        $array['html'] = '<tr id="trOff_'.$insertID.'">'
                             .'<th scope="row">'
                                 .'<button class="btn btn-secondary" onclick="modifOff('.$insertID.')">'
                                     .'<i class="far fa-edit"></i>'

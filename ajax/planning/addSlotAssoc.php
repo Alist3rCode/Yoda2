@@ -6,7 +6,6 @@ $arrayDays =[];
 $arrayWeekdays = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
 $arrayWeekdaysFr = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
 
-echo $plop;
 $start = DateTime::createFromFormat('Y-m-d',$_REQUEST['start']);
 
 if (isset($_REQUEST['endAssocSlot']) && $_REQUEST['endAssocSlot'] != ""){

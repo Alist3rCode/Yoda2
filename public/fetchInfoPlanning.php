@@ -16,7 +16,7 @@ if(!isset($_GET['month']) || $_GET['month'] == ''){
 }
 
 if(!isset($_GET['year']) || $_GET['year'] == ''){
-    $yearGet = null;
+    $yearGet = date('Y');
 }else{
     $yearGet = $_GET['year'];
 }
@@ -86,6 +86,7 @@ foreach($select5 as $key=>$value){
 
 $select6 = $bdd->queryObj('SELECT * '
         . 'FROM PLA_OFF '
+        . 'WHERE OFF_VALID = 1 '
         . 'ORDER BY OFF_DAY,OFF_MONTH');
 $idxOff = 0;
 
