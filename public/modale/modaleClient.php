@@ -30,7 +30,7 @@ $right = checkRights($bdd,$_SESSION['id_user']);
                     <input class="form-control spaceInput col-6" type="text" id="nom" placeholder="Site Principal..." autocomplete="nope" >
                     <input class="form-control spaceInput col-12" type="text" id="url" placeholder="https://..." autocomplete="nope">
 
-                    <p class="col-12" style="text-align:center;">Mauvaise Modale</p>
+                    <p class="col-12" style="text-align:center;">Saisir des tags séparés par des virgules :</p>
                     <ul class="tags-input col-12" id="tags-input">
                         <li class="tags-new">
                             <input class="spaceInput" type="text" id="tag" name="tag" value="Tags..." onfocus="if(this.value==='Tags...')this.value=''"  onblur="if(this.value==='')this.value='Tags...'" autocomplete="nope"> 
