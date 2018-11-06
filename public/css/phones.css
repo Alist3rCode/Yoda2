@@ -6,8 +6,8 @@
     display : flex;
     flex-flow : row wrap;
     justify-content:flex-start;
-    background: #252424;
-    color:white;
+    
+    
     transition: all 0.5s ease;
 }
 
@@ -15,41 +15,6 @@
     width: 100%;
 }
 
-.phoneWithLinkv7{
-    border: 1px solid #0071ab;
-}
-
-.phoneWithLinkv7 a{
-    color : #0071ab;
-}
-
-.phoneWithLinkv7 .fa:not(.fa-arrows-alt-h){
-    color : black;
-}
-
-.phoneWithLinkv8{
-    border: 1px solid #585858;
-}
-
-.phoneWithLinkv8 a{
-    color : #585858;
-}
-
-.phoneWithLinkv8 .fa:not(.fa-arrows-alt-h){
-    color : black;
-}
-
-.phoneWithLinkv6{
-    border: 1px solid #9a7a1e;
-}
-
-.phoneWithLinkv6 a{
-    color : #9a7a1e;
-}
-
-.phoneWithLinkv6 .fa{
-    color : black;
-}
 
 .fa-arrows-alt-h{
     color: #1e90ff!important;
@@ -61,7 +26,7 @@
     padding-right:  5px;
     /*padding-left:   5px;*/
     padding-bottom:10px;
-    border-left: solid 1px darkgray;
+    
     width: 225px;
 }
 

@@ -127,3 +127,50 @@ body{
 .headPlanning{
     background-color : darkgrey;
 }
+
+
+
+.phoneWithLink{
+    color:black;
+    background: white;
+}
+
+.phoneWithLinkv7{
+    border: 1px solid #007bff;
+}
+
+.phoneWithLinkv7 a{
+    color : #007bff;
+}
+
+.phoneWithLinkv7 .fa:not(.fa-arrows-alt-h){
+    color : white;
+}
+
+.phoneWithLinkv8{
+    border: 1px solid #6c757d;
+}
+
+.phoneWithLinkv8 a{
+    color : #6c757d;
+}
+
+.phoneWithLinkv8 .fa:not(.fa-arrows-alt-h){
+    color : white;
+}
+
+.phoneWithLinkv6{
+    border: 1px solid #ffc107;
+}
+
+.phoneWithLinkv6 a{
+    color : #ffc107;
+}
+
+.phoneWithLinkv6 .fa{
+    color : white;
+}
+
+.phoneNumber{
+    border-left: solid 1px #6c757d;
+}
