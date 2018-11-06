@@ -47,7 +47,7 @@ if ($_REQUEST['mode'] == 'update' && $_REQUEST['id'] != 'NEW'){
 
     if($_REQUEST['password'] == 'PASTOUCHE'){
         
-        $password = $select[0]->USR_PASSWORD;
+       $password = $select[0]->USR_PASSWORD;
     }else{
        $password = sha1($_REQUEST['password']);
        
@@ -55,7 +55,7 @@ if ($_REQUEST['mode'] == 'update' && $_REQUEST['id'] != 'NEW'){
     
     if($_REQUEST['idProfil'] == 'PASTOUCHE'){
         
-        $profil = $select[0]->USR_ID_PRO;
+       $profil = $select[0]->USR_ID_PRO;
     }else{
        $profil = $_REQUEST['idProfil'];
        

@@ -36,6 +36,16 @@ $y = 0;
    foreach($selectUser as $key=>$value){
         $arrayTech['trigramme'][$y] = $value->USR_SURNAME;
         $arrayTech['color'][$y] = $value->USR_COLOR;
+        
+        list($r, $g, $b) = sscanf('#'.$arrayTech['color'][$y], "#%02x%02x%02x");
+       $L = 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+       if ($L > 0.179){
+           $arrayTech['textColor'][$y] = '#000000';
+       } else {
+           $arrayTech['textColor'][$y] = '#FFFFFF';
+       }
+       
+       
         $y += 1;
     }
     
@@ -130,10 +140,11 @@ for($i = 0; $i< $idx; $i++):
 ?>
 
 .<?=$arraySlot['code'][$i]?>{
-    color : <?=$arraySlot['textColor'][$i];?>!important;
+    
     grid-column: <?=($startDay+1) . ' / span ' . $longDay?>;
     <?php if ($colorSlot == "active"):?>
         background-color:#<?=$arraySlot['color'][$i]?>;
+        color : <?=$arraySlot['textColor'][$i];?>!important;
     <?php endif;?>
     
 }
@@ -146,6 +157,7 @@ for($i=0; $i< $y; $i++):?>
     grid-row : <?=$i+1?>;
     <?php if ($colorTech == "active"):?>
      background-color: <?=$arrayTech['color'][$i];?>!important;
+     color : <?=$arrayTech['textColor'][$i];?>!important;
     <?php endif;?>
 }
 

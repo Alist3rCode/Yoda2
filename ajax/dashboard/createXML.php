@@ -1,5 +1,5 @@
 <?php
-require_once "ajaxDatabaseInit.php";
+require_once "../ajaxDatabaseInit.php";
 
 switch ($_REQUEST['search']) {
     case 'all':
@@ -166,8 +166,8 @@ $version = $value->CLI_VERSION;
 
 $xml.='</markers>';
 
-unlink("../address.xml");
-$xmlFile = fopen("../address.xml", "x+");
+unlink("../../address.xml");
+$xmlFile = fopen("../../address.xml", "x+");
 fwrite($xmlFile, $xml);
 //file_put_contents("../address.xml",$xml);
 
