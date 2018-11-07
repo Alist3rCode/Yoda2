@@ -184,3 +184,7 @@ body{
 .phoneNumber{
     border-left: solid 1px darkgray;
 }
+
+.headerMap{
+    background-color:black;
+}

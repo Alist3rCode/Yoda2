@@ -56,7 +56,7 @@ checkCookie($bdd,'map.php');
             
             <div class="clients">
                       
-                <div style="background-color:#343a40;" class="col-12">
+                <div class="col-12 headerMap">
 			<div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
 				<label class="btn btn-outline-primary col-4 active">
                                     <input type="radio" name="filter" id="aucun" checked> Aucun
