@@ -29,7 +29,7 @@ if ($select[0]->Count === '0'){
     
     $extension = explode('.', $_REQUEST['image']);
     
-    rename("../public/img/interne/".$_REQUEST['image'], "../public/img/interne/".$_REQUEST['name'].'.'.$extension[(count($extension)-1)]);
+    rename("../../public/img/interne/".$_REQUEST['image'], "../../public/img/interne/".$_REQUEST['name'].'.'.$extension[(count($extension)-1)]);
     
     
     $array['ok'] = 'ok';

@@ -37,12 +37,12 @@ if (isset($_FILES["file"]["type"])) {
             
         } else {
             
-            if (file_exists("../public/img/interne/" . $_FILES["file"]["name"])) {
+            if (file_exists("../../public/img/interne/" . $_FILES["file"]["name"])) {
                 $array['ok'] = 'nok';
                 $array['error'] = $_FILES["file"]["name"] . " existe déja.";
             } else {
                 $sourcePath = $_FILES['file']['tmp_name']; // Storing source path of the file in a variable
-                $targetPath = "../public/img/interne/" . $_FILES['file']['name']; // Target path where file is to be stored
+                $targetPath = "../../public/img/interne/" . $_FILES['file']['name']; // Target path where file is to be stored
                 move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
                 
                 $array['ok'] = 'ok';
