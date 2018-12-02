@@ -40,26 +40,34 @@ if($_REQUEST['mode'] == 'valid'){
         $arraySlot['nameTech'] = ucfirst($value->USR_FIRST_NAME). ' ' . ucfirst($value->USR_NAME);
         $arraySlot['nameSlot'] = ucfirst($value->SCO_NAME);
         $arraySlot['dateSlot'] = DateTime::createFromFormat('Y-m-d',$value->SLO_DATE)->format('d/m/Y');
-        ?>    
+        list($r, $g, $b) = sscanf('#'.$value->SCO_COLOR, "#%02x%02x%02x");
+        $array = [];
 
-        <th scope="row">
-            <button class="btn btn-secondary" onclick='switchSlotAssoc(<?=$value->SLO_ID?>)'>
-                <i class="far fa-edit"></i>
-            </button>
-        </th>
-        <td id="resultTech_<?=$value->SLO_ID?>" data-idTech="<?=$value->SLO_ID_USR?>"><?=$arraySlot['nameTech']?></td>
-        <td id="resultSlot_<?=$value->SLO_ID?>" data-idSlot="<?=$value->SLO_ID_SCO?>"><?=$arraySlot['nameSlot']?></td>
-        <td id="resultDate_<?=$value->SLO_ID?>"><?=$arraySlot['dateSlot']?></td>
-        <td>
-            <button class="btn btn-danger" onclick='modifSlotAssoc("delete",<?=$value->SLO_ID?>)'>
-                <i class="far fa-trash-alt"></i>
-            </button>
-        </td>
+        $array['html'] = '<th scope="row">'
+                .'<button class="btn btn-secondary" onclick="switchSlotAssoc('.$value->SLO_ID.')">'
+                    .'<i class="far fa-edit"></i>'
+                .'</button>'
+            .'</th>'
+            .'<td id="resultTech_'.$value->SLO_ID.'" data-idTech="'.$value->SLO_ID_USR.'">'.$arraySlot['nameTech'].'</td>'
+            .'<td id="resultSlot_'.$value->SLO_ID.'" data-idSlot="'.$value->SLO_ID_SCO.'">'.$arraySlot['nameSlot'].'</td>'
+            .'<td id="resultDate_'.$value->SLO_ID.'">'.$arraySlot['dateSlot'].'</td>'
+            .'<td>'
+                .'<button class="btn btn-danger" onclick="modifSlotAssoc(\'delete\','.$value->SLO_ID.')">'
+                    .'<i class="far fa-trash-alt"></i>'
+                .'</button>'
+            .'</td>'
+        .'</tr>';
+        $array['color'] = "rgba(".$r.",".$g.",".$b.",0.2)";
 
-    <?php endforeach;
+
+    endforeach;
+    
+    
+    header("content-type:application/json");
+    echo json_encode($array);
+
 } else if ($_REQUEST['mode'] == 'delete'){
     echo 'ok';
 }
-
 
 

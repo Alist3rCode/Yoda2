@@ -270,20 +270,39 @@ function switchSlotAssoc(id){
 
 function resetModif(id){
     
-    var tr = document.getElementById('resultTrSlot_'+id);
-    console.log(id);
-    $.ajax({
-        url: "ajax/planning/resetSlotAssoc.php", 
-        type: "POST", 
-        data: {
-            id : id
-        }, 
-        async : false,
-        success: function(retour){
-//            console.log(retour);
-            tr.innerHTML = retour;
-        }
-    });
+    if (id == null){
+        $('#tableResultSlot > tr').each(function(){
+            var idEach = this.id.substring(13);
+            var trEach = document.getElementById('resultTrSlot_'+idEach);
+            $.ajax({
+                url: "ajax/planning/resetSlotAssoc.php", 
+                type: "POST", 
+                data: {
+                    id : idEach
+                }, 
+                async : false,
+                success: function(retour){
+                    trEach.innerHTML = retour;
+                }
+            });
+            
+        });
+    }else{
+    
+        var tr = document.getElementById('resultTrSlot_'+id);
+        $.ajax({
+            url: "ajax/planning/resetSlotAssoc.php", 
+            type: "POST", 
+            data: {
+                id : id
+            }, 
+            async : false,
+            success: function(retour){
+    //            console.log(retour);
+                tr.innerHTML = retour;
+            }
+        });
+    }
 }
 
 function modifSlotAssoc(mode, id){
@@ -316,8 +335,10 @@ function modifSlotAssoc(mode, id){
         }, 
         async : false,
         success: function(retour){
+            console.log(retour);
             if (mode == 'valid'){
-                tr.innerHTML = retour;
+                tr.style.background = retour['color'];
+                tr.innerHTML = retour['html'];
                 displayAlert('alertSearchOrCreate','success','Les modifications ont été enregistrées.');
             } else if (mode == 'delete'){
                 if (retour == 'ok'){
@@ -510,21 +531,41 @@ function switchSlot(id){
 
 function resetModifSlot(id){
     
-    var tr = document.getElementById('trSlot_'+id);
+    if (id == null){
+        $('#tableSlot > tr').each(function(){
+            var idEach = this.id.substring(7);
+            var trEach = document.getElementById('trSlot_'+idEach);
+            $.ajax({
+                url: "ajax/planning/resetSlot.php", 
+                type: "POST", 
+                data: {
+                    id : idEach
+                }, 
+                async : false,
+                success: function(retour){
+                    trEach.innerHTML = retour;
+                }
+            });
+            
+        });
+    }else{
     
+        var tr = document.getElementById('trSlot_'+id);
 
-    $.ajax({
-        url: "ajax/planning/resetSlot.php", 
-        type: "POST", 
-        data: {
-            id : id
-        }, 
-        async : false,
-        success: function(retour){
-//            console.log(retour);
-            tr.innerHTML = retour;
-        }
-    });
+
+        $.ajax({
+            url: "ajax/planning/resetSlot.php", 
+            type: "POST", 
+            data: {
+                id : id
+            }, 
+            async : false,
+            success: function(retour){
+    //            console.log(retour);
+                tr.innerHTML = retour;
+            }
+        });
+    }
 }
 
 function modifSlot(mode, id){
@@ -1131,21 +1172,41 @@ function switchTech(id){
 }
 
 function resetModifTech(id){
+    if (id == null){
+        $('#tableTech > tr').each(function(){
+            var idEach = this.id.substring(7);
+            var trEach = document.getElementById('trTech_'+idEach);
+            $.ajax({
+                url: "ajax/planning/resetTech.php", 
+                type: "POST", 
+                data: {
+                    id : idEach
+                }, 
+                async : false,
+                success: function(retour){
+                    trEach.innerHTML = retour;
+                }
+            });
+            
+        });
+    }else{
     
-    var tr = document.getElementById('trTech_'+id);
     
+        var tr = document.getElementById('trTech_'+id);
 
-    $.ajax({
-        url: "ajax/planning/resetTech.php", 
-        type: "POST", 
-        data: {
-            id : id
-        }, 
-        async : false,
-        success: function(retour){
-            tr.innerHTML = retour;
-        }
-    });
+
+        $.ajax({
+            url: "ajax/planning/resetTech.php", 
+            type: "POST", 
+            data: {
+                id : id
+            }, 
+            async : false,
+            success: function(retour){
+                tr.innerHTML = retour;
+            }
+        });
+    }
 }
 
 function modifTech(id){
