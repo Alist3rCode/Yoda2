@@ -432,6 +432,7 @@ function switchFormatOffDate(id){
     }
     var currentYear = (new Date).getFullYear();
     var btn = $('#repeatOff'+id);
+    var dateOff = $("#dateOff"+id).val();
     
     if(btn.hasClass('active')){
         $("#dateOff"+id).attr({
@@ -447,7 +448,7 @@ function switchFormatOffDate(id){
         });
         btn.addClass('active');
     }
-    $('#dateOff'+id).val('');
+    $('#dateOff'+id).val(dateOff);
 }
 
 function addOff(){
