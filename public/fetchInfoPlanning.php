@@ -69,7 +69,7 @@ foreach($select4 as $key=>$value){
 $select5 = $bdd->queryObj('SELECT * '
         . 'FROM YDA_USERS '
         . 'WHERE USR_TECH = 1 '
-        . 'AND USR_DELETE IS NULL '
+//        . 'AND USR_DELETE IS NULL '
         . 'ORDER BY USR_FIRST_NAME, USR_NAME');
 $idxTech = 0;
 

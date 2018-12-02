@@ -16,11 +16,11 @@ $arrayTech = [];
 if ($_GET['month'] != '' & $_GET['year'] != ''){
     $dateGet = '01-'.$_GET['month'].'-'.$_GET['year'];
     $dateDelete = DateTime::createFromFormat('d-n-Y', $dateGet)->format('Y-m-d');
+   
 }else{
     $dateDelete = date('Y-m-d');
 }
 
-//var_dump($dateDelete);
 
 
 
@@ -31,23 +31,21 @@ $y = 0;
             . 'WHERE USR_TECH = 1 '
             . 'AND (USR_DELETE > "'. $dateDelete . '" OR USR_DELETE IS NULL) ' 
             . 'ORDER BY USR_ID ASC');
-//    var_dump($selectUser);
         
-   foreach($selectUser as $key=>$value){
+    foreach($selectUser as $key=>$value){
         $arrayTech['trigramme'][$y] = $value->USR_SURNAME;
         $arrayTech['color'][$y] = $value->USR_COLOR;
         
         list($r, $g, $b) = sscanf('#'.$arrayTech['color'][$y], "#%02x%02x%02x");
-       $L = 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
-       if ($L > 0.179){
-           $arrayTech['textColor'][$y] = '#000000';
-       } else {
-           $arrayTech['textColor'][$y] = '#FFFFFF';
-       }
-       
-       
+        $L = 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+        if ($L > 0.179){
+            $arrayTech['textColor'][$y] = '#000000';
+        } else {
+            $arrayTech['textColor'][$y] = '#FFFFFF';
+        }
         $y += 1;
     }
+//    var_dump($arrayTech);
     
     $nbTech = intval($y);
 
