@@ -582,78 +582,85 @@ function resetModifSlot(id){
 }
 
 function modifSlot(mode, id){
-    
-    var flag = 0;
-    var errors = [];
-   
-    if (mode == 'delete'){
+    if (checkSlotUsed(id)){
+        var flag = 0;
+        var errors = [];
 
-        var tr = document.getElementById('trSlot_'+id);
-        var code = document.getElementById('slotCode_'+id).innerHTML;
-        var name = document.getElementById('slotName_'+id).innerHTML;
-        var start = document.getElementById('slotStart_'+id).innerHTML;
-        var stop = document.getElementById('slotStop_'+id).innerHTML;
-        var color = document.getElementById('slotColor_'+id).value;
-        
-        
-        
-    } else if (mode == 'valid'){
-        
-        var tr = document.getElementById('trSlot_'+id);
-        var code = document.getElementById('slotCode_'+id).value;
-        var name = document.getElementById('slotName_'+id).value;
-        var start = document.getElementById('slotStart_'+id).value;
-        var stop = document.getElementById('slotStop_'+id).value;
-        var color = document.getElementById('slotColor_'+id).value;
-        
-        if(code.length > 5){
-            flag = 1;
-            errors.push('Merci de renseigner un code de 5 caractères ou moins');
-        }
-    }   
-    if (flag == 1){
-        displayAlert('alertSlot','danger',errors.join('<br>'));
-    } else{
-        $.ajax({
-            url: "ajax/planning/modifSlot.php", 
-            type: "POST", 
-            data: {
-                code: code,
-                name : name,
-                start : start,
-                stop : stop,
-                color: color,
-                id : id,
-                mode: mode
-            }, 
-            async : false,
-            success: function(retour){
-                if (mode == 'valid'){
-                    tr.innerHTML = retour;
-                    displayAlert('alertSlot','success','Les modifications ont été enregistrées.');
-                    tr.innerHTML = retour['html'];
+        if (mode == 'delete'){
 
-                    console.log(retour['dropdownSearch']);
+            var tr = document.getElementById('trSlot_'+id);
+            var code = document.getElementById('slotCode_'+id).innerHTML;
+            var name = document.getElementById('slotName_'+id).innerHTML;
+            var start = document.getElementById('slotStart_'+id).innerHTML;
+            var stop = document.getElementById('slotStop_'+id).innerHTML;
+            var color = document.getElementById('slotColor_'+id).value;
 
-                    document.getElementById('dropdownSlotSearch_'+id).remove();
-                    document.getElementById('dropdownSearchSlot').innerHTML += retour['dropdownSearch'];
-                    document.getElementById('dropdownSlotCreate_'+id).remove();
-                    document.getElementById('dropdownCreateSlot').innerHTML += retour['dropdownCreate'];
 
-                    displayAlert('alertSlot','success','Les modifications ont été enregistrées.');
 
-                } else if (mode == 'delete'){
-                    if (retour["ok"] == 'ok'){
+        } else if (mode == 'valid'){
 
-                        tr.innerHTML = '';
+            var tr = document.getElementById('trSlot_'+id);
+            var code = document.getElementById('slotCode_'+id).value;
+            var name = document.getElementById('slotName_'+id).value;
+            var start = document.getElementById('slotStart_'+id).value;
+            var stop = document.getElementById('slotStop_'+id).value;
+            var color = document.getElementById('slotColor_'+id).value;
+
+            if(code.length > 5){
+                flag = 1;
+                errors.push('Merci de renseigner un code de 5 caractères ou moins');
+            }
+        }   
+        if (flag == 1){
+            displayAlert('alertSlot','danger',errors.join('<br>'));
+        } else{
+            $.ajax({
+                url: "ajax/planning/modifSlot.php", 
+                type: "POST", 
+                data: {
+                    code: code,
+                    name : name,
+                    start : start,
+                    stop : stop,
+                    color: color,
+                    id : id,
+                    mode: mode
+                }, 
+                async : false,
+                success: function(retour){
+                    if (mode == 'valid'){
+                        tr.innerHTML = retour;
+                        displayAlert('alertSlot','success','Les modifications ont été enregistrées.');
+                        tr.innerHTML = retour['html'];
+
+                        console.log(retour['dropdownSearch']);
+
                         document.getElementById('dropdownSlotSearch_'+id).remove();
+                        document.getElementById('dropdownSearchSlot').innerHTML += retour['dropdownSearch'];
                         document.getElementById('dropdownSlotCreate_'+id).remove();
-                        displayAlert('alertSlot','success','La ligne a été supprimée avec succès.');
+                        document.getElementById('dropdownCreateSlot').innerHTML += retour['dropdownCreate'];
 
+                        displayAlert('alertSlot','success','Les modifications ont été enregistrées.');
+
+                    } else if (mode == 'delete'){
+                        if (retour["ok"] == 'ok'){
+
+                            tr.innerHTML = '';
+                            document.getElementById('dropdownSlotSearch_'+id).remove();
+                            document.getElementById('dropdownSlotCreate_'+id).remove();
+                            displayAlert('alertSlot','success','La ligne a été supprimée avec succès.');
+
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+    }else{
+        displayAlert('alertSlot','danger','Ce créneau type est déjà utilisé, il est impossible de le modifier.');
+        if (mode == "valid"){
+            resetModifSlot(id);
+        }
+
     }
 }
 
@@ -1251,4 +1258,23 @@ function modifTech(id){
         }
     });
     
+}
+
+function checkSlotUsed(id){
+    $.ajax({
+        url: "ajax/planning/checkSlotUsed.php", 
+        type: "POST", 
+        data: {
+            id : id
+        }, 
+        async : false,
+        success: function(retour){
+           
+          if (retour == 'ok'){
+              return true;
+          }else{
+              return false;
+          }     
+        }
+    });
 }
