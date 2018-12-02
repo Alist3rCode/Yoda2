@@ -51,15 +51,20 @@ $('#searchBar').keyup(function(e){
 
                     list[idxSelect].classList.add('selectColor');
                     idVignette = list[idxSelect].id.substring(9);
-                    window.open(document.getElementById('vign_url_' + idVignette).href + 'sqlpacsadmin');
+                    if($('#databaseButton_'+idVignette).length > 0){
+                    var urlPatch = document.getElementById('vign_url_' + idVignette).href.split('/');
+                    window.open('https://'+urlPatch[2]+'/sqlpacsadmin');
+                    }
 
                 //Alt + Entrée            
                 }else if (e.keyCode === 13 && e.altKey) {
 
                     list[idxSelect].classList.add('selectColor');
                     idVignette = list[idxSelect].id.substring(9);
-                    window.open(document.getElementById('vign_url_' + idVignette).href + 'patchmanager');
-
+                    var urlPatch = document.getElementById('vign_url_' + idVignette).href.split('/');
+                    window.open('https://'+urlPatch[2]+'/patchmanager');
+                    
+                   
                 //Entrée
                 }else if (e.keyCode === 13) {
                     list[idxSelect].classList.add('selectColor');

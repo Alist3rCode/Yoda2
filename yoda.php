@@ -102,8 +102,8 @@ $right = checkRights($bdd,$_SESSION['id_user']);
                                 <p class="nomBack"><?=$clients->CLI_NOM?></p>
                             </div>
                             <?php if(in_array("rgt_cod_database", $right)):?>
-                            <div class="backBtn">
-                                <a href="<?=$clients->CLI_URL?>sqlpacsadmin" target="_blank"><i class="fas fa-database"></i></a>
+                            <div class="backBtn" id="databaseButton_<?=$clients->CLI_ID?>">
+                                <a href="<?=$clients->urlSqlProd()?>" target="_blank"><i class="fas fa-database"></i></a>
                             </div>
                             <?php endif; ?>
                             

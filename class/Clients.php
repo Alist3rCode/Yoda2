@@ -71,6 +71,14 @@ class Clients{
         return $urlProd;
     }
     
+    public function urlSqlProd(){
+       
+        $urlSqlProd = $this->CLI_URL . 'sqlpacsadmin';
+               
+        return $urlSqlProd;
+    }
+    
+    
     
    
 }
