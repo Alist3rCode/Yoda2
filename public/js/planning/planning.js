@@ -306,6 +306,8 @@ function resetModif(id){
 }
 
 function modifSlotAssoc(mode, id){
+   var today = new Date();
+   
    
    
     if (mode == 'valid'){
@@ -321,33 +323,43 @@ function modifSlotAssoc(mode, id){
         var tech = document.getElementById('resultTech_'+id).dataset.idtech;
         var slot = document.getElementById('resultSlot_'+id).dataset.idslot;
         var date = document.getElementById('resultDate_'+id).innerHTML;
-    }   
+    } 
+    var jsDate = new Date(date);
     
-    $.ajax({
-        url: "ajax/planning/modifSlotAssoc.php", 
-        type: "POST", 
-        data: {
-            id : id,
-            tech : tech,
-            slot : slot,
-            date : date, 
-            mode : mode
-        }, 
-        async : false,
-        success: function(retour){
-            console.log(retour);
-            if (mode == 'valid'){
-                tr.style.background = retour['color'];
-                tr.innerHTML = retour['html'];
-                displayAlert('alertSearchOrCreate','success','Les modifications ont été enregistrées.');
-            } else if (mode == 'delete'){
-                if (retour == 'ok'){
-                    tr.innerHTML = '';
-                    displayAlert('alertSearchOrCreate','success','La ligne a été supprimée avec succès.');
+    if(jsDate > today){
+        console.log(jsDate, today);
+        $.ajax({
+            url: "ajax/planning/modifSlotAssoc.php", 
+            type: "POST", 
+            data: {
+                id : id,
+                tech : tech,
+                slot : slot,
+                date : date, 
+                mode : mode
+            }, 
+            async : false,
+            success: function(retour){
+                console.log(retour);
+                if (mode == 'valid'){
+                    tr.style.background = retour['color'];
+                    tr.innerHTML = retour['html'];
+                    displayAlert('alertSearchOrCreate','success','Les modifications ont été enregistrées.');
+                } else if (mode == 'delete'){
+                    if (retour == 'ok'){
+                        tr.innerHTML = '';
+                        displayAlert('alertSearchOrCreate','success','La ligne a été supprimée avec succès.');
+                    }
                 }
             }
+        });
+    }
+    else {
+        displayAlert('alertSearchOrCreate','danger','Impossible de modifier une ligne dans le passé.');
+        if(mode == "valid"){
+            resetModif(id);
         }
-    });
+    }
 }
 
 
