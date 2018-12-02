@@ -7,7 +7,7 @@ if($_REQUEST['repeat'] == '1'){
 
 ?>
 
-<tr>
+<tr id="trOff_<?=$_REQUEST['id']?>">
     <th scope="col">
         <button class="btn btn-warning" onclick="resetModifOff(<?=$_REQUEST['id']?>)">
             <i class="fas fa-undo-alt"></i>

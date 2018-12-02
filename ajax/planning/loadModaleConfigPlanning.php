@@ -392,7 +392,7 @@ $arrayDays = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody  id="tableOff">
+                            <tbody  id="tableTechColor">
                                 <?php for($i=0;$i<count($arrayTech);$i++):?>
                                 <tr id="trTech_<?=$arrayTech[$i]['id']?>">
                                     <th scope="row">

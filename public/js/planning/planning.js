@@ -643,6 +643,7 @@ document.onkeyup = function(e){
 };
 
 function switchOff(id){
+    resetModifOff();
     var tr = document.getElementById('trOff_'+id);
     var name = document.getElementById('nameOff_'+id).innerHTML;
     var date = document.getElementById('dateOff_'+id).innerHTML;
@@ -668,21 +669,38 @@ function switchOff(id){
 }
 
 function resetModifOff(id){
-    
-    var tr = document.getElementById('trOff_'+id);
-    
-
-    $.ajax({
-        url: "ajax/planning/resetOff.php", 
-        type: "POST", 
-        data: {
-            id : id
-        }, 
-        async : false,
-        success: function(retour){
-            tr.innerHTML = retour;
-        }
-    });
+    if (id == null){
+        $('#tableOff > tr').each(function(){
+            var idEach = this.id.substring(6);
+            var trEach = document.getElementById('trOff_'+idEach);
+            $.ajax({
+                url: "ajax/planning/resetOff.php", 
+                type: "POST", 
+                data: {
+                    id : idEach
+                }, 
+                async : false,
+                success: function(retour){
+                    trEach.innerHTML = retour;
+                }
+            });  
+            
+        });
+    }else{
+        
+        var tr = document.getElementById('trOff_'+id);
+        $.ajax({
+            url: "ajax/planning/resetOff.php", 
+            type: "POST", 
+            data: {
+                id : id
+            }, 
+            async : false,
+            success: function(retour){
+                tr.innerHTML = retour;
+            }
+        });
+    }
 }
 
 function modifOff(mode, id){
