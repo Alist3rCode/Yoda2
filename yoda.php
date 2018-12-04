@@ -21,11 +21,14 @@ $right = checkRights($bdd,$_SESSION['id_user']);
         
         <!-- Required meta tags -->
         <meta charset="utf-8">
-        
-        
-        
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+        <meta name="description" content="Bookmarks for all the ETMI Customer Application. For RIS and PACS. Internal user Only !">
+        <meta name="author" content="Yohann LOPEZ">
+        <link rel="icon" type="image/png" href="public/img/yodaTitle.png" />
+        <title>Clients - Y.O.D.A. <?php
+        $res = $bdd->queryObj('SELECT * FROM CFG_CONFIG');
+        echo ' v' . $res[0]->CFG_VERSION;
+        ?></title>
         
         
         <!-- Bootstrap CSS -->
