@@ -46,7 +46,7 @@ if ($_REQUEST['tag'] != ''){
             <i class="fas fa-database"></i>
         </div>
         <div class="backBtn" onclick="modif(<?=$_REQUEST['id']?>)" data-toggle="modal" data-target="#modaleClient" >
-            <i class="fas fa-pencil-alt" ></i>
+            <i class="far fa-file-alt" ></i>
         </div>
         <div class="backBtn phoneIconLink" onclick="displayPhones(<?=$_REQUEST['id']?>)">
             <i class="fas fa-phone"></i>
