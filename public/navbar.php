@@ -12,7 +12,7 @@
         
         <div class="form-inline my-2 my-lg-0 btn-group" style="width: 330px;">
             <?php if(in_array("rgt_cod_add_client", $right)):?>
-            <button type="button" class="btn btn-success createIcon"  id="create" data-toggle="modal" data-target="#modaleClient">
+            <button type="button" class="btn btn-success createIcon" id="create" onclick="displayModaleClient('create')">
                 <i class="fa fa-fw fa-plus-circle"></i>
             </button>
             <?php endif;?>

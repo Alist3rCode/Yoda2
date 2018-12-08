@@ -149,6 +149,7 @@ $right = checkRights($bdd,$_SESSION['id_user']);
         <script src="./public/js/searchBar.js"></script>
         <script src="./public/js/displayPhones.js"></script>
         <script src="./public/js/filters.js"></script>
+        <script src="./public/js/tooltip.js"></script>
         
         
     </body>

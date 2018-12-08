@@ -1,16 +1,4 @@
-$('[data-toggle="tooltip"]').tooltip();
 
-$('[data-toggle="tooltip"]').each(function(index, element){
-
-    var tg = $(element);
-    var idx = element.getAttribute('data-id');
-        $.post("ajax/yoda/loadVersion.php",{
-          id : idx,
-          mode : "display"
-        } , function(data) {
-            tg.attr('data-original-title', data);
-        });
-});
 
 
 $('#ville').keyup(function(){
@@ -52,19 +40,41 @@ function clickModaleActivity(activity){
     
 
 }
+//
+//$('#modaleClient').on('hidden.bs.modal', function (e) {
+//    
+//    $.ajax({
+//        method: "POST",
+//        url: "ajax/yoda/loadModaleClient.php",        
+//        async: false
+//    }).done(function(retour) {
+//        
+//        $("#modaleClient").load(retour);
+//    });
+//    
+//});
 
-$('#modaleClient').on('hidden.bs.modal', function (e) {
-    
+function displayModaleClient(type,id){
+    if (!id){
+        id = 0;
+    }
     $.ajax({
-        method: "POST",
-        url: "ajax/yoda/loadModaleClient.php",        
-        async: false
-    }).done(function(retour) {
-        
-        $("#modaleClient").load(retour);
+       url: 'ajax/yoda/loadModaleClient.php',
+       type: 'POST',
+       data: {
+            type: type,
+            id : id            
+        }, 
+        async : false,
+       dataType: 'html',
+       success : function(data){
+           $("#modaleClient").empty();
+           $("#modaleClient").append(data);
+           $('#modaleClient').modal('show');
+       }
     });
     
-});
+}
 
 
 
@@ -184,121 +194,121 @@ function deletePhone(i){
    
 }   
 
-function modif(i){
-    
+function modif(id){
+    displayModaleClient('modif',id);
        
-    while($("#petitTag").length !== 0){
-        $("#petitTag").remove();
-    }
-
-    var suppr = $('#buttonDelete');
-    $('#id').html(i);
-
-    $('#buttonSubmit').addClass("d-none");
-    $('#buttonModif').removeClass("d-none");
-    $('#buttonDelete').removeClass("d-none");
-
-
-    var ville = $('#ville');   
-    var nom = $('#nom');
-    var url = $('#url');
-
-    var v8_button = $('#v8Button');
-    var v7_button = $('#v7Button');
-    var v6_button = $('#v6Button');
-
-    var ris_button = $('#risButton');
-    var pacs_button = $('#pacsButton');
-
-    var tag_mod = $('#tag');
-    var tag_mod_hidden = $('#tag_hidden');
-
-    var phoneZone = $('#phones');
-
-    var viewVersion = $('#viewVersion');
-    var uViewVersion = $('#uViewVersion');
-    var imagingVersion = $('#imagingVersion');
-
-
-    $.post("ajax/yoda/loadVersion.php", {
-        id : i,
-        mode : "modif"
-    }, function(retour){
-
-        imagingVersion.val(retour['version']);
-        if(retour['uid']){
-            imagingVersion.prop('disabled', true);
-        }else{
-            imagingVersion.prop('disabled', false);
-        }
-    });
-
-    $.get("ajax/yoda/getModif.php?id=" + i, function(json){
-
-        viewVersion.val(json[0].CLI_VIEW);
-        uViewVersion.val(json[0].CLI_UVIEW);
-
-
-        if(json.length > 1){
-
-            for (z=0; z<json.length; z++){
-
-                newPhone(z);
-                $('#phone'+z).val(json[z].PHO_PHONE);
-                $('#site'+z).val(ucFirst(json[z].PHO_SITE));
-                $('#id'+z).val(json[z].PHO_ID);
-                $('#lat'+z).val(json[z].MPS_LAT);
-                $('#lon'+z).val(json[z].MPS_LON);
-                $('#mail'+z).val(json[z].PHO_MAIL);
-                $('#TX'+z).val(json[z].PHO_TX);
-                $('#idTV'+z).val(json[z].PHO_TV_ID);
-                $('#passTV'+z).val(json[z].PHO_TV_PASSWORD);
-            }
-            $('#divPhone' + json.length).remove();
-            $('#delete'+ json.length).remove();
-            $('#id'+ json.length).remove();
-            $('#newPhone'+ (json.length-1)).prop('disabled',false);
-
-        }else if (json['nbPhone'] !== 0){
-
-            $('#phone0').val(json[0].PHO_PHONE);
-            $('#id0').val(json[0].PHO_ID);
-            $('#lat0').val(json[0].MPS_LAT);
-            $('#lon0').val(json[0].MPS_LON);
-            $('#mail0').val(json[0].PHO_MAIL);
-            $('#idTV0').val(json[0].PHO_TV_ID);
-            $('#passTV0').val(json[0].PHO_TV_PASSWORD);            
-        }
-
-        ville.val(ucFirst(json[0].CLI_VILLE));
-        nom.val(ucFirst(json[0].CLI_NOM));
-        url.val(json[0].CLI_URL);
-
-        $('#myModalLabel').html('Fiche client : ' + ucFirst(json[0].CLI_VILLE) + ' - ' + ucFirst(json[0].CLI_NOM));
-
-        $('#villeDemo').html($('#ville').val());
-        $('#nomDemo').html($('#nom').val());
-
-
-
-        var nbTag = json[0].linearTag.length;
-        for (x=0; x<nbTag; x++){
-            if (json[0].linearTag[x] !== ''){
-                $('<li class="tags"id="petitTag"><span>' +
-                    json[0].linearTag[x] +
-                    '</span><i class="fa fa-times"></i></i></li>'
-                ).insertBefore($(".tags-new"));
-            }
-        }
-        tag_mod_hidden.value = '';
-        clickModaleVersion(json[0].CLI_VERSION);
-        if(json[0].CLI_RIS === '1'){
-            clickModaleActivity('ris');
-        }
-        if(json[0].CLI_PACS === '1'){
-            clickModaleActivity('pacs');
-        }
-    });
+//    while($("#petitTag").length !== 0){
+//        $("#petitTag").remove();
+//    }
+//
+//    var suppr = $('#buttonDelete');
+//    $('#id').html(i);
+//
+//    $('#buttonSubmit').addClass("d-none");
+//    $('#buttonModif').removeClass("d-none");
+//    $('#buttonDelete').removeClass("d-none");
+//
+//
+//    var ville = $('#ville');   
+//    var nom = $('#nom');
+//    var url = $('#url');
+//
+//    var v8_button = $('#v8Button');
+//    var v7_button = $('#v7Button');
+//    var v6_button = $('#v6Button');
+//
+//    var ris_button = $('#risButton');
+//    var pacs_button = $('#pacsButton');
+//
+//    var tag_mod = $('#tag');
+//    var tag_mod_hidden = $('#tag_hidden');
+//
+//    var phoneZone = $('#phones');
+//
+//    var viewVersion = $('#viewVersion');
+//    var uViewVersion = $('#uViewVersion');
+//    var imagingVersion = $('#imagingVersion');
+//
+//
+//    $.post("ajax/yoda/loadVersion.php", {
+//        id : i,
+//        mode : "modif"
+//    }, function(retour){
+//
+//        imagingVersion.val(retour['version']);
+//        if(retour['uid']){
+//            imagingVersion.prop('disabled', true);
+//        }else{
+//            imagingVersion.prop('disabled', false);
+//        }
+//    });
+//
+//    $.get("ajax/yoda/getModif.php?id=" + i, function(json){
+//
+//        viewVersion.val(json[0].CLI_VIEW);
+//        uViewVersion.val(json[0].CLI_UVIEW);
+//
+//
+//        if(json.length > 1){
+//
+//            for (z=0; z<json.length; z++){
+//
+//                newPhone(z);
+//                $('#phone'+z).val(json[z].PHO_PHONE);
+//                $('#site'+z).val(ucFirst(json[z].PHO_SITE));
+//                $('#id'+z).val(json[z].PHO_ID);
+//                $('#lat'+z).val(json[z].MPS_LAT);
+//                $('#lon'+z).val(json[z].MPS_LON);
+//                $('#mail'+z).val(json[z].PHO_MAIL);
+//                $('#TX'+z).val(json[z].PHO_TX);
+//                $('#idTV'+z).val(json[z].PHO_TV_ID);
+//                $('#passTV'+z).val(json[z].PHO_TV_PASSWORD);
+//            }
+//            $('#divPhone' + json.length).remove();
+//            $('#delete'+ json.length).remove();
+//            $('#id'+ json.length).remove();
+//            $('#newPhone'+ (json.length-1)).prop('disabled',false);
+//
+//        }else if (json['nbPhone'] !== 0){
+//
+//            $('#phone0').val(json[0].PHO_PHONE);
+//            $('#id0').val(json[0].PHO_ID);
+//            $('#lat0').val(json[0].MPS_LAT);
+//            $('#lon0').val(json[0].MPS_LON);
+//            $('#mail0').val(json[0].PHO_MAIL);
+//            $('#idTV0').val(json[0].PHO_TV_ID);
+//            $('#passTV0').val(json[0].PHO_TV_PASSWORD);            
+//        }
+//
+//        ville.val(ucFirst(json[0].CLI_VILLE));
+//        nom.val(ucFirst(json[0].CLI_NOM));
+//        url.val(json[0].CLI_URL);
+//
+//        $('#myModalLabel').html('Fiche client : ' + ucFirst(json[0].CLI_VILLE) + ' - ' + ucFirst(json[0].CLI_NOM));
+//
+//        $('#villeDemo').html($('#ville').val());
+//        $('#nomDemo').html($('#nom').val());
+//
+//
+//
+//        var nbTag = json[0].linearTag.length;
+//        for (x=0; x<nbTag; x++){
+//            if (json[0].linearTag[x] !== ''){
+//                $('<li class="tags"id="petitTag"><span>' +
+//                    json[0].linearTag[x] +
+//                    '</span><i class="fa fa-times"></i></i></li>'
+//                ).insertBefore($(".tags-new"));
+//            }
+//        }
+//        tag_mod_hidden.value = '';
+//        clickModaleVersion(json[0].CLI_VERSION);
+//        if(json[0].CLI_RIS === '1'){
+//            clickModaleActivity('ris');
+//        }
+//        if(json[0].CLI_PACS === '1'){
+//            clickModaleActivity('pacs');
+//        }
+//    });
        
  
 }
