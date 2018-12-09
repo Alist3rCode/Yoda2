@@ -584,7 +584,8 @@ function modifCustomer(){
     var array = [] ;
     array = control_form('modif');
     $('#vignette_'+ array['id']).removeClass('pulse');
-    
+    var urlSql = $('#databaseButton_'+array['id']+' a').attr('href');
+
     var idUser = $('#idUser').html();
     if (array['ok'] === 1){
         $.post("ajax/yoda/modifCustomer.php", 
