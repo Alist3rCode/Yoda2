@@ -21,24 +21,26 @@ foreach($select as $key=>$value){
     
 $selectModifier = $bdd->queryObj('SELECT * '
         . 'FROM YDA_USERS '
-        . 'WHERE USR_ID ="'.$_REQUEST['idUser'] .'"');
+        . 'WHERE USR_ID ="'.$_REQUEST['idUser'].'"');
 
-$userModif['name'] = $selectCreator[0]->USR_FIRST_NAME;
-$userModif['lastName'] = $selectCreator[0]->USR_NAME;
-    
+$userModif['name'] = $selectModifier[0]->USR_FIRST_NAME;
+$userModif['lastName'] = $selectModifier[0]->USR_NAME;
 
-$count = max(count($_REQUEST['avant']['phone']), count($_REQUEST['apres']['phone']));
+
+$count = max(count($_REQUEST['avant']), count($_REQUEST['apres']));
+
 $tab = '<tr><th scope="row" style="border-bottom: 1px solid #ddd;">Sites</th>'."\n";
 
 for($i=0;$i < $count; $i++){
 
-    if(array_key_exists($i,$_REQUEST['avant']['phone'])){
-        $tab = $tab . '<td style="border-bottom: 1px solid #ddd;">Site : '. $_REQUEST['avant']['phone'][$i]['site'] . '<br>Tel : '. $_REQUEST['avant']['phone'][$i]['phone'] . '<br>Latitude : '. $_REQUEST['avant']['phone'][$i]['lat'] . '<br>Longitude : '. $_REQUEST['avant']['phone'][$i]['lon'] . '</br>Mail : '. $_REQUEST['avant']['phone'][$i]['mail'] . '</br>Adresse TX : '. $_REQUEST['avant']['phone'][$i]['TX'] . '</br></td>'."\n";
+    if(array_key_exists($i,$_REQUEST['avant'])){
+       
+        $tab = $tab . '<td style="border-bottom: 1px solid #ddd;">Site : '. $_REQUEST['avant'][$i]['PHO_SITE'] . '<br>Tel : '. $_REQUEST['avant'][$i]['PHO_PHONE'] . '<br>Latitude : '. $_REQUEST['avant'][$i]['MPS_LAT'] . '<br>Longitude : '. $_REQUEST['avant'][$i]['MPS_LON'] . '</br>Mail : '. $_REQUEST['avant'][$i]['PHO_MAIL'] . '</br>Adresse TX : '. $_REQUEST['avant'][$i]['PHO_TX'] . '</br></td>'."\n";
     }else{
         $tab = $tab . '<td style="border-bottom: 1px solid #ddd;">Site : <br>Tel : <br>Latitude : <br>Longitude : <br></td>'."\n";
     }
-    if(array_key_exists($i,$_REQUEST['apres']['phone'])){
-        $tab = $tab . '<td style="border-bottom: 1px solid #ddd;">Site : '. $_REQUEST['apres']['phone'][$i]['site'] . '<br>Tel : '. $_REQUEST['apres']['phone'][$i]['phone'] . '<br>Latitude : '. $_REQUEST['apres']['phone'][$i]['lat'] . '<br>Longitude : '. $_REQUEST['apres']['phone'][$i]['lon'] . '<br>Mail : '. $_REQUEST['apres']['phone'][$i]['mail'] . '<br>Adresse TX : '. $_REQUEST['apres']['phone'][$i]['TX'] . '<br></td>'."\n";
+    if(array_key_exists($i,$_REQUEST['apres'])){
+        $tab = $tab . '<td style="border-bottom: 1px solid #ddd;">Site : '. $_REQUEST['apres'][$i]['PHO_SITE'] . '<br>Tel : '. $_REQUEST['apres'][$i]['PHO_PHONE'] . '<br>Latitude : '. $_REQUEST['apres'][$i]['MPS_LAT'] . '<br>Longitude : '. $_REQUEST['apres'][$i]['MPS_LON'] . '<br>Mail : '. $_REQUEST['apres'][$i]['PHO_MAIL'] . '<br>Adresse TX : '. $_REQUEST['apres'][$i]['PHO_TX'] . '<br></td>'."\n";
     }else{
         $tab = $tab . '<td style="border-bottom: 1px solid #ddd;">Site : <br>Tel : <br>Latitude : <br>Longitude : <br></td>'."\n";
     }
@@ -47,6 +49,8 @@ for($i=0;$i < $count; $i++){
     }
 }
 $tab = $tab .'</tr>'."\n";
+
+
 
 for($y=0;$y < count($user); $y++){
 
@@ -66,7 +70,7 @@ for($y=0;$y < count($user); $y++){
 	<div style="margin:0;">
 		<font face="Calibri,sans-serif" size="2">
 			<span style="font-size:11pt;"><p>
-			Le client <b>'. ucfirst($_REQUEST['avant']['ville']).' - '.ucfirst($_REQUEST['avant']['nom']).'</b> vient d\'être modifié dans YODA</b> par l\'utilisateur '. ucfirst($userModif['name']).' '.ucfirst($userModif['lastName']).'.  
+			Le client <b>'. ucfirst($_REQUEST['avant'][0]['CLI_VILLE']).' - '.ucfirst($_REQUEST['avant'][0]['CLI_NOM']).'</b> vient d\'être modifié dans YODA</b> par l\'utilisateur '. ucfirst($userModif['name']).' '.ucfirst($userModif['lastName']).'.  
 			<br>
 			<br>
 			Voici les modifications effectuées : <br><br>
@@ -81,53 +85,53 @@ for($y=0;$y < count($user); $y++){
               <tbody>
                 <tr>
                     <th scope="row" style="border-bottom: 1px solid #ddd;">Ville</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.ucfirst($_REQUEST['avant']['ville']).'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['ville-change'].'">'.ucfirst($_REQUEST['apres']['ville']).'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.ucfirst($_REQUEST['avant'][0]['CLI_VILLE']).'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_VILLE'].'">'.ucfirst($_REQUEST['apres'][0]['CLI_VILLE']).'</td>
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">Nom</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.ucfirst($_REQUEST['avant']['nom']).'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['nom-change'].'">'.ucfirst($_REQUEST['apres']['nom']).'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.ucfirst($_REQUEST['avant'][0]['CLI_NOM']).'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_NOM'].'">'.ucfirst($_REQUEST['apres'][0]['CLI_NOM']).'</td>
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">URL</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant']['url'].'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['url-change'].'">'.$_REQUEST['apres']['url'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['CLI_URL'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['URL'].'">'.$_REQUEST['apres'][0]['CLI_URL'].'</td>
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">Version</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant']['version'].'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['version-change'].'">'.$_REQUEST['apres']['version'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['CLI_VERSION'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_VERSION'].'">'.$_REQUEST['apres'][0]['CLI_VERSION'].'</td>
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">Tag</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant']['tag'].'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['tag-change'].'">'.$_REQUEST['apres']['tag'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['FormatedTag'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_TAG'].'">'.$_REQUEST['apres'][0]['FormatedTag'].'</td>
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">RIS</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant']['ris'].'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['ris-change'].'">'.$_REQUEST['apres']['ris'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['CLI_RIS'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_RIS'].'">'.$_REQUEST['apres'][0]['CLI_RIS'].'</td>
                    </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">PACS</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant']['pacs'].'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['pacs-change'].'">'.$_REQUEST['apres']['pacs'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['CLI_PACS'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_PACS'].'">'.$_REQUEST['apres'][0]['CLI_PACS'].'</td>
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">V Imaging</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant']['imaging'].'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['imaging-change'].'">'.$_REQUEST['apres']['imaging'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['CLI_NUM_VERSION'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_NUM_VERSION'].'">'.$_REQUEST['apres'][0]['CLI_NUM_VERSION'].'</td>
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">V View</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant']['view'].'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['view-change'].'">'.$_REQUEST['apres']['view'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['CLI_VIEW'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_VIEW'].'">'.$_REQUEST['apres'][0]['CLI_VIEW'].'</td>
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">V uView</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant']['uview'].'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['uview-change'].'">'.$_REQUEST['apres']['uview'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['CLI_UVIEW'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_UVIEW'].'">'.$_REQUEST['apres'][0]['CLI_UVIEW'].'</td>
                 </tr>
                 <tr>
                 '.$tab.'
