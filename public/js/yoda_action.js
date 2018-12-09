@@ -585,7 +585,7 @@ function modifCustomer(){
     array = control_form('modif');
     $('#vignette_'+ array['id']).removeClass('pulse');
     
-    var idUser = $('#idUser').innerHTML;
+    var idUser = $('#idUser').html();
     if (array['ok'] === 1){
         $.post("ajax/yoda/modifCustomer.php", 
         {array}, 
@@ -606,7 +606,9 @@ function modifCustomer(){
                  'ville': array['ville'],
                  'nom': array['nom'],
                  'tag': array['tag'],
-                 'imagingVersion': array['imagingVersion']
+                 'imagingVersion': array['imagingVersion'],
+                 'idUser' : idUser,
+                 'urlSql' : urlSql
                 });
                 $.post("ajax/notif/notifMailModifCustomer.php", 
                 {avant: result.avant, apres: result.apres, idUser : idUser}); 
