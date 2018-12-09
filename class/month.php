@@ -48,7 +48,7 @@ class Month{
 	    if ($weeks < 0){
 	        $weeks = intval($end->format('W'));
                 if ($weeks == 1){
-                    $weeks = 52  -  intval($start->format('W')) +1;;
+                    $weeks = 52  -  intval($start->format('W')) +2;
                 }
 	    } 
 	    return $weeks;
