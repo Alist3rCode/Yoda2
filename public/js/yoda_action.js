@@ -76,21 +76,14 @@ function displayModaleClient(type,id){
     
 }
 
-
-
-
-
-
-
 function newPhone(i) {
       
     var newPhone = $('.newPhone');
     var phoneDisplayed = newPhone.length;
     var survivor = 0;
-        
     for(y=0; y < newPhone.length; y++){
         if($('#divPhone' + y).hasClass('d-none')){
-            phoneDisplayed -= 1;
+//            phoneDisplayed -= 1;
         }else{
             survivor = y;
         }
@@ -106,7 +99,6 @@ function newPhone(i) {
     }
   
     $('#newPhone'+i).prop("disabled",true);
-  
     x = newPhone.length ;
     var str = '<div id="divPhone'+x+'" class="col-12 row divPhoneModale">'+
                 '<div class="btn-group special col-12 phoneModale" role="group" >'+
@@ -160,7 +152,8 @@ function newPhone(i) {
             '<input type="hidden" value ="" id="id'+x+'">';
 
     $('#phones').append(str);
-    $('#nbPhone').val(parseInt(phoneDisplayed));
+    $('#nbPhone').val(parseInt(phoneDisplayed+1));
+    
 }
 
 
@@ -190,7 +183,7 @@ function deletePhone(i){
         $('#deletePhone' + survivor).removeClass("btn-outline-danger");
    }   
    $('#newPhone' + survivor).prop('disabled',false);
-   $('#nbPhone').val(phoneDisplayed);
+//   $('#nbPhone').val(phoneDisplayed);
    
 }   
 
@@ -463,18 +456,18 @@ function control_form(mode) {
             
             var match4 = regexMap.test(lat[i].value);
             var match5 = regexMap.test(lon[i].value);
-            if (lat[i].value !== '' && lon[i].value !== ''){
-               if (!match4 && !match5) {
-                    if(errorGPS === 0){
-                        errors.push('Merci de renseigner des coordonnées GPS valides');
-                        flag = 1;
-                        errorGPS = 1;
-                    }
-                }else{
-                    listLat[i] = lat[i].value;
-                    listLon[i] = lon[i].value;
-                } 
-            }
+            
+            if (!match4 && !match5 && nbPhone>0) {
+                 if(errorGPS === 0){
+                     errors.push('Merci de renseigner des coordonnées GPS valides');
+                     flag = 1;
+                     errorGPS = 1;
+                 }
+             }else{
+                 listLat[i] = lat[i].value;
+                 listLon[i] = lon[i].value;
+             } 
+            
             
             if (eMail[i].value !== ''){
                 if (!matchMail) {
@@ -592,7 +585,7 @@ function modifCustomer(){
     array = control_form('modif');
     $('#vignette_'+ array['id']).removeClass('pulse');
     
-    var idUser = $('#id_user').innerHTML;
+    var idUser = $('#idUser').innerHTML;
     if (array['ok'] === 1){
         $.post("ajax/yoda/modifCustomer.php", 
         {array}, 
@@ -600,7 +593,7 @@ function modifCustomer(){
             result = JSON.parse(ok);
             console.log(array['id']);
             if(result.ok === 'ok'){
-                displayAlert('alerte','success','Le client a bien été modifié, un mail de confirmer a été envoyé aux personnes abonnées.');
+                displayAlert('alerte','success','Le client a bien été modifié, un mail de confirmation a été envoyé aux personnes abonnées.');
                 $('#modaleClient').modal('hide');
                 $('.collapsePhone').remove();
                 $('#vignette_'+ array['id']).empty();

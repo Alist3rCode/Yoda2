@@ -131,7 +131,7 @@ if($_REQUEST['type'] == "create"){
                             </button>
                             <input class="form-group <?=$nbPhone>1?"col-5":"col-5 d-none"?> siteClass" type="text" id="site<?=$key?>" placeholder="Site..." autocomplete="nope" value="<?=$value->PHO_SITE?>">
                             <input class="form-group <?=$nbPhone>1?"col-5":"col-10"?> phoneClass" type="text" id="phone<?=$key?>" placeholder="Téléphone..." autocomplete="nope" value="<?=$value->PHO_PHONE?>">
-                            <button type="button" class="btn btn-outline-secondary form-group col-1 deletePhone"  id="deletePhone<?=$key?>" <?=$nbPhone>1?"disabled":""?> onclick="deletePhone(<?=$key?>)">
+                            <button type="button" class="btn btn-outline-<?=$nbPhone==1?"secondary":"danger"?> form-group col-1 deletePhone"  id="deletePhone<?=$key?>" <?=$nbPhone==1?"disabled":""?> onclick="deletePhone(<?=$key?>)">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>
@@ -172,9 +172,8 @@ if($_REQUEST['type'] == "create"){
                             <input type="text" class="form-control col-10 passwordTVClass formCustom" id="passTV<?=$key?>"  placeholder="Mot de Passe..." autocomplete="nope"  value="<?=$value->PHO_TV_PASSWORD?>">
                         </div>
                     </div>
-                    <!--<hr>-->
                     <input type="hidden" value ="1" id="delete<?=$key?>">
-                    <input type="hidden" value ="" id="id<?=$key?>">
+                    <input type="hidden" value ="<?=$value->PHO_ID?>" id="id<?=$key?>">
                     
                         <?php endforeach;
                     }else if ($type == "create"):?>
@@ -226,13 +225,12 @@ if($_REQUEST['type'] == "create"){
                             <input type="text" class="form-control col-10 passwordTVClass formCustom" id="passTV0"  placeholder="Mot de Passe..." autocomplete="nope" >
                         </div>
                     </div>
-                    <!--<hr>-->
                     <input type="hidden" value ="1" id="delete0">
                     <input type="hidden" value ="" id="id0">
                     <?php endif;
                     ?>
                 </div>
-                <input type='hidden' value ='1' id='nbPhone'>
+                <input type='hidden' value="<?=$nbPhone?>" id='nbPhone'>
             </div>
         </div>
     </div>

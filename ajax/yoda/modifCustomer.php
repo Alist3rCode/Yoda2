@@ -58,6 +58,8 @@ if (array_key_exists('listIdPhone', $array)){
         $coma = ['.','-',' ', '/', '_'];
         $phone=str_replace($coma, '', $array['phone'][$i]);
 
+        $array['lat'][$i] = !empty($array['lat'][$i]) ? $array['lat'][$i] : null;
+        $array['lon'][$i] = !empty($array['lon'][$i]) ? $array['lon'][$i] : null;
         $array['email'][$i] = !empty($array['email'][$i]) ? $array['email'][$i] : null;
         $array['site'][$i] = !empty($array['site'][$i]) ? $array['site'][$i] : null;
         $array['TX'][$i] = !empty($array['TX'][$i]) ? $array['TX'][$i] : null;
