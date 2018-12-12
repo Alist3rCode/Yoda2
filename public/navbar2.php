@@ -12,7 +12,7 @@ if(isset($_SESSION["id_user"]) && $_SESSION["id_user"] != ''){
 ?>
 
 <nav class=" menu navbar navbar-expand-lg">
-    <span class="logo col-1">
+    <span class="logo col-1 hideInMobile">
         <img src="public/img/yoda.png">
     </span>
     <div class="collapse navbar-collapse col-11" id="navbarSupportedContent">
@@ -25,7 +25,7 @@ if(isset($_SESSION["id_user"]) && $_SESSION["id_user"] != ''){
                 <div id="startDate" class="startDate h3 text-center"></div>
                 <div class="year display-1 text-center" id="year"></div>
             </div>
-            <div class="time text-center" id="time"></div>
+            <div class="time text-center hideInMobile" id="time"></div>
         
         </div>
     </div>

@@ -643,3 +643,32 @@ function deleteCustomer(){
     }
     
 }
+
+$(document).ready(function () {
+//            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        
+    $('.vignette').each(function(i, obj) {
+        var el = obj;
+        el.onpointerup = upHandler(obj.id);
+        el.onpointerdown = downHandler(obj.id);
+    });
+    
+//            }
+});
+
+var pressTimer;
+
+function upHandler(id) {
+    console.log(id);
+    clearTimeout(pressTimer);
+    return false;
+
+}
+function downHandler(id) {
+    console.log(id);
+    pressTimer = window.setTimeout(function () {
+        displayPhone(id);
+    }, 1000);
+    return false;
+
+}

@@ -20,8 +20,8 @@
     }
 
     .clients:after {
-      content: "";
-      flex: auto;
+        content: "";
+        flex: auto;
     }
 
     #sidebar.collapsed + .clients{
@@ -112,8 +112,8 @@
         justify-content: space-between;
         flex-flow: row wrap;
         position: fixed;
-    /*    padding-left : 100px;
-        padding-right : 100px;*/
+        /*    padding-left : 100px;
+            padding-right : 100px;*/
         width: 100%!important;
         z-index: 8;
     }
@@ -224,36 +224,36 @@
     }
 
     .pulse {
-      display: block;  
-      box-shadow: 0 0 0 rgba(40,167,69, 0.8);
-      animation: pulse 0.8s 5;
-      z-index: 9;
+        display: block;  
+        box-shadow: 0 0 0 rgba(40,167,69, 0.8);
+        animation: pulse 0.8s 5;
+        z-index: 9;
     }
 
     @-webkit-keyframes pulse {
-      0% {
-        -webkit-box-shadow: 0 0 0 0 rgba(40,167,69, 0.8);
-      }
-      70% {
-          -webkit-box-shadow: 0 0 0 10px rgba(40,167,69, 0);
-      }
-      100% {
-          -webkit-box-shadow: 0 0 0 0 rgba(40,167,69, 0);
-      }
+        0% {
+            -webkit-box-shadow: 0 0 0 0 rgba(40,167,69, 0.8);
+        }
+        70% {
+            -webkit-box-shadow: 0 0 0 10px rgba(40,167,69, 0);
+        }
+        100% {
+            -webkit-box-shadow: 0 0 0 0 rgba(40,167,69, 0);
+        }
     }
 
     @keyframes pulse {
-      0% {
-         box-shadow: 0 0 0 0 rgba(40,167,69, 0.8);
-      }
-      70% {
+        0% {
+            box-shadow: 0 0 0 0 rgba(40,167,69, 0.8);
+        }
+        70% {
 
-          box-shadow: 0 0 0 10px rgba(40,167,69, 0);
-      }
-      100% {
+            box-shadow: 0 0 0 10px rgba(40,167,69, 0);
+        }
+        100% {
 
-          box-shadow: 0 0 0 0 rgba(40,167,69, 0);
-      }
+            box-shadow: 0 0 0 0 rgba(40,167,69, 0);
+        }
     }
 
     #sidebar{
@@ -325,9 +325,9 @@
 
 
     #sidebarCollapse{
-            position: absolute;
-            bottom: 50px;
-            width: 100%
+        position: absolute;
+        bottom: 50px;
+        width: 100%
     }
     #sidebar.collapsed #toogleSidebar{
         transform: rotate(180deg);
@@ -341,26 +341,26 @@
 
 
     ::-webkit-scrollbar-track
-        {
-                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-                background-color: #F5F5F5;
-                border-radius: 10px;
-                width : 3px;
-        }
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+        background-color: #F5F5F5;
+        border-radius: 10px;
+        width : 3px;
+    }
 
     ::-webkit-scrollbar
-        {
-                width: 5px;
-                height: 5px;
-                background-color: #F5F5F5;
-        }
+    {
+        width: 5px;
+        height: 5px;
+        background-color: #F5F5F5;
+    }
 
     ::-webkit-scrollbar-thumb
-        {
-                border-radius: 10px;
-                background-color: #FFF;
-                background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#4D9C41), to(#19911D), color-stop(.6,#54DE5D))
-        }
+    {
+        border-radius: 10px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#4D9C41), to(#19911D), color-stop(.6,#54DE5D))
+    }
 
 
 

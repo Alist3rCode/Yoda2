@@ -10,22 +10,18 @@
         /*height: 100vh;*/
         flex-flow: row wrap;
         align-items: flex-start;
-        justify-content: space-between;
+        justify-content: space-around;
         align-content: flex-start;
-        margin-left: 286px;
+        /*margin-left: 286px;*/
         margin-top: 60px;
         width: 100%;
         transition: all 0.5s ease;
     }
 
-    .clients:after {
+/*    .clients:after {
       content: "";
       flex: auto;
-    }
-
-    #sidebar.collapsed + .clients{
-        margin-left:80px!important;
-    }
+    }*/
 
     .vignette{
         margin : 3px;
@@ -35,6 +31,7 @@
         text-align: center;
         text-transform:  capitalize; 
         transition: visibility 0.5s;
+        background-position : bottom right;
         /*border: solid 1px black;*/
     }
 
@@ -389,6 +386,10 @@
     .dateTime{
         line-height: 0.3;
         padding-bottom: 10px;
+    }
+    
+     .hideInMobile{
+        display:none;
     }
 
 }

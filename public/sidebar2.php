@@ -1,4 +1,4 @@
-<nav class="sidebar <?php require 'public/checkCollapse.php'?>" id="sidebar">
+<nav class="sidebar <?php require 'public/checkCollapse.php'?> hideInMobile" id="sidebar">
         <div class="sidebar-header">
             <h3 class="title">
                 <p>Yohann</p>

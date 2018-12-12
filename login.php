@@ -37,6 +37,7 @@ require('public/dashboard.php');
         <link rel="stylesheet" href="public/css/yoda.css">
         <link rel="stylesheet" href="public/css/dark.css">         
         <link rel="stylesheet" href="public/css/login.css">
+        <link rel="stylesheet" href="public/css/login-mobile.css">
         <link rel="stylesheet" href="public/css/filters.css">
                 <!--<link rel="icon" type="image/png" href="./public/img/yodaTitle.png" />-->
 
@@ -68,11 +69,11 @@ require('public/dashboard.php');
                     </div>
                     <a class="btn btn-success btn-block" id="login">Connexion</a>
 
-                    <div class="text-center">
+                    <div class="text-center hideInMobile">
                         <button type="button"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createModal" style="margin-top:10px;">Rejoindre YODA</button>
 
                    </div>
-                    <div class="text-center">
+                    <div class="text-center hideInMobile">
 
                          <button type="button"  class="btn btn-warning btn-sm" data-toggle="modal" data-target="#forgetModal" style="margin-top:10px;">Mot de Passe oublié</button>
                     </div>
