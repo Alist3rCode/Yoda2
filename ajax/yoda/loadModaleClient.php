@@ -51,6 +51,9 @@ if($_REQUEST['type'] == "create"){
 
 
 ?>
+
+  <link rel="stylesheet" href="public/css/login.css">
+
 <div class="modal-dialog " role="document" >
     <div class="modal-content" >
         <div class="modal-header mx-auto">
@@ -117,120 +120,177 @@ if($_REQUEST['type'] == "create"){
 
                 </div>
             </div>
+            
+            
 
-            <div class="col-8 form-control colPhoneModale">
-                <div id ="phones" class="col-12 phoneModale">
-                    <?php 
-                    if($type == "modif"){
-                        foreach($sites as $key => $value):?>
-                        
-                    <div id="divPhone<?=$key?>" class="col-12 row divPhoneModale">
-                        <div class="btn-group special col-12 phoneModale" role="group" >
-                            <button type="button" class="btn btn-outline-success form-group col-1 newPhone" <?=$nbPhone==$key+1?"":"disabled"?> id="newPhone<?=$key?>" onclick="newPhone(<?=$key?>)">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                            <input class="form-group <?=$nbPhone>1?"col-5":"col-5 d-none"?> siteClass" type="text" id="site<?=$key?>" placeholder="Site..." autocomplete="nope" value="<?=$value->PHO_SITE?>">
-                            <input class="form-group <?=$nbPhone>1?"col-5":"col-10"?> phoneClass" type="text" id="phone<?=$key?>" placeholder="Téléphone..." autocomplete="nope" value="<?=$value->PHO_PHONE?>">
-                            <button type="button" class="btn btn-outline-<?=$nbPhone==1?"secondary":"danger"?> form-group col-1 deletePhone"  id="deletePhone<?=$key?>" <?=$nbPhone==1?"disabled":""?> onclick="deletePhone(<?=$key?>)">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale"  role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
-                                <i class="fas fa-map"></i>
-                            </button>
-                            <input class="form-control col-md-10 latClass formCustom" type="text" id="lat<?=$key?>" placeholder="Latitude..." autocomplete="nope" value="<?=$value->MPS_LAT?>">
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44" disabled type="button" style="height:38px;">
-                                <i class="far fa-map"></i>
-                            </button>       
-                            <input class="form-control col-md-10 lonClass formCustom" type="text" id="lon<?=$key?>" placeholder="Longitude..." autocomplete="nope" value="<?=$value->MPS_LON?>">
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
-                                <i class="far fa-envelope"></i>
-                            </button>     
-                            <input class="form-control col-md-10 mailClass formCustom" type="text" id="mail<?=$key?>" placeholder="eMail..." autocomplete="nope" value="<?=$value->PHO_MAIL?>">
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
-                                <i class="fas fa-external-link-alt"></i>
-                            </button>
-                            <input type="text" class="form-control col-10 TXClass formCustom" id="TX<?=$key?>"  placeholder="Adresse TX..." autocomplete="nope" value="<?=$value->PHO_TX?>">
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
-                                <i class="far fa-id-card"></i>
-                            </button>     
-                            <input class="form-control col-md-10 idTVClass formCustom " type="text" id="idTV<?=$key?>" placeholder="ID Teamviewer..." autocomplete="nope" value="<?=$value->PHO_TV_ID?>">
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
-                                <i class="fas fa-unlock"></i>
-                            </button>
-                            <input type="text" class="form-control col-10 passwordTVClass formCustom" id="passTV<?=$key?>"  placeholder="Mot de Passe..." autocomplete="nope"  value="<?=$value->PHO_TV_PASSWORD?>">
-                        </div>
+            <div class="col-8 ">
+                <nav class="col-12">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="navPhonesTab" data-toggle="tab" href="#phones" role="tab">Sites</a>
+                        <a class="nav-item nav-link" id="navContactTab" data-toggle="tab" href="#navContact" role="tab">Contact</a>
+
                     </div>
-                    <input type="hidden" value ="1" id="delete<?=$key?>">
-                    <input type="hidden" value ="<?=$value->PHO_ID?>" id="id<?=$key?>">
-                    
-                        <?php endforeach;
-                    }else if ($type == "create"):?>
-                    <div id="divPhone0" class="col-12 row divPhoneModale">
-                        <div class="btn-group special col-12 phoneModale" role="group" >
-                            <button type="button" class="btn btn-outline-success form-group col-1 newPhone"  id="newPhone0" onclick="newPhone(0)">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                            <input class="form-group col-5 d-none siteClass" type="text" id="site0" placeholder="Site..." autocomplete="nope">
-                            <input class="form-group col-10 phoneClass" type="text" id="phone0" placeholder="Téléphone..." autocomplete="nope">
-                            <button type="button" class="btn btn-outline-secondary form-group col-1 deletePhone"  id="deletePhone0" disabled onclick="deletePhone(0)">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
+                </nav>
+                <div class="tab-content form-control colPhoneModale" id="nav-tabContent">
+                
+                    <div id ="phones" class="col-12 phoneModale tab-pane fade show active" role="tabpanel" >
+                        <?php 
+                        if($type == "modif"){
+                            foreach($sites as $key => $value):?>
+
+                        <div id="divPhone<?=$key?>" class="col-12 row divPhoneModale">
+                            <div class="btn-group special col-12 phoneModale" role="group" >
+                                <button type="button" class="btn btn-outline-success form-group col-1 newPhone" <?=$nbPhone==$key+1?"":"disabled"?> id="newPhone<?=$key?>" onclick="newPhone(<?=$key?>)">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                                <input class="form-group <?=$nbPhone>1?"col-5":"col-5 d-none"?> siteClass" type="text" id="site<?=$key?>" placeholder="Site..." autocomplete="nope" value="<?=$value->PHO_SITE?>">
+                                <input class="form-group <?=$nbPhone>1?"col-5":"col-10"?> phoneClass" type="text" id="phone<?=$key?>" placeholder="Téléphone..." autocomplete="nope" value="<?=$value->PHO_PHONE?>">
+                                <button type="button" class="btn btn-outline-<?=$nbPhone==1?"secondary":"danger"?> form-group col-1 deletePhone"  id="deletePhone<?=$key?>" <?=$nbPhone==1?"disabled":""?> onclick="deletePhone(<?=$key?>)">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale"  role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
+                                    <i class="fas fa-map"></i>
+                                </button>
+                                <input class="form-control col-md-10 latClass formCustom" type="text" id="lat<?=$key?>" placeholder="Latitude..." autocomplete="nope" value="<?=$value->MPS_LAT?>">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44" disabled type="button" style="height:38px;">
+                                    <i class="far fa-map"></i>
+                                </button>       
+                                <input class="form-control col-md-10 lonClass formCustom" type="text" id="lon<?=$key?>" placeholder="Longitude..." autocomplete="nope" value="<?=$value->MPS_LON?>">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
+                                    <i class="far fa-envelope"></i>
+                                </button>     
+                                <input class="form-control col-md-10 mailClass formCustom" type="text" id="mail<?=$key?>" placeholder="eMail..." autocomplete="nope" value="<?=$value->PHO_MAIL?>">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                                <input type="text" class="form-control col-10 TXClass formCustom" id="TX<?=$key?>"  placeholder="Adresse TX..." autocomplete="nope" value="<?=$value->PHO_TX?>">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
+                                    <i class="far fa-id-card"></i>
+                                </button>     
+                                <input class="form-control col-md-10 idTVClass formCustom " type="text" id="idTV<?=$key?>" placeholder="ID Teamviewer..." autocomplete="nope" value="<?=$value->PHO_TV_ID?>">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
+                                    <i class="fas fa-unlock"></i>
+                                </button>
+                                <input type="text" class="form-control col-10 passwordTVClass formCustom" id="passTV<?=$key?>"  placeholder="Mot de Passe..." autocomplete="nope"  value="<?=$value->PHO_TV_PASSWORD?>">
+                            </div>
                         </div>
-                        <div class="btn-group special col-md-6 groupModale"  role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
-                                <i class="fas fa-map"></i>
-                            </button>
-                            <input class="form-control col-md-10 latClass formCustom" type="text" id="lat0" placeholder="Latitude..." autocomplete="nope">
+                        <input type="hidden" value ="1" id="delete<?=$key?>">
+                        <input type="hidden" value ="<?=$value->PHO_ID?>" id="id<?=$key?>">
+
+                            <?php endforeach;
+                        }else if ($type == "create"):?>
+                        <div id="divPhone0" class="col-12 row divPhoneModale">
+                            <div class="btn-group special col-12 phoneModale" role="group" >
+                                <button type="button" class="btn btn-outline-success form-group col-1 newPhone"  id="newPhone0" onclick="newPhone(0)">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                                <input class="form-group col-5 d-none siteClass" type="text" id="site0" placeholder="Site..." autocomplete="nope">
+                                <input class="form-group col-10 phoneClass" type="text" id="phone0" placeholder="Téléphone..." autocomplete="nope">
+                                <button type="button" class="btn btn-outline-secondary form-group col-1 deletePhone"  id="deletePhone0" disabled onclick="deletePhone(0)">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale"  role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
+                                    <i class="fas fa-map"></i>
+                                </button>
+                                <input class="form-control col-md-10 latClass formCustom" type="text" id="lat0" placeholder="Latitude..." autocomplete="nope">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44" disabled type="button" style="height:38px;">
+                                    <i class="far fa-map"></i>
+                                </button>       
+                                <input class="form-control col-md-10 lonClass formCustom" type="text" id="lon0" placeholder="Longitude..." autocomplete="nope">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
+                                    <i class="far fa-envelope"></i>
+                                </button>     
+                                <input class="form-control col-md-10 mailClass formCustom" type="text" id="mail0" placeholder="eMail..." autocomplete="nope">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                                <input type="text" class="form-control col-10 TXClass formCustom" id="TX0"  placeholder="Adresse TX..." autocomplete="nope">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
+                                    <i class="far fa-id-card"></i>
+                                </button>     
+                                <input class="form-control col-md-10 idTVClass formCustom " type="text" id="idTV0" placeholder="ID Teamviewer..." autocomplete="nope">
+                            </div>
+                            <div class="btn-group special col-md-6 groupModale" role="group">
+                                <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
+                                    <i class="fas fa-unlock"></i>
+                                </button>
+                                <input type="text" class="form-control col-10 passwordTVClass formCustom" id="passTV0"  placeholder="Mot de Passe..." autocomplete="nope" >
+                            </div>
                         </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44" disabled type="button" style="height:38px;">
-                                <i class="far fa-map"></i>
-                            </button>       
-                            <input class="form-control col-md-10 lonClass formCustom" type="text" id="lon0" placeholder="Longitude..." autocomplete="nope">
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
-                                <i class="far fa-envelope"></i>
-                            </button>     
-                            <input class="form-control col-md-10 mailClass formCustom" type="text" id="mail0" placeholder="eMail..." autocomplete="nope">
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
-                                <i class="fas fa-external-link-alt"></i>
-                            </button>
-                            <input type="text" class="form-control col-10 TXClass formCustom" id="TX0"  placeholder="Adresse TX..." autocomplete="nope">
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44" disabled  type="button" style="height:38px;">
-                                <i class="far fa-id-card"></i>
-                            </button>     
-                            <input class="form-control col-md-10 idTVClass formCustom " type="text" id="idTV0" placeholder="ID Teamviewer..." autocomplete="nope">
-                        </div>
-                        <div class="btn-group special col-md-6 groupModale" role="group">
-                            <button class="btn btn-outline-primary form-group disabled btn44"  disabled type="button" style="height:38px;">
-                                <i class="fas fa-unlock"></i>
-                            </button>
-                            <input type="text" class="form-control col-10 passwordTVClass formCustom" id="passTV0"  placeholder="Mot de Passe..." autocomplete="nope" >
-                        </div>
+                        <input type="hidden" value ="1" id="delete0">
+                        <input type="hidden" value ="" id="id0">
+                        <?php endif;
+                        ?>
                     </div>
-                    <input type="hidden" value ="1" id="delete0">
-                    <input type="hidden" value ="" id="id0">
-                    <?php endif;
-                    ?>
-                </div>
-                <input type='hidden' value="<?=$nbPhone?>" id='nbPhone'>
+                    <input type='hidden' value="<?=$nbPhone?>" id='nbPhone'>
+                    <div class="tab-pane fade col-12 pt-3 " id="navContact" role="tabpanel" >
+                        <div class="phoneModale d-flex flex-row flex-wrap">
+                            <div class="col-md-6 d-flex">
+                                <span class="iconLogin"><i class="fas fa-chalkboard-teacher"></i></span>
+                                <input class="loginInput" id="projectLeader" type="text" placeholder="Chef de Projet" value="">
+                            </div>
+                            <div class="col-md-6 d-flex">
+                                <span class="iconLogin"><i class="fas fa-hand-holding-usd"></i></span>
+                                <input class="loginInput" id="commercial" type="text" placeholder="Commercial" value="">
+                            </div>
+                            <div class="col-md-12 d-flex pb-3" style="border-bottom:solid 1px darkgrey;">
+                                <label for="commentaire">Commentaire Libre : </label>
+                                <textarea class="form-control" id="commentaire" rows="3"></textarea>
+                            </div>
+                            <div class="mx-auto pt-1">
+                                <h4>Contact sur site : </h4>
+                            </div>
+                            <div class="divPhoneModale d-flex flex-row flex-wrap">
+                                <div class="col-md-10 d-flex">
+                                    <span class="iconLogin"><i class="fas fa-user-tie"></i></span>
+                                    <input class="loginInput" id="contactName0" type="text" placeholder="Nom du Contact" value="">
+                                </div>
+                                <div class="col-1">
+                                    <button class="btn btn-success" id="newContact">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="col-1">
+                                    <button class="btn btn-danger" id="deleteContact0">
+                                        <i class="fa fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="col-md-6 d-flex">
+                                    <span class="iconLogin"><i class="fas fa-phone"></i></span>
+                                    <input class="loginInput" id="contactTel0" type="text" placeholder="Téléphone..." value="">
+                                </div>
+                                <div class="col-md-6 d-flex">
+                                    <span class="iconLogin"><i class="far fa-envelope"></i></i></span>
+                                    <input class="loginInput" id="contactMail0" type="text" placeholder="eMail..." value="">
+                                </div>
+                            </div>
+                        <div>
+                    </div>
+                
+              </div>
             </div>
         </div>
     </div>

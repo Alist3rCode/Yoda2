@@ -27,7 +27,7 @@ $userModif['name'] = $selectModifier[0]->USR_FIRST_NAME;
 $userModif['lastName'] = $selectModifier[0]->USR_NAME;
 
 
-$count = max(count($_REQUEST['avant']), count($_REQUEST['apres']));
+$count = $_REQUEST['apres']['change']['nbPhone'];
 
 $tab = '<tr><th scope="row" style="border-bottom: 1px solid #ddd;">Sites</th>'."\n";
 
@@ -58,23 +58,23 @@ for($y=0;$y < count($user); $y++){
      $subjectUser = "Modification d'un client dans YODA ";
      $messageUser = '
      <div>
-	<div style="margin:0;">
-		<font face="Calibri,sans-serif" size="2">
-			<span style="font-size:11pt;"><p>
-			Bonjour '.ucfirst($user[$y]["name"]).' '.strtoupper($user[$y]["lastName"]).',
-			<br>
-			<br>
-		</p></span>
-		</font>
-	</div>
-	<div style="margin:0;">
-		<font face="Calibri,sans-serif" size="2">
-			<span style="font-size:11pt;"><p>
-			Le client <b>'. ucfirst($_REQUEST['avant'][0]['CLI_VILLE']).' - '.ucfirst($_REQUEST['avant'][0]['CLI_NOM']).'</b> vient d\'être modifié dans YODA</b> par l\'utilisateur '. ucfirst($userModif['name']).' '.ucfirst($userModif['lastName']).'.  
-			<br>
-			<br>
-			Voici les modifications effectuées : <br><br>
-			<table class="table" style="text-align: center;">
+  <div style="margin:0;">
+    <font face="Calibri,sans-serif" size="2">
+      <span style="font-size:11pt;"><p>
+      Bonjour '.ucfirst($user[$y]["name"]).' '.strtoupper($user[$y]["lastName"]).',
+      <br>
+      <br>
+    </p></span>
+    </font>
+  </div>
+  <div style="margin:0;">
+    <font face="Calibri,sans-serif" size="2">
+      <span style="font-size:11pt;"><p>
+      Le client <b>'. ucfirst($_REQUEST['avant'][0]['CLI_VILLE']).' - '.ucfirst($_REQUEST['avant'][0]['CLI_NOM']).'</b> vient d\'être modifié dans YODA</b> par l\'utilisateur '. ucfirst($userModif['name']).' '.ucfirst($userModif['lastName']).'.  
+      <br>
+      <br>
+      Voici les modifications effectuées : <br><br>
+      <table class="table" style="text-align: center;">
               <thead>
                 <tr>
                     <th scope="col" style="border-bottom: 1px solid #ddd;">#</th>
@@ -105,8 +105,8 @@ for($y=0;$y < count($user); $y++){
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">Tag</th>    
-                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['FormatedTag'].'</td>
-                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_TAG'].'">'.$_REQUEST['apres'][0]['FormatedTag'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;">'.$_REQUEST['avant'][0]['formatedTag'].'</td>
+                  <td style="border-bottom: 1px solid #ddd;color:'.$_REQUEST['apres']['change']['CLI_TAG'].'">'.$_REQUEST['apres'][0]['formatedTag'].'</td>
                 </tr>
                 <tr>
                 <th scope="row" style="border-bottom: 1px solid #ddd;">RIS</th>    
@@ -138,74 +138,74 @@ for($y=0;$y < count($user); $y++){
                 
               </tbody>
             </table>
-			<br>
-			
-			
-			
-		    Si vous souhaitez modifier les notifications que vous recevez de la part de YODA, cliquer sur ce lien : <a href="https://maj-imaging.evolucare.com/yoda/notif.php" target="_blank">https://maj-imaging.evolucare.com/yoda/notif.php</a>
-		</p>
-		<br>
-		
-		
-		
-		<p style="color:red;"><b>Ceci est un mail automatique, merci de ne pas y répondre directement.</b></p>
-		</p></span>
-		</font>
-	</div>
-	<div style="margin:0;">
-		<font face="Calibri,sans-serif" size="2">
-			<span style="font-size:11pt;"><font color="#595959">Cordialement, </font></span>
-		</font>
-	</div>
-	<div style="margin:0;">
-		<font face="Calibri,sans-serif" size="2">
-			<span style="font-size:11pt;">
-				<font color="#595959">
-					<b>Mail automatique </b>
-				</font>
-				<font color="#595959">
-					| YODA
-				</font>
-			</span>
-		</font>
-	</div>
-	<div style="margin:0;">
-		<font face="Calibri,sans-serif" size="2">
-			<span style="font-size:11pt;">
-				<font color="#595959">
-					<b>Groupe Evolucare Technologies</b>
-				</font>
-			</span>
-		</font>
-	</div>
-	<div style="margin:0;">
-		<font face="Calibri,sans-serif" size="2">
-			<span style="font-size:11pt;"><font color="#595959">290 avenue Galillée, Parc Cézanne 2, Bat G </font></span>
-		</font>
-	</div>
-	<div style="margin:0;">
-		<font face="Calibri,sans-serif" size="2">
-			<span style="font-size:11pt;"><font color="#595959">13857 Aix en Provence Cedex 03</font></span>
-		</font>
-	</div>
-	<div style="background-color:white;margin:0;">
-		<font face="Calibri,sans-serif" size="2">
-			<span style="font-size:11pt;background-color:white;">
-				<font color="#E36C0A">
-					<b>Hotline :&nbsp;01.84.86.06.00</b><br>
-					<b>Mail Support :&nbsp;<a href="mailto:support@imaging.evolucare.com">support@imaging.evolucare.com</a></b>
-				</font>
-				<font color="#1F497D">
-					&nbsp;
-				</font>
-			</span>
-		</font>
-	</div>
-	<div style="margin:0;">
-		<font face="Calibri,sans-serif" size="2">
-			<span style="font-size:11pt;"><img src="https://release-imaging.evolucare.com/upgrade/signatureYoda.png"></span>
-		</font>
-	</div>
+      <br>
+      
+      
+      
+        Si vous souhaitez modifier les notifications que vous recevez de la part de YODA, cliquer sur ce lien : <a href="https://maj-imaging.evolucare.com/yoda/notif.php" target="_blank">https://maj-imaging.evolucare.com/yoda/notif.php</a>
+    </p>
+    <br>
+    
+    
+    
+    <p style="color:red;"><b>Ceci est un mail automatique, merci de ne pas y répondre directement.</b></p>
+    </p></span>
+    </font>
+  </div>
+  <div style="margin:0;">
+    <font face="Calibri,sans-serif" size="2">
+      <span style="font-size:11pt;"><font color="#595959">Cordialement, </font></span>
+    </font>
+  </div>
+  <div style="margin:0;">
+    <font face="Calibri,sans-serif" size="2">
+      <span style="font-size:11pt;">
+        <font color="#595959">
+          <b>Mail automatique </b>
+        </font>
+        <font color="#595959">
+          | YODA
+        </font>
+      </span>
+    </font>
+  </div>
+  <div style="margin:0;">
+    <font face="Calibri,sans-serif" size="2">
+      <span style="font-size:11pt;">
+        <font color="#595959">
+          <b>Groupe Evolucare Technologies</b>
+        </font>
+      </span>
+    </font>
+  </div>
+  <div style="margin:0;">
+    <font face="Calibri,sans-serif" size="2">
+      <span style="font-size:11pt;"><font color="#595959">290 avenue Galillée, Parc Cézanne 2, Bat G </font></span>
+    </font>
+  </div>
+  <div style="margin:0;">
+    <font face="Calibri,sans-serif" size="2">
+      <span style="font-size:11pt;"><font color="#595959">13857 Aix en Provence Cedex 03</font></span>
+    </font>
+  </div>
+  <div style="background-color:white;margin:0;">
+    <font face="Calibri,sans-serif" size="2">
+      <span style="font-size:11pt;background-color:white;">
+        <font color="#E36C0A">
+          <b>Hotline :&nbsp;01.84.86.06.00</b><br>
+          <b>Mail Support :&nbsp;<a href="mailto:support@imaging.evolucare.com">support@imaging.evolucare.com</a></b>
+        </font>
+        <font color="#1F497D">
+          &nbsp;
+        </font>
+      </span>
+    </font>
+  </div>
+  <div style="margin:0;">
+    <font face="Calibri,sans-serif" size="2">
+      <span style="font-size:11pt;"><img src="https://release-imaging.evolucare.com/upgrade/signatureYoda.png"></span>
+    </font>
+  </div>
 </div>
 
      ';
