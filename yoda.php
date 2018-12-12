@@ -38,8 +38,9 @@ $right = checkRights($bdd,$_SESSION['id_user']);
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
         <!--CSS Perso-->
-
+        <link rel="stylesheet" href="public/css/yoda-mobile.css">
         <link rel="stylesheet" href="public/css/yoda.css">
+        
         <?php require 'public/checkTheme.php'; ?>        
         <link rel="stylesheet" href="public/css/flip.css">
         <link rel="stylesheet" href="public/css/modale.css">

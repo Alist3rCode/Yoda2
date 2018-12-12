@@ -1,5 +1,4 @@
-@media (min-width: 601px) {
-
+@media screen and (max-width: 600px) {
 
     .content{
         display: flex;
@@ -30,9 +29,9 @@
 
     .vignette{
         margin : 3px;
-        margin-bottom : 10px;
-        width:  150px;
-        height: 150px;   
+        margin-bottom : 5px;
+        width:  120px;
+        height: 120px;   
         text-align: center;
         text-transform:  capitalize; 
         transition: visibility 0.5s;
@@ -40,12 +39,6 @@
     }
 
     .vignette a{
-        text-decoration: none;
-    }
-
-
-    .contenu_vignette:hover  .infoClient{
-        transform: scale(0.9);
         text-decoration: none;
     }
 
@@ -124,13 +117,10 @@
     }
 
     .filters{
-        display: flex;
-        flex-flow: row wrap;
+        display: none;
     }
-
-
-    .logo img{
-        height:100px;
+    .filterParent{
+        display: none;
     }
 
     .title p::first-letter{
@@ -201,7 +191,6 @@
     }
 
     .iconVignette{
-
         margin-right : 10px;
         margin-left: 10px;
     }
@@ -210,17 +199,28 @@
         transform: rotate(90deg)
     }
 
-    .searchBar{
-        border-radius: 0!important;
+    .logo{
+        display:none;
     }
+    
+    .searchBar{
+        width: 80%;
+        border-top-right-radius: 0!important;
+        border-bottom-right-radius: 0!important;
 
-    .navbar ul{
-        margin-right:15px;
+    }
+    
+    .createIcon{
+        display: none;
+    }
+    
+    #helpMePlease{
+        display:none;
     }
 
     .ville{
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
     .pulse {
