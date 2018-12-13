@@ -54,7 +54,7 @@ $right = checkRights($bdd, $_SESSION['id_user']);
 
 
     </head>
-    <body>
+    <body ontouchend="upHandler()">
         <?php
         $rightTV = 'd-none';
         ?>
@@ -71,7 +71,7 @@ $right = checkRights($bdd, $_SESSION['id_user']);
             <div class="clients" id="clients"> 
                 <?php foreach ($bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_VALID = 1 ORDER BY CLI_VILLE ASC, CLI_NOM ASC', 'Clients') as $clients): ?>
 
-                    <div class="vignette <?= $clients->CLI_VERSION ?> flip-container" id="vignette_<?= $clients->CLI_ID ?>" data-activity='<?= $clients->CLI_RIS ?>,<?= $clients->CLI_PACS ?>' data-version="<?= $clients->CLI_VERSION ?>">
+                    <div class="vignette <?= $clients->CLI_VERSION ?> flip-container" id="vignette_<?= $clients->CLI_ID ?>" data-activity='<?= $clients->CLI_RIS ?>,<?= $clients->CLI_PACS ?>' data-version="<?= $clients->CLI_VERSION ?>" ontouchstart="downHandler(<?= $clients->CLI_ID ?>)">
                         <div class="contenu_vignette flipper">
                             <div class="front">
                                 <a href="<?= $clients->urlProd() ?>" target="_blank" id="vign_url_<?= $clients->CLI_ID ?>">
@@ -82,12 +82,12 @@ $right = checkRights($bdd, $_SESSION['id_user']);
                                     </div>
                                 </a>
 
-                                <div class="tag">
+                                <div class="tag hideInMobile">
     <?= $clients->formatedTag ?>
 
                                 </div>
 
-                                <div class="version">
+                                <div class="version hideInMobile">
                                     <hr class="hr" >
                                     <span class="spanVersion">
 

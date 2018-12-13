@@ -26,8 +26,8 @@
     .vignette{
         margin : 3px;
         margin-bottom : 5px;
-        width:  120px;
-        height: 120px;   
+        width:  100px;
+        height: 100px;   
         text-align: center;
         text-transform:  capitalize; 
         transition: visibility 0.5s;
@@ -390,6 +390,11 @@
     
      .hideInMobile{
         display:none;
+    }
+    
+    #navbarSupportedContent{
+        padding-right: 0;
+        margin-right: 0;
     }
 
 }

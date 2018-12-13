@@ -5,7 +5,7 @@ $versionToDisplay = loadParentVersion();
 $parentVersion = array_keys($versionToDisplay);
 ?>
 
-<ul class="navbar-nav filterUl"  >
+<ul class="navbar-nav filterUl hideInMobile"  >
     <li class="nav-item  filterParent" onclick="displayFilter('version')">
         <a class="nav-link" href="#"><i class="fas fa-filter"></i><span id="versionFilterSpan"> Version</span></a>
     </li>

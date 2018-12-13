@@ -92,4 +92,7 @@ $phones = $bdd->queryObj('SELECT * '
             </div>
         </div>
     <?php endforeach;?>
+    <a onclick="displayPhones()" style="margin-left: auto;margin-right: 10px;">
+        <span aria-hidden="true">&times;</span>
+    </a>
 </div>

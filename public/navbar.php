@@ -20,6 +20,7 @@
             <button class="btn btn-success resetIcon" id="resetSearch" ><i class="fa fa-fw fa-times"></i></button>
         </div>
         <button type="button" class="btn btn-outline-secondary"  id="helpMePlease" data-toggle="modal" data-target="#modalHelp" style="margin-left:15px;"><i class="fa fa-fw fa-question-circle"></i></button>
+        <button type="button" class="btn btn-danger displayInMobile"><a href="public/logout.php" ><i class="fas fa-sign-out-alt"></i></button>
      </div>
 </nav>
 
