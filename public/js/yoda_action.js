@@ -679,3 +679,25 @@ function downHandler(id) {
         return false;
     }
 }
+
+
+
+//konami
+var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+	n = 0;
+$(document).keydown(function(e) {
+	if (e.keyCode === k[n++]) {
+		if (n === k.length) {
+			$('.v6').css("background-image", "url(public/img/aladdin1.gif)"); 
+			$('.v7').css("background-image", "url(public/img/aladdin2.gif)"); 
+			$('.v8').css("background-image", "url(public/img/aladdin3.gif)"); 
+                        
+                        
+			n = 0;
+			return false;
+		}
+	}
+	else {
+		n = 0;
+	}
+});

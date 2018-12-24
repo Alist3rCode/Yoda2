@@ -91,7 +91,21 @@ $right = checkRights($bdd, $_SESSION['id_user']);
                                     <hr class="hr" >
                                     <span class="spanVersion">
 
-    <?= $clients->CLI_NUM_VERSION ?>
+    <?php
+    
+    foreach($bdd->query('SELECT * FROM YDA_CLIENT WHERE CLI_ID ="' . $clients->CLI_ID . '"','Clients') as $numVersionClient):
+
+
+        if ($numVersionClient->CLI_UID == ''){
+            $select = $bdd->queryObj('SELECT CLI_NUM_VERSION FROM YDA_CLIENT WHERE CLI_ID ="' . $clients->CLI_ID . '"');
+            $version = $select[0]->CLI_NUM_VERSION;
+        }else{
+            $select = $bdd2->queryObj('SELECT * FROM wrk_client where wrk_client.uid = "' . $numVersionClient->CLI_UID . '"');
+            $version = $select[0]->version . '.' . $select[0]->hotfix;
+        }
+        echo $version;
+        endforeach;
+    ?>
 
                                     </span> 
                                 </div>                     
@@ -116,7 +130,7 @@ $right = checkRights($bdd, $_SESSION['id_user']);
                                     <i class="far fa-building"></i>
                                 </div>
 
-                                <div class="backBtn" data-toggle="tooltip" data-html="true"  data-id="<?= $clients->CLI_ID ?>" data-placement="bottom" data-title="test">
+                                <div class="backBtn" data-toggle="tooltip" data-html="true"  data-id="<?=$clients->CLI_ID?>" data-placement="bottom" data-title="test">
                                     <i class="fas fa-code-branch"></i>
                                 </div>
                             </div>

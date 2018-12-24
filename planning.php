@@ -136,7 +136,9 @@ require('./public/fetchInfoPlanning.php');
                                     <?php foreach($eventForDay as $key=>$event):
                                         if($labelCode=="active"){$label = $event->USR_SURNAME .' - '. $event->SCO_CODE;}
                                         if($labelNom=="active"){$label = ucfirst($event->USR_FIRST_NAME) .' '. strtoupper($event->USR_NAME).' - '. $event->SCO_NAME;}?>
-                                    <div class="<?=$event->SCO_CODE?> tech <?=$event->USR_SURNAME?>"><?=$label?></div>
+                                    <div class="<?=$event->SCO_CODE?> tech <?=$event->USR_SURNAME?>" data-toggle="tooltip" data-html="true"  data-id="<?=$event->SLO_ID?>" data-placement="bottom" data-title="test">
+                                        <?=$label?>
+                                    </div>
 
                                     <?php endforeach;?>
                                     <div class="hour mx-sm-1">
@@ -171,27 +173,7 @@ require('./public/fetchInfoPlanning.php');
         <script src="./public/js/displayAlert.js"></script>
         <script src="./public/js/planning/planning.js"></script>
         <script src="./public/js/planning/planning_style.js"></script>
-        
-        <script>
-    
-            function redBarFunction() {
-                $('.redBar').remove();
-                var time = new Date().toLocaleTimeString('fr-FR', { hour: "numeric", minute:"numeric"});
-                var timeSplit = time.split(':');
-                var startTime = Number(document.getElementsByClassName('startJquery')[0].innerHTML);
-                var hour = timeSplit[0]-startTime  ;
-                var min = timeSplit[1] >= 30 ? 1: 0;
-                
-                var nbTech = document.getElementById('nbTech').innerHTML;
-                // console.log(startTime);
-                $( "#today" ).append( '<div class="redBar" style="grid-row:1/'+ (parseInt(nbTech)+1) +';grid-column:'+ ((2 * hour)+1 + min) +';"></div>' );
-            }
-            redBarFunction();
-            setInterval(redBarFunction, 30*1000);
-
-
-            </script>
-
+   
        
                      
     </body>
