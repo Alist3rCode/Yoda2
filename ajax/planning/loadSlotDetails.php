@@ -14,7 +14,7 @@ $select = $bdd->queryObj('SELECT * FROM PLA_SLOT'
         . ' WHERE SLO_ID ="' . $i . '"');
 //
 ?>
-<div style="text-align: left;">
+<div style="text-align: left;background-color:grey;opacity:1!important">
     
 
     Détail du créneau du <br><b><?=$select[0]->SLO_DATE?></b>
